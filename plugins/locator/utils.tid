@@ -1,0 +1,36 @@
+created: 20190107222934442
+modified: 20190108221817849
+tags:
+title: $:/plugins/bimlas/locator/utils
+type: text/vnd.tiddlywiki
+
+\define get-context-items(baseTitle)
+
+<!-- Using `kin::to[]` on breadcumb items would be way more slower -->
+<!-- Remove grandchildren of current tiddlers: -[title<contextState>each:list-item[breadcrumbs]last[]tagging[]tagging[]kin::to[]] -->
+
+<$set name="breadcumbItems" filter="[[$baseTitle$]] [title<contextState>each:list-item[breadcrumbs]]">
+<$list filter="[title<contextState>each:list-item[breadcrumbs]last[]] ~[[$baseTitle$]] +[tagging[]]">
+<$set name="ancestorsInContext" filter="[enlist<breadcumbItems>kin::from<currentTiddler>]">
+<$reveal type="match" default=<<breadcumbItems>> text=<<ancestorsInContext>>>
+<$text text="[["/><$view field="title"/><$text text="]]"/>
+</$reveal>
+</$set>
+</$list>
+</$set>
+
+\end
+\define breadcrumbs-of-context()
+
+<$button class="tc-btn-invisible">
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[title<contextState>each:list-item[breadcrumbs]butlast[]]"/>
+{{$:/core/images/chevron-left}}
+</$button>
+
+<$list filter="[title<contextState>each:list-item[breadcrumbs]]">
+
+<$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+
+</$list>
+
+\end

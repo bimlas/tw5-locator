@@ -1,0 +1,64 @@
+created: 20181204075820160
+modified: 20190108221817842
+tags: $:/tags/Macro
+title: $:/plugins/bimlas/locator/view
+type: text/vnd.tiddlywiki
+
+\define locator-view(baseTitle)
+
+<!-- Hide internal macros, do not make them globally available -->
+<$importvariables filter="[[$:/plugins/bimlas/locator/utils]]">
+
+<!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
+<$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<currentTiddler>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
+
+<<breadcrumbs-of-context>>
+
+---
+
+<$wikify name="contextItems" text=<<get-context-items """$baseTitle$""">>>
+<div class="tc-table-of-contents">
+<ol>
+
+<$wikify name="relatedParents" text="""<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>] -[<__baseTitle__>] -[title<contextState>each:list-item[breadcrumbs]]"><$text text="[["/><$view field="title"/><$text text="]]"/></$list>""">
+<$list filter=<<relatedParents>>>
+<li class="toc-item">
+
+<$button class="tc-btn-invisible">
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
+{{$:/core/images/chevron-right}}
+</$button>
+<$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+
+</li>
+</$list>
+</$wikify>
+
+<$list filter=<<contextItems>>>
+<li class="toc-item">
+
+<$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
+<$button class="tc-btn-invisible">
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
+{{$:/core/images/chevron-right}}
+</$button>
+</$reveal>
+<$reveal type="match" default="" text={{{ [all[current]is[tag]] }}}>
+<$button class="tc-btn-invisible" to=<<currentTiddler>>>
+{{$:/core/images/blank}}
+</$button>
+</$reveal>
+<$link><<currentTiddler>></$link>
+
+</li>
+</$list>
+
+</ol>
+</div>
+</$wikify>
+
+</$wikify>
+
+</$importvariables>
+
+\end
