@@ -1,0 +1,9 @@
+caption: Locator
+created: 20190109213701491
+list-before: $:/core/ui/SideBar/Open
+modified: 20190109213924201
+tags: $:/tags/SideBar
+title: TableOfContents
+type: text/vnd.tiddlywiki
+
+<<locator-view "TableOfContents">>
