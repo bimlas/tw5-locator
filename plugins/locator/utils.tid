@@ -31,6 +31,11 @@ type: text/vnd.tiddlywiki
 <$action-listops $tiddler=<<contextState>> $field="last-opened" $filter="[title<contextState>each:list-item[breadcrumbs]last[]]"/>
 {{$:/core/images/chevron-left}}
 </$button>
+<$button class="tc-btn-invisible">
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
+<$action-listops $tiddler=<<contextState>> $field="last-opened" $filter="[[]]"/>
+{{$:/core/images/refresh-button}}
+</$button>
 
 <$list filter="[title<contextState>each:list-item[breadcrumbs]]">
 
