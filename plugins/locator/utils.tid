@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 <!-- Using `kin::to[]` on breadcumb items would be way more slower -->
 <!-- Remove grandchildren of current tiddlers: -[title<contextState>each:list-item[breadcrumbs]last[]tagging[]tagging[]kin::to[]] -->
 
-<$set name="lastOpened" filter="[title<contextState>each:list-item[last-opened]] ~[[$baseTitle$]]">
+<$set name="lastOpened" filter="[title<contextState>each:list-item[last-opened]last[]] ~[[$baseTitle$]]">
 <$set name="breadcrumbItems" filter="[[$baseTitle$]] [title<contextState>each:list-item[breadcrumbs]]">
 <$wikify name="lastWithRelatedParents" text="""<$text text="[["/><<lastOpened>>]<$list filter="[enlist<breadcrumbItems>allafter<lastOpened>]">tag[<$view field="title"/>]</$list><$text text="tagging[]]"/>""">
 <$list filter=<<lastWithRelatedParents>>>
@@ -27,8 +27,10 @@ type: text/vnd.tiddlywiki
 \define breadcrumbs-of-context()
 
 <$button class="tc-btn-invisible">
+<$reveal type="match" default={{{ [title<contextState>each:list-item[breadcrumbs]last[]] }}} text={{{ [title<contextState>each:list-item[last-opened]last[]] }}}>
+<$action-listops $tiddler=<<contextState>> $field="last-opened" $filter="[title<contextState>each:list-item[last-opened]butlast[]]"/>
+</$reveal>
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[title<contextState>each:list-item[breadcrumbs]butlast[]]"/>
-<$action-listops $tiddler=<<contextState>> $field="last-opened" $filter="[title<contextState>each:list-item[breadcrumbs]last[]]"/>
 {{$:/core/images/chevron-left}}
 </$button>
 <$button class="tc-btn-invisible">

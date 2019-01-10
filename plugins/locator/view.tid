@@ -40,7 +40,7 @@ type: text/vnd.tiddlywiki
 <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
 <$button class="tc-btn-invisible">
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
-<$action-listops $tiddler=<<contextState>> $field="last-opened" $filter="[title<currentTiddler>]"/>
+<$action-listops $tiddler=<<contextState>> $field="last-opened" $subfilter="[title<currentTiddler>]"/>
 {{$:/core/images/chevron-right}}
 </$button>
 </$reveal>
