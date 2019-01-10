@@ -46,3 +46,15 @@ type: text/vnd.tiddlywiki
 </$list>
 
 \end
+\define filter-irrevelant-related-tags(baseTitle)
+
+<$set name="lastOpened" value={{{ [title<contextState>each:list-item[last-opened]last[]] }}}>
+<$reveal type="nomatch" default="" text=<<lastOpened>>>
+<$text text="[title<contextState>each:list-item[breadcrumbs]allafter["/><<lastOpened>><$text text="]] [["/><<__baseTitle__>><$text text="]] [["/><<lastOpened>><$text text="]]"/>
+</$reveal>
+<$reveal type="match" default="" text=<<lastOpened>>>
+<$text text="[title<contextState>each:list-item[breadcrumbs]] [["/><<__baseTitle__>><$text text="]]"/>
+</$reveal>
+</$set>
+
+\end

@@ -20,7 +20,8 @@ type: text/vnd.tiddlywiki
 <div class="tc-table-of-contents">
 <ol>
 
-<$wikify name="relatedParents" text="""<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>] -[<__baseTitle__>] -[title<contextState>each:list-item[breadcrumbs]]"><$text text="[["/><$view field="title"/><$text text="]]"/></$list>""">
+<$wikify name="irrevelantRelatedParents" text=<<filter-irrevelant-related-tags "$baseTitle$">>>
+<$wikify name="relatedParents" text="""<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!subfilter<irrevelantRelatedParents>]"><$text text="[["/><$view field="title"/><$text text="]]"/></$list>""">
 <$list filter=<<relatedParents>>>
 <li class="toc-item">
 
@@ -32,6 +33,7 @@ type: text/vnd.tiddlywiki
 
 </li>
 </$list>
+</$wikify>
 </$wikify>
 
 <$list filter=<<contextItems>>>
