@@ -4,17 +4,27 @@ tags:
 title: $:/plugins/bimlas/locator/README
 type: text/vnd.tiddlywiki
 
-This is the home of Locator plugin by [[bimlas|https://bimlas.gitlab.io/]].
+! Locator plugin by [[bimlas|https://bimlas.gitlab.io/]]
 
-For those who use many tags or store many different topics in a common wiki the Locator plugin is a Table of Contents widget and an enhanced search engine that gives you the opportunity to filter your results by related tags. Unlike [[list of tags|$:/core/ui/MoreSideBar/Tags]], [[standard search|$:/core/ui/AdvancedSearch/Standard]] and [[table of contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], this plugin manages everything "simultaneously" in an organic way.
+For those who use many tags or store many different topics in a common wiki the Locator plugin is ''a Table of Contents widget and an enhanced search engine'' that gives you the opportunity to ''filter results by related tags''. Unlike [[list of tags|$:/core/ui/MoreSideBar/Tags]], [[standard search|$:/core/ui/AdvancedSearch/Standard]] and [[table of contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], this plugin manages everything "simultaneously" in an organic way.
 
-!! REQUIREMENTS: Needs the `kin` filter operator
+* https://gitlab.com/bimlas/tw5-locator (main repository)
+* https://github.com/bimlas/tw5-locator (mirror)
 
-While this pull request is not merged and the filter is not available in the standard TiddlyWiki, you cannot use the Locator plugin. See https://github.com/Jermolene/TiddlyWiki5/pull/3511 for details.
+!! Benefits over the classic table of contents (ToC)
+
+* ''Shows related tags''<br>You can mark a tiddler with multiple tags, but in the ToC you don't see them while browsing.
+* ''"Phone friendlier"''<br>The width of the ToC is increasing and the size of the text is decrasing as we move down in the context, while Locator remains the same.
+
+!! ''REQUIREMENT'': Needs the `kin` filter operator (planned to TiddlyWiki v5.1.20)
+
+While this pull request is not merged and the filter is not available in the standard TiddlyWiki, ''you cannot use the Locator plugin''. See https://github.com/Jermolene/TiddlyWiki5/pull/3511 for details.
+
+If you can't wait for this to happen and you want to try this plugin in your wiki, ''you can install the [[demo version of the filter|https://bimlas.gitlab.io/tw5-kin-demo/]], but do it only in a testing environment''.
 
 !! Usage of `locator-view` (table of contents)
 
-Use the following macro to display a table of contents of a theme (the parameter is the title of the tag at the top of the hierarchy):
+Use the following macro to ''display a table of contents of a topic'' (the parameter is the title of the tag at the top of the hierarchy):
 
 ```
 <<locator-view "TableOfContents">>
@@ -25,7 +35,7 @@ You can use it in any tiddler, for example put it in the main tiddler of each to
 The table of contents is structured as follows:
 
 ```
-<<
+<< @
 Breadcrumb tag pills: The current context
 ---
 >> Related tag pills: Tags of listed titles that are not included in breadcrumbs
@@ -33,7 +43,7 @@ Breadcrumb tag pills: The current context
 >> Title with button: Parent of other titles
 ```
 
-Use the `>>` button to open a title (move down in the context), `<<` to move up.
+Use the `>>` button to open a title (move down in the context), `<<` to move up, the "reload" (`@`) button is reseting the context by removing the breadcrumbs.
 
 !!! Add to sidebar
 
@@ -44,7 +54,7 @@ Use the `>>` button to open a title (move down in the context), `<<` to move up.
 
 !! Usage of `locator-search` (customised search results)
 
-The macro can be used to search only in current context.
+The macro can be used to ''search only in current context''.
 
 * Add a `<<locator-view>>` to the sidebar as described above
 * Create a new tiddler
@@ -55,4 +65,22 @@ The macro can be used to search only in current context.
 <<locator-view>>
 ```
 
-If you type something in the [[standard search|$:/core/ui/AdvancedSearch/Standard]], you can see the newly created tiddler as a new tab in the search results (you can change the title by adding the `caption` field to the tiddler). When you navigate in the Locator in sidebar, the search will perform only under the given context - the context is shown by the breadcrumbs at the top of the search results as in the Locator.
+If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results (you can change the title by adding the `caption` field to the tiddler). When you ''navigate in the Locator in sidebar'', the search will perform only under the given context - the context is shown by the breadcrumbs at the top of the search results as in the Locator, so you can change context easily.
+
+!! Tips to speed up (on phones)
+
+!!! Conditional view
+
+Because ''the plugin is sometimes slow'' (depending on the context) and since we don't look at the table of contents and search results at the same time, we can ''hide the Locator when we are using the standard search''.
+
+To achieve this, place the Locator view in the following condition:
+
+```
+<$reveal type="match" default="" text={{$:/temp/search}}>
+<<locator-view "TableOfContents">>
+</$reveal>
+```
+
+!!! Prefer the standard search
+
+''Typing in the search entry may be falter'' because of the slowness of the plugin. In this case, ''switch to the classic search listing'', enter the expression, and then return to the Locator search.

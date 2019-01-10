@@ -1,9 +1,15 @@
 caption: Locator
 created: 20190109213701491
 list-before: $:/core/ui/SideBar/Open
-modified: 20190109213924201
+modified: 20190110215044380
 tags: $:/tags/SideBar
 title: TableOfContents
 type: text/vnd.tiddlywiki
 
+> Use this Locator to define the context of search.
+
+> It is hidden when the search entry is not empty to increase responsiveness on phones - see [[TableOfContents]] for the code.
+
+<$reveal type="match" default="" text={{$:/temp/search}}>
 <<locator-view "TableOfContents">>
+</$reveal>
