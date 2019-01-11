@@ -44,6 +44,25 @@ type: text/vnd.tiddlywiki
 </$list>
 
 \end
+\define tag-list-item(actions)
+<p class="tc-menu-list-item">
+<$button class="tc-btn-invisible" actions=<<__actions__>>>
+{{$:/core/images/chevron-right}}
+</$button>
+<$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+</p>
+\end
+\define add-direct-parent()
+
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
+<$action-listops $tiddler=<<contextState>> $field="last-opened" $subfilter="[title<currentTiddler>]"/>
+
+\end
+\define add-related-parent()
+
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
+
+\end
 \define filter-irrevelant-related-tags(baseTitle)
 
 <$set name="lastOpened" value={{{ [title<contextState>each:list-item[last-opened]last[]] }}}>

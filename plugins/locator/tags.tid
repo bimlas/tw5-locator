@@ -1,0 +1,37 @@
+tags: $:/tags/Macro
+title: $:/plugins/bimlas/locator/tags
+type: text/vnd.tiddlywiki
+
+\define locator-tags(locatorViewTiddler: "")
+
+<!-- Hide internal macros, do not make them globally available -->
+<$importvariables filter="[[$:/plugins/bimlas/locator/utils]]">
+
+<!-- If `locatorViewTiddler` is empty, then do not add trailing `/` -->
+<$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[[$locatorViewTiddler$]] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
+<$wikify name="contextFilter" text="""<$list filter="[title<contextState>each:list-item[breadcrumbs]]"><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list>""">
+
+<<breadcrumbs-of-context>>
+
+//<small>{{$:/language/Search/Matches/Title}}</small>//
+
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="tags[]search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$list filter=<<filter>>>
+<$macrocall $name="tag-list-item" actions=<<add-direct-parent>>/>
+</$list>
+</$wikify>
+
+//<small>{{$:/language/Search/Matches/All}}</small>//
+
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="tags[]search{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$list filter=<<filter>>>
+<$macrocall $name="tag-list-item" actions=<<add-direct-parent>>/>
+</$list>
+</$wikify>
+
+</$wikify>
+</$wikify>
+
+</$importvariables>
+
+\end

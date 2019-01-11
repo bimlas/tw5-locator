@@ -23,11 +23,7 @@ type: text/vnd.tiddlywiki
 <$list filter=<<relatedParents>>>
 <li class="toc-item">
 
-<$button class="tc-btn-invisible">
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
-{{$:/core/images/chevron-right}}
-</$button>
-<$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+<$macrocall $name="tag-list-item" actions=<<add-related-parent>>/>
 
 </li>
 </$list>
@@ -38,9 +34,7 @@ type: text/vnd.tiddlywiki
 <li class="toc-item">
 
 <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
-<$button class="tc-btn-invisible">
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
-<$action-listops $tiddler=<<contextState>> $field="last-opened" $subfilter="[title<currentTiddler>]"/>
+<$button class="tc-btn-invisible" actions=<<add-direct-parent>>>
 {{$:/core/images/chevron-right}}
 </$button>
 </$reveal>
