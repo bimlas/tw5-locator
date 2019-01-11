@@ -63,7 +63,7 @@ type: text/vnd.tiddlywiki
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
 
 \end
-\define filter-irrevelant-related-tags(baseTitle)
+\define filter-irrevelant-related-tags(baseTitle: "")
 
 <$set name="lastOpened" value={{{ [title<contextState>each:list-item[last-opened]last[]] }}}>
 <$reveal type="nomatch" default="" text=<<lastOpened>>>

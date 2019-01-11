@@ -10,25 +10,27 @@ type: text/vnd.tiddlywiki
 <!-- If `locatorViewTiddler` is empty, then do not add trailing `/` -->
 <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[[$locatorViewTiddler$]] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
 <$wikify name="contextFilter" text="""<$list filter="[title<contextState>each:list-item[breadcrumbs]]"><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list>""">
+<$set name="irrevelantRelatedParents" value="[title<contextState>each:list-item[breadcrumbs]]">
 
 <<breadcrumbs-of-context>>
 
 //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="tags[]search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="tags[]!subfilter<irrevelantRelatedParents>search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
 <$list filter=<<filter>>>
 <$macrocall $name="tag-list-item" actions=<<add-direct-parent>>/>
 </$list>
 </$wikify>
 
-//<small>{{$:/language/Search/Matches/All}}</small>//
+//<small>Related parents</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="tags[]search{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="search{$(searchTiddler)$}tags[]!subfilter<irrevelantRelatedParents>] -[!is[system]"/><<contextFilter>><$text text="search{$(searchTiddler)$}] +[sort[title]limit[250]]"/>""">
 <$list filter=<<filter>>>
 <$macrocall $name="tag-list-item" actions=<<add-direct-parent>>/>
 </$list>
 </$wikify>
 
+</$set>
 </$wikify>
 </$wikify>
 
