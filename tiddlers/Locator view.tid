@@ -1,9 +1,9 @@
 caption: Locator
 created: 20190109213701491
 list-before: $:/core/ui/SideBar/Open
-modified: 20190110215044380
+modified: 20190112222248333
 tags: $:/tags/SideBar
-title: TableOfContents
+title: Locator view
 type: text/vnd.tiddlywiki
 
 > Use this Locator to define the context of search.
