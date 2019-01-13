@@ -10,31 +10,29 @@ type: text/vnd.tiddlywiki
 <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
 <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<currentTiddler>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
 
-<<breadcrumbs-of-context>>
+<<show-breadcrumbs-of-context>>
 
 ---
 
-<$wikify name="contextItems" text=<<get-context-items """$baseTitle$""">>>
+<$wikify name="contextItems" text=<<list-context-items "$baseTitle$">>>
 <div class="tc-table-of-contents">
 <ol>
 
-<$wikify name="irrevelantRelatedParents" text=<<filter-irrevelant-related-tags "$baseTitle$">>>
-<$wikify name="relatedParents" text="""<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!subfilter<irrevelantRelatedParents>]"><$text text="[["/><$view field="title"/><$text text="]]"/></$list>""">
-<$list filter=<<relatedParents>>>
+<$wikify name="redunantRelatedTags" text=<<list-redunant-related-tags "$baseTitle$">>>
+<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantRelatedTags>]">
 <li class="toc-item">
 
-<$macrocall $name="tag-list-item" actions=<<add-related-parent>>/>
+<$macrocall $name="show-tag-list-item" actions=<<action-add-related-tag>>/>
 
 </li>
 </$list>
-</$wikify>
 </$wikify>
 
 <$list filter=<<contextItems>>>
 <li class="toc-item">
 
 <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
-<$button class="tc-btn-invisible" actions=<<add-direct-parent>>>
+<$button class="tc-btn-invisible" actions=<<action-add-direct-tag>>>
 {{$:/core/images/chevron-right}}
 </$button>
 </$reveal>

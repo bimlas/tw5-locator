@@ -2,17 +2,36 @@ tags:
 title: $:/plugins/bimlas/locator/utils
 type: text/vnd.tiddlywiki
 
-\define get-context-items(baseTitle)
+\define filter-breadcrumbs() [title<contextState>each:list-item[breadcrumbs]]
+\define filter-direct-tags() [title<contextState>each:list-item[direct-tags]]
+\define filter-last-direct-tag() [title<contextState>each:list-item[direct-tags]last[]]
+\define list-redunant-related-tags(baseTitle: "")
+
+<$set name="lastDirectTag" value={{{ [subfilter<filter-last-direct-tag>] }}}>
+<$reveal type="nomatch" default="" text=<<lastDirectTag>>>
+<$list filter="[title<__baseTitle__>] [title<lastDirectTag>] [subfilter<filter-breadcrumbs>allafter<lastDirectTag>]">
+<$text text="[["/><$view field="title"/><$text text="]]"/>
+</$list>
+</$reveal>
+<$reveal type="match" default="" text=<<lastDirectTag>>>
+<$list filter="[title<__baseTitle__>] [subfilter<filter-breadcrumbs>]">
+<$text text="[["/><$view field="title"/><$text text="]]"/>
+</$list>
+</$reveal>
+</$set>
+
+\end
+\define list-context-items(baseTitle)
 
 <!-- Using `kin::to[]` on breadcumb items would be way more slower -->
-<!-- Remove grandchildren of current tiddlers: -[title<contextState>each:list-item[breadcrumbs]last[]tagging[]tagging[]kin::to[]] -->
+<!-- Remove grandchildren of current tiddlers: -[subfilter<filter-breadcrumbs>last[]tagging[]tagging[]kin::to[]] -->
 
-<$set name="lastOpened" filter="[title<contextState>each:list-item[last-opened]last[]] ~[[$baseTitle$]]">
-<$set name="breadcrumbItems" filter="[[$baseTitle$]] [title<contextState>each:list-item[breadcrumbs]]">
-<$wikify name="lastWithRelatedParents" text="""<$text text="[["/><<lastOpened>>]<$list filter="[enlist<breadcrumbItems>allafter<lastOpened>]">tag[<$view field="title"/>]</$list><$text text="tagging[]]"/>""">
-<$list filter=<<lastWithRelatedParents>>>
-<$set name="ancestorsInContext" filter="[enlist<breadcrumbItems>kin::from<currentTiddler>]">
-<$reveal type="match" default=<<breadcrumbItems>> text=<<ancestorsInContext>>>
+<$set name="lastDirectTagOrBaseTitle" filter="[subfilter<filter-last-direct-tag>] ~[title<__baseTitle__>]">
+<$set name="baseTitleAndBreadcrumbs" filter="[title<__baseTitle__>] [subfilter<filter-breadcrumbs>]">
+<$wikify name="taggedByLastDirectAndRelatedTags" text="""<$text text="[["/><<lastDirectTagOrBaseTitle>>]<$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastDirectTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="tagging[]]"/>""">
+<$list filter=<<taggedByLastDirectAndRelatedTags>>>
+<$set name="breadcrumbAncestorsOfCurrent" filter="[enlist<baseTitleAndBreadcrumbs>kin::from<currentTiddler>]">
+<$reveal type="match" default=<<baseTitleAndBreadcrumbs>> text=<<breadcrumbAncestorsOfCurrent>>>
 <$text text="[["/><$view field="title"/><$text text="]]"/>
 </$reveal>
 </$set>
@@ -22,29 +41,29 @@ type: text/vnd.tiddlywiki
 </$set>
 
 \end
-\define breadcrumbs-of-context()
+\define show-breadcrumbs-of-context()
 
 <$button class="tc-btn-invisible">
-<$reveal type="match" default={{{ [title<contextState>each:list-item[breadcrumbs]last[]] }}} text={{{ [title<contextState>each:list-item[last-opened]last[]] }}}>
-<$action-listops $tiddler=<<contextState>> $field="last-opened" $filter="[title<contextState>each:list-item[last-opened]butlast[]]"/>
+<$reveal type="match" default={{{ [subfilter<filter-breadcrumbs>last[]] }}} text={{{ [subfilter<filter-last-direct-tag>] }}}>
+<$action-listops $tiddler=<<contextState>> $field="direct-tags" $filter="[subfilter<filter-direct-tags>butlast[]]"/>
 </$reveal>
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[title<contextState>each:list-item[breadcrumbs]butlast[]]"/>
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[subfilter<filter-breadcrumbs>butlast[]]"/>
 {{$:/core/images/chevron-left}}
 </$button>
 <$button class="tc-btn-invisible">
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
-<$action-listops $tiddler=<<contextState>> $field="last-opened" $filter="[[]]"/>
+<$action-listops $tiddler=<<contextState>> $field="direct-tags" $filter="[[]]"/>
 {{$:/core/images/refresh-button}}
 </$button>
 
-<$list filter="[title<contextState>each:list-item[breadcrumbs]]">
+<$list filter=<<filter-breadcrumbs>>>
 
 <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
 
 </$list>
 
 \end
-\define tag-list-item(actions)
+\define show-tag-list-item(actions)
 <p class="tc-menu-list-item">
 <$button class="tc-btn-invisible" actions=<<__actions__>>>
 {{$:/core/images/chevron-right}}
@@ -52,26 +71,14 @@ type: text/vnd.tiddlywiki
 <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
 </p>
 \end
-\define add-direct-parent()
+\define action-add-direct-tag()
 
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
-<$action-listops $tiddler=<<contextState>> $field="last-opened" $subfilter="[title<currentTiddler>]"/>
+<$action-listops $tiddler=<<contextState>> $field="direct-tags" $subfilter="[title<currentTiddler>]"/>
 
 \end
-\define add-related-parent()
+\define action-add-related-tag()
 
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
-
-\end
-\define filter-irrevelant-related-tags(baseTitle: "")
-
-<$set name="lastOpened" value={{{ [title<contextState>each:list-item[last-opened]last[]] }}}>
-<$reveal type="nomatch" default="" text=<<lastOpened>>>
-<$text text="[title<contextState>each:list-item[breadcrumbs]allafter["/><<lastOpened>><$text text="]] [["/><<__baseTitle__>><$text text="]] [["/><<lastOpened>><$text text="]]"/>
-</$reveal>
-<$reveal type="match" default="" text=<<lastOpened>>>
-<$text text="[title<contextState>each:list-item[breadcrumbs]] [["/><<__baseTitle__>><$text text="]]"/>
-</$reveal>
-</$set>
 
 \end

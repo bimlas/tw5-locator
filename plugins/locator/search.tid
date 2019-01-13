@@ -8,11 +8,11 @@ type: text/vnd.tiddlywiki
 <$importvariables filter="[[$:/plugins/bimlas/locator/utils]]">
 
 <!-- If `locatorViewTiddler` is empty, then do not add trailing `/` -->
-<$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[[$locatorViewTiddler$]] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
+<$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<__locatorViewTiddler__>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
 
-<<breadcrumbs-of-context>>
+<<show-breadcrumbs-of-context>>
 
-<$wikify name="contextFilter" text="""<$list filter="[title<contextState>each:list-item[breadcrumbs]]"><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list>""">
+<$wikify name="contextFilter" text="""<$list filter=<<filter-breadcrumbs>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list>""">
 
 //<small>{{$:/language/Search/Matches/Title}}</small>//
 
