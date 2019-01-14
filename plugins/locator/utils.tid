@@ -4,10 +4,9 @@ type: text/vnd.tiddlywiki
 
 \define filter-breadcrumbs() [title<contextState>each:list-item[breadcrumbs]]
 \define filter-direct-tags() [title<contextState>each:list-item[direct-tags]]
-\define filter-last-direct-tag() [title<contextState>each:list-item[direct-tags]last[]]
 \define list-redunant-related-tags(baseTitle: "")
 
-<$set name="lastDirectTag" value={{{ [subfilter<filter-last-direct-tag>] }}}>
+<$set name="lastDirectTag" value={{{ [subfilter<filter-direct-tags>last[]] }}}>
 <$reveal type="nomatch" default="" text=<<lastDirectTag>>>
 <$list filter="[title<__baseTitle__>] [title<lastDirectTag>] [subfilter<filter-breadcrumbs>allafter<lastDirectTag>]">
 <$text text="[["/><$view field="title"/><$text text="]]"/>
@@ -26,9 +25,9 @@ type: text/vnd.tiddlywiki
 <!-- Using `kin::to[]` on breadcumb items would be way more slower -->
 <!-- Remove grandchildren of current tiddlers: -[subfilter<filter-breadcrumbs>last[]tagging[]tagging[]kin::to[]] -->
 
-<$set name="lastDirectTagOrBaseTitle" filter="[subfilter<filter-last-direct-tag>] ~[title<__baseTitle__>]">
+<$set name="lastDirectTagOrBaseTitle" value={{{ [subfilter<filter-direct-tags>last[]] ~[title<__baseTitle__>] }}}>
 <$set name="baseTitleAndBreadcrumbs" filter="[title<__baseTitle__>] [subfilter<filter-breadcrumbs>]">
-<$wikify name="taggedByLastDirectAndRelatedTags" text="""<$text text="[["/><<lastDirectTagOrBaseTitle>>]<$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastDirectTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="tagging[]]"/>""">
+<$wikify name="taggedByLastDirectAndRelatedTags" text="""<$text text="[tag<lastDirectTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastDirectTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="]"/>""">
 <$list filter=<<taggedByLastDirectAndRelatedTags>>>
 <$set name="breadcrumbAncestorsOfCurrent" filter="[enlist<baseTitleAndBreadcrumbs>kin::from<currentTiddler>]">
 <$reveal type="match" default=<<baseTitleAndBreadcrumbs>> text=<<breadcrumbAncestorsOfCurrent>>>
@@ -44,7 +43,7 @@ type: text/vnd.tiddlywiki
 \define show-breadcrumbs-of-context()
 
 <$button class="tc-btn-invisible">
-<$reveal type="match" default={{{ [subfilter<filter-breadcrumbs>last[]] }}} text={{{ [subfilter<filter-last-direct-tag>] }}}>
+<$reveal type="match" default={{{ [subfilter<filter-breadcrumbs>last[]] }}} text={{{ [subfilter<filter-direct-tags>last[]] }}}>
 <$action-listops $tiddler=<<contextState>> $field="direct-tags" $filter="[subfilter<filter-direct-tags>butlast[]]"/>
 </$reveal>
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[subfilter<filter-breadcrumbs>butlast[]]"/>
