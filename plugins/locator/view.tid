@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
 <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
 <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<currentTiddler>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
 
-<<show-breadcrumbs-of-context>>
+<<view-breadcrumbs-of-context>>
 
 ---
 
@@ -18,11 +18,11 @@ type: text/vnd.tiddlywiki
 <div class="tc-table-of-contents">
 <ol>
 
-<$wikify name="redunantRelatedTags" text=<<list-redunant-related-tags "$baseTitle$">>>
-<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantRelatedTags>]">
+<$wikify name="redunantDirectTags" text=<<list-redunant-direct-tags "$baseTitle$">>>
+<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>]">
 <li class="toc-item">
 
-<$macrocall $name="show-tag-list-item" actions=<<action-add-related-tag>>/>
+<$macrocall $name="view-tag-list-item" actions=<<action-add-direct-tag>>/>
 
 </li>
 </$list>
@@ -32,8 +32,8 @@ type: text/vnd.tiddlywiki
 <li class="toc-item">
 
 <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
-<$button class="tc-btn-invisible" actions=<<action-add-direct-tag>>>
-{{$:/core/images/chevron-right}}
+<$button class="tc-btn-invisible" actions=<<action-add-ancestor-tag>>>
+{{$:/core/images/right-arrow}}
 </$button>
 </$reveal>
 <$reveal type="match" default="" text={{{ [all[current]is[tag]] }}}>

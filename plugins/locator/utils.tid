@@ -3,16 +3,16 @@ title: $:/plugins/bimlas/locator/utils
 type: text/vnd.tiddlywiki
 
 \define filter-breadcrumbs() [title<contextState>each:list-item[breadcrumbs]]
-\define filter-direct-tags() [title<contextState>each:list-item[direct-tags]]
-\define list-redunant-related-tags(baseTitle: "")
+\define filter-ancestor-tags() [title<contextState>each:list-item[ancestor-tags]]
+\define list-redunant-direct-tags(baseTitle: "")
 
-<$set name="lastDirectTag" value={{{ [subfilter<filter-direct-tags>last[]] }}}>
-<$reveal type="nomatch" default="" text=<<lastDirectTag>>>
-<$list filter="[title<__baseTitle__>] [title<lastDirectTag>] [subfilter<filter-breadcrumbs>allafter<lastDirectTag>]">
+<$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+<$reveal type="nomatch" default="" text=<<lastAncestorTag>>>
+<$list filter="[title<__baseTitle__>] [title<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">
 <$text text="[["/><$view field="title"/><$text text="]]"/>
 </$list>
 </$reveal>
-<$reveal type="match" default="" text=<<lastDirectTag>>>
+<$reveal type="match" default="" text=<<lastAncestorTag>>>
 <$list filter="[title<__baseTitle__>] [subfilter<filter-breadcrumbs>]">
 <$text text="[["/><$view field="title"/><$text text="]]"/>
 </$list>
@@ -25,10 +25,10 @@ type: text/vnd.tiddlywiki
 <!-- Using `kin::to[]` on breadcumb items would be way more slower -->
 <!-- Remove grandchildren of current tiddlers: -[subfilter<filter-breadcrumbs>last[]tagging[]tagging[]kin::to[]] -->
 
-<$set name="lastDirectTagOrBaseTitle" value={{{ [subfilter<filter-direct-tags>last[]] ~[title<__baseTitle__>] }}}>
+<$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<__baseTitle__>] }}}>
 <$set name="baseTitleAndBreadcrumbs" filter="[title<__baseTitle__>] [subfilter<filter-breadcrumbs>]">
-<$wikify name="taggedByLastDirectAndRelatedTags" text="""<$text text="[tag<lastDirectTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastDirectTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="]"/>""">
-<$list filter=<<taggedByLastDirectAndRelatedTags>>>
+<$wikify name="taggedByLastDirectAndDirectTags" text="""<$text text="[tag<lastAncestorTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastAncestorTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="]"/>""">
+<$list filter=<<taggedByLastDirectAndDirectTags>>>
 <$set name="breadcrumbAncestorsOfCurrent" filter="[enlist<baseTitleAndBreadcrumbs>kin::from<currentTiddler>]">
 <$reveal type="match" default=<<baseTitleAndBreadcrumbs>> text=<<breadcrumbAncestorsOfCurrent>>>
 <$text text="[["/><$view field="title"/><$text text="]]"/>
@@ -40,18 +40,18 @@ type: text/vnd.tiddlywiki
 </$set>
 
 \end
-\define show-breadcrumbs-of-context()
+\define view-breadcrumbs-of-context()
 
 <$button class="tc-btn-invisible">
-<$reveal type="match" default={{{ [subfilter<filter-breadcrumbs>last[]] }}} text={{{ [subfilter<filter-direct-tags>last[]] }}}>
-<$action-listops $tiddler=<<contextState>> $field="direct-tags" $filter="[subfilter<filter-direct-tags>butlast[]]"/>
+<$reveal type="match" default={{{ [subfilter<filter-breadcrumbs>last[]] }}} text={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[subfilter<filter-ancestor-tags>butlast[]]"/>
 </$reveal>
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[subfilter<filter-breadcrumbs>butlast[]]"/>
-{{$:/core/images/chevron-left}}
+{{$:/core/images/left-arrow}}
 </$button>
 <$button class="tc-btn-invisible">
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
-<$action-listops $tiddler=<<contextState>> $field="direct-tags" $filter="[[]]"/>
+<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[[]]"/>
 {{$:/core/images/refresh-button}}
 </$button>
 
@@ -62,21 +62,21 @@ type: text/vnd.tiddlywiki
 </$list>
 
 \end
-\define show-tag-list-item(actions)
+\define view-tag-list-item(actions)
 <p class="tc-menu-list-item">
 <$button class="tc-btn-invisible" actions=<<__actions__>>>
-{{$:/core/images/chevron-right}}
+{{$:/core/images/right-arrow}}
 </$button>
 <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
 </p>
 \end
-\define action-add-direct-tag()
+\define action-add-ancestor-tag()
 
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
-<$action-listops $tiddler=<<contextState>> $field="direct-tags" $subfilter="[title<currentTiddler>]"/>
+<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="[title<currentTiddler>]"/>
 
 \end
-\define action-add-related-tag()
+\define action-add-direct-tag()
 
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
 

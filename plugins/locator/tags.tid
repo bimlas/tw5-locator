@@ -10,23 +10,23 @@ type: text/vnd.tiddlywiki
 <!-- If `locatorViewTiddler` is empty, then do not add trailing `/` -->
 <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<__locatorViewTiddler__>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
 <$wikify name="contextFilter" text="""<$list filter=<<filter-breadcrumbs>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list>""">
-<$set name="irrevelantRelatedParents" value="[title<contextState>each:list-item[breadcrumbs]]">
+<$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
 
-<<show-breadcrumbs-of-context>>
+<<view-breadcrumbs-of-context>>
 
 //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="tags[]!subfilter<irrevelantRelatedParents>search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="tags[]!subfilter<redunantDirectTags>search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
 <$list filter=<<filter>>>
-<$macrocall $name="show-tag-list-item" actions=<<action-add-direct-tag>>/>
+<$macrocall $name="view-tag-list-item" actions=<<action-add-ancestor-tag>>/>
 </$list>
 </$wikify>
 
-//<small>Related parents</small>//
+//<small>Related tags</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="search{$(searchTiddler)$}tags[]!subfilter<irrevelantRelatedParents>] -[!is[system]"/><<contextFilter>><$text text="search{$(searchTiddler)$}] +[sort[title]limit[250]]"/>""">
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="search{$(searchTiddler)$}tags[]!subfilter<redunantDirectTags>] -[!is[system]"/><<contextFilter>><$text text="search{$(searchTiddler)$}] +[sort[title]limit[250]]"/>""">
 <$list filter=<<filter>>>
-<$macrocall $name="show-tag-list-item" actions=<<action-add-direct-tag>>/>
+<$macrocall $name="view-tag-list-item" actions=<<action-add-ancestor-tag>>/>
 </$list>
 </$wikify>
 

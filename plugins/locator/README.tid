@@ -22,7 +22,7 @@ If you can't wait for this to happen and you want to try this plugin in your wik
 
 !! Usage of `locator-view` (table of contents)
 
-Use the following macro to ''display a table of contents of a topic'' (the parameter is the title of the tag at the top of the hierarchy):
+Use the following macro to ''display a table of contents of a topic'' (the parameter is the top tag of the hierarchy):
 
 ```
 <<locator-view "TableOfContents">>
@@ -33,22 +33,22 @@ You can use it in any tiddler, for example put it in the main tiddler of each to
 The table of contents is structured as follows:
 
 ```
-<< @
-Breadcrumb tag pills: The current context
+< @
+<Breadcrumb tag pills>: The current context
 ---
->> Related tag pills: Tags of listed titles that are not included in breadcrumbs
-   Title without button: Normal list item
->> Title with button: Parent of other titles
+> <Tag pills (direct tags)>: Tags of listed titles that are not included in breadcrumbs or in listed titles
+  Title without button: Normal list item
+> Title with button (ancestor tag): Parent of other titles
 ```
 
-Use the `>>` button to open a title (move down in the context), `<<` to move up, the "reload" (`@`) button is reseting the context by removing the breadcrumbs.
+Use the `>` button to open a title (move down in the context), `<` to move up, the "reload" (`@`) button is reseting the context by removing the breadcrumbs.
 
 !!! Add to sidebar
 
 * Create a new tiddler
-* Place the `<<locator-view>>` macro call in it as describeb above
 * Add the [[$:/tags/SideBar]] tag
 * Add the `caption` field to change the title of the tab
+* Place the `<<locator-view>>` macro call in it as described above
 
 !! Usage of `locator-search` (customised search results)
 
@@ -56,14 +56,36 @@ The macro can be used to ''search only in current context''.
 
 * Add a `<<locator-view>>` to the sidebar as described above
 * Create a new tiddler
-* Add the `$:/tags/SearchResults` tag
+* Add the [[$:/tags/SearchResults]] tag
+* Add the `caption` field to change the title of the tab
 * Place this code in tiddler:
 
 ```
 <<locator-view>>
 ```
 
-If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results (you can change the title by adding the `caption` field to the tiddler). When you ''navigate in the Locator in sidebar'', the search will perform only under the given context - the context is shown by the breadcrumbs at the top of the search results as in the Locator, so you can change context easily.
+If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results. When you ''navigate in the Locator in sidebar'', the search will perform only under the given context - the context is shown by the breadcrumbs at the top of the search results as in the Locator, so you can change context easily.
+
+!! Usage of `locator-tags` (customised search results for tags)
+
+Take the same steps you did for `locator-search`, but use this code:
+
+```
+<<locator-tags>>
+```
+
+Search results include tags instead of tiddler titles, the list of tags is structured as follows:
+
+```
+< @
+Breadcrumb tag pills
+---
+Title matches:
+  > Tags with matching titles
+
+Related tags:
+  > Tags of search results titles that are not included in breadcrumbs or in search results
+```
 
 !! Tips to speed up (on phones)
 

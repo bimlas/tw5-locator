@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
 <!-- If `locatorViewTiddler` is empty, then do not add trailing `/` -->
 <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<__locatorViewTiddler__>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
 
-<<show-breadcrumbs-of-context>>
+<<view-breadcrumbs-of-context>>
 
 <$wikify name="contextFilter" text="""<$list filter=<<filter-breadcrumbs>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list>""">
 
