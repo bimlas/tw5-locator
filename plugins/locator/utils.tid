@@ -43,13 +43,6 @@ type: text/vnd.tiddlywiki
 \define view-breadcrumbs-of-context()
 
 <$button class="tc-btn-invisible">
-<$reveal type="match" default={{{ [subfilter<filter-breadcrumbs>last[]] }}} text={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[subfilter<filter-ancestor-tags>butlast[]]"/>
-</$reveal>
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[subfilter<filter-breadcrumbs>butlast[]]"/>
-{{$:/core/images/left-arrow}}
-</$button>
-<$button class="tc-btn-invisible">
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
 <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[[]]"/>
 {{$:/core/images/refresh-button}}
@@ -57,7 +50,9 @@ type: text/vnd.tiddlywiki
 
 <$list filter=<<filter-breadcrumbs>>>
 
+<$button class="tc-btn-invisible" actions=<<action-click-on-breadcrumb>>>
 <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+</$button>
 
 </$list>
 
@@ -67,7 +62,10 @@ type: text/vnd.tiddlywiki
 <$button class="tc-btn-invisible" actions=<<__actions__>>>
 {{$:/core/images/right-arrow}}
 </$button>
+<$button class="tc-btn-invisible">
+<$action-navigate $to=<<currentTiddler>>/>
 <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+</$button>
 </p>
 \end
 \define action-add-ancestor-tag()
@@ -79,5 +77,13 @@ type: text/vnd.tiddlywiki
 \define action-add-direct-tag()
 
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
+
+\end
+\define action-click-on-breadcrumb()
+
+<$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [title<currentTiddler>]">
+<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
+</$set>
 
 \end

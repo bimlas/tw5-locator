@@ -33,7 +33,7 @@ You can use it in any tiddler, for example put it in the main tiddler of each to
 The table of contents is structured as follows:
 
 ```
-< @
+@
 <Breadcrumb tag pills>: The current context
 ---
 > <Tag pills (direct tags)>: Tags of listed titles that are not included in breadcrumbs or in listed titles
@@ -41,7 +41,9 @@ The table of contents is structured as follows:
 > Title with button (ancestor tag): Parent of other titles
 ```
 
-Use the `>` button to open a title (move down in the context), `<` to move up, the "reload" (`@`) button is reseting the context by removing the breadcrumbs.
+* `>`: Move down in the context / apply tag
+* `@` ("reload"): Reseting the context by removing the breadcrumbs
+* `<Breadcrumb tag pill>`: Jump back to that context
 
 !!! Add to sidebar
 
@@ -77,14 +79,14 @@ Take the same steps you did for `locator-search`, but use this code:
 Search results include tags instead of tiddler titles, the list of tags is structured as follows:
 
 ```
-< @
-Breadcrumb tag pills
+@
+<Breadcrumb tag pills>
 ---
 Title matches:
-  > Tags with matching titles
+  > <Tags> with matching titles
 
 Related tags:
-  > Tags of search results titles that are not included in breadcrumbs or in search results
+  > <Tags> of search results titles that are not included in breadcrumbs or in search results
 ```
 
 !! Tips to speed up (on phones)
