@@ -6,30 +6,27 @@ type: text/vnd.tiddlywiki
 
 <!-- Hide internal macros, do not make them globally available -->
 <$importvariables filter="[[$:/plugins/bimlas/locator/utils]]">
+<$set name="contextState" value="$:/state/bimlas/locator-search">
 
-<!-- If `locatorViewTiddler` is empty, then do not add trailing `/` -->
-<$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<__locatorViewTiddler__>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
+<<view-search-specific-actions>> <<view-breadcrumbs-of-context>>
 
-<<view-breadcrumbs-of-context>>
-
-<$wikify name="contextFilter" text="""<$list filter=<<filter-breadcrumbs>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list>""">
+<$wikify name="filterSearchContext" text=<<wikify-filter-search-context>>>
 
 //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<filterSearchContext>><$text text="search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
 <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
 </$wikify>
 
 //<small>{{$:/language/Search/Matches/All}}</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<contextFilter>><$text text="search{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<filterSearchContext>><$text text="search{$(searchTiddler)$}sort[title]limit[250]]"/>""">
 <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
 </$wikify>
 
 </$wikify>
 
-</$wikify>
-
+</$set>
 </$importvariables>
 
 \end

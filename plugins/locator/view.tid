@@ -19,7 +19,7 @@ type: text/vnd.tiddlywiki
 <ol>
 
 <$wikify name="redunantDirectTags" text=<<list-redunant-direct-tags "$baseTitle$">>>
-<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>]">
+<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>sort[title]]">
 <li class="toc-item">
 
 <$macrocall $name="view-tag-list-item" actions=<<action-add-direct-tag>>/>
