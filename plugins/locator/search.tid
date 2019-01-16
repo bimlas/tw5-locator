@@ -7,10 +7,9 @@ type: text/vnd.tiddlywiki
 <!-- Hide internal macros, do not make them globally available -->
 <$importvariables filter="[[$:/plugins/bimlas/locator/utils]]">
 <$set name="contextState" value="$:/state/bimlas/locator-search">
+<$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
 <<view-search-specific-actions>> <<view-breadcrumbs-of-context>>
-
-<$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
 //<small>{{$:/language/Search/Matches/Title}}</small>//
 
@@ -25,8 +24,6 @@ type: text/vnd.tiddlywiki
 </$wikify>
 
 </$wikify>
-
 </$set>
 </$importvariables>
-
 \end

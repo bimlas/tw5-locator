@@ -32,12 +32,12 @@ type: text/vnd.tiddlywiki
 <li class="toc-item">
 
 <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
-<$button class="tc-btn-invisible" actions=<<action-add-ancestor-tag>>>
+<$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
 {{$:/core/images/right-arrow}}
 </$button>
 </$reveal>
 <$reveal type="match" default="" text={{{ [all[current]is[tag]] }}}>
-<$button class="tc-btn-invisible" to=<<currentTiddler>>>
+<$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
 {{$:/core/images/blank}}
 </$button>
 </$reveal>

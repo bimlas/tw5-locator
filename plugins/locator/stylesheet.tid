@@ -1,0 +1,14 @@
+tags: $:/tags/Stylesheet
+title: $:/plugins/bimlas/locator/stylesheet
+type: text/vnd.tiddlywiki
+
+.tc-drop-down button.bimlas-locator {
+  width: auto;
+  padding: 0;
+  display: inline-block;
+  background-color: inherit;
+}
+.tc-drop-down p.tc-menu-list-item.bimlas-locator {
+  margin-top: 0;
+  margin-bottom: 0;
+}

@@ -45,7 +45,7 @@ type: text/vnd.tiddlywiki
 \end
 \define view-breadcrumbs-of-context()
 
-<$button class="tc-btn-invisible">
+<$button class="tc-btn-invisible bimlas-locator">
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
 <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[[]]"/>
 {{$:/core/images/refresh-button}}
@@ -53,7 +53,7 @@ type: text/vnd.tiddlywiki
 
 <$list filter=<<filter-breadcrumbs>>>
 
-<$button class="tc-btn-invisible" actions=<<action-click-on-breadcrumb>>>
+<$button class="tc-btn-invisible bimlas-locator" actions=<<action-click-on-breadcrumb>>>
 <$reveal type="nomatch" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
 {{$:/core/images/tag-button}}
 </$reveal>
@@ -64,7 +64,7 @@ type: text/vnd.tiddlywiki
 
 \end
 \define view-search-specific-actions()
-<$button class="tc-btn-invisible">
+<$button class="tc-btn-invisible bimlas-locator">
 <!--
 Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
 ancestor tag, otherwise there would be no results for too many direct tags.
@@ -76,24 +76,24 @@ ancestor tag, otherwise there would be no results for too many direct tags.
 \end
 \define view-tag-list-item(actions)
 <p class="tc-menu-list-item">
-<$button class="tc-btn-invisible" actions=<<__actions__>>>
+<$button class="tc-btn-invisible bimlas-locator" actions=<<__actions__>>>
 {{$:/core/images/tag-button}}
 </$button>
-<$button class="tc-btn-invisible">
+<$button class="tc-btn-invisible bimlas-locator">
 <$action-navigate $to=<<currentTiddler>>/>
 <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
 </$button>
 </p>
 \end
 \define view-locator-tags-list-item()
-<p class="tc-menu-list-item">
-<$button class="tc-btn-invisible" actions=<<action-add-ancestor-tag>>>
+<p class="tc-menu-list-item bimlas-locator">
+<$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
 {{$:/core/images/link}}
 </$button>
-<$button class="tc-btn-invisible" actions=<<action-add-direct-tag>>>
+<$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-direct-tag>>>
 {{$:/core/images/tag-button}}
 </$button>
-<$button class="tc-btn-invisible">
+<$button class="tc-btn-invisible bimlas-locator">
 <$action-navigate $to=<<currentTiddler>>/>
 <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
 </$button>

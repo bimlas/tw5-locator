@@ -3,15 +3,13 @@ title: $:/plugins/bimlas/locator/tags
 type: text/vnd.tiddlywiki
 
 \define locator-tags(locatorViewTiddler: "")
-
 <!-- Hide internal macros, do not make them globally available -->
 <$importvariables filter="[[$:/plugins/bimlas/locator/utils]]">
 <$set name="contextState" value="$:/state/bimlas/locator-search">
+<$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
+<$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
 <<view-search-specific-actions>> <<view-breadcrumbs-of-context>>
-
-<$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
-<$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
 
 //<small>{{$:/language/Search/Matches/Title}}</small>//
 
@@ -29,10 +27,8 @@ type: text/vnd.tiddlywiki
 </$list>
 </$wikify>
 
-</$set>
 </$wikify>
-
+</$set>
 </$set>
 </$importvariables>
-
 \end
