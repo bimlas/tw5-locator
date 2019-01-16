@@ -10,17 +10,17 @@ type: text/vnd.tiddlywiki
 
 <<view-search-specific-actions>> <<view-breadcrumbs-of-context>>
 
-<$wikify name="filterSearchContext" text=<<wikify-filter-search-context>>>
+<$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
 //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<filterSearchContext>><$text text="search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
 <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
 </$wikify>
 
 //<small>{{$:/language/Search/Matches/All}}</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<filterSearchContext>><$text text="search{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+<$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}sort[title]limit[250]]"/>""">
 <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
 </$wikify>
 

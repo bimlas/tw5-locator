@@ -7,7 +7,7 @@ type: text/vnd.tiddlywiki
 \define wikify-filter-search-context()
 <$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list>
 \end
-\define list-redunant-direct-tags(baseTitle: "")
+\define wikify-list-redunant-direct-tags(baseTitle: "")
 
 <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
 <$reveal type="nomatch" default="" text=<<lastAncestorTag>>>
@@ -23,7 +23,7 @@ type: text/vnd.tiddlywiki
 </$set>
 
 \end
-\define list-context-items(baseTitle)
+\define wikify-list-context-items(baseTitle)
 
 <!-- Remove grandchildren of current tiddlers: -[subfilter<filter-breadcrumbs>last[]tagging[]tagging[]kin::to[]] -->
 
@@ -65,6 +65,10 @@ type: text/vnd.tiddlywiki
 \end
 \define view-search-specific-actions()
 <$button class="tc-btn-invisible">
+<!--
+Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
+ancestor tag, otherwise there would be no results for too many direct tags.
+-->
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
 <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
 {{$:/core/images/close-others-button}}

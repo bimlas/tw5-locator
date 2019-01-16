@@ -14,11 +14,11 @@ type: text/vnd.tiddlywiki
 
 ---
 
-<$wikify name="contextItems" text=<<list-context-items "$baseTitle$">>>
+<$wikify name="contextItems" text=<<wikify-list-context-items "$baseTitle$">>>
 <div class="tc-table-of-contents">
 <ol>
 
-<$wikify name="redunantDirectTags" text=<<list-redunant-direct-tags "$baseTitle$">>>
+<$wikify name="redunantDirectTags" text=<<wikify-list-redunant-direct-tags "$baseTitle$">>>
 <$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>sort[title]]">
 <li class="toc-item">
 
