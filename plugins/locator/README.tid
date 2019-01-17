@@ -56,6 +56,10 @@ The table of contents is structured as follows:
 
 You can also pass a filter parameter to manage list items. For example, filter items that can be found deeper in the hierarchy (remove duplicate entries) with the `filter-grandchildren` predefined filter expression.
 
+@@background-color:red
+The `filter-grandchildren` reuires the `kin` filter operator!
+@@
+
 ```
 <<locator-view "TableOfContents" "+[!subfilter<filter-grandchildren>]">>
 ```
@@ -67,6 +71,10 @@ In another example, we sort them according to the last modification in reverse o
 ```
 
 !! Usage of `locator-search` (customised search results)
+
+@@background-color:red
+Reuires the `kin` filter operator!
+@@
 
 The macro can be used to ''search only in current context''.
 
@@ -83,6 +91,10 @@ The macro can be used to ''search only in current context''.
 If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results. When you ''navigate in the Locator in sidebar'', the search will perform only under the given context - the context is shown by the breadcrumbs at the top of the search results as in the Locator, so you can change context easily.
 
 !! Usage of `locator-tags` (customised search results for tags)
+
+@@background-color:red
+Reuires the `kin` filter operator!
+@@
 
 Take the same steps you did for `locator-search`, but use this code:
 

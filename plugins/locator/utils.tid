@@ -31,11 +31,7 @@ type: text/vnd.tiddlywiki
 <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
 <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastAncestorTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
 <$list filter=<<taggedByLastAncestorAndDirectTags>>>
-<$set name="breadcrumbAncestorsOfCurrent" filter="[enlist<baseTitleAndBreadcrumbs>kin::from<currentTiddler>]">
-<$reveal type="match" default=<<baseTitleAndBreadcrumbs>> text=<<breadcrumbAncestorsOfCurrent>>>
 <$text text="[["/><$view field="title"/><$text text="]]"/>
-</$reveal>
-</$set>
 </$list>
 </$wikify>
 </$set>
