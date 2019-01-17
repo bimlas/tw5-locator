@@ -9,16 +9,17 @@ type: text/vnd.tiddlywiki
 
 <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
 <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<currentTiddler>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
+<$set name="baseTitle" value={{{ [title<contextState>each:list-item[base-title]] ~[title<__baseTitle__>] }}}>
 
 <<view-breadcrumbs-of-context>>
 
 ---
 
-<$wikify name="contextItems" text=<<wikify-list-context-items "$baseTitle$">>>
+<$wikify name="contextItems" text=<<wikify-list-context-items>>>
 <div class="tc-table-of-contents">
 <ol>
 
-<$wikify name="redunantDirectTags" text=<<wikify-list-redunant-direct-tags "$baseTitle$">>>
+<$wikify name="redunantDirectTags" text=<<wikify-list-redunant-direct-tags>>>
 <$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>sort[title]]">
 <li class="toc-item">
 
@@ -50,6 +51,7 @@ type: text/vnd.tiddlywiki
 </div>
 </$wikify>
 
+</$set>
 </$wikify>
 
 </$importvariables>
