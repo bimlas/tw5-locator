@@ -1,0 +1,21 @@
+tags:
+title: $:/plugins/bimlas/locator/README/TIPS
+type: text/vnd.tiddlywiki
+
+! Tips to speed up (on phones)
+
+!! Conditional view
+
+Because ''the plugin is sometimes slow'' (depending on the context) and since we don't look at the table of contents and search results at the same time, we can ''hide the Locator when we are using the standard search''.
+
+To achieve this, place the Locator view in the following condition:
+
+```
+<$reveal type="match" default="" text={{$:/temp/search}}>
+<<locator-view "TableOfContents">>
+</$reveal>
+```
+
+!! Prefer the standard search
+
+''Typing in the search entry may be falter'' because of the slowness of the plugin. In this case, ''switch to the classic search listing'', enter the expression, and then return to the Locator search.

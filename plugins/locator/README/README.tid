@@ -1,0 +1,26 @@
+tags:
+title: $:/plugins/bimlas/locator/README/README
+type: text/vnd.tiddlywiki
+
+! Locator
+
+For those who use many tags or store many different topics in a common wiki the Locator plugin is ''a table of contents widget and an enhanced search engine'' that gives you the opportunity to ''filter results by related tags''. Unlike [[table of contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin offers these features in an organic, collaborative way.
+
+* https://gitlab.com/bimlas/tw5-locator (main repository)
+* https://github.com/bimlas/tw5-locator (mirror)
+
+! Benefits compared to built-in solutions
+
+* ''Shows related tags''<br/>You can mark a tiddler with multiple tags, but in the ToC you don't see them while browsing.
+* ''Phone friendlier''<br/>The width of the ToC is increasing and the size of the text is decrasing as we move down in the context, while Locator remains the same.
+* ''There is no need to include a table of contents in the main tiddler of each topic''<br/>Just press the "locator sidebar" button and you can browse the topic right away.
+* ''Easy way to search for tags''<br/>Find tags based on part of their name and find related tags by typing in to the standard search.
+* ''Limit the scope of search''<br/>You don't have to store your recipes and family tree in a separate wiki just to make them easier to find: you can easily define the scope of your search.
+
+@@.bimlas-locator-warning
+! REQUIREMENT: Some features need the `kin` filter operator (planned to TiddlyWiki v5.1.20)
+@@
+
+While this pull request is not merged and the filter is not available in the standard TiddlyWiki, ''you can't use the marked features of the plugin''. See https://github.com/Jermolene/TiddlyWiki5/pull/3511 for details.
+
+If you can't wait for this to happen and you want to try all of the features in your wiki, ''you can install the [[demo version of the filter|https://bimlas.gitlab.io/tw5-kin-demo/]], but do it only in a testing environment''.
