@@ -4,6 +4,7 @@ type: text/vnd.tiddlywiki
 
 \define filter-breadcrumbs() [title<contextState>each:list-item[breadcrumbs]]
 \define filter-ancestor-tags() [title<contextState>each:list-item[ancestor-tags]]
+\define filter-grandchildren() [subfilter<filter-ancestor-tags>last[]tagging[]tagging[]kin::to[]]
 \define wikify-filter-search-context()
 <$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list>
 \end
@@ -25,13 +26,11 @@ type: text/vnd.tiddlywiki
 \end
 \define wikify-list-context-items()
 
-<!-- Remove grandchildren of current tiddlers: -[subfilter<filter-breadcrumbs>last[]tagging[]tagging[]kin::to[]] -->
-
 <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
 <$set name="baseTitleAndBreadcrumbs" filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
 <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
-<$wikify name="taggedByLastDirectAndDirectTags" text="""<$text text="[tag<lastAncestorTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastAncestorTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="]"/>""">
-<$list filter=<<taggedByLastDirectAndDirectTags>>>
+<$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastAncestorTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
+<$list filter=<<taggedByLastAncestorAndDirectTags>>>
 <$set name="breadcrumbAncestorsOfCurrent" filter="[enlist<baseTitleAndBreadcrumbs>kin::from<currentTiddler>]">
 <$reveal type="match" default=<<baseTitleAndBreadcrumbs>> text=<<breadcrumbAncestorsOfCurrent>>>
 <$text text="[["/><$view field="title"/><$text text="]]"/>

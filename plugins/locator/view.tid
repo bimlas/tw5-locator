@@ -2,7 +2,7 @@ tags: $:/tags/Macro
 title: $:/plugins/bimlas/locator/view
 type: text/vnd.tiddlywiki
 
-\define locator-view(baseTitle)
+\define locator-view(baseTitle finalFilter="")
 
 <!-- Hide internal macros, do not make them globally available -->
 <$importvariables filter="[[$:/plugins/bimlas/locator/utils]]">
@@ -10,6 +10,7 @@ type: text/vnd.tiddlywiki
 <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
 <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<currentTiddler>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
 <$set name="baseTitle" value={{{ [title<contextState>each:list-item[base-title]] ~[title<__baseTitle__>] }}}>
+<$set name="finalFilter" value=<<__finalFilter__>>>
 
 <<view-breadcrumbs-of-context>>
 
@@ -51,6 +52,7 @@ type: text/vnd.tiddlywiki
 </div>
 </$wikify>
 
+</$set>
 </$set>
 </$wikify>
 
