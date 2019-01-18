@@ -5,7 +5,7 @@ type: text/vnd.tiddlywiki
 \define locator-view(baseTitle finalFilter="")
 
 <!-- Hide internal macros, do not make them globally available -->
-<$importvariables filter="[[$:/plugins/bimlas/locator/utils]]">
+<$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
 
 <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
 <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<currentTiddler>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
