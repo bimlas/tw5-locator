@@ -10,6 +10,7 @@ type: text/vnd.tiddlywiki
 
 > It is hidden when the search entry is not empty to increase responsiveness on phones - see [[TableOfContents]] for the code.
 
+<!-- Don't forget to change the text of $:/config/Search/AutoFocus to `false`, see the docs for details! -->
 <$reveal type="match" default="" text={{{ [prefix[$:/state/popup/search-dropdown]] }}}>
 <<locator-view "TableOfContents">>
 </$reveal>

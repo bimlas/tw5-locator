@@ -24,6 +24,8 @@ To achieve this, place the Locator view in the following condition:
 </$reveal>
 ```
 
+''When you open TiddlyWiki'', the search entry is in focus by default, so ''the Locator sidebar is not visible''. To fix this, change the text of [[$:/config/Search/AutoFocus]] [[hidden setting|https://tiddlywiki.com/#Hidden%20Setting%3A%20Search%20AutoFocus]] to `false`.
+
 !!! Prefer the standard search
 
 ''Typing in the search entry could be slow'' because of the slowness of the plugin. In this case, ''switch to the classic search listing'', enter the expression, and then return to the Locator search.
