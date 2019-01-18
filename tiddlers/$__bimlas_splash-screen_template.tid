@@ -1,0 +1,69 @@
+created: 20180831203633930
+modified: 20190118074938291
+tags: $:/tags/RawMarkupWikified/TopBody
+title: $:/bimlas/splash-screen/template
+type: text/vnd.tiddlywiki
+
+\rules only filteredtranscludeinline transcludeinline
+
+<div class="tc-remove-when-wiki-loaded">
+
+<style scoped>
+#splashcontainer {
+    width: 95vw;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#spinner {
+    width: 180px;
+    height: 180px;
+    border: 15px solid transparent;
+    border-top: 15px solid #586e75;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+#logo {
+    width: 180px;
+    height: 180px;
+    animation: spinreverse 2s linear infinite;
+}
+
+#message {
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinreverse {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+</style>
+
+<div id="splashcontainer">
+<div id="spinner">
+<div id="logo">{{$:/bimlas/logo.svg||$:/core/templates/plain-text-tiddler}}</div>
+</div>
+<div id="message">
+LOADING<br>
+please wait
+</div>
+</div>
+
+</div>
