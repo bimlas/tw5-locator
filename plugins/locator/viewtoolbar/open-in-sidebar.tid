@@ -8,7 +8,7 @@ list-before: $:/core/ui/Buttons/open-window
 \whitespace trim
 <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
 <$button tooltip="Browse hierarchy of tag in Locator sidebar" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="base-title" $filter="[title<currentTiddler>]"/>
+<$action-listops $tiddler="$:/state/bimlas/locator" $field="base-title" $filter="[all[current]]"/>
 <$action-listops $tiddler="$:/state/bimlas/locator" $field="breadcrumbs" $filter=[[]]/>
 <$action-listops $tiddler="$:/state/bimlas/locator" $field="ancestor-tags" $filter=[[]]/>
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]" variable="listItem">

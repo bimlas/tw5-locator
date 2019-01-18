@@ -50,7 +50,7 @@ type: text/vnd.tiddlywiki
       <<action-clear-tags>>
       {{$:/core/images/close-button}}
     </$button>
-    <$link to=<<baseTitle>>><<baseTitle>></$link>
+    <$link to=<<baseTitle>>><$view tiddler=<<baseTitle>> field="caption"><$view tiddler=<<baseTitle>> field="title"/></$view></$link>
   </$reveal>
 
   <$list filter=<<filter-breadcrumbs>>>
@@ -59,7 +59,7 @@ type: text/vnd.tiddlywiki
     <$reveal type="nomatch" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
       {{$:/core/images/tag-button}}
     </$reveal>
-    <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+    <$macrocall $name="tag-pill" tag={{{ [all[current]get[caption]] [all[current]] }}}/>
   </$button>
 
   </$list>
@@ -83,7 +83,7 @@ type: text/vnd.tiddlywiki
     </$button>
     <$button class="tc-btn-invisible bimlas-locator">
       <$action-navigate $to=<<currentTiddler>>/>
-      <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+      <$macrocall $name="tag-pill" tag={{{ [all[current]get[caption]] [all[current]] }}}/>
     </$button>
   </p>
 \end
@@ -97,24 +97,24 @@ type: text/vnd.tiddlywiki
     </$button>
     <$button class="tc-btn-invisible bimlas-locator">
       <$action-navigate $to=<<currentTiddler>>/>
-      <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+      <$macrocall $name="tag-pill"tag={{{ [all[current]get[caption]] [all[current]] }}}/>
     </$button>
   </p>
 \end
 \define action-add-ancestor-tag()
 
-  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
-  <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="[title<currentTiddler>]"/>
+  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[all[current]]"/>
+  <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="[all[current]]"/>
 
 \end
 \define action-add-direct-tag()
 
-  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
+  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[all[current]]"/>
 
 \end
 \define action-click-on-breadcrumb()
 
-  <$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [title<currentTiddler>]">
+  <$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [all[current]]">
     <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
     <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
   </$set>
