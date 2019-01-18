@@ -1,0 +1,7 @@
+created: 20141216213556146
+modified: 20190118113758087
+tags: working
+title: New Recipe
+type: text/vnd.tiddlywiki
+
+<$button message="tm-new-tiddler" param="$:/skeletons/recipe">Create New Recipe</$button>

@@ -1,0 +1,16 @@
+created: 20131129090249275
+modified: 20190118113757556
+tags: working
+title: GettingStarted
+type: text/vnd.tiddlywiki
+
+\define default-platform()
+GettingStarted - $(browser-name)$
+\end
+Instructions for getting started using TiddlyWiki. The TiddlyWiki documentation is available at http://tiddlywiki.com
+
+<$set name="browser-name" value={{$:/info/browser/name}}>
+<$macrocall $name="tabs" state="$:/state/tabs/platform" tabsList="[prefix[GettingStarted - ]]" default=<<default-platform>> class="tc-vertical"/>
+</$set>
+
+

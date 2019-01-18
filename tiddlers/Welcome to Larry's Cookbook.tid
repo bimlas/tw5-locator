@@ -1,0 +1,34 @@
+created: 20141210202233951
+modified: 20190118113758840
+tags: working
+title: Welcome to Larry's Cookbook
+type: text/vnd.tiddlywiki
+
+I love to cook and being the geek that I am I have to have my recipes online.  Most of these recipes I have found on the internet, a few have come from family and friends and a couple I have made my own or modified to make my own.  I haven't tried all of the recipes here yet but I am working on it.  
+
+{{New Recipe}}
+
+Here are the latest updates:
+<$list filter="[has[modified]!prefix[Welc]!prefix[Getting]!prefix[$:/]!sort[modified]limit[10]]">
+ | <$link to={{!!title}}><$view field="title"/></$link>
+</$list>
+
+
+These are the ones that I plan on making soon or working to make them my own:<br>
+<$list filter="[tag[active]]">
+ | <$link to={{!!title}}><$view field="title"/></$link>
+</$list>
+
+
+These are the ones that I really recommend:
+
+<$list filter="[tag[recommend]]"> | <$link to={{!!title}}><$view field="title"/></$link>
+</$list>
+
+{{New Recipe}}
+
+<hr>
+
+Larry Russell's original TiddlyWiki Cookbook was created in 2006-2007 using TiddlyWiki version 2.1.2 and was converted to TiddlyWiki 5.1.7 in 2014 by Stephen Kimmel. Additional recipes were added at that time.
+
+
