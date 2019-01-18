@@ -3,59 +3,55 @@ title: $:/plugins/bimlas/locator/view
 type: text/vnd.tiddlywiki
 
 \define locator-view(baseTitle finalFilter="")
+  <!-- Hide internal macros, do not make them globally available -->
+  <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
+    <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
+    <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<currentTiddler>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
+      <$set name="baseTitle" value={{{ [title<contextState>each:list-item[base-title]] ~[title<__baseTitle__>] }}}>
+        <$set name="finalFilter" value=<<__finalFilter__>>>
 
-<!-- Hide internal macros, do not make them globally available -->
-<$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
+          <<view-breadcrumbs-of-context>>
 
-<!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
-<$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[title<currentTiddler>] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
-<$set name="baseTitle" value={{{ [title<contextState>each:list-item[base-title]] ~[title<__baseTitle__>] }}}>
-<$set name="finalFilter" value=<<__finalFilter__>>>
+          ---
 
-<<view-breadcrumbs-of-context>>
+          <$wikify name="contextItems" text=<<wikify-list-context-items>>>
+            <div class="tc-table-of-contents">
+              <ol>
 
----
+                <$wikify name="redunantDirectTags" text=<<wikify-list-redunant-direct-tags>>>
+                  <$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>sort[title]]">
+                    <li class="toc-item">
 
-<$wikify name="contextItems" text=<<wikify-list-context-items>>>
-<div class="tc-table-of-contents">
-<ol>
+                      <$macrocall $name="view-tag-list-item" actions=<<action-add-direct-tag>>/>
 
-<$wikify name="redunantDirectTags" text=<<wikify-list-redunant-direct-tags>>>
-<$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>sort[title]]">
-<li class="toc-item">
+                    </li>
+                  </$list>
+                </$wikify>
 
-<$macrocall $name="view-tag-list-item" actions=<<action-add-direct-tag>>/>
+                <$list filter=<<contextItems>>>
+                  <li class="toc-item">
 
-</li>
-</$list>
-</$wikify>
+                    <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
+                      <$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
+                        {{$:/core/images/right-arrow}}
+                      </$button>
+                    </$reveal>
+                    <$reveal type="match" default="" text={{{ [all[current]is[tag]] }}}>
+                      <$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
+                        {{$:/core/images/blank}}
+                      </$button>
+                    </$reveal>
+                    <$link><<currentTiddler>></$link>
 
-<$list filter=<<contextItems>>>
-<li class="toc-item">
+                  </li>
+                </$list>
 
-<$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
-<$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
-{{$:/core/images/right-arrow}}
-</$button>
-</$reveal>
-<$reveal type="match" default="" text={{{ [all[current]is[tag]] }}}>
-<$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
-{{$:/core/images/blank}}
-</$button>
-</$reveal>
-<$link><<currentTiddler>></$link>
+              </ol>
+            </div>
+          </$wikify>
 
-</li>
-</$list>
-
-</ol>
-</div>
-</$wikify>
-
-</$set>
-</$set>
-</$wikify>
-
-</$importvariables>
-
+        </$set>
+      </$set>
+    </$wikify>
+  </$importvariables>
 \end

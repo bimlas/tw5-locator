@@ -6,123 +6,123 @@ type: text/vnd.tiddlywiki
 \define filter-ancestor-tags() [title<contextState>each:list-item[ancestor-tags]]
 \define filter-grandchildren() [subfilter<filter-ancestor-tags>last[]tagging[]tagging[]kin::to[]]
 \define wikify-filter-search-context()
-<$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list>
+  <$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list>
 \end
 \define wikify-list-redunant-direct-tags()
 
-<$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-<$reveal type="nomatch" default="" text=<<lastAncestorTag>>>
-<$list filter="[title<baseTitle>] [title<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">
-<$text text="[["/><$view field="title"/><$text text="]]"/>
-</$list>
-</$reveal>
-<$reveal type="match" default="" text=<<lastAncestorTag>>>
-<$list filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
-<$text text="[["/><$view field="title"/><$text text="]]"/>
-</$list>
-</$reveal>
-</$set>
+  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+    <$reveal type="nomatch" default="" text=<<lastAncestorTag>>>
+      <$list filter="[title<baseTitle>] [title<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">
+        <$text text="[["/><$view field="title"/><$text text="]]"/>
+      </$list>
+    </$reveal>
+    <$reveal type="match" default="" text=<<lastAncestorTag>>>
+      <$list filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
+        <$text text="[["/><$view field="title"/><$text text="]]"/>
+      </$list>
+    </$reveal>
+  </$set>
 
 \end
 \define wikify-list-context-items()
 
-<$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
-<$set name="baseTitleAndBreadcrumbs" filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
-<!-- I know this monster looks terrible, but I can't build this filter any other way. -->
-<$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastAncestorTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
-<$list filter=<<taggedByLastAncestorAndDirectTags>>>
-<$text text="[["/><$view field="title"/><$text text="]]"/>
-</$list>
-</$wikify>
-</$set>
-</$set>
+  <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
+    <$set name="baseTitleAndBreadcrumbs" filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
+      <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
+      <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastAncestorTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
+        <$list filter=<<taggedByLastAncestorAndDirectTags>>>
+          <$text text="[["/><$view field="title"/><$text text="]]"/>
+        </$list>
+      </$wikify>
+    </$set>
+  </$set>
 
 \end
 \define view-breadcrumbs-of-context()
 
-<$button class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
-{{$:/core/images/refresh-button}}
-</$button>
+  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
+    {{$:/core/images/refresh-button}}
+  </$button>
 
-<$reveal type="nomatch" default="" text={{{ [title<contextState>get[base-title]] }}}>
-<$button class="tc-btn-invisible bimlas-locator">
-<$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
-<<action-clear-tags>>
-{{$:/core/images/close-button}}
-</$button>
-<$link to=<<baseTitle>>><<baseTitle>></$link>
-</$reveal>
+  <$reveal type="nomatch" default="" text={{{ [title<contextState>get[base-title]] }}}>
+    <$button class="tc-btn-invisible bimlas-locator">
+      <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
+      <<action-clear-tags>>
+      {{$:/core/images/close-button}}
+    </$button>
+    <$link to=<<baseTitle>>><<baseTitle>></$link>
+  </$reveal>
 
-<$list filter=<<filter-breadcrumbs>>>
+  <$list filter=<<filter-breadcrumbs>>>
 
-<$button class="tc-btn-invisible bimlas-locator" actions=<<action-click-on-breadcrumb>>>
-<$reveal type="nomatch" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
-{{$:/core/images/tag-button}}
-</$reveal>
-<$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
-</$button>
+  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-click-on-breadcrumb>>>
+    <$reveal type="nomatch" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
+      {{$:/core/images/tag-button}}
+    </$reveal>
+    <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+  </$button>
 
-</$list>
+  </$list>
 
 \end
 \define view-search-specific-actions()
-<$button class="tc-btn-invisible bimlas-locator">
-<!--
-Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
-ancestor tag, otherwise there would be no results for too many direct tags.
--->
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
-<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
-{{$:/core/images/close-others-button}}
-</$button>
+  <$button class="tc-btn-invisible bimlas-locator">
+    <!--
+    Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
+    ancestor tag, otherwise there would be no results for too many direct tags.
+    -->
+    <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
+    <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
+    {{$:/core/images/close-others-button}}
+  </$button>
 \end
 \define view-tag-list-item(actions)
-<p class="tc-menu-list-item">
-<$button class="tc-btn-invisible bimlas-locator" actions=<<__actions__>>>
-{{$:/core/images/tag-button}}
-</$button>
-<$button class="tc-btn-invisible bimlas-locator">
-<$action-navigate $to=<<currentTiddler>>/>
-<$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
-</$button>
-</p>
+  <p class="tc-menu-list-item">
+    <$button class="tc-btn-invisible bimlas-locator" actions=<<__actions__>>>
+      {{$:/core/images/tag-button}}
+    </$button>
+    <$button class="tc-btn-invisible bimlas-locator">
+      <$action-navigate $to=<<currentTiddler>>/>
+      <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+    </$button>
+  </p>
 \end
 \define view-locator-tags-list-item()
-<p class="tc-menu-list-item bimlas-locator">
-<$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
-{{$:/core/images/link}}
-</$button>
-<$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-direct-tag>>>
-{{$:/core/images/tag-button}}
-</$button>
-<$button class="tc-btn-invisible bimlas-locator">
-<$action-navigate $to=<<currentTiddler>>/>
-<$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
-</$button>
-</p>
+  <p class="tc-menu-list-item bimlas-locator">
+    <$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
+      {{$:/core/images/link}}
+    </$button>
+    <$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-direct-tag>>>
+      {{$:/core/images/tag-button}}
+    </$button>
+    <$button class="tc-btn-invisible bimlas-locator">
+      <$action-navigate $to=<<currentTiddler>>/>
+      <$macrocall $name="tag-pill" tag=<<currentTiddler>>/>
+    </$button>
+  </p>
 \end
 \define action-add-ancestor-tag()
 
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
-<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="[title<currentTiddler>]"/>
+  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
+  <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="[title<currentTiddler>]"/>
 
 \end
 \define action-add-direct-tag()
 
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
+  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[title<currentTiddler>]"/>
 
 \end
 \define action-click-on-breadcrumb()
 
-<$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [title<currentTiddler>]">
-<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
-</$set>
+  <$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [title<currentTiddler>]">
+    <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
+    <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
+  </$set>
 
 \end
 \define action-clear-tags()
 
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
-<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[[]]"/>
+  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
+  <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[[]]"/>
 
 \end

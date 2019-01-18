@@ -3,32 +3,32 @@ title: $:/plugins/bimlas/locator/tags
 type: text/vnd.tiddlywiki
 
 \define locator-tags(locatorViewTiddler: "")
-<!-- Hide internal macros, do not make them globally available -->
-<$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
-<$set name="contextState" value="$:/state/bimlas/locator-search">
-<$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
-<$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
+  <!-- Hide internal macros, do not make them globally available -->
+  <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
+    <$set name="contextState" value="$:/state/bimlas/locator-search">
+      <$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
+        <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
-<<view-search-specific-actions>> <<view-breadcrumbs-of-context>>
+          <<view-search-specific-actions>> <<view-breadcrumbs-of-context>>
 
-//<small>{{$:/language/Search/Matches/Title}}</small>//
+          //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="tags[]!subfilter<redunantDirectTags>search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
-<$list filter=<<filter>>>
-<<view-locator-tags-list-item>>
-</$list>
-</$wikify>
+          <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="tags[]!subfilter<redunantDirectTags>search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
+            <$list filter=<<filter>>>
+              <<view-locator-tags-list-item>>
+            </$list>
+          </$wikify>
 
-//<small>Related tags</small>//
+          //<small>Related tags</small>//
 
-<$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}tags[]!subfilter<redunantDirectTags>] -[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}] +[sort[title]limit[250]]"/>""">
-<$list filter=<<filter>>>
-<<view-locator-tags-list-item>>
-</$list>
-</$wikify>
+          <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}tags[]!subfilter<redunantDirectTags>] -[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}] +[sort[title]limit[250]]"/>""">
+            <$list filter=<<filter>>>
+              <<view-locator-tags-list-item>>
+            </$list>
+          </$wikify>
 
-</$wikify>
-</$set>
-</$set>
-</$importvariables>
+        </$wikify>
+      </$set>
+    </$set>
+  </$importvariables>
 \end
