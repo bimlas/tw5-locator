@@ -1,7 +1,7 @@
 caption: Locator
 created: 20190109213701491
 list-before: $:/core/ui/SideBar/Open
-modified: 20190112222248333
+modified: 20190118072639395
 tags: $:/tags/SideBar
 title: Locator view
 type: text/vnd.tiddlywiki
@@ -10,6 +10,6 @@ type: text/vnd.tiddlywiki
 
 > It is hidden when the search entry is not empty to increase responsiveness on phones - see [[TableOfContents]] for the code.
 
-<$reveal type="match" default="" text={{$:/temp/search}}>
+<$reveal type="match" default="" text={{{ [prefix[$:/state/popup/search-dropdown]] }}}>
 <<locator-view "TableOfContents">>
 </$reveal>

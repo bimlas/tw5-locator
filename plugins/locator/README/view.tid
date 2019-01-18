@@ -42,7 +42,7 @@ The table of contents is structured as follows:
 You can also ''pass a filter parameter to modify the list of items''. For example, ''filter items that can be found deeper in the hierarchy (remove duplicate entries)'' with the `filter-grandchildren` predefined filter expression.
 
 @@.bimlas-locator-warning
-The `filter-grandchildren` requires the `kin` filter operator!
+The `filter-grandchildren` requires the `kin` filter operator, besides this it could be slow!
 @@
 
 ```

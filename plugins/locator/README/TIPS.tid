@@ -2,20 +2,28 @@ tags:
 title: $:/plugins/bimlas/locator/README/TIPS
 type: text/vnd.tiddlywiki
 
-! Tips to speed up (on phones)
+! Tips
 
-!! Conditional view
+!! Organic navigation
 
-Because ''the plugin is sometimes slow'' (depending on the context) and since we don't look at the table of contents and search results at the same time, we can ''hide the Locator when we are using the standard search''.
+* In `locator-tags`, look for a tag and apply it as an ancestor tag; the `locator-search` only affects tiddlers associated with it at any depth
+* Click on the tag in `locator-tags` to open its tiddler, then click on the "locator sidebar" button; the `locator-view` sidebar will show it's hierarchy
+* Navigate in the hierarchy of `locator-view` sidebar then search for a term in `locator-search`; pressing the "copy context" button restricting the search to the context of `locator-view` sidebar
+
+!! Speed up (on phones)
+
+!!! Conditional view
+
+Because ''the plugin could be slow'' (depending on the context) and since we don't look at the table of contents and search results at the same time, we can ''hide the Locator while we are using the standard search''.
 
 To achieve this, place the Locator view in the following condition:
 
 ```
-<$reveal type="match" default="" text={{$:/temp/search}}>
+<$reveal type="match" default="" text={{{ [prefix[$:/state/popup/search-dropdown]] }}}>
 <<locator-view "TableOfContents">>
 </$reveal>
 ```
 
-!! Prefer the standard search
+!!! Prefer the standard search
 
-''Typing in the search entry may be falter'' because of the slowness of the plugin. In this case, ''switch to the classic search listing'', enter the expression, and then return to the Locator search.
+''Typing in the search entry could be slow'' because of the slowness of the plugin. In this case, ''switch to the classic search listing'', enter the expression, and then return to the Locator search.
