@@ -8,7 +8,7 @@ pages:
     # Generate as index.html: single HTML demo page
     - tiddlywiki --build index
     # Generate as .json file: drag-n-drop installer
-    - tiddlywiki --render '$:/plugins/bimlas/locator' locator.json text/plain '$:/core/templates/json-tiddler'
+    - tiddlywiki --render '$:/plugins/bimlas/locator' tw5-locator.json text/plain '$:/core/templates/json-tiddler'
     # Serve a compressed version to speed up the loading
     # https://gitlab.com/gitlab-org/gitlab-pages/merge_requests/25
     - gzip --recursive --keep output

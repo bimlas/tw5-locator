@@ -1,0 +1,27 @@
+:demo-page: https://bimlas.gitlab.io/tw5-locator
+:json: https://bimlas.gitlab.io/tw5-locator/tw5-locator.json
+
+= Locator plugin for TiddlyWiki 5
+
+For details, see the link:{demo-page}[demo page].
+
+== How to install?
+
+=== Drag-n-drop
+
+- Open the link:{demo-page}[demo page]
+- Drag-n-drop the plugin tiddler in to your wiki
+
+=== Download as JSON
+
+- Download the link:{json}[JSON archive of the plugin] (_File -> Save as_ when
+  loaded)
+- Drag-n-drop the file in to your wiki
+
+== How to use in Node version of TiddlyWiki
+
+=== TiddlyWiki installed via NPM
+
+- Clone or download this repository
+- Run `tiddlywiki --listen` in the root of this repository
+- Open `localhost:8080` in your browser
