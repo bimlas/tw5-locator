@@ -31,7 +31,7 @@ The table of contents is structured as follows:
 
 @@.bimlas-locator-explanation
 * {{$:/core/images/right-arrow}}: Move down in the context
-* {{$:/core/images/tag-button}}: Filter the list by the tag
+* {{$:/core/images/tag-button}}: Toggle filtering the list to this tag
 * {{$:/core/images/refresh-button}}: Reset the context by removing the breadcrumbs
 * <<tag-pill "Breadcrumb tag pill">>: Jump back to that context
 * Click on list items to open the tiddler (also works on tags)

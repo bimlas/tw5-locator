@@ -55,10 +55,12 @@ type: text/vnd.tiddlywiki
 
   <$list filter=<<filter-breadcrumbs>>>
 
-  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-click-on-breadcrumb>>>
+  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-remove-direct-tag>>>
     <$reveal type="nomatch" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
       {{$:/core/images/tag-button}}
     </$reveal>
+  </$button>
+  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-click-on-breadcrumb>>>
     <$macrocall $name="tag-pill" tag={{{ [all[current]get[caption]] [all[current]] }}}/>
   </$button>
 
@@ -110,6 +112,11 @@ type: text/vnd.tiddlywiki
 \define action-add-direct-tag()
 
   <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[all[current]]"/>
+
+\end
+\define action-remove-direct-tag()
+
+  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="-[all[current]]"/>
 
 \end
 \define action-click-on-breadcrumb()
