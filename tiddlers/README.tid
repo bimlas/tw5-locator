@@ -1,0 +1,16 @@
+created: 20190120115910162
+modified: 20190120123817361
+tags: 
+title: README
+type: text/vnd.tiddlywiki
+
+This is the demo of the Locator [[TiddlyWiki|https://tiddlywiki.com/]] plugin. Here you can try everything what is in the plugin description.
+
+In the sidebar Locator you can discover the contents of this wiki, which contains the [[Family tree of Ford]] and [[Larry's Cookbook]].
+
+You can also copy Locator tiddlers to your own wiki by dragging the following titles:
+
+<$list filter="[prefix[Locator]]">
+<$link><<currentTiddler>></$link><br/>
+</$list>
+

@@ -1,11 +1,13 @@
 created: 20190109181535967
-modified: 20190109213659610
+modified: 20190120121908828
 tags: TableOfContents
 title: Family tree of Ford
 type: text/vnd.tiddlywiki
 
+In this example, the Ford family tree can be seen, and the underlying Locator represents it.
+
 [img[ford.png]]
 
-Image taken from https://hu.pinterest.com/pin/16747829837549219/
+//Image taken from https://hu.pinterest.com/pin/16747829837549219/ //
 
 <<locator-view "Ford family">>
