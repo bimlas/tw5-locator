@@ -69,9 +69,7 @@ type: text/vnd.tiddlywiki
       <$button class="tc-btn-invisible bimlas-locator" actions=<<action-remove-direct-tag>>>
         {{$:/core/images/tag-button}}
       </$button>
-      <$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
-        <$macrocall $name="tag-pill" tag={{{ [all[current]get[caption]] [all[current]] }}}/>
-      </$button>
+      <<tag>>
     </$reveal>
 
   </$list>
@@ -95,7 +93,7 @@ type: text/vnd.tiddlywiki
     </$button>
     <$button class="tc-btn-invisible bimlas-locator">
       <$action-navigate $to=<<currentTiddler>>/>
-      <$macrocall $name="tag-pill" tag={{{ [all[current]get[caption]] [all[current]] }}}/>
+      <<tag>>
     </$button>
   </p>
 \end
@@ -109,7 +107,7 @@ type: text/vnd.tiddlywiki
     </$button>
     <$button class="tc-btn-invisible bimlas-locator">
       <$action-navigate $to=<<currentTiddler>>/>
-      <$macrocall $name="tag-pill"tag={{{ [all[current]get[caption]] [all[current]] }}}/>
+      <<tag>>
     </$button>
   </p>
 \end
