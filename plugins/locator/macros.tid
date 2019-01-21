@@ -50,19 +50,29 @@ type: text/vnd.tiddlywiki
       <<action-clear-tags>>
       {{$:/core/images/close-button}}
     </$button>
-    <$link to=<<baseTitle>>><$view tiddler=<<baseTitle>> field="caption"><$view tiddler=<<baseTitle>> field="title"/></$view></$link>
+    <$button class="tc-btn-invisible bimlas-locator" to=<<baseTitle>>>
+      <$view tiddler=<<baseTitle>> field="caption"><$view tiddler=<<baseTitle>> field="title"/></$view>
+    </$button>
   </$reveal>
 
   <$list filter=<<filter-breadcrumbs>>>
 
-  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-remove-direct-tag>>>
-    <$reveal type="nomatch" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
-      {{$:/core/images/tag-button}}
+    <$reveal type="match" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
+      <$button class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
+        {{$:/core/images/right-arrow}}
+      </$button>
+      <$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
+        <$view tiddler=<<currentTiddler>> field="caption"><$view tiddler=<<currentTiddler>> field="title"/></$view>
+      </$button>
     </$reveal>
-  </$button>
-  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-click-on-breadcrumb>>>
-    <$macrocall $name="tag-pill" tag={{{ [all[current]get[caption]] [all[current]] }}}/>
-  </$button>
+    <$reveal type="nomatch" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
+      <$button class="tc-btn-invisible bimlas-locator" actions=<<action-remove-direct-tag>>>
+        {{$:/core/images/tag-button}}
+      </$button>
+      <$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
+        <$macrocall $name="tag-pill" tag={{{ [all[current]get[caption]] [all[current]] }}}/>
+      </$button>
+    </$reveal>
 
   </$list>
 
@@ -92,7 +102,7 @@ type: text/vnd.tiddlywiki
 \define view-locator-tags-list-item()
   <p class="tc-menu-list-item bimlas-locator">
     <$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
-      {{$:/core/images/link}}
+      {{$:/core/images/right-arrow}}
     </$button>
     <$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-direct-tag>>>
       {{$:/core/images/tag-button}}
@@ -119,7 +129,7 @@ type: text/vnd.tiddlywiki
   <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="-[all[current]]"/>
 
 \end
-\define action-click-on-breadcrumb()
+\define action-clear-last-tags-till-current()
 
   <$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [all[current]]">
     <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
