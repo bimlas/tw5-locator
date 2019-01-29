@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
       <$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
         <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
-          <<view-search-specific-actions>> <<view-breadcrumbs-of-context>>
+          <<view-search-specific-actions>> <$macrocall $name="view-breadcrumbs-of-context" ancestor-tag-template=<<view-breadcrumb-ancestor-tag-in-search>>/>
 
           //<small>{{$:/language/Search/Matches/Title}}</small>//
 
