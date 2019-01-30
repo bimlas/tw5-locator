@@ -1,0 +1,17 @@
+tags:
+title: $:/plugins/bimlas/locator/README/CHANGELOG
+type: text/vnd.tiddlywiki
+
+!! 1.1.0
+
+[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.0.0...v1.1.0]]
+
+* ''I realized that most functions work without the `kin` filter''
+* Use the same "style" for breadcrumb- and list items
+* Show real tags instead of tag pills
+* Turn off filter of direct tag in the breadcrumbs by its tag icon
+* Ancestor tags in breadcrumbs of search are operating like direct labels, they can be removed one by one
+
+!! 1.0.0
+
+* First public release
