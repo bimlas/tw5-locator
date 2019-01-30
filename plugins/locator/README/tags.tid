@@ -4,8 +4,8 @@ type: text/vnd.tiddlywiki
 
 ! Usage of `locator-tags` (customised search results for tags)
 
-@@.bimlas-locator-warning
-Requires the `kin` filter operator!
+@@.bimlas-locator-warning.bimlas-locator-explanation
+Filtering by ancestor tags ({{$:/core/images/link}}) requires the `kin` filter operator, filtering by direct tags ({{$:/core/images/tag-button}}) works without it!
 @@
 
 Take the same steps you did for `locator-search`, but use this code:
@@ -18,20 +18,22 @@ Take the same steps you did for `locator-search`, but use this code:
 
 <div class="tc-tiddler-frame bimlas-locator-explanation">
 {{$:/core/images/close-others-button}} {{$:/core/images/refresh-button}}<br/>
-<<tag-pill "Breadcrumb tag pills">><br/>
+{{$:/core/images/link}} <<tag-pill "Breadcrumb tag pills">><br/>
 <hr/>
 //Title matches//<br/>
-{{$:/core/images/right-arrow}} {{$:/core/images/tag-button}} <<tag-pill "Tags with matching titles">><br/>
+{{$:/core/images/link}} {{$:/core/images/tag-button}} <<tag-pill "Tags with matching titles">><br/>
 //Related tags//<br/>
-{{$:/core/images/right-arrow}} {{$:/core/images/tag-button}} <<tag-pill "Tags of search results...">><br/>
-{{$:/core/images/right-arrow}} {{$:/core/images/tag-button}} <<tag-pill "...expect breadcrumbs...">><br/>
-{{$:/core/images/right-arrow}} {{$:/core/images/tag-button}} <<tag-pill "...and listed titles">><br/>
+{{$:/core/images/link}} {{$:/core/images/tag-button}} <<tag-pill "Tags of search results...">><br/>
+{{$:/core/images/link}} {{$:/core/images/tag-button}} <<tag-pill "...expect breadcrumbs...">><br/>
+{{$:/core/images/link}} {{$:/core/images/tag-button}} <<tag-pill "...and listed titles">><br/>
 </div>
 
 @@.bimlas-locator-explanation
 * {{$:/core/images/close-others-button}}: Restrict the search to the context of the Locator sidebar by copying its breadcrumbs
-* {{$:/core/images/right-arrow}}: Look for the search term under this tag at any depth (this ancestor tag is broadly defining the topic of the search)
+* {{$:/core/images/link}}: Look for the search term under this tag at any depth (this ancestor tag is broadly defining the topic of the search)
 * {{$:/core/images/tag-button}}: Look for the search term in tiddlers directly tagged by this tag (direct tag)
 @@
 
 The picked tags using to ''narrow the scope of `locator-search`'', clicking on the title of the tag opens its tiddler.
+
+''NOTE'': If you want to ''get all results related to the selected tags'', replace the search text with spaces, otherwise only those tiddlers will be listed which contains the text.

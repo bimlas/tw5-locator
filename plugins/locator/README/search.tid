@@ -4,8 +4,8 @@ type: text/vnd.tiddlywiki
 
 ! Usage of `locator-search` (customised search results)
 
-@@.bimlas-locator-warning
-Requires the `kin` filter operator!
+@@.bimlas-locator-warning.bimlas-locator-explanation
+Filtering by ancestor tags ({{$:/core/images/link}}) requires the `kin` filter operator, filtering by direct tags ({{$:/core/images/tag-button}}) works without it!
 @@
 
 The macro can be used to ''search only in the context defined by `locator-view` or `locator-tags`''.

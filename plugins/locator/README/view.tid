@@ -16,8 +16,8 @@ The table of contents is structured as follows:
 
 <div class="tc-tiddler-frame bimlas-locator-explanation">
 {{$:/core/images/refresh-button}}<br/>
-<<tag-pill "Breadcrumb tag pills">><br/>
-<<tag-pill "(The current context)">><br/>
+{{$:/core/images/right-arrow}} Breadcrumbs<br/>
+{{$:/core/images/right-arrow}} (The current context)<br/>
 <hr/>
 {{$:/core/images/tag-button}} <<tag-pill "Direct tags">><br/>
 {{$:/core/images/tag-button}} <<tag-pill "(Tags of listed titles...)">><br/>
@@ -30,11 +30,10 @@ The table of contents is structured as follows:
 </div>
 
 @@.bimlas-locator-explanation
-* {{$:/core/images/right-arrow}}: Move down in the context
+* {{$:/core/images/right-arrow}}: Move in to the context
 * {{$:/core/images/tag-button}}: Toggle filtering the list to this tag
 * {{$:/core/images/refresh-button}}: Reset the context by removing the breadcrumbs
-* <<tag-pill "Breadcrumb tag pill">>: Jump back to that context
-* Click on list items to open the tiddler (also works on tags)
+* Click on list items to open the tiddler
 @@
 
 !! Pass additional filter
