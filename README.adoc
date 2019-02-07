@@ -5,6 +5,9 @@
 
 For details, see the link:{demo-page}[demo page].
 
+* https://gitlab.com/bimlas/tw5-locator (official repository)
+* https://github.com/bimlas/tw5-locator (mirror, please give a star if you like it)
+
 == How to install?
 
 === Drag-n-drop
