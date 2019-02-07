@@ -21,10 +21,7 @@ For details, see the link:{demo-page}[demo page].
   loaded)
 - Drag-n-drop the file in to your wiki
 
-== How to use in Node version of TiddlyWiki
-
-=== TiddlyWiki installed via NPM
+=== Copy to directory based (Node.js) wiki
 
 - Clone or download this repository
-- Run `tiddlywiki --listen` in the root of this repository
-- Open `localhost:8080` in your browser
+- Copy the `plugins` directory to the root directory of your wiki
