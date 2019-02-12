@@ -18,9 +18,5 @@ For those who use many tags or store many different topics in a common wiki the 
 * ''Limit the scope of search''<br/>You don't have to store your recipes and family tree in a separate wiki just to make them easier to find: you can easily define the scope of your search.
 
 @@.bimlas-locator-warning
-!! REQUIREMENT: Some features need the `kin` filter operator (planned to TiddlyWiki v5.1.20)
+!! REQUIREMENT: Some features need the `kin` filter operator: https://bimlas.gitlab.io/tw5-kin-filter
 @@
-
-While this pull request is not merged and the filter is not available in the standard TiddlyWiki, ''you can't use the marked features of the plugin''. See https://github.com/Jermolene/TiddlyWiki5/pull/3511 for details.
-
-If you can't wait for this to happen and you want to try all of the features in your wiki, ''you can install the [[demo version of the filter|https://bimlas.gitlab.io/tw5-kin-demo/]], but do it only in a testing environment''.
