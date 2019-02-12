@@ -17,8 +17,7 @@ For details, see the link:{demo-page}[demo page].
 
 === Download as JSON
 
-- Download the link:{json}[JSON archive of the plugin] (_File -> Save as_ when
-  loaded)
+- Download the link:{json}[JSON archive of the plugin] (_Righ click -> Save as_)
 - Drag-n-drop the file in to your wiki
 
 === Copy to directory based (Node.js) wiki
