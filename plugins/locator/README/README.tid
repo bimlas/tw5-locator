@@ -20,3 +20,13 @@ For those who use many tags or store many different topics in a common wiki the 
 @@.bimlas-locator-warning
 !! REQUIREMENT: Some features need the `kin` filter operator: https://bimlas.gitlab.io/tw5-kin-filter
 @@
+
+! Installation instructions
+
+To add the plugin to your own ~TiddlyWiki5, just drag this link to the browser window:
+
+$:/plugins/bimlas/locator
+
+For other installation options see the repositories above.
+
+//Select the next tab to continue.//

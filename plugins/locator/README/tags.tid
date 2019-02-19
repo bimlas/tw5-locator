@@ -37,3 +37,5 @@ Take the same steps you did for `locator-search`, but use this code:
 The picked tags using to ''narrow the scope of `locator-search`'', clicking on the title of the tag opens its tiddler.
 
 ''NOTE'': If you want to ''get all results related to the selected tags'', replace the search text with spaces, otherwise only those tiddlers will be listed which contains the text.
+
+//Select the next tab to continue.//

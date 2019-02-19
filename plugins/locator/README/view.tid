@@ -68,3 +68,5 @@ There is ''a new button in the toolbar of the tiddlers that are tags'': by press
 @@
 
 If you do not want to leave this button in the toolbar, you can turn it off in the [[$:/ControlPanel]] -> Apperance -> Toolbars -> [[View Toolbar|$:/core/ui/ControlPanel/Toolbars/ViewToolbar]].
+
+//Select the next tab to continue.//

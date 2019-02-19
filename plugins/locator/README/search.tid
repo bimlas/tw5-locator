@@ -23,3 +23,5 @@ The macro can be used to ''search only in the context defined by `locator-view` 
 @@.bimlas-locator-explanation
 If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results. Use the {{$:/core/images/close-others-button}} button to ''restrict the search to the context of the Locator sidebar'' by copying its breadcrumbs. Adding additional tags is possible in `locator-tags`.
 @@
+
+//Select the next tab to continue.//
