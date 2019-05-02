@@ -54,6 +54,14 @@ In another example, we sort them according to the last modification in reverse o
 <<locator-view "TableOfContents" "+[sort[modified]reverse[]]">>
 ```
 
+!! Additional filter for tags
+
+Use it for example to sort tags by color.
+
+```
+<<locator-view "TableOfContents" "" "+[sort[color]]">>
+```
+
 !! Add to sidebar
 
 * Create a new tiddler

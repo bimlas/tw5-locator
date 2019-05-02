@@ -2,7 +2,7 @@ tags: $:/tags/Macro
 title: $:/plugins/bimlas/locator/view
 type: text/vnd.tiddlywiki
 
-\define locator-view(baseTitle finalFilter="")
+\define locator-view(baseTitle finalFilter="" tagFilter="")
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
     <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
@@ -19,7 +19,7 @@ type: text/vnd.tiddlywiki
               <ol>
 
                 <$wikify name="redunantDirectTags" text=<<wikify-list-redunant-direct-tags>>>
-                  <$list filter="[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>sort[title]]">
+                  <$list filter="""[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>sort[title]] $tagFilter$""">
                     <li class="toc-item">
 
                       <$macrocall $name="view-tag-list-item" actions=<<action-add-direct-tag>>/>
