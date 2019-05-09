@@ -62,11 +62,17 @@ Use it for example to sort tags by color.
 <<locator-view "TableOfContents" "" "+[sort[color]]">>
 ```
 
-If you only want to see the "classical" tags ("labels") which are used to group notes without moving them to sub hierarchies, you can use the following filter.
+If you only want to see the "classical" tags ("labels") which are used to group notes without moving them to sub hierarchies, you can use one of the following filters.
 
 ```
 <<locator-view "TableOfContents" "" "+[!has[text]]">>
+
+<<locator-view "TableOfContents" "" "+[!kin::to[TableOfContents]]">>
 ```
+
+@@.bimlas-locator-warning
+The latter filter requires the `kin` filter operator, besides this it could be slow!
+@@
 
 !! Add to sidebar
 
