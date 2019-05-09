@@ -62,6 +62,12 @@ Use it for example to sort tags by color.
 <<locator-view "TableOfContents" "" "+[sort[color]]">>
 ```
 
+If you only want to see the "classical" tags ("labels") which are used to group notes without moving them to sub hierarchies, you can use the following filter.
+
+```
+<<locator-view "TableOfContents" "" "+[!has[text]]">>
+```
+
 !! Add to sidebar
 
 * Create a new tiddler
