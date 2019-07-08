@@ -23,7 +23,7 @@ For those who use many tags or store many different topics in a common wiki the 
 
 ! Installation instructions
 
-To add the plugin to your own ~TiddlyWiki5, just drag this link to the browser window:
+To add the plugin to your own ~TiddlyWiki5, just drag this link to the browser window and ''create the required tiddlers'' (see on other tabs):
 
 $:/plugins/bimlas/locator
 
