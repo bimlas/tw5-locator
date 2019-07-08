@@ -43,6 +43,9 @@ type: text/vnd.tiddlywiki
   <$button class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
     {{$:/core/images/refresh-button}}
   </$button>
+  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-create-new-tiddler>>>
+    {{$:/core/images/new-button}}
+  </$button>
 
   <$reveal type="nomatch" default="" text={{{ [title<contextState>get[base-title]] }}}>
     <<view-breadcrumbs-base-title>>
@@ -160,5 +163,14 @@ type: text/vnd.tiddlywiki
 
   <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
   <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[[]]"/>
+
+\end
+\define action-create-new-tiddler()
+
+  <$set name="lastAncestorTag" filter={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+    <$set name="tagsOfNewTiddler" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]">
+      <$action-sendmessage $message="tm-new-tiddler" tags=<<tagsOfNewTiddler>>/>
+    </$set>
+  </$set>
 
 \end

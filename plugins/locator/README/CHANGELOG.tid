@@ -6,6 +6,7 @@ type: text/vnd.tiddlywiki
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.1.0...v1.2.0]]
 
+* Add button to create new tiddler in current context
 * Ability to use additional filter on tags
 
 !! 1.1.0
