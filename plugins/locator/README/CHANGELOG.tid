@@ -2,6 +2,12 @@ tags:
 title: $:/plugins/bimlas/locator/README/CHANGELOG
 type: text/vnd.tiddlywiki
 
+!! 1.3.0
+
+[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.2.0...v1.3.0]]
+
+* Create new tiddler from search text
+
 !! 1.2.0
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.1.0...v1.2.0]]
