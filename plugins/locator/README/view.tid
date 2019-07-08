@@ -15,8 +15,7 @@ You can use it in any tiddler, for example put it in the main tiddler of each to
 The table of contents is structured as follows:
 
 <div class="tc-tiddler-frame bimlas-locator-explanation">
-{{$:/core/images/refresh-button}}
-{{$:/core/images/new-button}}<br/>
+{{$:/core/images/refresh-button}} {{$:/core/images/new-button}}<br/>
 {{$:/core/images/right-arrow}} Breadcrumbs<br/>
 {{$:/core/images/right-arrow}} (The current context)<br/>
 <hr/>
@@ -34,7 +33,7 @@ The table of contents is structured as follows:
 * {{$:/core/images/right-arrow}}: Move in to the context
 * {{$:/core/images/tag-button}}: Toggle filtering the list to this tag
 * {{$:/core/images/refresh-button}}: Reset the context by removing the breadcrumbs
-* {{$:/core/images/new-button}}: Create new tiddler in the current context (apply the last ancestor and all of the direct tags)
+* {{$:/core/images/new-button}}: Create new tiddler in the current context (apply the last ancestor tag and the direct tags below, like a special "new here" button)
 * Click on list items to open the tiddler
 @@
 

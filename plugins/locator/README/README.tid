@@ -16,6 +16,7 @@ For those who use many tags or store many different topics in a common wiki the 
 * ''There is no need to include a table of contents in the main tiddler of each topic''<br/>Just press the "locator sidebar" button and you can browse the topic right away.
 * ''Easy way to search for tags''<br/>Find tags based on part of their name and find related tags by typing in to the standard search.
 * ''Limit the scope of search''<br/>You don't have to store your recipes and family tree in a separate wiki just to make them easier to find: you can easily define the scope of your search.
+* ''Create new tiddler in current scope''<br />The "new tiddler" button creates a new tiddler pre-tagged with the currently selected tags and named by the search query.
 
 @@.bimlas-locator-warning
 !! REQUIREMENT: Some features need the `kin` filter operator: https://bimlas.gitlab.io/tw5-kin-filter

@@ -169,7 +169,9 @@ type: text/vnd.tiddlywiki
 
   <$set name="lastAncestorTag" filter={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
     <$set name="tagsOfNewTiddler" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]">
-      <$action-sendmessage $message="tm-new-tiddler" tags=<<tagsOfNewTiddler>>/>
+      <$set name="titleOfNewTiddler" filter="[{$(searchTiddler)$}]">
+        <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfNewTiddler>>/>
+      </$set>
     </$set>
   </$set>
 
