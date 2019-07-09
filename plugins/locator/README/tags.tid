@@ -30,13 +30,13 @@ Take the same steps you did for `locator-search`, but use this code:
 
 @@.bimlas-locator-explanation
 * {{$:/core/images/close-others-button}}: Restrict the search to the context of the Locator sidebar by copying its breadcrumbs
-* {{$:/core/images/new-button}}: Create new tiddler in the current context (apply the last ancestor tag and the direct tags below, like a special "new here" button), the search text will becomes the default title
+* {{$:/core/images/new-button}}: Createe a new tiddler with the currently selected tags whose default name will be the search text
 * {{$:/core/images/link}}: Look for the search term under this tag at any depth (this ancestor tag is broadly defining the topic of the search)
 * {{$:/core/images/tag-button}}: Look for the search term in tiddlers directly tagged by this tag (direct tag)
 @@
 
-The picked tags using to ''narrow the scope of `locator-search`'', clicking on the title of the tag opens its tiddler.
+The picked tags using to ''narrow the scope of `locator-search`'', clicking on the the tag itself shows the titles associated with this tag (usual tag-dropdown).
 
-''NOTE'': If you want to ''get all results related to the selected tags'', replace the search text with spaces, otherwise only those tiddlers will be listed which contains the text.
+''NOTE'': If you want to ''get all results related to the selected tags'', replace the search text with spaces, otherwise only those tiddlers will be listed which contains the text (for example a tiddler deeply in the TableOfContents does not contains the TableOfContents text).
 
 //Select the next tab to continue.//

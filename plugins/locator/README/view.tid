@@ -2,26 +2,33 @@ tags:
 title: $:/plugins/bimlas/locator/README/view
 type: text/vnd.tiddlywiki
 
-! Usage of `locator-view` (table of contents)
+! Usage of `locator-view` (Table of Contents macro)
 
-Use the following macro to ''display a table of contents of a topic'' (the first parameter is the top tag of the hierarchy):
+Use the following macro to ''display the table of contents of a topic'' as the [[classic Table of Contents macro|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]] does, but ''it also shows non-visible tags''. For example, the [[Henry Ford]] tiddler has the [[Family tree of Ford]] and [[President]] tags. In the classic table of contents, opening [[Family tree of Ford]] shows only [[Henry Ford]], but we do not see the [[President]] tag. The Locator lists this related tag, so ''we can easily filter the current context by additional tags''.
+
+The macro can be placed anywhere you want to display a browsable table of contents, for example put it in the main tiddler of each topic in your wiki.
+
+!! Create a Table of Contents sidebar
+
+* Create a new tiddler
+* Add the [[$:/tags/SideBar]] tag
+* Add the `caption` field to change the title of the tab ("Contents" for example)
+* Place the `locator-view` macro call in it:
 
 ```
-<<locator-view "TableOfContents">>
+<<locator-view baseTitle:"TableOfContents">>
 ```
 
-You can use it in any tiddler, for example put it in the main tiddler of each topic in your wiki.
-
-The table of contents is structured as follows:
+!! The table of contents is structured as follows
 
 <div class="tc-tiddler-frame bimlas-locator-explanation">
 {{$:/core/images/refresh-button}} {{$:/core/images/new-button}}<br/>
-{{$:/core/images/right-arrow}} Breadcrumbs<br/>
-{{$:/core/images/right-arrow}} (The current context)<br/>
+{{$:/core/images/right-arrow}} Ancestor tags<br/>
+{{$:/core/images/right-arrow}} (Previously opened parents, breadcrumbs)<br/>
 <hr/>
 {{$:/core/images/tag-button}} <<tag-pill "Direct tags">><br/>
 {{$:/core/images/tag-button}} <<tag-pill "(Tags of listed titles...)">><br/>
-{{$:/core/images/tag-button}} <<tag-pill "(...expect breadcrumbs...)">><br/>
+{{$:/core/images/tag-button}} <<tag-pill "(...expect ancestor tags...)">><br/>
 {{$:/core/images/tag-button}} <<tag-pill "(...and listed titles)">><br/>
 {{$:/core/images/blank}} Title without button<br/>
 {{$:/core/images/blank}} (Normal list item)<br/>
@@ -30,29 +37,29 @@ The table of contents is structured as follows:
 </div>
 
 @@.bimlas-locator-explanation
-* {{$:/core/images/right-arrow}}: Move in to the context
+* {{$:/core/images/right-arrow}}: Move in to the context (show children of title)
 * {{$:/core/images/tag-button}}: Toggle filtering the list to this tag
-* {{$:/core/images/refresh-button}}: Reset the context by removing the breadcrumbs
-* {{$:/core/images/new-button}}: Create new tiddler in the current context (apply the last ancestor tag and the direct tags below, like a special "new here" button)
-* Click on list items to open the tiddler
+* {{$:/core/images/refresh-button}}: Reset the context, go to the top level
+* {{$:/core/images/new-button}}: Create new tiddler in the current context: apply the parent of the current view (the last ancestor tag) and the direct tags below it (like a special "new here" button)
+* Click on titles to open the tiddlers
 @@
 
 !! Pass additional filter
 
-You can also ''pass a filter parameter to modify the list of items''. For example, ''filter items that can be found deeper in the hierarchy (remove duplicate entries)'' with the `filter-grandchildren` predefined filter expression.
+You can also ''pass a filter parameter to modify the list of items''. For example we sort them according to the last modification in reverse order.
+
+```
+<<locator-view baseTitle:"TableOfContents" finalFilter:"+[sort[modified]reverse[]]">>
+```
+
+''Filter items that can be found deeper in the hierarchy (remove duplicate entries)'' with the `filter-grandchildren` predefined filter expression.
 
 @@.bimlas-locator-warning
 The `filter-grandchildren` requires the `kin` filter operator, besides this it could be slow!
 @@
 
 ```
-<<locator-view "TableOfContents" "+[!subfilter<filter-grandchildren>]">>
-```
-
-In another example, we sort them according to the last modification in reverse order.
-
-```
-<<locator-view "TableOfContents" "+[sort[modified]reverse[]]">>
+<<locator-view baseTitle:"TableOfContents" finalFilter:"+[!subfilter<filter-grandchildren>]">>
 ```
 
 !! Additional filter for tags
@@ -60,33 +67,30 @@ In another example, we sort them according to the last modification in reverse o
 Use it for example to sort tags by color.
 
 ```
-<<locator-view "TableOfContents" "" "+[sort[color]]">>
+<<locator-view baseTitle:"TableOfContents" tagFilter:"+[sort[color]]">>
 ```
 
-If you only want to see the "classical" tags ("labels") which are used to group notes without moving them to sub hierarchies, you can use one of the following filters.
+If you only want to see the "classic" tags ("labels", "hashtags") which are used to group notes without moving them to sub hierarchies, you can use one of the following filters.
 
 ```
-<<locator-view "TableOfContents" "" "-[has[text]]">>
+<<locator-view baseTitle:"TableOfContents" tagFilter:"-[has[text]]">>
 
-<<locator-view "TableOfContents" "" "-[kin::to[TableOfContents]]">>
+<<locator-view baseTitle:"TableOfContents" tagFilter:"-[has[tags]]">>
+
+<<locator-view baseTitle:"TableOfContents" tagFilter:"-[kin::to[TableOfContents]]">>
 ```
 
 @@.bimlas-locator-warning
 The latter filter requires the `kin` filter operator, besides this it could be slow!
 @@
 
-!! Add to sidebar
-
-* Create a new tiddler
-* Add the [[$:/tags/SideBar]] tag
-* Add the `caption` field to change the title of the tab
-* Place the `locator-view` macro call in it as described above
-
 !! Open any tag in the sidebar
 
 @@.bimlas-locator-explanation
-There is ''a new button in the toolbar of the tiddlers that are tags'': by pressing the "{{$:/core/images/chevron-right}} locator sidebar" button, you can ''display the current tiddler's hierarchy in the Locator sidebar''.
+There is ''a new button in the toolbar of the tiddlers that are tagging other tiddlers'': by pressing the "{{$:/core/images/chevron-right}} locator sidebar" button, you can ''display the current tiddler's hierarchy in the Locator sidebar''.
 @@
+
+For example, if we search for [[Henry Ford II]] in the standard search, open his tiddler and we want to browse its successors, pressing this button will show it in the Locator sidebar where we can view it as a table of contents.
 
 If you do not want to leave this button in the toolbar, you can turn it off in the [[$:/ControlPanel]] -> Apperance -> Toolbars -> [[View Toolbar|$:/core/ui/ControlPanel/Toolbars/ViewToolbar]].
 

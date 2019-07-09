@@ -7,14 +7,15 @@ type: text/vnd.tiddlywiki
 !! Organic navigation
 
 * In `locator-tags`, look for a tag and apply it as an ancestor tag; the `locator-search` only affects tiddlers associated with it at any depth
-* Click on the tag in `locator-tags` to open its tiddler, then click on the "locator sidebar" button; the `locator-view` sidebar will show it's hierarchy
+* Click on the tag in `locator-tags` and open its tiddler, then click on the "locator sidebar" button; the `locator-view` sidebar will show it's hierarchy
 * Navigate in the hierarchy of `locator-view` sidebar then search for a term in `locator-search`; pressing the "copy context" button restricting the search to the context of `locator-view` sidebar
+* If you cannot find what you are searching for, then you may want to create a new tiddler, use the "new tiddler" button in one of the Locator macros
 
 !! Speed up (on phones)
 
 !!! Conditional view
 
-Because ''the plugin could be slow'' (depending on the context) and since we don't look at the table of contents and search results at the same time, we can ''hide the Locator while we are using the standard search''.
+Because ''the plugin could be slow if `kin` filter is used'' (depending on the context) and since we don't look at the table of contents and search results at the same time, we can ''hide the Locator while we are using the standard search''.
 
 To achieve this, place the Locator view in the following condition:
 
@@ -28,6 +29,6 @@ To achieve this, place the Locator view in the following condition:
 
 !!! Prefer the standard search
 
-''Typing in the search entry could be slow'' because of the slowness of the plugin. In this case, ''switch to the classic search listing'', enter the expression, and then return to the Locator search.
+''Typing in the search entry could be slow'' because of the slowness of the `kin` filter (depending on the context). In this case, ''switch to the classic search listing'', enter the expression, and then return to the Locator search.
 
 //Select the next tab to continue.//

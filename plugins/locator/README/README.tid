@@ -4,19 +4,19 @@ type: text/vnd.tiddlywiki
 
 ! Locator
 
-For those who use many tags or store many different topics in a common wiki the Locator plugin is ''a table of contents widget and an enhanced search engine'' that gives you the opportunity to ''filter results by related tags''. Unlike [[table of contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin offers these features in an organic, collaborative way.
+For those who use many tags or store many different topics in a common wiki the Locator plugin is ''a table of contents widget and an enhanced search engine'' that gives you the opportunity to ''filter results by related tags without the need to write filters''. Unlike [[classic Table of Contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin offers these features in an organic, collaborative way.
 
 * https://gitlab.com/bimlas/tw5-locator (main repository)
 * https://github.com/bimlas/tw5-locator (mirror, ''please add a star if you like the plugin'')
 
 ! Benefits compared to built-in solutions
 
-* ''Shows related tags''<br/>You can mark a tiddler with multiple tags, but in the ToC you don't see them while browsing.
-* ''Phone friendlier''<br/>The width of the ToC is increasing and the size of the text is decrasing as we move down in the context, while Locator remains the same.
-* ''There is no need to include a table of contents in the main tiddler of each topic''<br/>Just press the "locator sidebar" button and you can browse the topic right away.
-* ''Easy way to search for tags''<br/>Find tags based on part of their name and find related tags by typing in to the standard search.
-* ''Limit the scope of search''<br/>You don't have to store your recipes and family tree in a separate wiki just to make them easier to find: you can easily define the scope of your search.
-* ''Create new tiddler in current scope''<br />The "new tiddler" button creates a new tiddler pre-tagged with the currently selected tags and named by the search query.
+* ''Shows related tags''<br/>You can mark a tiddler with multiple tags, but in the classic ToC you don't see them while browsing, in Locator you can apply them as filters.
+* ''Phone friendlier''<br/>The width of the classic ToC is increasing and the size of the text is decrasing as we move down in the context, while Locator remains the same.
+* ''There is no need to include a table of contents in the main tiddler of each topic''<br/>Just press the "Locator sidebar" button on the tiddler's toolbar and you can browse it's children right away in the sidebar.
+* ''Easy way to search for tags''<br/>Find tags in the standard search based on part of their name or view the tags of the search results at a glance.
+* ''Limit the scope of search''<br/>You don't have to store your recipes and family tree in a separate wiki just to make them easier to find: you can define the scope of your search with some clicks (without the need to write filters in [[$:/AdvancedSearch]]).
+* ''Create new tiddler in current scope''<br />The "new tiddler" button in Locator creates a new tiddler pre-tagged with the currently selected tags and named by the search query (like a special "new here" button).
 
 @@.bimlas-locator-warning
 !! REQUIREMENT: Some features need the `kin` filter operator: https://bimlas.gitlab.io/tw5-kin-filter
@@ -24,7 +24,9 @@ For those who use many tags or store many different topics in a common wiki the 
 
 ! Installation instructions
 
-To add the plugin to your own ~TiddlyWiki5, just drag this link to the browser window and ''create the required tiddlers'' (see on other tabs):
+''The plugin consists of separate parts'' (see other tabs), each of them can be used on its own, so ''it is possible to use only the parts you like'', but they can be used most effectively together because ''they interact with each other''.
+
+To add the plugin to your own ~TiddlyWiki5, just drag this link to the browser window and ''create the required tiddlers'' (see below):
 
 $:/plugins/bimlas/locator
 

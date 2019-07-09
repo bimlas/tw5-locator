@@ -12,5 +12,5 @@ type: text/vnd.tiddlywiki
 
 <!-- Don't forget to change the text of $:/config/Search/AutoFocus to `false`, see the docs for details! -->
 <$reveal type="match" default="" text={{{ [prefix[$:/state/popup/search-dropdown]] }}}>
-<<locator-view "TableOfContents">>
+  <<locator-view baseTitle:"TableOfContents">>
 </$reveal>

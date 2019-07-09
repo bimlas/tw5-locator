@@ -10,18 +10,22 @@ Filtering by ancestor tags ({{$:/core/images/link}}) requires the `kin` filter o
 
 The macro can be used to ''search only in the context defined by `locator-view` or `locator-tags`''.
 
-* Add a `locator-view` to the sidebar as described above
+* Add a `locator-view` to the sidebar as described previously
 * Create a new tiddler
 * Add the [[$:/tags/SearchResults]] tag
-* Add the `caption` field to change the title of the tab
-* Place this code in tiddler:
+* Add the `caption` field to change the title of the tab ("Locator" for example)
+* Call the macro by placing this text in the tiddler:
 
 ```
 <<locator-search>>
 ```
 
 @@.bimlas-locator-explanation
-If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results. Use the {{$:/core/images/close-others-button}} button to ''restrict the search to the context of the Locator sidebar'' by copying its breadcrumbs. Adding additional tags is possible in `locator-tags`.
+If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results. Use the {{$:/core/images/close-others-button}} button to ''restrict the search to the context of the Locator sidebar'' by copying its breadcrumbs (opened ancestor tags and selected direct tags) as ancestor tags (thus ''this button requires the `kin` filter''). Adding additional tags is possible in `locator-tags`.
+@@
+
+@@.bimlas-locator-explanation
+''Pressing {{$:/core/images/new-button}} creates a new tiddler with the currently selected tags whose default name will be the search text''
 @@
 
 //Select the next tab to continue.//
