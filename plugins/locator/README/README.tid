@@ -26,7 +26,7 @@ For those who use many tags or store many different topics in a common wiki the 
 
 ''The plugin consists of separate parts'' (see other tabs), each of them can be used on its own, so ''it is possible to use only the parts you like'', but they can be used most effectively together because ''they interact with each other''.
 
-To add the plugin to your own ~TiddlyWiki5, just drag this link to the browser window and ''create the required tiddlers'' (see below):
+To add the plugin to your own ~TiddlyWiki5, just drag this link to the browser window and ''create the required tiddlers'':
 
 $:/plugins/bimlas/locator
 
