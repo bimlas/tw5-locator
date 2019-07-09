@@ -11,6 +11,10 @@ type: text/vnd.tiddlywiki
 * Navigate in the hierarchy of `locator-view` sidebar then search for a term in `locator-search`; pressing the "copy context" button restricting the search to the context of `locator-view` sidebar
 * If you cannot find what you are searching for, then you may want to create a new tiddler, use the "new tiddler" button in one of the Locator macros
 
+!! Taking good habits
+
+''To get the least chance of writing the same note you wrote earlier, look for a new tiddler before creating a note. To force yourself'', hide the "new tiddler" button inside the Page Toolbar and ''use the "new tiddler" button inside the Locator search'', so if you want to create a new tiddler you must first look for it. If you are absolutely sure that there is no tiddler yet and you need to create a new tiddler, this solution is also useful because search text defines the default name of the new tiddler.
+
 !! Speed up (on phones)
 
 !!! Conditional view
