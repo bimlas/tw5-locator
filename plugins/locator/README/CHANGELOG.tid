@@ -2,6 +2,10 @@ tags:
 title: $:/plugins/bimlas/locator/README/CHANGELOG
 type: text/vnd.tiddlywiki
 
+!! Prerelease
+
+* Add base tag if there is no breadcrumbs when creating new tiddler in current context
+
 !! 1.3.0
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.2.0...v1.3.0]]
