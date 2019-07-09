@@ -1,16 +1,16 @@
 caption: Locator
 created: 20190109213701491
 list-before: $:/core/ui/SideBar/Open
-modified: 20190120122143489
+modified: 20190709080757255
 tags: $:/tags/SideBar
 title: Locator view
 type: text/vnd.tiddlywiki
-
-> Use this Locator to define the context of search.
-
-> It is hidden when the search entry is not empty to increase responsiveness on phones - see [[Locator view]] for the code.
 
 <!-- Don't forget to change the text of $:/config/Search/AutoFocus to `false`, see the docs for details! -->
 <$reveal type="match" default="" text={{{ [prefix[$:/state/popup/search-dropdown]] }}}>
   <<locator-view baseTitle:"TableOfContents">>
 </$reveal>
+
+> Use this Locator to define the context of search.
+
+> It is hidden when the search entry is not empty to increase responsiveness on phones - see [[Locator view]] for the code.

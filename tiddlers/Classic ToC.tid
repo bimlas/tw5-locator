@@ -1,0 +1,10 @@
+created: 20190709080633096
+list-after: Locator view
+modified: 20190709080735139
+tags: $:/tags/SideBar
+title: Classic ToC
+type: text/vnd.tiddlywiki
+
+<div class="tc-table-of-contents">
+<<toc-selective-expandable "TableOfContents">>
+</div>
