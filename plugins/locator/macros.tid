@@ -167,10 +167,12 @@ type: text/vnd.tiddlywiki
 \end
 \define action-create-new-tiddler()
 
-  <$set name="lastAncestorTagOrBaseTitle" filter="[subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>]">
-    <$set name="tagsOfNewTiddler" filter="[title<lastAncestorTagOrBaseTitle>] [subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTagOrBaseTitle>]">
-      <$set name="titleOfNewTiddler" tiddler="$(searchTiddler)$">
-        <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfNewTiddler>>/>
+  <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
+    <$set name="baseTitleAndBreadcrumbs" filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
+      <$set name="tagsOfNewTiddler" filter="[enlist<baseTitleAndBreadcrumbs>] -[enlist<baseTitleAndBreadcrumbs>allbefore<lastAncestorTagOrBaseTitle>]">
+        <$set name="titleOfNewTiddler" tiddler="$(searchTiddler)$">
+          <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfNewTiddler>>/>
+        </$set>
       </$set>
     </$set>
   </$set>
