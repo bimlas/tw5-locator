@@ -8,6 +8,29 @@ For details, see the link:{demo-page}[demo page].
 * https://gitlab.com/bimlas/tw5-locator (official repository)
 * https://github.com/bimlas/tw5-locator (mirror, please give a star if you like it)
 
+== What others say about it?
+
+"In a way, your tool is very fast; it's an exploration hack. I could
+technically explore all of this without your tool, but you lower the friction
+for me to rapidly explore different perspectives, angles, or scopes in a
+rhizome. I wouldn't have the energy to connect all those dots by hand; hence
+this is a powertool. While I may be dead wrong, I suspect those who are more
+diligent in their hard-coded tag-based organization practices will not find
+as much value from your tool as those who have a more freeform and
+carelessly sprawling approach to structuring their wikis via tags (like
+mine) because it picks low-hanging fruit. You turn some apparent heaps into
+stacks. Your tool is a GUI abstraction for rapidly stepping back and forth
+through doorways in my wiki by automating the construction of complex filter
+expressions in stages with minimal effort; even someone who doesn't know
+anything about TW can learn to use your tool. +
+... +
+Your tool is Leet, sir. Thank you for your work, and you've given me a lot to think about."
+-- https://groups.google.com/d/msg/tiddlywiki/xAe_fvhzoCY/-l-mf2CnDgAJ[h0p3]
+
+
+"What I really like about that is its scope (range) ... it addresses several issues all in one package."
+-- https://groups.google.com/d/msg/tiddlywiki/C_eGviHgLPg/Y2-0Za-3GgAJ[TiddlyTweeter]
+
 == How to install?
 
 === Drag-n-drop
