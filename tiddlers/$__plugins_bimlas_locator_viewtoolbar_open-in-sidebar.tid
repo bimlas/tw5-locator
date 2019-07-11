@@ -1,0 +1,28 @@
+caption: {{$:/core/images/chevron-right}} locator sidebar
+created: 20190711062115994
+description: Browse hierarchy of tag in Locator sidebar (MODIFIED, see Tips tab in plugin tiddler)
+list-before: $:/core/ui/Buttons/open-window
+modified: 20190711062437252
+tags: $:/tags/ViewToolbar
+title: $:/plugins/bimlas/locator/viewtoolbar/open-in-sidebar
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+<$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
+<$button tooltip="Browse hierarchy of tag in Locator sidebar (MODIFIED, see Tips tab in plugin tiddler)" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
+<!-- MODIFIED: Let the "Locator sidebar" button automatically focus to the Locator sidebar - see Tips tab in plugin tiddler -->
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="Locator view"/>
+<$action-listops $tiddler="$:/state/bimlas/locator" $field="base-title" $filter="[all[current]]"/>
+<$action-listops $tiddler="$:/state/bimlas/locator" $field="breadcrumbs" $filter=[[]]/>
+<$action-listops $tiddler="$:/state/bimlas/locator" $field="ancestor-tags" $filter=[[]]/>
+<$list filter="[<tv-config-toolbar-icons>prefix[yes]]" variable="listItem">
+{{$:/core/images/chevron-right}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>prefix[yes]]">
+<span class="tc-btn-text">
+<$text text=" "/>
+<$text text="locator sidebar"/>
+</span>
+</$list>
+</$button>
+</$reveal>
