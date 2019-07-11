@@ -94,7 +94,7 @@ type: text/vnd.tiddlywiki
   <<tag>>
 \end
 \define view-search-specific-actions()
-  <$button tooltip="Search in the context of Locator sidebar" class="tc-btn-invisible bimlas-locator">
+  <$button tooltip="Search in the context of Locator sidebar in any depth" class="tc-btn-invisible bimlas-locator">
     <!--
     Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
     ancestor tag, otherwise there would be no results for too many direct tags.
