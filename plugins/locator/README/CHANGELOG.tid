@@ -2,7 +2,9 @@ tags:
 title: $:/plugins/bimlas/locator/README/CHANGELOG
 type: text/vnd.tiddlywiki
 
-!! Prerelease
+!! 1.4.0
+
+[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.3.1...v1.4.0]]
 
 * When there was a space in the search string and "new tiddler" button is used from search, the tiddler title was encapsulated (`[[title with spaces]]`)
 * When there was a space in any of the breadcrumbs in sidebar and "new tiddler" button is used from it, the tiddler got all of the breadcrumb tags, the title with spaces was encapsulated (literally `[[title with spaces]]` tag)
