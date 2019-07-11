@@ -40,10 +40,10 @@ type: text/vnd.tiddlywiki
 \end
 \define view-breadcrumbs-of-context(ancestor-tag-template: <<view-breadcrumb-ancestor-tag>>)
 
-  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
+  <$button tooltip="Go to top level" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
     {{$:/core/images/refresh-button}}
   </$button>
-  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-create-new-tiddler>>>
+  <$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator" actions=<<action-create-new-tiddler>>>
     {{$:/core/images/new-button}}
   </$button>
 
@@ -64,7 +64,7 @@ type: text/vnd.tiddlywiki
 
 \end
 \define view-breadcrumbs-base-title()
-  <$button class="tc-btn-invisible bimlas-locator">
+  <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
     <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
     <<action-clear-tags>>
     {{$:/core/images/close-button}}
@@ -74,7 +74,7 @@ type: text/vnd.tiddlywiki
   </$button>
 \end
 \define view-breadcrumb-ancestor-tag()
-  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
+  <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
     {{$:/core/images/right-arrow}}
   </$button>
   <$link to=<<currentTiddler>>>
@@ -82,19 +82,19 @@ type: text/vnd.tiddlywiki
   </$link>
 \end
 \define view-breadcrumb-ancestor-tag-in-search()
-  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-remove-ancestor-tag>>>
+  <$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions=<<action-remove-ancestor-tag>>>
     {{$:/core/images/link}}
   </$button>
   <<tag>>
 \end
 \define view-breadcrumb-direct-tag()
-  <$button class="tc-btn-invisible bimlas-locator" actions=<<action-remove-direct-tag>>>
+  <$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions=<<action-remove-direct-tag>>>
     {{$:/core/images/tag-button}}
   </$button>
   <<tag>>
 \end
 \define view-search-specific-actions()
-  <$button class="tc-btn-invisible bimlas-locator">
+  <$button tooltip="Search in the context of Locator sidebar" class="tc-btn-invisible bimlas-locator">
     <!--
     Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
     ancestor tag, otherwise there would be no results for too many direct tags.
@@ -106,7 +106,7 @@ type: text/vnd.tiddlywiki
 \end
 \define view-tag-list-item(actions)
   <p class="tc-menu-list-item">
-    <$button class="tc-btn-invisible bimlas-locator" actions=<<__actions__>>>
+    <$button tooltip="Look for tiddlers having this tag" class="tc-btn-invisible bimlas-locator" actions=<<__actions__>>>
       {{$:/core/images/tag-button}}
     </$button>
     <$button class="tc-btn-invisible bimlas-locator">
@@ -117,10 +117,10 @@ type: text/vnd.tiddlywiki
 \end
 \define view-locator-tags-list-item()
   <p class="tc-menu-list-item bimlas-locator">
-    <$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
+    <$button tooltip="Look for successors of the tag at any depth" class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
       {{$:/core/images/link}}
     </$button>
-    <$button class="tc-btn-invisible bimlas-locator" actions=<<action-add-direct-tag>>>
+    <$button tooltip="Look for tiddlers having this tag" class="tc-btn-invisible bimlas-locator" actions=<<action-add-direct-tag>>>
       {{$:/core/images/tag-button}}
     </$button>
     <$button class="tc-btn-invisible bimlas-locator">

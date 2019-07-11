@@ -7,6 +7,7 @@ type: text/vnd.tiddlywiki
 * When there was a space in the search string and "new tiddler" button is used from search, the tiddler title was encapsulated (`[[title with spaces]]`)
 * When there was a space in any of the breadcrumbs in sidebar and "new tiddler" button is used from it, the tiddler got all of the breadcrumb tags, the title with spaces was encapsulated (literally `[[title with spaces]]` tag)
 * Add more tips to [[$:/plugins/bimlas/locator/README/TIPS]]
+* Add descriptive tooltip to buttons
 
 !! 1.3.1
 
