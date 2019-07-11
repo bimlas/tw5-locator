@@ -20,7 +20,7 @@ type: text/vnd.tiddlywiki
 For example, the More -> Tags sidebar is currently open when we use the "Locator sidebar" toolbar button on one of the tiddlers, but we do not see the effect because the Locator sidebar is not visible, thus we need to modify to let button automatically open the corresponding sidebar.
 
 * If we don't know exactly, look for the sidebar tiddler's title (used as `text` parameter in the code below)
-** Open the Advanced Search -> Filter and look for the sidebar name in the `caption` field, for example `[caption[Locator]] will result [[Locator view]]
+** Open the Advanced Search -> Filter and look for the sidebar name in the `caption` field, for example `[caption[Locator]]` will result [[Locator view]]
 * Find the state tiddler that contains the sidebar tiddler's title (used as `$tiddler` parameter in the code below)
 ** Open the Advanced Search -> Filter and look for `[text[Locator view]]` for example
 ** Switch between Locator sidebar and another sidebar to see which state tiddler is changing, this is what we are looking for ([[$:/state/tab/sidebar--595412856]] for example)
