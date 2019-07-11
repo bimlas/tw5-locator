@@ -37,7 +37,7 @@ type: text/vnd.tiddlywiki
                       </$button>
                     </$reveal>
                     <$reveal type="match" default="" text={{{ [all[current]is[tag]] }}}>
-                      <$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
+                      <$button class="tc-btn-invisible bimlas-locator">
                         {{$:/core/images/blank}}
                       </$button>
                     </$reveal>
