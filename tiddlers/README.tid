@@ -20,7 +20,7 @@ After lunch, you're going to continue your research on [[Family tree of Ford]]. 
 
 !! Like it? Get it!
 
-If you like the plugin, drag-n-drop its [[tiddler|$:/plugin/bimlas/locator]] and these pre-made tiddlers into your wiki and please [[star on GitHub|https://github.com/bimlas/tw5-locator]].
+If you like the plugin, drag-n-drop its [[tiddler|$:/plugins/bimlas/locator]] and these pre-made tiddlers into your wiki and please [[star on GitHub|https://github.com/bimlas/tw5-locator]].
 
 <$list filter="[prefix[Locator]]">
 <$link><<currentTiddler>></$link><br/>
