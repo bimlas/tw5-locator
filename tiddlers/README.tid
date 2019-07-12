@@ -1,6 +1,6 @@
 created: 20190120115910162
 modified: 20190709081017199
-tags: 
+tags:
 title: README
 type: text/vnd.tiddlywiki
 
@@ -8,9 +8,20 @@ This is the demo of the Locator [[TiddlyWiki|https://tiddlywiki.com/]] plugin. H
 
 In the sidebar Locator you can discover the contents of this wiki, which contains the [[Family tree of Ford]] and [[Larry's Cookbook]]. ''Compare the behaviour of the [[Locator view]] and [[Classic ToC]] sidebars to have a better understanding.''
 
-You can also copy Locator tiddlers to your own wiki by dragging the following titles:
+To help you understand the essence of the plugin, read this tutorial and try it out.
+
+!! Quick start
+
+Suppose you want to cook pasta. You know there is a special way to cook pasta, but you can't remember exactly what it was, so start browsing [[Larry's Cookbok]] in the Locator sidebar. When you open the Categories -> Pasta topic, you narrow the list to show only the tiddlers with the <<tag "Howto">> tag. You acknowledge sadly that you have described the secrets of cooking rice, but not cooking of pasta. To fill the gap, you are looking for a description on the net, and then creating a new tiddler for the solution by pressing the "+" button inside the Locator sidebar: by default, tiddler gets Pasta and How To tags, so it will be created in the current context, at the current point of the table of contents.
+
+You cook the pasta and think about some sauce to make it more delicious. Because you find it time-consuming to navigate through the table of contents, you rather use the search engine and looking for "sauce". It gives you a lot of hits, so start narrowing the list of results in the Tags tab. First, you select the <<tag "sauces">> tag to search for tiddlers associated with any depth (chain icon). You look again at the list of results, but you still find it long. You look again at the list of results, but you still find it long, so you narrow down your search with more tags: you select the <<tag "chicken">> tag with the tag icon, ie you are interested in tiddlers who have this tag. You'll find the description of [[Master BBQ Sauce]] and make your special meal.
+
+!! Like it? Get it!
+
+If you like the plugin, drag-n-drop its tiddler and these pre-made tiddlers into your wiki and please [[star on GitHub|https://github.com/bimlas/tw5-locator]].
 
 <$list filter="[prefix[Locator]]">
 <$link><<currentTiddler>></$link><br/>
 </$list>
 
+  You may also need the [[Kin filter|https://bimlas.gitlab.io/tw5-kin-filter]], see the plugin's description for details.
