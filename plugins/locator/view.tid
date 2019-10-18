@@ -10,6 +10,8 @@ type: text/vnd.tiddlywiki
       <$set name="baseTitle" value={{{ [title<contextState>each:list-item[base-title]] ~[title<__baseTitle__>] }}}>
         <$set name="finalFilter" value=<<__finalFilter__>>>
 
+          <<button-new-tiddler>> <<button-return-to-default-context>>
+
           <<view-breadcrumbs-of-context>>
 
           ---
