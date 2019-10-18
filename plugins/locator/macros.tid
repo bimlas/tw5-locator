@@ -11,24 +11,17 @@ type: text/vnd.tiddlywiki
 \define wikify-list-redunant-direct-tags()
 
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <$reveal type="nomatch" default="" text=<<lastAncestorTag>>>
-      <$list filter="[title<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">
-        <$text text="[["/><$view field="title"/><$text text="]]"/>
-      </$list>
-    </$reveal>
-    <$reveal type="match" default="" text=<<lastAncestorTag>>>
-      <$list filter=<<filter-breadcrumbs>>>
-        <$text text="[["/><$view field="title"/><$text text="]]"/>
-      </$list>
-    </$reveal>
+    <$list filter="[title<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">
+      <$text text="[["/><$view field="title"/><$text text="]]"/>
+    </$list>
   </$set>
 
 \end
 \define wikify-list-context-items()
 
-  <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
     <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
-    <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTagOrBaseTitle>"/><$list filter="[subfilter<filter-breadcrumbs>allafter<lastAncestorTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
+    <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTag>"/><$list filter="[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
       <$list filter=<<taggedByLastAncestorAndDirectTags>>>
         <$text text="[["/><$view field="title"/><$text text="]]"/>
       </$list>
@@ -172,8 +165,8 @@ type: text/vnd.tiddlywiki
 \end
 \define action-create-new-tiddler()
 
-  <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <$set name="tagsOfNewTiddler" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTagOrBaseTitle>]">
+  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+    <$set name="tagsOfNewTiddler" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]">
       <$set name="titleOfNewTiddler" tiddler="$(searchTiddler)$">
         <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfNewTiddler>>/>
       </$set>
@@ -183,9 +176,9 @@ type: text/vnd.tiddlywiki
 \end
 \define action-move-to-another-context()
 
-  <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
     <$fieldmangler tiddler=<<actionTiddler>>>
-      <$action-sendmessage $message="tm-remove-tag" $param=<<lastAncestorTagOrBaseTitle>>/>
+      <$action-sendmessage $message="tm-remove-tag" $param=<<lastAncestorTag>>/>
       <$action-sendmessage $message="tm-add-tag" $param=<<currentTiddler>>/>
     </$fieldmangler>
   </$set>
