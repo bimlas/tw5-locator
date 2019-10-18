@@ -4,7 +4,7 @@ type: text/vnd.tiddlywiki
 
 Unreleased
 
-[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.4.0...master]]
+[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/master...dev]]
 
 * Move tiddler from current context to higher- or subtopic by drag-n-dropping in the Locator sidebar
 * Assign any tiddler to any of the titles in the Locator sidebar by drag-n-dropping
