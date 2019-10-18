@@ -6,7 +6,7 @@ Unreleased
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.4.0...master]]
 
-* Move tiddler from current context to subtopic on drag-n-dropping
+* Move tiddler from current context to higher- or subtopic by drag-n-dropping
 * Add tutorial to the demo
 
 !! 1.4.0

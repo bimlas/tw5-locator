@@ -74,12 +74,14 @@ type: text/vnd.tiddlywiki
   </$button>
 \end
 \define view-breadcrumb-ancestor-tag()
-  <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
-    {{$:/core/images/right-arrow}}
-  </$button>
-  <$link to=<<currentTiddler>>>
-    <$view tiddler=<<currentTiddler>> field="caption"><$view tiddler=<<currentTiddler>> field="title"/></$view>
-  </$link>
+  <$droppable actions=<<action-move-to-another-context>>>
+    <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
+      {{$:/core/images/right-arrow}}
+    </$button>
+    <$link to=<<currentTiddler>>>
+      <$view tiddler=<<currentTiddler>> field="caption"><$view tiddler=<<currentTiddler>> field="title"/></$view>
+    </$link>
+  </$droppable>
 \end
 \define view-breadcrumb-ancestor-tag-in-search()
   <$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions=<<action-remove-ancestor-tag>>>
