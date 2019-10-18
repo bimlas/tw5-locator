@@ -6,7 +6,7 @@
 For details, see the link:{demo-page}[demo page].
 
 * https://gitlab.com/bimlas/tw5-locator (official repository)
-* https://github.com/bimlas/tw5-locator (mirror, please give a star if you like it)
+* https://github.com/bimlas/tw5-locator (mirror, please star if you like it)
 
 == What others say about it?
 
