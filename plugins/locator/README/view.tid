@@ -94,10 +94,12 @@ For example, if we search for [[Henry Ford II]] in the standard search, open his
 
 If you do not want to leave this button in the toolbar, you can turn it off in the [[$:/ControlPanel]] -> Apperance -> Toolbars -> [[View Toolbar|$:/core/ui/ControlPanel/Toolbars/ViewToolbar]].
 
-!! Move tiddler from current context to subtopic on drag-n-dropping
+!! Reorganize hierarchy, move tiddler from current context to another by drag-n-dropping
 
 For example, if you open the Animals tag in the Locator sidebar and the list includes Squirrel, Fox, and Mammals, dropping the Fox and Squirrel on the Mammals will remove the Animal (the last ancestor) tag and replace it with the Mammals. If you have Fish in the Mammals topic, you can easily place it in a higher context (Animals) by dropping it at the desired ancestor tag. This is ''useful if you want to re-organize your tiddlers by splitting a larger topic into several smaller topics''.
 
 You can drag-n-drop any tiddler title (even from tiddler text) to the titles in the Locator sidebar to apply the target tag on it, so you can categorize the tiddlers without going through them in edit mode.
+
+If you want to interrupt drag-n-dropping, press <kbd>Escape</kbd>.
 
 //Select the next tab to continue.//
