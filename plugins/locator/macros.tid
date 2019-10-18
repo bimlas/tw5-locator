@@ -64,14 +64,18 @@ type: text/vnd.tiddlywiki
 
 \end
 \define view-breadcrumbs-base-title()
-  <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
-    <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
-    <<action-clear-tags>>
-    {{$:/core/images/close-button}}
-  </$button>
-  <$button class="tc-btn-invisible bimlas-locator" to=<<baseTitle>>>
-    <$view tiddler=<<baseTitle>> field="caption"><$view tiddler=<<baseTitle>> field="title"/></$view>
-  </$button>
+  <$tiddler tiddler=<<baseTitle>>>
+    <$droppable actions=<<action-move-to-another-context>>>
+      <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
+        <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
+        <<action-clear-tags>>
+        {{$:/core/images/close-button}}
+      </$button>
+      <$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
+        <$view field="caption"><$view field="title"/></$view>
+      </$button>
+    </$droppable>
+  </$tiddler>
 \end
 \define view-breadcrumb-ancestor-tag()
   <$droppable actions=<<action-move-to-another-context>>>
