@@ -17,7 +17,7 @@ Take the same steps you did for `locator-search`, but use this code:
 ''Search for tags instead of tiddler titles'', the list of tags is structured as follows:
 
 <div class="tc-tiddler-frame bimlas-locator-explanation">
-{{$:/core/images/close-others-button}} {{$:/core/images/refresh-button}} {{$:/core/images/new-button}}<br/>
+{{$:/core/images/new-button}} {{$:/core/images/close-button}} {{$:/core/images/close-others-button}}<br/>
 {{$:/core/images/link}} <<tag-pill "Breadcrumb tag pills">><br/>
 <hr/>
 //Title matches//<br/>
@@ -29,8 +29,9 @@ Take the same steps you did for `locator-search`, but use this code:
 </div>
 
 @@.bimlas-locator-explanation
-* {{$:/core/images/close-others-button}}: Restrict the search to the context of the Locator sidebar by copying its breadcrumbs
 * {{$:/core/images/new-button}}: Createe a new tiddler with the currently selected tags whose default name will be the search text
+* {{$:/core/images/close-button}}: Clear tag filters, search everywhere
+* {{$:/core/images/close-others-button}}: Restrict the search to the context of the Locator sidebar by copying its breadcrumbs
 * {{$:/core/images/link}}: Look for the search term under this tag at any depth (this ancestor tag is broadly defining the topic of the search)
 * {{$:/core/images/tag-button}}: Look for the search term in tiddlers directly tagged by this tag (direct tag)
 @@

@@ -2,6 +2,15 @@ tags:
 title: $:/plugins/bimlas/locator/README/CHANGELOG
 type: text/vnd.tiddlywiki
 
+Unreleased
+
+[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.4.0...master]]
+
+* Move tiddler from current context to higher- or subtopic by drag-n-dropping in the Locator sidebar
+* Assign any tiddler to any of the titles in the Locator sidebar by drag-n-dropping
+* Show the (top-level) base tag to be able to move the tiddler titles there
+* Add tutorial to the demo
+
 !! 1.4.0
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.3.1...v1.4.0]]

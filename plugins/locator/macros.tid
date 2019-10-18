@@ -2,8 +2,8 @@ tags:
 title: $:/plugins/bimlas/locator/macros
 type: text/vnd.tiddlywiki
 
-\define filter-breadcrumbs() [title<contextState>each:list-item[breadcrumbs]]
-\define filter-ancestor-tags() [title<contextState>each:list-item[ancestor-tags]]
+\define filter-breadcrumbs() [title<baseTitle>] [title<contextState>each:list-item[breadcrumbs]] -[[]]
+\define filter-ancestor-tags() [title<baseTitle>] [title<contextState>each:list-item[ancestor-tags]] -[[]]
 \define filter-grandchildren() [subfilter<filter-ancestor-tags>last[]tagging[]tagging[]kin::to[]]
 \define wikify-filter-search-context()
   <$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list>
@@ -11,45 +11,25 @@ type: text/vnd.tiddlywiki
 \define wikify-list-redunant-direct-tags()
 
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <$reveal type="nomatch" default="" text=<<lastAncestorTag>>>
-      <$list filter="[title<baseTitle>] [title<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">
-        <$text text="[["/><$view field="title"/><$text text="]]"/>
-      </$list>
-    </$reveal>
-    <$reveal type="match" default="" text=<<lastAncestorTag>>>
-      <$list filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
-        <$text text="[["/><$view field="title"/><$text text="]]"/>
-      </$list>
-    </$reveal>
+    <$list filter="[title<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">
+      <$text text="[["/><$view field="title"/><$text text="]]"/>
+    </$list>
   </$set>
 
 \end
 \define wikify-list-context-items()
 
-  <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
-    <$set name="baseTitleAndBreadcrumbs" filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
-      <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
-      <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTagOrBaseTitle>"/><$list filter="[enlist<baseTitleAndBreadcrumbs>allafter<lastAncestorTagOrBaseTitle>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
-        <$list filter=<<taggedByLastAncestorAndDirectTags>>>
-          <$text text="[["/><$view field="title"/><$text text="]]"/>
-        </$list>
-      </$wikify>
-    </$set>
+  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+    <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
+    <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTag>"/><$list filter="[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
+      <$list filter=<<taggedByLastAncestorAndDirectTags>>>
+        <$text text="[["/><$view field="title"/><$text text="]]"/>
+      </$list>
+    </$wikify>
   </$set>
 
 \end
 \define view-breadcrumbs-of-context(ancestor-tag-template: <<view-breadcrumb-ancestor-tag>>)
-
-  <$button tooltip="Go to top level" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
-    {{$:/core/images/refresh-button}}
-  </$button>
-  <$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator" actions=<<action-create-new-tiddler>>>
-    {{$:/core/images/new-button}}
-  </$button>
-
-  <$reveal type="nomatch" default="" text={{{ [title<contextState>get[base-title]] }}}>
-    <<view-breadcrumbs-base-title>>
-  </$reveal>
 
   <$list filter=<<filter-breadcrumbs>>>
 
@@ -63,23 +43,17 @@ type: text/vnd.tiddlywiki
   </$list>
 
 \end
-\define view-breadcrumbs-base-title()
-  <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
-    <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
-    <<action-clear-tags>>
-    {{$:/core/images/close-button}}
-  </$button>
-  <$button class="tc-btn-invisible bimlas-locator" to=<<baseTitle>>>
-    <$view tiddler=<<baseTitle>> field="caption"><$view tiddler=<<baseTitle>> field="title"/></$view>
-  </$button>
-\end
 \define view-breadcrumb-ancestor-tag()
-  <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
-    {{$:/core/images/right-arrow}}
-  </$button>
-  <$link to=<<currentTiddler>>>
-    <$view tiddler=<<currentTiddler>> field="caption"><$view tiddler=<<currentTiddler>> field="title"/></$view>
-  </$link>
+  <$droppable actions=<<action-move-to-another-context>>>
+    <div class="tc-droppable-placeholder" style="display: block">
+      <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
+        {{$:/core/images/right-arrow}}
+      </$button>
+      <$link to=<<currentTiddler>>>
+        <$view tiddler=<<currentTiddler>> field="caption"><$view tiddler=<<currentTiddler>> field="title"/></$view>
+      </$link>
+    </div>
+  </$droppable>
 \end
 \define view-breadcrumb-ancestor-tag-in-search()
   <$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions=<<action-remove-ancestor-tag>>>
@@ -94,15 +68,9 @@ type: text/vnd.tiddlywiki
   <<tag>>
 \end
 \define view-search-specific-actions()
-  <$button tooltip="Search in the context of Locator sidebar in any depth" class="tc-btn-invisible bimlas-locator">
-    <!--
-    Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
-    ancestor tag, otherwise there would be no results for too many direct tags.
-    -->
-    <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
-    <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
-    {{$:/core/images/close-others-button}}
-  </$button>
+  <<button-new-tiddler>>
+  <<button-remove-filters>>
+  <<button-copy-context-from-sidebar>>
 \end
 \define view-tag-list-item(actions)
   <p class="tc-menu-list-item">
@@ -128,6 +96,36 @@ type: text/vnd.tiddlywiki
       <<tag>>
     </$button>
   </p>
+\end
+\define button-new-tiddler()
+  <$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator" actions=<<action-create-new-tiddler>>>
+    {{$:/core/images/new-button}}
+  </$button>
+\end
+\define button-return-to-default-context()
+  <$reveal type="nomatch" default="" text={{{ [title<contextState>get[base-title]] }}}>
+    <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
+      <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
+      <<action-clear-tags>>
+      {{$:/core/images/close-button}}
+    </$button>
+  </$reveal>
+\end
+\define button-remove-filters()
+  <$button tooltip="Remove filters" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
+    {{$:/core/images/close-button}}
+  </$button>
+\end
+\define button-copy-context-from-sidebar()
+  <$button tooltip="Search in the context of Locator sidebar in any depth" class="tc-btn-invisible bimlas-locator">
+    <!--
+    Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
+    ancestor tag, otherwise there would be no results for too many direct tags.
+    -->
+    <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
+    <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
+    {{$:/core/images/close-others-button}}
+  </$button>
 \end
 \define action-add-ancestor-tag()
 
@@ -167,14 +165,22 @@ type: text/vnd.tiddlywiki
 \end
 \define action-create-new-tiddler()
 
-  <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
-    <$set name="baseTitleAndBreadcrumbs" filter="[title<baseTitle>] [subfilter<filter-breadcrumbs>]">
-      <$set name="tagsOfNewTiddler" filter="[enlist<baseTitleAndBreadcrumbs>] -[enlist<baseTitleAndBreadcrumbs>allbefore<lastAncestorTagOrBaseTitle>]">
-        <$set name="titleOfNewTiddler" tiddler="$(searchTiddler)$">
-          <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfNewTiddler>>/>
-        </$set>
+  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+    <$set name="tagsOfNewTiddler" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]">
+      <$set name="titleOfNewTiddler" tiddler="$(searchTiddler)$">
+        <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfNewTiddler>>/>
       </$set>
     </$set>
+  </$set>
+
+\end
+\define action-move-to-another-context()
+
+  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+    <$fieldmangler tiddler=<<actionTiddler>>>
+      <$action-sendmessage $message="tm-remove-tag" $param=<<lastAncestorTag>>/>
+      <$action-sendmessage $message="tm-add-tag" $param=<<currentTiddler>>/>
+    </$fieldmangler>
   </$set>
 
 \end
