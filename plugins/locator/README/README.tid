@@ -12,14 +12,15 @@ For those who use many tags or store many different topics in a common wiki the 
 ! Benefits compared to built-in solutions
 
 * ''Shows related tags''<br/>You can mark a tiddler with multiple tags, but in the classic ToC you don't see them while browsing, in Locator you can apply them as filters.
-* ''Phone friendlier''<br/>The width of the classic ToC is increasing and the size of the text is decrasing as we move down in the context, while Locator remains the same.
-* ''There is no need to include a table of contents in the main tiddler of each topic''<br/>Just press the "Locator sidebar" button on the tiddler's toolbar and you can browse it's children right away in the sidebar.
 * ''Easy way to search for tags''<br/>Find tags in the standard search based on part of their name or view the tags of the search results at a glance.
 * ''Limit the scope of search''<br/>You don't have to store your recipes and family tree in a separate wiki just to make them easier to find: you can define the scope of your search with some clicks (without the need to write filters in [[$:/AdvancedSearch]]).
+* ''Reorder the hierarchy with drag-n-drop''<br />You can easily move tiddlers between topics by drag-n-dropping them.
+* ''There is no need to include a table of contents in the main tiddler of each topic''<br/>Just press the "Locator sidebar" button on the tiddler's toolbar and you can browse it's children right away in the sidebar.
 * ''Create new tiddler in current scope''<br />The "new tiddler" button in Locator creates a new tiddler pre-tagged with the currently selected tags and named by the search query (like a special "new here" button).
+* ''Phone friendlier''<br/>The width of the classic ToC is increasing and the size of the text is decrasing as we move down in the context, while Locator remains readable.
 
 @@.bimlas-locator-warning
-!! REQUIREMENT: Some features need the `kin` filter operator: https://bimlas.gitlab.io/tw5-kin-filter
+''REQUIREMENT: The marked features require the `kin` filter operator'' (see on the other tabs): https://bimlas.gitlab.io/tw5-kin-filter
 @@
 
 ! Installation instructions
