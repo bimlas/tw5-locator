@@ -66,25 +66,29 @@ type: text/vnd.tiddlywiki
 \define view-breadcrumbs-base-title()
   <$tiddler tiddler=<<baseTitle>>>
     <$droppable actions=<<action-move-to-another-context>>>
-      <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
-        <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
-        <<action-clear-tags>>
-        {{$:/core/images/close-button}}
-      </$button>
-      <$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
-        <$view field="caption"><$view field="title"/></$view>
-      </$button>
+      <div class="tc-droppable-placeholder" style="display: block">
+        <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
+          <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
+          <<action-clear-tags>>
+          {{$:/core/images/close-button}}
+        </$button>
+        <$button class="tc-btn-invisible bimlas-locator" to=<<currentTiddler>>>
+          <$view field="caption"><$view field="title"/></$view>
+        </$button>
+      </div>
     </$droppable>
   </$tiddler>
 \end
 \define view-breadcrumb-ancestor-tag()
   <$droppable actions=<<action-move-to-another-context>>>
-    <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
-      {{$:/core/images/right-arrow}}
-    </$button>
-    <$link to=<<currentTiddler>>>
-      <$view tiddler=<<currentTiddler>> field="caption"><$view tiddler=<<currentTiddler>> field="title"/></$view>
-    </$link>
+    <div class="tc-droppable-placeholder" style="display: block">
+      <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
+        {{$:/core/images/right-arrow}}
+      </$button>
+      <$link to=<<currentTiddler>>>
+        <$view tiddler=<<currentTiddler>> field="caption"><$view tiddler=<<currentTiddler>> field="title"/></$view>
+      </$link>
+    </div>
   </$droppable>
 \end
 \define view-breadcrumb-ancestor-tag-in-search()
