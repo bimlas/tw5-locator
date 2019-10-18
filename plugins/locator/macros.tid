@@ -190,8 +190,11 @@ type: text/vnd.tiddlywiki
 \end
 \define action-move-to-another-context()
 
-  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
-    <$action-listops $tiddler=<<actionTiddler>> $tags="[<currentTiddler>] -[<lastAncestorTag>]"/>
+  <$set name="lastAncestorTagOrBaseTitle" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
+    <$fieldmangler tiddler=<<actionTiddler>>>
+      <$action-sendmessage $message="tm-remove-tag" $param=<<lastAncestorTagOrBaseTitle>>/>
+      <$action-sendmessage $message="tm-add-tag" $param=<<currentTiddler>>/>
+    </$fieldmangler>
   </$set>
 
 \end
