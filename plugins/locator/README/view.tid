@@ -22,7 +22,7 @@ The macro can be placed anywhere you want to display a browsable table of conten
 !! The table of contents is structured as follows
 
 <div class="tc-tiddler-frame bimlas-locator-explanation">
-{{$:/core/images/refresh-button}} {{$:/core/images/new-button}}<br/>
+{{$:/core/images/new-button}} {{$:/core/images/close-button}}<br/>
 {{$:/core/images/right-arrow}} Ancestor tags<br/>
 {{$:/core/images/right-arrow}} (Previously opened parents, breadcrumbs)<br/>
 <hr/>
@@ -39,8 +39,8 @@ The macro can be placed anywhere you want to display a browsable table of conten
 @@.bimlas-locator-explanation
 * {{$:/core/images/right-arrow}}: Move in to the context (show children of title)
 * {{$:/core/images/tag-button}}: Toggle filtering the list to this tag
-* {{$:/core/images/refresh-button}}: Reset the context, go to the top level
 * {{$:/core/images/new-button}}: Create new tiddler in the current context: apply the parent of the current view (the last ancestor tag) and the direct tags below it (like a special "new here" button)
+* {{$:/core/images/close-button}}: Go back to the default context (if it's overridden by the "show in Locator sidebar" button)
 * Click on titles to open the tiddlers
 @@
 
