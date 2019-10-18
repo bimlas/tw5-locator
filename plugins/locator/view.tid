@@ -29,21 +29,23 @@ type: text/vnd.tiddlywiki
                 </$wikify>
 
                 <$list filter=<<contextItems>>>
-                  <li class="toc-item">
+                  <$droppable actions=<<action-move-to-another-context>>>
+                    <li class="toc-item ">
 
-                    <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
-                      <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
-                        {{$:/core/images/right-arrow}}
-                      </$button>
-                    </$reveal>
-                    <$reveal type="match" default="" text={{{ [all[current]is[tag]] }}}>
-                      <$button class="tc-btn-invisible bimlas-locator">
-                        {{$:/core/images/blank}}
-                      </$button>
-                    </$reveal>
-                    <$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link>
+                      <$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
+                        <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
+                          {{$:/core/images/right-arrow}}
+                        </$button>
+                      </$reveal>
+                      <$reveal type="match" default="" text={{{ [all[current]is[tag]] }}}>
+                        <$button class="tc-btn-invisible bimlas-locator">
+                          {{$:/core/images/blank}}
+                        </$button>
+                      </$reveal>
+                      <$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link>
 
-                  </li>
+                    </li>
+                  </$droppable>
                 </$list>
 
               </ol>

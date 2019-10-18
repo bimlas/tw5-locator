@@ -178,3 +178,10 @@ type: text/vnd.tiddlywiki
   </$set>
 
 \end
+\define action-move-to-another-context()
+
+  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] ~[title<baseTitle>] }}}>
+    <$action-listops $tiddler=<<actionTiddler>> $tags="[<currentTiddler>] -[<lastAncestorTag>]"/>
+  </$set>
+
+\end
