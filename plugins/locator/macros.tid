@@ -68,9 +68,9 @@ type: text/vnd.tiddlywiki
   <<tag>>
 \end
 \define view-search-specific-actions()
-  <<button-copy-context-from-sidebar>>
-  <<button-remove-filters>>
   <<button-new-tiddler>>
+  <<button-remove-filters>>
+  <<button-copy-context-from-sidebar>>
 \end
 \define view-tag-list-item(actions)
   <p class="tc-menu-list-item">
