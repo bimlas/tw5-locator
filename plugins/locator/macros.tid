@@ -71,6 +71,7 @@ type: text/vnd.tiddlywiki
   <<button-new-tiddler>>
   <<button-remove-filters>>
   <<button-copy-context-from-sidebar>>
+  <<button-advanced-search>>
 \end
 \define view-tag-list-item(actions)
   <p class="tc-menu-list-item">
@@ -126,6 +127,19 @@ type: text/vnd.tiddlywiki
     <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
     {{$:/core/images/close-others-button}}
   </$button>
+\end
+\define button-advanced-search()
+  <!--
+  Since the search term may contain characters that affect the filter, I
+  do not copy the search term, I just refer to the tiddler.
+  -->
+  <$wikify name="searchContextFilter" text="""[<<wikify-filter-search-context>>search{$:/temp/search}]""">
+    <$button tooltip="Continue filtering in advanced search" class="tc-btn-invisible bimlas-locator">
+      <$action-setfield $tiddler="$:/temp/advancedsearch" text=<<searchContextFilter>>/>
+      <$action-navigate $to="$:/AdvancedSearch"/>
+      {{$:/core/images/advanced-search-button}}
+    </$button>
+  </$wikify>
 \end
 \define action-add-ancestor-tag()
 
