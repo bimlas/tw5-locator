@@ -20,15 +20,13 @@ type: text/vnd.tiddlywiki
             <div class="tc-table-of-contents">
               <ol>
 
-                <$wikify name="redunantDirectTags" text=<<wikify-list-redunant-direct-tags>>>
-                  <$list filter="""[enlist<contextItems>tags[]!enlist<contextItems>!enlist<redunantDirectTags>sort[title]] $tagFilter$""">
+                <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+                  <$list filter="""[enlist<contextItems>tags[]!enlist<contextItems>] -[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>] +[sort[title]] $tagFilter$""">
                     <li class="toc-item">
-
                       <$macrocall $name="view-tag-list-item" actions=<<action-add-direct-tag>>/>
-
                     </li>
                   </$list>
-                </$wikify>
+                </$set>
 
                 <$list filter=<<contextItems>>>
                   <$droppable actions=<<action-move-to-another-context>>>

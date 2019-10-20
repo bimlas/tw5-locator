@@ -8,15 +8,6 @@ type: text/vnd.tiddlywiki
 \define wikify-filter-search-context()
   <$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list>
 \end
-\define wikify-list-redunant-direct-tags()
-
-  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <$list filter="[title<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">
-      <$text text="[["/><$view field="title"/><$text text="]]"/>
-    </$list>
-  </$set>
-
-\end
 \define wikify-list-context-items()
 
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
