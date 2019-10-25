@@ -9,15 +9,15 @@ type: text/vnd.tiddlywiki
     <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[all[current]] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
       <$set name="baseTitle" value={{{ [title<contextState>each:list-item[base-title]] ~[title<__baseTitle__>] }}}>
         <$set name="finalFilter" value=<<__finalFilter__>>>
+          <div class="tc-table-of-contents">
 
-          <<button-new-tiddler>> <<button-return-to-default-context>>
+            <<button-new-tiddler>> <<button-return-to-default-context>>
 
-          <<view-breadcrumbs-of-context>>
+            <<view-breadcrumbs-of-context>>
 
-          ---
+            ---
 
-          <$wikify name="contextItems" text=<<wikify-list-context-items>>>
-            <div class="tc-table-of-contents">
+            <$wikify name="contextItems" text=<<wikify-list-context-items>>>
               <ol>
 
                 <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
@@ -49,9 +49,9 @@ type: text/vnd.tiddlywiki
                 </$list>
 
               </ol>
-            </div>
-          </$wikify>
+            </$wikify>
 
+          </div>
         </$set>
       </$set>
     </$wikify>
