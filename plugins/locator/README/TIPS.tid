@@ -29,7 +29,7 @@ For example, the More -> Tags sidebar is currently open when we use the "Locator
 ```
 <!-- Original code of the button... -->
 ...
-<$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
+<$list filter="[all[current]is[tag]]">
 <$button tooltip="Browse hierarchy of tag in Locator sidebar" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
 <!-- ADD THIS LINE -->
 <$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="Locator view"/>

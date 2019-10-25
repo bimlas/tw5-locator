@@ -24,12 +24,12 @@ type: text/vnd.tiddlywiki
 
   <$list filter=<<filter-breadcrumbs>>>
 
-    <$reveal type="match" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
+    <$list filter="[subfilter<filter-ancestor-tags>is[current]]">
       <<__ancestor-tag-template__>>
-    </$reveal>
-    <$reveal type="nomatch" default="" text={{{ [all[current]!subfilter<filter-ancestor-tags>] }}}>
+    </$list>
+    <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
       <<view-breadcrumb-direct-tag>>
-    </$reveal>
+    </$list>
 
   </$list>
 
@@ -95,13 +95,13 @@ type: text/vnd.tiddlywiki
   </$button>
 \end
 \define button-return-to-default-context()
-  <$reveal type="nomatch" default="" text={{{ [title<contextState>get[base-title]] }}}>
+  <$list filter="[title<contextState>get[base-title]]">
     <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
       <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
       <<action-clear-tags>>
       {{$:/core/images/close-button}}
     </$button>
-  </$reveal>
+  </$list>
 \end
 \define button-remove-filters()
   <$button tooltip="Remove filters" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
