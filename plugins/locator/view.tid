@@ -6,7 +6,7 @@ type: text/vnd.tiddlywiki
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
     <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
-    <$wikify name="contextState" text="""<$text text="$:/state/bimlas/locator"/><$list filter="[all[current]] -[[]] +[addprefix[/]]"><$view field="title"/></$list>""">
+    <$set name="contextState" value={{{ [all[current]] -[[]] +[addprefix[$:/state/bimlas/locator/]] [[$:/state/bimlas/locator]] +[first[]] }}}>
       <$set name="baseTitle" value={{{ [title<contextState>each:list-item[base-title]] ~[title<__baseTitle__>] }}}>
         <$set name="finalFilter" value=<<__finalFilter__>>>
           <div class="tc-table-of-contents">
@@ -54,6 +54,6 @@ type: text/vnd.tiddlywiki
           </div>
         </$set>
       </$set>
-    </$wikify>
+    </$set>
   </$importvariables>
 \end
