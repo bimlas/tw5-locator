@@ -2,8 +2,9 @@ tags:
 title: $:/plugins/bimlas/locator/macros
 type: text/vnd.tiddlywiki
 
-\define filter-breadcrumbs() [title<baseTitle>] [title<contextState>each:list-item[breadcrumbs]] -[[]]
-\define filter-ancestor-tags() [title<baseTitle>] [title<contextState>each:list-item[ancestor-tags]] -[[]]
+\define filter-base-title() [title<contextState>each:list-item[base-title]] ~[<__baseTitle__>]
+\define filter-breadcrumbs() [subfilter<filter-base-title>] [title<contextState>each:list-item[breadcrumbs]] -[[]]
+\define filter-ancestor-tags() [subfilter<filter-base-title>] [title<contextState>each:list-item[ancestor-tags]] -[[]]
 \define filter-grandchildren() [subfilter<filter-ancestor-tags>last[]tagging[]tagging[]kin::to[]]
 \define wikify-filter-search-context()
   <$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list>
@@ -114,8 +115,16 @@ type: text/vnd.tiddlywiki
     Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
     ancestor tag, otherwise there would be no results for too many direct tags.
     -->
-    <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
-    <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[enlist{$:/state/bimlas/locator!!base-title}] [enlist{$:/state/bimlas/locator!!breadcrumbs}]"/>
+
+    <!-- TODO: Code duplication ("create new tiddler" button) -->
+    <$set name="searchContextState" value=<<contextState>>>
+      <$set name="contextState" value="$:/state/bimlas/locator">
+        <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+          <$action-listops $tiddler=<<searchContextState>> $field="breadcrumbs" $filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]"/>
+          <$action-listops $tiddler=<<searchContextState>> $field="ancestor-tags" $filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]"/>
+        </$set>
+      </$set>
+    </$set>
     {{$:/core/images/close-others-button}}
   </$button>
 \end

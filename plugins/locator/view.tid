@@ -7,52 +7,50 @@ type: text/vnd.tiddlywiki
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
     <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
     <$set name="contextState" value={{{ [all[current]] -[[]] +[addprefix[$:/state/bimlas/locator/]] [[$:/state/bimlas/locator]] +[first[]] }}}>
-      <$set name="baseTitle" value={{{ [title<contextState>each:list-item[base-title]] ~[title<__baseTitle__>] }}}>
-        <$set name="finalFilter" value=<<__finalFilter__>>>
-          <div class="tc-table-of-contents">
+      <$set name="finalFilter" value=<<__finalFilter__>>>
+        <div class="tc-table-of-contents">
 
-            <<button-new-tiddler>> <<button-return-to-default-context>>
+          <<button-new-tiddler>> <<button-return-to-default-context>>
 
-            <<view-breadcrumbs-of-context>>
+          <<view-breadcrumbs-of-context>>
 
-            ---
+          ---
 
-            <$wikify name="contextItems" text=<<wikify-list-context-items>>>
-              <ol>
+          <$wikify name="contextItems" text=<<wikify-list-context-items>>>
+            <ol>
 
-                <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-                  <$list filter="""[enlist<contextItems>tags[]!enlist<contextItems>] -[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>] +[sort[title]] $tagFilter$""">
-                    <li class="toc-item">
-                      <$macrocall $name="view-tag-list-item" actions=<<action-add-direct-tag>>/>
-                    </li>
-                  </$list>
-                </$set>
-
-                <$list filter=<<contextItems>>>
-                  <$droppable actions=<<action-move-to-another-context>>>
-                    <li class="toc-item tc-droppable-placeholder" style="display: block">
-
-                      <$list filter="[all[current]is[tag]]">
-                        <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
-                          {{$:/core/images/right-arrow}}
-                        </$button>
-                      </$list>
-                      <$list filter="[all[current]!is[tag]]">
-                        <$button class="tc-btn-invisible bimlas-locator">
-                          {{$:/core/images/blank}}
-                        </$button>
-                      </$list>
-                      <$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link>
-
-                    </li>
-                  </$droppable>
+              <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+                <$list filter="""[enlist<contextItems>tags[]!enlist<contextItems>] -[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>] +[sort[title]] $tagFilter$""">
+                  <li class="toc-item">
+                    <$macrocall $name="view-tag-list-item" actions=<<action-add-direct-tag>>/>
+                  </li>
                 </$list>
+              </$set>
 
-              </ol>
-            </$wikify>
+              <$list filter=<<contextItems>>>
+                <$droppable actions=<<action-move-to-another-context>>>
+                  <li class="toc-item tc-droppable-placeholder" style="display: block">
 
-          </div>
-        </$set>
+                    <$list filter="[all[current]is[tag]]">
+                      <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
+                        {{$:/core/images/right-arrow}}
+                      </$button>
+                    </$list>
+                    <$list filter="[all[current]!is[tag]]">
+                      <$button class="tc-btn-invisible bimlas-locator">
+                        {{$:/core/images/blank}}
+                      </$button>
+                    </$list>
+                    <$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link>
+
+                  </li>
+                </$droppable>
+              </$list>
+
+            </ol>
+          </$wikify>
+
+        </div>
       </$set>
     </$set>
   </$importvariables>

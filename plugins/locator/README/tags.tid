@@ -31,7 +31,7 @@ Take the same steps you did for `locator-search`, but use this code:
 @@.bimlas-locator-explanation
 * {{$:/core/images/new-button}}: Create a new tiddler with the currently selected tags whose default name will be the search text
 * {{$:/core/images/close-button}}: Clear tag filters, search everywhere
-* {{$:/core/images/close-others-button}}: Restrict the search to the context of the Locator sidebar by copying its breadcrumbs
+* {{$:/core/images/close-others-button}}: Restrict the search to the context of the Locator sidebar
 * {{$:/core/images/advanced-search-button}}: Copy the filter (including tags) to [[$:/AdvancedSearch]] to perform additional filtering
 * {{$:/core/images/link}}: Look for the search term under this tag at any depth (this ancestor tag is broadly defining the topic of the search)
 * {{$:/core/images/tag-button}}: Look for the search term in tiddlers directly tagged by this tag (direct tag)
