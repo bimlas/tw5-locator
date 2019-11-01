@@ -1,5 +1,0 @@
-tags: $:/tags/Actions
-title: $:/plugins/bimlas/locator/ui/actions/remove-direct-tag
-type: text/vnd.tiddlywiki
-
-<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="-[all[current]]"/>

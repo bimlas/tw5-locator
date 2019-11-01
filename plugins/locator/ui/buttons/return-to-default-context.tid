@@ -3,7 +3,7 @@ title: $:/plugins/bimlas/locator/ui/buttons/return-to-default-context
 type: text/vnd.tiddlywiki
 
 <$list filter="[title<contextState>get[base-title]]">
-  <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/clear-tags}}>
+  <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/clear-context}}>
     <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
     {{$:/core/images/close-button}}
   </$button>
