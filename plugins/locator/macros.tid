@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
     <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
-    <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[tag<lastAncestorTag>"/><$list filter="[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
+    <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[!has[draft.of]tag<lastAncestorTag>"/><$list filter="[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
       <$list filter=<<taggedByLastAncestorAndDirectTags>>>
         <$text text="[["/><$view field="title"/><$text text="]]"/>
       </$list>
