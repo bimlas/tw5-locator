@@ -21,43 +21,19 @@ type: text/vnd.tiddlywiki
   </$set>
 
 \end
-\define view-breadcrumbs-of-context(ancestor-tag-template: <<view-breadcrumb-ancestor-tag>>)
+\define view-breadcrumbs-of-context(ancestor-tag-template: "$:/plugins/bimlas/locator/ui/templates/view-ancestor-tag-list-item")
 
   <$list filter=<<filter-breadcrumbs>>>
 
     <$list filter="[subfilter<filter-ancestor-tags>is[current]]">
-      <<__ancestor-tag-template__>>
+      <$transclude tiddler=<<__ancestor-tag-template__>>/>
     </$list>
     <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
-      <<view-breadcrumb-direct-tag>>
+      {{||$:/plugins/bimlas/locator/ui/templates/view-direct-tag-list-item}}
     </$list>
 
   </$list>
 
-\end
-\define view-breadcrumb-ancestor-tag()
-  <$droppable actions={{$:/plugins/bimlas/locator/ui/actions/move-to-another-context}}>
-    <div class="tc-droppable-placeholder" style="display: block">
-      {{||$:/plugins/bimlas/locator/ui/buttons/go-up-to-context}}
-      <$link to=<<currentTiddler>>>
-        <$view tiddler=<<currentTiddler>> field="caption"><$view tiddler=<<currentTiddler>> field="title"/></$view>
-      </$link>
-    </div>
-  </$droppable>
-\end
-\define view-breadcrumb-ancestor-tag-in-search()
-  {{||$:/plugins/bimlas/locator/ui/buttons/remove-ancestor-tag-filter}}
-  <<tag>>
-\end
-\define view-breadcrumb-direct-tag()
-  {{||$:/plugins/bimlas/locator/ui/buttons/remove-direct-tag-filter}}
-  <<tag>>
-\end
-\define view-search-specific-actions()
-  {{||$:/plugins/bimlas/locator/ui/buttons/create-new-tiddler}}
-  {{||$:/plugins/bimlas/locator/ui/buttons/clear-context}}
-  {{||$:/plugins/bimlas/locator/ui/buttons/copy-context-from-sidebar}}
-  {{||$:/plugins/bimlas/locator/ui/buttons/copy-filter-to-advanced-search}}
 \end
 \define view-tag-list-item(actions)
   <p class="tc-menu-list-item">
@@ -66,17 +42,6 @@ type: text/vnd.tiddlywiki
       {{$:/core/images/tag-button}}
     </$button>
     <!-- TODO: Extract button -->
-    <$button class="tc-btn-invisible bimlas-locator">
-      <$action-navigate $to=<<currentTiddler>>/>
-      <<tag>>
-    </$button>
-  </p>
-\end
-\define view-locator-tags-list-item()
-  <p class="tc-menu-list-item bimlas-locator">
-    {{||$:/plugins/bimlas/locator/ui/buttons/add-ancestor-tag-filter}}
-    {{||$:/plugins/bimlas/locator/ui/buttons/add-direct-tag-filter}}
-    <!-- TODO: Miert van ez button-ba csomagolva? -->
     <$button class="tc-btn-invisible bimlas-locator">
       <$action-navigate $to=<<currentTiddler>>/>
       <<tag>>
