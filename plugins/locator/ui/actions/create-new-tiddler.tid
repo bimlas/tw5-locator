@@ -1,0 +1,11 @@
+tags: $:/tags/Actions
+title: $:/plugins/bimlas/locator/ui/actions/create-new-tiddler
+type: text/vnd.tiddlywiki
+
+<$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+  <$set name="tagsOfNewTiddler" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]">
+    <$set name="titleOfNewTiddler" tiddler="$(searchTiddler)$">
+      <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfNewTiddler>>/>
+    </$set>
+  </$set>
+</$set>

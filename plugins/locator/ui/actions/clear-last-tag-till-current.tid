@@ -1,0 +1,8 @@
+tags: $:/tags/Actions
+title: $:/plugins/bimlas/locator/ui/actions/clear-last-tags-till-current
+type: text/vnd.tiddlywiki
+
+<$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [all[current]]">
+  <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
+  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
+</$set>

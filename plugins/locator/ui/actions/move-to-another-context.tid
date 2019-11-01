@@ -1,0 +1,10 @@
+tags: $:/tags/Actions
+title: $:/plugins/bimlas/locator/ui/actions/move-to-another-context
+type: text/vnd.tiddlywiki
+
+<$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+  <$fieldmangler tiddler=<<actionTiddler>>>
+    <$action-sendmessage $message="tm-remove-tag" $param=<<lastAncestorTag>>/>
+    <$action-sendmessage $message="tm-add-tag" $param=<<currentTiddler>>/>
+  </$fieldmangler>
+</$set>

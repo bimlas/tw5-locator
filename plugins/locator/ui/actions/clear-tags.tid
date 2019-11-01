@@ -1,0 +1,6 @@
+tags: $:/tags/Actions
+title: $:/plugins/bimlas/locator/ui/actions/clear-tags
+type: text/vnd.tiddlywiki
+
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
+<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[[]]"/>

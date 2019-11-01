@@ -1,0 +1,6 @@
+tags: $:/tags/Actions
+title: $:/plugins/bimlas/locator/ui/actions/add-ancestor-tag
+type: text/vnd.tiddlywiki
+
+<$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[all[current]]"/>
+<$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="[all[current]]"/>

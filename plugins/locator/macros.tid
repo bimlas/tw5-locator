@@ -36,9 +36,9 @@ type: text/vnd.tiddlywiki
 
 \end
 \define view-breadcrumb-ancestor-tag()
-  <$droppable actions=<<action-move-to-another-context>>>
+  <$droppable actions={{$:/plugins/bimlas/locator/ui/actions/move-to-another-context}}>
     <div class="tc-droppable-placeholder" style="display: block">
-      <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-last-tags-till-current>>>
+      <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/clear-last-tags-till-current}}>
         {{$:/core/images/right-arrow}}
       </$button>
       <$link to=<<currentTiddler>>>
@@ -48,13 +48,13 @@ type: text/vnd.tiddlywiki
   </$droppable>
 \end
 \define view-breadcrumb-ancestor-tag-in-search()
-  <$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions=<<action-remove-ancestor-tag>>>
+  <$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/remove-ancestor-tag}}>
     {{$:/core/images/link}}
   </$button>
   <<tag>>
 \end
 \define view-breadcrumb-direct-tag()
-  <$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions=<<action-remove-direct-tag>>>
+  <$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/remove-direct-tag}}>
     {{$:/core/images/tag-button}}
   </$button>
   <<tag>>
@@ -78,10 +78,10 @@ type: text/vnd.tiddlywiki
 \end
 \define view-locator-tags-list-item()
   <p class="tc-menu-list-item bimlas-locator">
-    <$button tooltip="Look for successors of the tag at any depth" class="tc-btn-invisible bimlas-locator" actions=<<action-add-ancestor-tag>>>
+    <$button tooltip="Look for successors of the tag at any depth" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/add-ancestor-tag}}>
       {{$:/core/images/link}}
     </$button>
-    <$button tooltip="Look for tiddlers having this tag" class="tc-btn-invisible bimlas-locator" actions=<<action-add-direct-tag>>>
+    <$button tooltip="Look for tiddlers having this tag" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/add-direct-tag}}>
       {{$:/core/images/tag-button}}
     </$button>
     <$button class="tc-btn-invisible bimlas-locator">
@@ -91,21 +91,20 @@ type: text/vnd.tiddlywiki
   </p>
 \end
 \define button-new-tiddler()
-  <$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator" actions=<<action-create-new-tiddler>>>
+  <$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/create-new-tiddler}}>
     {{$:/core/images/new-button}}
   </$button>
 \end
 \define button-return-to-default-context()
   <$list filter="[title<contextState>get[base-title]]">
-    <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator">
+    <$button tooltip="Go back to the default context" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/clear-tags}}>
       <$action-listops $tiddler=<<contextState>> $field="base-title" $filter="[[]]"/>
-      <<action-clear-tags>>
       {{$:/core/images/close-button}}
     </$button>
   </$list>
 \end
 \define button-remove-filters()
-  <$button tooltip="Remove filters" class="tc-btn-invisible bimlas-locator" actions=<<action-clear-tags>>>
+  <$button tooltip="Remove filters" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/clear-tags}}>
     {{$:/core/images/close-button}}
   </$button>
 \end
@@ -140,61 +139,4 @@ type: text/vnd.tiddlywiki
       {{$:/core/images/advanced-search-button}}
     </$button>
   </$wikify>
-\end
-\define action-add-ancestor-tag()
-
-  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[all[current]]"/>
-  <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="[all[current]]"/>
-
-\end
-\define action-remove-ancestor-tag()
-
-  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="-[all[current]]"/>
-  <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[all[current]]"/>
-
-\end
-\define action-add-direct-tag()
-
-  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[all[current]]"/>
-
-\end
-\define action-remove-direct-tag()
-
-  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="-[all[current]]"/>
-
-\end
-\define action-clear-last-tags-till-current()
-
-  <$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [all[current]]">
-    <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
-    <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
-  </$set>
-
-\end
-\define action-clear-tags()
-
-  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter="[[]]"/>
-  <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $filter="[[]]"/>
-
-\end
-\define action-create-new-tiddler()
-
-  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <$set name="tagsOfNewTiddler" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]">
-      <$set name="titleOfNewTiddler" tiddler="$(searchTiddler)$">
-        <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfNewTiddler>>/>
-      </$set>
-    </$set>
-  </$set>
-
-\end
-\define action-move-to-another-context()
-
-  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <$fieldmangler tiddler=<<actionTiddler>>>
-      <$action-sendmessage $message="tm-remove-tag" $param=<<lastAncestorTag>>/>
-      <$action-sendmessage $message="tm-add-tag" $param=<<currentTiddler>>/>
-    </$fieldmangler>
-  </$set>
-
 \end
