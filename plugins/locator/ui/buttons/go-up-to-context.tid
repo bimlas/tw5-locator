@@ -1,0 +1,7 @@
+tags:
+title: $:/plugins/bimlas/locator/ui/buttons/go-up-to-context
+type: text/vnd.tiddlywiki
+
+<$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/clear-last-tags-till-current}}>
+  {{$:/core/images/right-arrow}}
+</$button>

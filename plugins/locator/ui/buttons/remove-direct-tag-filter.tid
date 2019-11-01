@@ -1,0 +1,7 @@
+tags:
+title: $:/plugins/bimlas/locator/ui/buttons/remove-direct-tag-filter
+type: text/vnd.tiddlywiki
+
+<$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/remove-direct-tag}}>
+  {{$:/core/images/tag-button}}
+</$button>

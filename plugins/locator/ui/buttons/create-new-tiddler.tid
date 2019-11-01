@@ -1,0 +1,7 @@
+tags:
+title: $:/plugins/bimlas/locator/ui/buttons/create-new-tiddler
+type: text/vnd.tiddlywiki
+
+<$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/create-new-tiddler}}>
+  {{$:/core/images/new-button}}
+</$button>

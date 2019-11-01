@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
       <$set name="finalFilter" value=<<__finalFilter__>>>
         <div class="tc-table-of-contents">
 
-          <<button-new-tiddler>> <<button-return-to-default-context>>
+          {{||$:/plugins/bimlas/locator/ui/buttons/create-new-tiddler}} {{$:/plugins/bimlas/locator/ui/buttons/return-to-default-context}}
 
           <<view-breadcrumbs-of-context>>
 
@@ -31,17 +31,7 @@ type: text/vnd.tiddlywiki
                 <$droppable actions={{$:/plugins/bimlas/locator/ui/actions/move-to-another-context}}>
                   <li class="toc-item tc-droppable-placeholder" style="display: block">
 
-                    <$list filter="[all[current]is[tag]]">
-                      <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/add-ancestor-tag}}>
-                        {{$:/core/images/right-arrow}}
-                      </$button>
-                    </$list>
-                    <$list filter="[all[current]!is[tag]]">
-                      <$button class="tc-btn-invisible bimlas-locator">
-                        {{$:/core/images/blank}}
-                      </$button>
-                    </$list>
-                    <$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link>
+                    {{||$:/plugins/bimlas/locator/ui/buttons/go-down-to-context}} <$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link>
 
                   </li>
                 </$droppable>

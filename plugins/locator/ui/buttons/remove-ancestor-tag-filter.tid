@@ -1,0 +1,9 @@
+tags:
+title: $:/plugins/bimlas/locator/ui/buttons/remove-ancestor-tag-filter
+type: text/vnd.tiddlywiki
+
+<$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/remove-ancestor-tag}}>
+  {{$:/core/images/link}}
+</$button>
+
+
