@@ -1,5 +1,5 @@
 tags:
-title: $:/plugins/bimlas/locator/ui/buttons/copy-context-from-sidebar
+title: $:/plugins/bimlas/locator/buttons/copy-context-from-sidebar
 type: text/vnd.tiddlywiki
 
 <$button tooltip="Search in the context of Locator sidebar in any depth" class="tc-btn-invisible bimlas-locator">

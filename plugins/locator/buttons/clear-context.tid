@@ -1,0 +1,7 @@
+tags:
+title: $:/plugins/bimlas/locator/buttons/clear-context
+type: text/vnd.tiddlywiki
+
+<$button tooltip="Remove filters" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/clear-context}}>
+  {{$:/core/images/close-button}}
+</$button>

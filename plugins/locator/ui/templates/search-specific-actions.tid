@@ -1,8 +1,0 @@
-tags:
-title: $:/plugins/bimlas/locator/ui/templates/search-specific-actions
-type: text/vnd.tiddlywiki
-
-{{$:/plugins/bimlas/locator/ui/buttons/create-new-tiddler}}
-{{$:/plugins/bimlas/locator/ui/buttons/clear-context}}
-{{$:/plugins/bimlas/locator/ui/buttons/copy-context-from-sidebar}}
-{{$:/plugins/bimlas/locator/ui/buttons/copy-filter-to-advanced-search}}

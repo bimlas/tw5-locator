@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
       <$set name="finalFilter" value=<<__finalFilter__>>>
         <div class="tc-table-of-contents">
 
-          {{||$:/plugins/bimlas/locator/ui/buttons/create-new-tiddler}} {{$:/plugins/bimlas/locator/ui/buttons/return-to-default-context}}
+          {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} {{$:/plugins/bimlas/locator/buttons/return-to-default-context}}
 
           <<view-breadcrumbs-of-context>>
 
@@ -22,16 +22,16 @@ type: text/vnd.tiddlywiki
               <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
                 <$list filter="""[enlist<contextItems>tags[]!enlist<contextItems>] -[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>] +[sort[title]] $tagFilter$""">
                   <li class="toc-item">
-                    <$macrocall $name="view-tag-list-item" actions={{$:/plugins/bimlas/locator/ui/actions/add-direct-tag}}/>
+                    <$macrocall $name="view-tag-list-item" actions={{$:/plugins/bimlas/locator/actions/add-direct-tag}}/>
                   </li>
                 </$list>
               </$set>
 
               <$list filter=<<contextItems>>>
-                <$droppable actions={{$:/plugins/bimlas/locator/ui/actions/move-to-another-context}}>
+                <$droppable actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}>
                   <li class="toc-item tc-droppable-placeholder" style="display: block">
 
-                    {{||$:/plugins/bimlas/locator/ui/buttons/go-down-to-context}} <$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link>
+                    {{||$:/plugins/bimlas/locator/buttons/go-down-to-context}} <$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link>
 
                   </li>
                 </$droppable>

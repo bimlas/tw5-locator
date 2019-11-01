@@ -1,9 +1,9 @@
 tags:
-title: $:/plugins/bimlas/locator/ui/buttons/go-down-to-context
+title: $:/plugins/bimlas/locator/buttons/go-down-to-context
 type: text/vnd.tiddlywiki
 
 <$list filter="[all[current]is[tag]]">
-  <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/ui/actions/add-ancestor-tag}}>
+  <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/add-ancestor-tag}}>
     {{$:/core/images/right-arrow}}
   </$button>
 </$list>

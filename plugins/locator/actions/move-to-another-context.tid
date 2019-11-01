@@ -1,5 +1,5 @@
 tags: $:/tags/Actions
-title: $:/plugins/bimlas/locator/ui/actions/move-to-another-context
+title: $:/plugins/bimlas/locator/actions/move-to-another-context
 type: text/vnd.tiddlywiki
 
 <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>

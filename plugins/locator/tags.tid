@@ -9,13 +9,13 @@ type: text/vnd.tiddlywiki
       <$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
         <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
-          {{$:/plugins/bimlas/locator/ui/templates/search-specific-actions}} <$macrocall $name="view-breadcrumbs-of-context" ancestor-tag-template="$:/plugins/bimlas/locator/ui/templates/search-ancestor-tag-list-item"/>
+          {{$:/plugins/bimlas/locator/templates/search-specific-actions}} <$macrocall $name="view-breadcrumbs-of-context" ancestor-tag-template="$:/plugins/bimlas/locator/templates/search-ancestor-tag-list-item"/>
 
           //<small>{{$:/language/Search/Matches/Title}}</small>//
 
           <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="tags[]!subfilter<redunantDirectTags>search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
             <$list filter=<<filter>>>
-              {{||$:/plugins/bimlas/locator/ui/templates/tag-search-list-item}}
+              {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
             </$list>
           </$wikify>
 
@@ -23,7 +23,7 @@ type: text/vnd.tiddlywiki
 
           <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}tags[]!subfilter<redunantDirectTags>] -[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}] +[sort[title]limit[250]]"/>""">
             <$list filter=<<filter>>>
-              {{||$:/plugins/bimlas/locator/ui/templates/tag-search-list-item}}
+              {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
             </$list>
           </$wikify>
 
