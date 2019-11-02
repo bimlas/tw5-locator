@@ -12,6 +12,7 @@ type: text/vnd.tiddlywiki
 \define wikify-list-context-items()
 
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
+    <!-- TODO: Return with filter expression instead of list of tiddler titles -->
     <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
     <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[!has[draft.of]tag<lastAncestorTag>"/><$list filter="[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
       <$list filter=<<taggedByLastAncestorAndDirectTags>>>
