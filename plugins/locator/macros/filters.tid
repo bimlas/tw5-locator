@@ -1,5 +1,5 @@
 tags:
-title: $:/plugins/bimlas/locator/macros
+title: $:/plugins/bimlas/locator/macros/filters
 type: text/vnd.tiddlywiki
 
 \define filter-base-title() [title<contextState>each:list-item[base-title]] ~[<__baseTitle__>]
@@ -29,7 +29,7 @@ type: text/vnd.tiddlywiki
       <$transclude tiddler=<<__ancestor-tag-template__>>/>
     </$list>
     <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
-      {{||$:/plugins/bimlas/locator/templates/view-direct-tag-list-item}}
+      {{||$:/plugins/bimlas/locator/templates/direct-tag-list-item}}
     </$list>
 
   </$list>

@@ -1,10 +1,10 @@
 tags: $:/tags/Macro
-title: $:/plugins/bimlas/locator/view
+title: $:/plugins/bimlas/locator/macros/view
 type: text/vnd.tiddlywiki
 
 \define locator-view(baseTitle finalFilter="" tagFilter="")
   <!-- Hide internal macros, do not make them globally available -->
-  <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
+  <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
     <$set name="contextState" value={{{ [all[current]] -[[]] +[addprefix[$:/state/bimlas/locator/]] [[$:/state/bimlas/locator]] +[first[]] }}}>
       <$set name="finalFilter" value=<<__finalFilter__>>>

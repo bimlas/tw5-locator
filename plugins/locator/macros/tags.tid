@@ -1,10 +1,10 @@
 tags: $:/tags/Macro
-title: $:/plugins/bimlas/locator/tags
+title: $:/plugins/bimlas/locator/macros/tags
 type: text/vnd.tiddlywiki
 
 \define locator-tags(locatorViewTiddler: "")
   <!-- Hide internal macros, do not make them globally available -->
-  <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
+  <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <$set name="contextState" value="$:/state/bimlas/locator-search">
       <$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
         <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
