@@ -10,7 +10,9 @@ type: text/vnd.tiddlywiki
       <$set name="finalFilter" value=<<__finalFilter__>>>
         <div class="tc-table-of-contents">
 
-          {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} {{$:/plugins/bimlas/locator/buttons/return-to-default-context}}
+          {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$set name="tooltip" value="Go back to the default context">
+            {{$:/plugins/bimlas/locator/buttons/clear-context}}
+          </$set></$list>
 
           <<view-breadcrumbs-of-context>>
 

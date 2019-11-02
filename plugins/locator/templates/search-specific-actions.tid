@@ -2,7 +2,11 @@ tags:
 title: $:/plugins/bimlas/locator/templates/search-specific-actions
 type: text/vnd.tiddlywiki
 
+\define tooltip-for-clear-context() Remove filters
+
 {{$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
-{{$:/plugins/bimlas/locator/buttons/clear-context}}
+<$set name="tooltip" value="Remove filters">
+  {{$:/plugins/bimlas/locator/buttons/clear-context}}
+</$set>
 {{$:/plugins/bimlas/locator/buttons/copy-context-from-sidebar}}
 {{$:/plugins/bimlas/locator/buttons/copy-filter-to-advanced-search}}
