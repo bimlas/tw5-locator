@@ -1,6 +1,0 @@
-tags:
-title: $:/plugins/bimlas/locator/templates/direct-tag-list-item
-type: text/vnd.tiddlywiki
-
-{{||$:/plugins/bimlas/locator/buttons/remove-direct-tag-filter}}
-<<tag>>

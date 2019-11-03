@@ -8,7 +8,8 @@ type: text/vnd.tiddlywiki
     <$transclude tiddler=<<ancestor-tag-template-for-breadcrumbs>>/>
   </$list>
   <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
-    {{||$:/plugins/bimlas/locator/templates/direct-tag-list-item}}
+    {{||$:/plugins/bimlas/locator/buttons/remove-direct-tag-filter}}
+    <<tag>>
   </$list>
 
 </$list>
