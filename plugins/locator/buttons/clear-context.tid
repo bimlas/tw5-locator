@@ -2,7 +2,7 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/clear-context
 type: text/vnd.tiddlywiki
 
-<$button tooltip=<<tooltip>> class="tc-btn-invisible bimlas-locator">
+<$button tooltip=<<tooltip-for-clear-context>> class="tc-btn-invisible bimlas-locator">
   <$action-deletetiddler $tiddler=<<contextState>>/>
   {{$:/core/images/close-button}}
 </$button>
