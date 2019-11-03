@@ -8,7 +8,10 @@ type: text/vnd.tiddlywiki
     <$set name="contextState" value="$:/state/bimlas/locator-search">
       <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
-        {{$:/plugins/bimlas/locator/templates/search-specific-actions}} <$macrocall $name="view-breadcrumbs-of-context" ancestor-tag-template="$:/plugins/bimlas/locator/templates/search-ancestor-tag-list-item"/>
+        {{$:/plugins/bimlas/locator/templates/search-specific-actions}}
+        <$set name="ancestor-tag-template-for-breadcrumbs" value="$:/plugins/bimlas/locator/templates/search-ancestor-tag-list-item">
+          {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
+        </$set>
 
         //<small>{{$:/language/Search/Matches/Title}}</small>//
 

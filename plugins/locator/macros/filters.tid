@@ -22,17 +22,3 @@ type: text/vnd.tiddlywiki
   </$set>
 
 \end
-\define view-breadcrumbs-of-context(ancestor-tag-template: "$:/plugins/bimlas/locator/templates/view-ancestor-tag-list-item")
-
-  <$list filter=<<filter-breadcrumbs>>>
-
-    <$list filter="[subfilter<filter-ancestor-tags>is[current]]">
-      <$transclude tiddler=<<__ancestor-tag-template__>>/>
-    </$list>
-    <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
-      {{||$:/plugins/bimlas/locator/templates/direct-tag-list-item}}
-    </$list>
-
-  </$list>
-
-\end

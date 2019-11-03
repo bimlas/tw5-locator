@@ -1,0 +1,14 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/breadcrumbs
+type: text/vnd.tiddlywiki
+
+<$list filter=<<filter-breadcrumbs>>>
+
+  <$list filter="[subfilter<filter-ancestor-tags>is[current]]">
+    <$transclude tiddler=<<ancestor-tag-template-for-breadcrumbs>>/>
+  </$list>
+  <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
+    {{||$:/plugins/bimlas/locator/templates/direct-tag-list-item}}
+  </$list>
+
+</$list>

@@ -14,7 +14,9 @@ type: text/vnd.tiddlywiki
             {{$:/plugins/bimlas/locator/buttons/clear-context}}
           </$set></$list>
 
-          <<view-breadcrumbs-of-context>>
+          <$set name="ancestor-tag-template-for-breadcrumbs" value="$:/plugins/bimlas/locator/templates/view-ancestor-tag-list-item">
+            {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
+          </$set>
 
           ---
 
