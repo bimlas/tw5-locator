@@ -19,6 +19,7 @@ type: text/vnd.tiddlywiki
   display: inline-block;
   background-color: inherit;
 }
+/* TODO: Maybe not necessary */
 .tc-drop-down p.tc-menu-list-item.bimlas-locator {
   margin-top: 0;
   margin-bottom: 0;

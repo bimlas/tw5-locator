@@ -1,21 +1,22 @@
 tags: $:/tags/Macro
-title: $:/plugins/bimlas/locator/tags
+title: $:/plugins/bimlas/locator/macros/locator-tags
 type: text/vnd.tiddlywiki
 
 \define locator-tags(locatorViewTiddler: "")
   <!-- Hide internal macros, do not make them globally available -->
-  <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
+  <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <$set name="contextState" value="$:/state/bimlas/locator-search">
       <$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
         <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
-          <<view-search-specific-actions>> <$macrocall $name="view-breadcrumbs-of-context" ancestor-tag-template=<<view-breadcrumb-ancestor-tag-in-search>>/>
+          {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+          {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
 
           //<small>{{$:/language/Search/Matches/Title}}</small>//
 
           <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="tags[]!subfilter<redunantDirectTags>search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
             <$list filter=<<filter>>>
-              <<view-locator-tags-list-item>>
+              {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
             </$list>
           </$wikify>
 
@@ -23,7 +24,7 @@ type: text/vnd.tiddlywiki
 
           <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}tags[]!subfilter<redunantDirectTags>] -[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}] +[sort[title]limit[250]]"/>""">
             <$list filter=<<filter>>>
-              <<view-locator-tags-list-item>>
+              {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
             </$list>
           </$wikify>
 

@@ -1,14 +1,15 @@
 tags: $:/tags/Macro
-title: $:/plugins/bimlas/locator/search
+title: $:/plugins/bimlas/locator/macros/locator-search
 type: text/vnd.tiddlywiki
 
 \define locator-search(locatorViewTiddler: "")
   <!-- Hide internal macros, do not make them globally available -->
-  <$importvariables filter="[[$:/plugins/bimlas/locator/macros]]">
+  <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <$set name="contextState" value="$:/state/bimlas/locator-search">
       <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
-        <<view-search-specific-actions>> <$macrocall $name="view-breadcrumbs-of-context" ancestor-tag-template=<<view-breadcrumb-ancestor-tag-in-search>>/>
+        {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+        {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
 
         //<small>{{$:/language/Search/Matches/Title}}</small>//
 

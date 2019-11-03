@@ -1,0 +1,11 @@
+tags:
+title: $:/plugins/bimlas/locator/buttons/go-up-to-context
+type: text/vnd.tiddlywiki
+
+<$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator">
+  <$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [all[current]]">
+    <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
+    <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
+  </$set>
+  {{$:/core/images/right-arrow}}
+</$button>

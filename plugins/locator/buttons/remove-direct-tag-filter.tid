@@ -1,0 +1,8 @@
+tags:
+title: $:/plugins/bimlas/locator/buttons/remove-direct-tag-filter
+type: text/vnd.tiddlywiki
+
+<$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator">
+  <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="-[all[current]]"/>
+  {{$:/core/images/tag-button}}
+</$button>
