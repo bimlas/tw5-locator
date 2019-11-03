@@ -36,16 +36,3 @@ type: text/vnd.tiddlywiki
   </$list>
 
 \end
-\define view-tag-list-item(actions)
-  <p class="tc-menu-list-item">
-    <!-- TODO: Extract button -->
-    <$button tooltip="Look for tiddlers having this tag" class="tc-btn-invisible bimlas-locator" actions=<<__actions__>>>
-      {{$:/core/images/tag-button}}
-    </$button>
-    <!-- TODO: Extract button -->
-    <$button class="tc-btn-invisible bimlas-locator">
-      <$action-navigate $to=<<currentTiddler>>/>
-      <<tag>>
-    </$button>
-  </p>
-\end

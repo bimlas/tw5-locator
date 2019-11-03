@@ -24,7 +24,9 @@ type: text/vnd.tiddlywiki
               <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
                 <$list filter="""[enlist<contextItems>tags[]!enlist<contextItems>] -[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>] +[sort[title]] $tagFilter$""">
                   <li class="toc-item">
-                    <$macrocall $name="view-tag-list-item" actions={{$:/plugins/bimlas/locator/actions/add-direct-tag}}/>
+
+                      {{||$:/plugins/bimlas/locator/buttons/add-direct-tag-filter}} <<tag>>
+
                   </li>
                 </$list>
               </$set>
