@@ -17,11 +17,11 @@ type: text/vnd.tiddlywiki
 
         ---
 
-        <$wikify name="contextItems" text=<<wikify-list-context-items>>>
+        <$wikify name="filterContextItems" text=<<wikify-filter-context-items>>>
           <ol>
 
             <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-              <$list filter="""[enlist<contextItems>tags[]!enlist<contextItems>] -[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>] +[sort[title]] $tagFilter$""">
+              <$list filter="""[subfilter<filterContextItems>tags[]!subfilter<filterContextItems>] -[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>] +[sort[title]] $tagFilter$""">
                 <li class="toc-item">
 
                     {{||$:/plugins/bimlas/locator/buttons/add-direct-tag-filter}} <<tag>>
@@ -30,7 +30,7 @@ type: text/vnd.tiddlywiki
               </$list>
             </$set>
 
-            <$list filter=<<contextItems>>>
+            <$list filter=<<filterContextItems>>>
               <$droppable actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}>
                 <li class="toc-item tc-droppable-placeholder" style="display: block">
 

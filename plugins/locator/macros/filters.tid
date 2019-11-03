@@ -9,16 +9,10 @@ type: text/vnd.tiddlywiki
 \define wikify-filter-search-context()
   <$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list>
 \end
-\define wikify-list-context-items()
+\define wikify-filter-context-items()
 
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <!-- TODO: Return with filter expression instead of list of tiddler titles -->
-    <!-- I know this monster looks terrible, but I can't build this filter any other way. -->
-    <$wikify name="taggedByLastAncestorAndDirectTags" text="""<$text text="[!has[draft.of]tag<lastAncestorTag>"/><$list filter="[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>""">
-      <$list filter=<<taggedByLastAncestorAndDirectTags>>>
-        <$text text="[["/><$view field="title"/><$text text="]]"/>
-      </$list>
-    </$wikify>
+    <$text text="[!has[draft.of]"/><$list filter="[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>
   </$set>
 
 \end
