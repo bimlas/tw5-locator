@@ -7,28 +7,26 @@ type: text/vnd.tiddlywiki
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <$set name="contextState" value="$:/state/bimlas/locator-search">
       <$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
-        <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
-          {{$:/plugins/bimlas/locator/templates/search-toolbar}}
-          {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
+        {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+        {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
 
-          //<small>{{$:/language/Search/Matches/Title}}</small>//
+        //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-          <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="tags[]!subfilter<redunantDirectTags>search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
-            <$list filter=<<filter>>>
-              {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
-            </$list>
-          </$wikify>
-
-          //<small>Related tags</small>//
-
-          <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}tags[]!subfilter<redunantDirectTags>] -[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}] +[sort[title]limit[250]]"/>""">
-            <$list filter=<<filter>>>
-              {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
-            </$list>
-          </$wikify>
-
+        <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"tags[]!subfilter<redunantDirectTags>search:title" postFilter:"sort[title]limit[250]">>>
+          <$list filter=<<filter>>>
+            {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
+          </$list>
         </$wikify>
+
+        //<small>Related tags</small>//
+
+        <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search" postFilter:"tags[]!subfilter<redunantDirectTags>sort[title]limit[250]">>>
+          <$list filter=<<filter>>>
+            {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
+          </$list>
+        </$wikify>
+
       </$set>
     </$set>
   </$importvariables>

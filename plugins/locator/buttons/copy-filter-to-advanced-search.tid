@@ -6,9 +6,9 @@ type: text/vnd.tiddlywiki
 Since the search term may contain characters that affect the filter, I
 do not copy the search term, I just refer to the tiddler.
 -->
-<$wikify name="searchContextFilter" text="""[<<wikify-filter-search-context>>search{$:/temp/search}]""">
+<$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search">>>
   <$button tooltip="Continue filtering in advanced search" class="tc-btn-invisible bimlas-locator">
-    <$action-setfield $tiddler="$:/temp/advancedsearch" text=<<searchContextFilter>>/>
+    <$action-setfield $tiddler="$:/temp/advancedsearch" text=<<filter>>/>
     <$action-navigate $to="$:/AdvancedSearch"/>
     {{$:/core/images/advanced-search-button}}
   </$button>

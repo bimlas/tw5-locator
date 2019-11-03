@@ -6,24 +6,22 @@ type: text/vnd.tiddlywiki
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <$set name="contextState" value="$:/state/bimlas/locator-search">
-      <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
-        {{$:/plugins/bimlas/locator/templates/search-toolbar}}
-        {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
+      {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+      {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
 
-        //<small>{{$:/language/Search/Matches/Title}}</small>//
+      //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-        <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search:title{$(searchTiddler)$}sort[title]limit[250]]"/>""">
-          <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
-        </$wikify>
-
-        //<small>{{$:/language/Search/Matches/All}}</small>//
-
-        <$wikify name="filter" text="""<$text text="[!is[system]"/><<searchContextFilter>><$text text="search{$(searchTiddler)$}sort[title]limit[250]]"/>""">
-          <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
-        </$wikify>
-
+      <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search:title" postFilter:"limit[250]">>>
+        <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
       </$wikify>
+
+      //<small>{{$:/language/Search/Matches/All}}</small>//
+
+      <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search" postFilter:"limit[250]">>>
+        <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
+      </$wikify>
+
     </$set>
   </$importvariables>
 \end
