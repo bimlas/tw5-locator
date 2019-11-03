@@ -10,9 +10,7 @@ type: text/vnd.tiddlywiki
         <$wikify name="searchContextFilter" text=<<wikify-filter-search-context>>>
 
           {{$:/plugins/bimlas/locator/templates/search-toolbar}}
-          <$set name="ancestor-tag-template-for-breadcrumbs" value="$:/plugins/bimlas/locator/templates/search-ancestor-tag-list-item">
-            {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
-          </$set>
+          {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
 
           //<small>{{$:/language/Search/Matches/Title}}</small>//
 
