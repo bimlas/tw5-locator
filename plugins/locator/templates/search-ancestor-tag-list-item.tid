@@ -1,6 +1,0 @@
-tags:
-title: $:/plugins/bimlas/locator/templates/search-ancestor-tag-list-item
-type: text/vnd.tiddlywiki
-
-{{||$:/plugins/bimlas/locator/buttons/remove-ancestor-tag-filter}}
-<<tag>>
