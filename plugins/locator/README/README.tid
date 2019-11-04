@@ -20,7 +20,7 @@ For those who use many tags or store many different topics in a common wiki the 
 * ''Phone friendlier''<br/>The width of the classic ToC is increasing and the size of the text is decrasing as we move down in the context, while Locator remains readable.
 
 @@.bimlas-locator-warning
-''REQUIREMENT: The marked features require the `kin` filter operator'' (see on the other tabs): https://bimlas.gitlab.io/tw5-kin-filter
+''REQUIREMENT: The marked features require the `kin` filter operator'' (see on the other tabs): https://bimlas.gitlab.io/tw5-kin-filter<br />If this filter operator is unavailable, the relevant buttons will be hidden.
 @@
 
 ! Installation instructions

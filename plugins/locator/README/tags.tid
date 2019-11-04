@@ -5,7 +5,7 @@ type: text/vnd.tiddlywiki
 ! Usage of `locator-tags` (customised search results for tags)
 
 @@.bimlas-locator-warning.bimlas-locator-explanation
-Filtering by ancestor tags ({{$:/core/images/link}}) requires the `kin` filter operator, filtering by direct tags ({{$:/core/images/tag-button}}) works without it!
+Filtering by ancestor tags ({{$:/core/images/link}}) and searching in current context of sidebar ({{$:/core/images/close-others-button}}) requires the `kin` filter operator, filtering by direct tags ({{$:/core/images/tag-button}}) works without it!
 @@
 
 Take the same steps you did for `locator-search`, but use this code:
