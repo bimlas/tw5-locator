@@ -9,6 +9,11 @@ type: text/vnd.tiddlywiki
       <$set name="redunantDirectTags" value="[title<contextState>each:list-item[breadcrumbs]]">
 
         {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+
+        <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search" postFilter:"count[]">>>
+          <$list filter=<<filter>> variable="resultCount" template="$:/language/Search/Matches"/>
+        </$wikify>
+
         {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
 
         //<small>{{$:/language/Search/Matches/Title}}</small>//
