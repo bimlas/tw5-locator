@@ -11,6 +11,7 @@ Unreleased
 * Show the (top-level) base tag to be able to move the tiddler titles there
 * Button to open search results in advanced search
 * Fix a bug about related tag (not all of them were listed)
+* Fix style bug about whitespace
 * Refactor the code
 * Add tutorial to the demo
 

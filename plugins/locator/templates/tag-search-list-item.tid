@@ -2,10 +2,9 @@ tags:
 title: $:/plugins/bimlas/locator/templates/tag-search-list-item
 type: text/vnd.tiddlywiki
 
-<!-- TODO: `div` is enough, `p` is not needing -->
-<p class="tc-menu-list-item bimlas-locator">
+<div class="tc-menu-list-item bimlas-locator">
   {{||$:/plugins/bimlas/locator/buttons/add-ancestor-tag-filter}}
   {{||$:/plugins/bimlas/locator/buttons/add-direct-tag-filter}}
   <$action-navigate $to=<<currentTiddler>>/>
   <<tag>>
-</p>
+</div>

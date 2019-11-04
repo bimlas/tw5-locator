@@ -20,14 +20,14 @@ type: text/vnd.tiddlywiki
 
 <$set name="ancestorTag" filter="[<contextState>contains:title[$:/state/bimlas/locator-search]]" value=<<ancestor-tag-in-search>> emptyValue=<<ancestor-tag-in-view>>>
   <$list filter=<<filter-breadcrumbs>>>
-
-    <$list filter="[subfilter<filter-ancestor-tags>is[current]]">
-      <<ancestorTag>>
-    </$list>
-    <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
-      {{||$:/plugins/bimlas/locator/buttons/remove-direct-tag-filter}}
-      <<tag>>
-    </$list>
-
+    <div class="tc-menu-list-item bimlas-locator">
+      <$list filter="[subfilter<filter-ancestor-tags>is[current]]">
+        <<ancestorTag>>
+      </$list>
+      <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
+        {{||$:/plugins/bimlas/locator/buttons/remove-direct-tag-filter}}
+        <<tag>>
+      </$list>
+    </div>
   </$list>
 </$set>
