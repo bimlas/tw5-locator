@@ -3,7 +3,9 @@ title: $:/plugins/bimlas/locator/templates/tag-search-list-item
 type: text/vnd.tiddlywiki
 
 <div class="tc-menu-list-item bimlas-locator">
-  {{||$:/plugins/bimlas/locator/buttons/add-ancestor-tag-filter}}
+  <$list filter=<<filter-kin-filteroperator-available>> variable="doNotOverrideCurrent">
+    {{||$:/plugins/bimlas/locator/buttons/add-ancestor-tag-filter}}
+  </$list>
   {{||$:/plugins/bimlas/locator/buttons/add-direct-tag-filter}}
   <$action-navigate $to=<<currentTiddler>>/>
   <<tag>>

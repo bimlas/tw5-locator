@@ -2,6 +2,7 @@ tags:
 title: $:/plugins/bimlas/locator/macros/filters
 type: text/vnd.tiddlywiki
 
+\define filter-kin-filteroperator-available() [[$:/plugins/bimlas/kin-filter]is[tiddler]]
 \define filter-base-title() [title<contextState>each:list-item[base-title]] ~[<__baseTitle__>]
 \define filter-breadcrumbs() [subfilter<filter-base-title>] [title<contextState>each:list-item[breadcrumbs]] -[[]]
 \define filter-ancestor-tags() [subfilter<filter-base-title>] [title<contextState>each:list-item[ancestor-tags]] -[[]]
