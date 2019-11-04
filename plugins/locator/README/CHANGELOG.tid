@@ -10,6 +10,8 @@ Unreleased
 * Assign any tiddler to any of the titles in the Locator sidebar by drag-n-dropping
 * Show the (top-level) base tag to be able to move the tiddler titles there
 * Button to open search results in advanced search
+* Fix a bug about related tag (not all of them were listed)
+* Refactor the code
 * Add tutorial to the demo
 
 !! 1.4.0
