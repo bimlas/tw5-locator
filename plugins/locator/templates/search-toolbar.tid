@@ -6,7 +6,7 @@ type: text/vnd.tiddlywiki
 
 <$set name="tooltip-for-clear-context" value="Remove filters">
   {{$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
-  {{$:/plugins/bimlas/locator/buttons/clear-context}}
   {{$:/plugins/bimlas/locator/buttons/copy-context-from-sidebar}}
   {{$:/plugins/bimlas/locator/buttons/copy-filter-to-advanced-search}}
+  <$list filter="[<contextState>get[breadcrumbs]first[]]">{{$:/plugins/bimlas/locator/buttons/clear-context}}</$list>
 </$set>
