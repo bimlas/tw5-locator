@@ -20,7 +20,8 @@ type: text/vnd.tiddlywiki
         <$wikify name="filterContextItems" text=<<wikify-filter-context-items>>>
           <ol>
             <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-              <$list filter="""[subfilter<filterContextItems>tags[]!subfilter<filterContextItems>] -[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>] +[sort[title]] $tagFilter$""">
+              <!-- Do not use `allafter:include[]` to keep 5.1.18 compatibility, see https://github.com/Jermolene/TiddlyWiki5/issues/3962 -->
+              <$list filter="""[subfilter<filterContextItems>tags[]!subfilter<filterContextItems>] -[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>] -[<lastAncestorTag>] +[sort[title]] $tagFilter$""">
                 <li class="toc-item bimlas-locator">
                     {{||$:/plugins/bimlas/locator/buttons/add-direct-tag-filter}} <<tag>>
                 </li>

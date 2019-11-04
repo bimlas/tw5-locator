@@ -10,9 +10,8 @@ type: text/vnd.tiddlywiki
   <$text text="[!is[system]"/><$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list><$text text="$preFilter${$(searchTiddler)$}$postFilter$]"/>
 \end
 \define wikify-filter-context-items()
-
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <$text text="[!has[draft.of]"/><$list filter="[subfilter<filter-breadcrumbs>allafter:include<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>
+  <!-- Do not use `allafter:include[]` to keep 5.1.18 compatibility, see https://github.com/Jermolene/TiddlyWiki5/issues/3962 -->
+    <$text text="[!has[draft.of]"/><$list filter="[<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>
   </$set>
-
 \end
