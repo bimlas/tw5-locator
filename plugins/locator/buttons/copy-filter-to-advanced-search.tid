@@ -9,6 +9,7 @@ do not copy the search term, I just refer to the tiddler.
 <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search">>>
   <$button tooltip="Continue filtering in advanced search" class="tc-btn-invisible bimlas-locator">
     <$action-setfield $tiddler="$:/temp/advancedsearch" text=<<filter>>/>
+    <$action-setfield $tiddler="$:/state/tab--1498284803" text="$:/core/ui/AdvancedSearch/Filter"/>
     <$action-navigate $to="$:/AdvancedSearch"/>
     {{$:/core/images/advanced-search-button}}
   </$button>

@@ -1,6 +1,6 @@
 created: 20190120115910162
 modified: 20191025195753455
-tags: 
+tags:
 title: README
 type: text/vnd.tiddlywiki
 
@@ -44,7 +44,7 @@ Feel free to write down your thoughts and suggestions, ''you can comment at the 
 : You can use the search box to search for tags by name in the Tags tab. For example, you remember a sauce recipe that could be used for chicken dishes, so you search for "sauce" and click on the {{$:/core/images/tag-button}} icon next to [[sauces]] in the list because you are sure you added this tag to the tiddler (so it's a direct tag) and then search for "chicken", and you click the {{$:/core/images/link}} icon next to [[chicken]] in the list because you only know that it is related to the chicken topic somewhere, but you do not know the depth (ancestor tag).
 
 ; Filter the list further in [[$:/AdvancedSearch]]
-: Click the {{$:/core/images/advanced-search-button}} icon in any of the search tabs to copy the search term ([[chicken]] and [[sauces]] tags) into [[$:/AdvancedSearch]] (the same list should be displayed as in the search box), switch to "Filter" tab. You can still enter the text you are looking for in the search box in the sidebar, but add extra filters in [[$:/AdvancedSearch]].
+: Click the {{$:/core/images/advanced-search-button}} icon in any of the search tabs to copy the search term ([[chicken]] and [[sauces]] tags) into [[$:/AdvancedSearch]] (the same list should be displayed as in the search results). You can still enter the text you are looking for in the search box in the sidebar, but add extra filters in [[$:/AdvancedSearch]].
 
 ; Create a new tiddler from the search text
 : Create a new tiddler by clicking on the {{$:/core/images/new-button}} icon, it's title will be the search term and assigned to the last selected ancestor ({{$:/core/images/link}}, [[chicken]] in this example) and all direct tags ({{$:/core/images/tag-button}}, e.g. [[sauces]]).
