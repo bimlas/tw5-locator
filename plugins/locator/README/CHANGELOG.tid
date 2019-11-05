@@ -8,7 +8,7 @@ Unreleased
 
 !! 1.5.0
 
-[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/1.4.0...1.5.0]]
+[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.4.0...v1.5.0]]
 
 * Move tiddler from current context to higher- or subtopic by drag-n-dropping in the Locator sidebar
 * Assign any tiddler to any of the titles in the Locator sidebar by drag-n-dropping
