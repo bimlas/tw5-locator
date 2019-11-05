@@ -2,11 +2,35 @@ tags:
 title: $:/plugins/bimlas/locator/README/view
 type: text/vnd.tiddlywiki
 
-! Usage of `locator-view` (Table of Contents macro)
+! Usage of `locator-view`
 
-Use the following macro to ''display the table of contents of a topic'' as the [[classic Table of Contents macro|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]] does, but ''it also shows non-visible tags''. For example, the [[Henry Ford]] tiddler has the [[Family tree of Ford]] and [[President]] tags. In the classic table of contents, opening [[Family tree of Ford]] shows only [[Henry Ford]], but we do not see the [[President]] tag. The Locator lists this related tag, so ''we can easily filter the current context by additional tags''.
+This is ''a [[Table of Contents macro|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]] that lets you navigate the wiki'' just as you would with a file manager on the file system. The macro can be placed anywhere you want, for example put it in the sidebar or in the main tiddler of each topic in your wiki.
 
-The macro can be placed anywhere you want to display a browsable table of contents, for example put it in the main tiddler of each topic in your wiki.
+!! Features
+
+!!! Show non-visible tags
+
+For example, the [[Henry Ford]] tiddler has the [[Family tree of Ford]] and [[President]] tags. In the classic table of contents, opening [[Family tree of Ford]] shows only [[Henry Ford]], but we do not see the [[President]] tag. The Locator lists this related tag, so ''we can easily filter the current context by additional tags''.
+
+If you don't like this feature, you can disable by passing a special filter for tags (se bellow).
+
+!!! Open any tag in the sidebar
+
+@@.bimlas-locator-explanation
+There is ''a new button in the toolbar of the tiddlers that are tagging other tiddlers'': by pressing the "{{$:/core/images/chevron-right}} locator sidebar" button, you can ''display the current tiddler's hierarchy in the Locator sidebar''.
+@@
+
+For example, if we search for [[Henry Ford II]] in the standard search, open his tiddler and we want to browse its successors, pressing this button will show it in the Locator sidebar where we can view it as a table of contents.
+
+If you do not want to leave this button in the toolbar, you can turn it off in the [[$:/ControlPanel]] -> Apperance -> Toolbars -> [[View Toolbar|$:/core/ui/ControlPanel/Toolbars/ViewToolbar]].
+
+!!! Reorganize hierarchy, move tiddler from current context to another by drag-n-dropping
+
+''Move the tiddlers between the topics as you do with files on the filesystem.'' For example, if you open the Animals tag in the Locator sidebar and the list includes Squirrel, Fox, and Mammals, dropping the Fox and Squirrel on the Mammals will remove the Animal (the last ancestor) tag and replace it with the Mammals. If you have Fish in the Mammals topic, you can easily place it in a higher context (Animals) by dropping it at the desired ancestor tag. This is ''useful if you want to re-organize your tiddlers by splitting a larger topic into several smaller topics''.
+
+You can drag-n-drop any tiddler title (even from tiddler text) to the titles in the Locator sidebar to apply the target tag on it, so you can categorize the tiddlers without going through them in edit mode.
+
+If you want to interrupt drag-n-dropping, press <kbd>Escape</kbd>.
 
 !! Create a Table of Contents sidebar
 
@@ -22,7 +46,7 @@ The macro can be placed anywhere you want to display a browsable table of conten
 !! The table of contents is structured as follows
 
 <div class="tc-tiddler-frame bimlas-locator-explanation">
-{{$:/core/images/refresh-button}} {{$:/core/images/new-button}}<br/>
+{{$:/core/images/new-button}} {{$:/core/images/close-button}}<br/>
 {{$:/core/images/right-arrow}} Ancestor tags<br/>
 {{$:/core/images/right-arrow}} (Previously opened parents, breadcrumbs)<br/>
 <hr/>
@@ -39,8 +63,8 @@ The macro can be placed anywhere you want to display a browsable table of conten
 @@.bimlas-locator-explanation
 * {{$:/core/images/right-arrow}}: Move in to the context (show children of title)
 * {{$:/core/images/tag-button}}: Toggle filtering the list to this tag
-* {{$:/core/images/refresh-button}}: Reset the context, go to the top level
 * {{$:/core/images/new-button}}: Create new tiddler in the current context: apply the parent of the current view (the last ancestor tag) and the direct tags below it (like a special "new here" button)
+* {{$:/core/images/close-button}}: Go back to the default context (if it's overridden by the "show in Locator sidebar" button)
 * Click on titles to open the tiddlers
 @@
 
@@ -84,14 +108,12 @@ If you only want to see the "classic" tags ("labels", "hashtags") which are used
 The latter filter requires the `kin` filter operator, besides this it could be slow!
 @@
 
-!! Open any tag in the sidebar
+!! Hide related tags
 
-@@.bimlas-locator-explanation
-There is ''a new button in the toolbar of the tiddlers that are tagging other tiddlers'': by pressing the "{{$:/core/images/chevron-right}} locator sidebar" button, you can ''display the current tiddler's hierarchy in the Locator sidebar''.
-@@
+If you don't want to see related tags, just enter a tag filter term that is sure to filter everything out. For example:
 
-For example, if we search for [[Henry Ford II]] in the standard search, open his tiddler and we want to browse its successors, pressing this button will show it in the Locator sidebar where we can view it as a table of contents.
-
-If you do not want to leave this button in the toolbar, you can turn it off in the [[$:/ControlPanel]] -> Apperance -> Toolbars -> [[View Toolbar|$:/core/ui/ControlPanel/Toolbars/ViewToolbar]].
+```
+<<locator-view baseTitle:"TableOfContents" tagFilter:"+[has[PLEASE HIDE RELATED TAGS]]">>
+```
 
 //Select the next tab to continue.//

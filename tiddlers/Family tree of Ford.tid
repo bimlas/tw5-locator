@@ -1,5 +1,5 @@
 created: 20190109181535967
-modified: 20190120121908828
+modified: 20191024062333478
 tags: TableOfContents
 title: Family tree of Ford
 type: text/vnd.tiddlywiki
@@ -10,4 +10,4 @@ In this example, the Ford family tree can be seen, and the underlying Locator re
 
 //Image taken from https://hu.pinterest.com/pin/16747829837549219/ //
 
-<<locator-view "Ford family">>
+<<locator-view "Family tree of Ford">>

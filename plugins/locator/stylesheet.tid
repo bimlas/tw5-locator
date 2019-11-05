@@ -19,7 +19,7 @@ type: text/vnd.tiddlywiki
   display: inline-block;
   background-color: inherit;
 }
-.tc-drop-down p.tc-menu-list-item.bimlas-locator {
-  margin-top: 0;
+li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
+  margin-top: 3px;
   margin-bottom: 0;
 }

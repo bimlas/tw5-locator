@@ -5,10 +5,10 @@ type: text/vnd.tiddlywiki
 ! Usage of `locator-search` (customised search results)
 
 @@.bimlas-locator-warning.bimlas-locator-explanation
-Filtering by ancestor tags ({{$:/core/images/link}}) requires the `kin` filter operator, filtering by direct tags ({{$:/core/images/tag-button}}) works without it!
+Filtering by ancestor tags ({{$:/core/images/link}}) and searching in current context of sidebar ({{$:/core/images/close-others-button}}) requires the `kin` filter operator, filtering by direct tags ({{$:/core/images/tag-button}}) works without it!
 @@
 
-The macro can be used to ''search only in the context defined by `locator-view` or `locator-tags`''.
+The macro can be used in the same way as standard search, but ''you can narrow the scope of the search to the context defined by `locator-view` or `locator-tags`''.
 
 * Add a `locator-view` to the sidebar as described previously
 * Create a new tiddler
@@ -21,8 +21,10 @@ The macro can be used to ''search only in the context defined by `locator-view` 
 ```
 
 @@.bimlas-locator-explanation
-If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results. Use the {{$:/core/images/close-others-button}} button to ''restrict the search to the context of the Locator sidebar'' by copying its breadcrumbs (opened ancestor tags and selected direct tags) as ancestor tags (thus ''this button requires the `kin` filter''). Adding additional tags is possible in `locator-tags`.
+If you type something in the standard search, you can see the newly created tiddler as a new tab in the search results. Use the {{$:/core/images/close-others-button}} button to ''restrict the search to the context of the Locator sidebar. For example if you opened the [[Family tree of Ford]] in the sidebar, pressing this button will restrict the search to all members of the Ford family.
 @@
+
+Adding additional tags or searching for intersection of any tags is possible in `locator-tags`.
 
 @@.bimlas-locator-explanation
 ''Pressing {{$:/core/images/new-button}} creates a new tiddler with the currently selected tags whose default name will be the search text''

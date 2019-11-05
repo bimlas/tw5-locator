@@ -6,7 +6,7 @@ description: Browse hierarchy of tag in Locator sidebar
 list-before: $:/core/ui/Buttons/open-window
 
 \whitespace trim
-<$reveal type="nomatch" default="" text={{{ [all[current]is[tag]] }}}>
+<$list filter="[all[current]is[tag]]">
 <$button tooltip="Browse hierarchy of tag in Locator sidebar" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
 <$action-listops $tiddler="$:/state/bimlas/locator" $field="base-title" $filter="[all[current]]"/>
 <$action-listops $tiddler="$:/state/bimlas/locator" $field="breadcrumbs" $filter=[[]]/>
@@ -21,4 +21,4 @@ list-before: $:/core/ui/Buttons/open-window
 </span>
 </$list>
 </$button>
-</$reveal>
+</$list>

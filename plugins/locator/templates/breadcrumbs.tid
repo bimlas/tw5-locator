@@ -1,0 +1,33 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/breadcrumbs
+type: text/vnd.tiddlywiki
+
+\define ancestor-tag-in-search()
+  {{||$:/plugins/bimlas/locator/buttons/remove-ancestor-tag-filter}}
+  <<tag>>
+\end
+
+\define ancestor-tag-in-view()
+  <$droppable actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}>
+    <div class="tc-droppable-placeholder" style="display: block">
+      {{||$:/plugins/bimlas/locator/buttons/go-up-to-context}}
+      <$link to=<<currentTiddler>>>
+        <$transclude field="caption"><$view field="title"/></$transclude>
+      </$link>
+    </div>
+  </$droppable>
+\end
+
+<$set name="ancestorTag" filter="[<contextState>contains:title[$:/state/bimlas/locator-search]]" value=<<ancestor-tag-in-search>> emptyValue=<<ancestor-tag-in-view>>>
+  <$list filter=<<filter-breadcrumbs>>>
+    <div class="tc-menu-list-item bimlas-locator">
+      <$list filter="[subfilter<filter-ancestor-tags>is[current]]">
+        <<ancestorTag>>
+      </$list>
+      <$list filter="[all[current]] -[subfilter<filter-ancestor-tags>]">
+        {{||$:/plugins/bimlas/locator/buttons/remove-direct-tag-filter}}
+        <<tag>>
+      </$list>
+    </div>
+  </$list>
+</$set>
