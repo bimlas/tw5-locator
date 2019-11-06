@@ -7,5 +7,7 @@ title: Locator view
 type: text/vnd.tiddlywiki
 
 <$reveal type="match" default="" text={{{ [prefix[$:/state/popup/search-dropdown]] }}}>
-<<locator-view baseTitle:"TableOfContents">>
+  <<locator-view baseTitle:"TableOfContents">>
 </$reveal>
+
+> This sidebar is hidden when the focus is on the search entry to increase responsiveness - see [[Locator view]] for the code.
