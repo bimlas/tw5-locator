@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
 
         {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
-        <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search" postFilter:"count[]">>>
+        <$wikify name="filter" text=<<wikify-filter-search-context filter:"search{$(searchTiddler)$}count[]">>>
           <$list filter=<<filter>> variable="resultCount" template="$:/language/Search/Matches"/>
         </$wikify>
 
@@ -18,7 +18,7 @@ type: text/vnd.tiddlywiki
 
         //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-        <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"tags[]!subfilter<redunantDirectTags>search:title" postFilter:"sort[title]limit[250]">>>
+        <$wikify name="filter" text=<<wikify-filter-search-context filter:"tags[]!subfilter<redunantDirectTags>search:title{$(searchTiddler)$}sort[title]limit[250]">>>
           <$list filter=<<filter>>>
             {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
           </$list>
@@ -26,7 +26,7 @@ type: text/vnd.tiddlywiki
 
         //<small>Related tags</small>//
 
-        <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search" postFilter:"tags[]!subfilter<redunantDirectTags>sort[title]limit[250]">>>
+        <$wikify name="filter" text=<<wikify-filter-search-context filter:"search{$(searchTiddler)$}tags[]!subfilter<redunantDirectTags>sort[title]limit[250]">>>
           <$list filter=<<filter>>>
             {{||$:/plugins/bimlas/locator/templates/tag-search-list-item}}
           </$list>

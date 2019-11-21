@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 
       {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
-      <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search" postFilter:"count[]">>>
+      <$wikify name="filter" text=<<wikify-filter-search-context filter:"search{$(searchTiddler)$}count[]">>>
         <$list filter=<<filter>> variable="resultCount" template="$:/language/Search/Matches"/>
       </$wikify>
 
@@ -17,13 +17,13 @@ type: text/vnd.tiddlywiki
 
       //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-      <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search:title" postFilter:"limit[250]">>>
+      <$wikify name="filter" text=<<wikify-filter-search-context filter:"search:title{$(searchTiddler)$}limit[250]">>>
         <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
       </$wikify>
 
       //<small>{{$:/language/Search/Matches/All}}</small>//
 
-      <$wikify name="filter" text=<<wikify-filter-search-context preFilter:"search" postFilter:"limit[250]">>>
+      <$wikify name="filter" text=<<wikify-filter-search-context filter:"search{$(searchTiddler)$}limit[250]">>>
         <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
       </$wikify>
 
