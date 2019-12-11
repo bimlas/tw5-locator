@@ -13,6 +13,6 @@ type: text/vnd.tiddlywiki
 \define wikify-filter-context-items()
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
   <!-- Do not use `allafter:include[]` to keep 5.1.18 compatibility, see https://github.com/Jermolene/TiddlyWiki5/issues/3962 -->
-    <$text text="[!has[draft.of]"/><$list filter="[<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$text text="] "/><$text text=<<__finalFilter__>>/>
+    <$text text="[!has[draft.of]"/><$list filter="[<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$list filter="[<contextState>indexes[]]" variable="currentField"><$set name="fieldValuesInFilter" tiddler=<<contextState>> index=<<currentField>>><$list filter="[enlist<fieldValuesInFilter>]"><$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>field:field-type[list]]" emptyValue="field">contains</$list>:<$text text=<<currentField>>/>[<$view field="title"/>]</$list></$set></$list><$text text="] "/><$text text=<<__finalFilter__>>/>
   </$set>
 \end

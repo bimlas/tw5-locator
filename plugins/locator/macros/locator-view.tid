@@ -27,6 +27,7 @@ type: text/vnd.tiddlywiki
                 </li>
               </$list>
             </$set>
+            {{$:/plugins/bimlas/locator/templates/fields-filter}}
             <$list filter=<<filterContextItems>>>
               <$droppable actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}>
                 <li class="toc-item tc-droppable-placeholder bimlas-locator" style="display: block">

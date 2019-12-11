@@ -1,0 +1,32 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/field-values
+type: text/vnd.tiddlywiki
+
+\define filter-on()
+  <$action-listops $tiddler=<<contextState>> $index=<<currentField>> $subfilter="[all[current]]"/>
+\end
+
+\define filter-off()
+  <$action-listops $tiddler=<<contextState>> $index=<<currentField>> $subfilter="-[all[current]]"/>
+\end
+
+\define toggle-field-filter()
+  <$list filter="[enlist<fieldValuesInFilter>is[current]]" emptyMessage=<<filter-on>> variable="doNotOverrideCurrent"><<filter-off>></$list>
+\end
+
+<ol>
+  <$set name="filterCurrentFieldValues" filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>field:field-type[list]]" value="[each:list-item<currentField>]" emptyValue="[get<currentField>]">
+    <$list filter="""[subfilter<filterContextItems>subfilter<filterCurrentFieldValues>sort[]unique[]]""">
+      <li class="tc-menu-list-item bimlas-locator">
+        <$set name="fieldValueButtonClass" filter="[enlist<fieldValuesInFilter>is[current]]" value="tc-btn-invisible bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator">
+          <$button tooltip="Toggle filtering to this value" class=<<fieldValueButtonClass>> actions=<<toggle-field-filter>>>
+            {{$:/core/images/tag-button}}
+          </$button>
+        </$set>
+        <$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>get[template]]" emptyMessage="""<$view field="title"/>""" variable="fieldValueTemplate">
+          <<fieldValueTemplate>>
+        </$list>
+      </li>
+    </$list>
+  </$set>
+</ol>
