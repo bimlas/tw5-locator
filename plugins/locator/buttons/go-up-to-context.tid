@@ -7,7 +7,7 @@ type: text/vnd.tiddlywiki
     <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
     <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
     <$action-setfield $tiddler=<<contextState>> text=""/>
-    <$action-setfield $tiddler={{{ [title<contextState>addsuffix[/fields-filter-visibility]] }}} text=""/>
+    <$action-setfield $tiddler=<<contextState>> opened-fields-filters=""/>
   </$set>
   {{$:/core/images/right-arrow}}
 </$button>
