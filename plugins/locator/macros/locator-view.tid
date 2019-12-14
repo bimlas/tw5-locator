@@ -19,14 +19,14 @@ type: text/vnd.tiddlywiki
 
         <$wikify name="filterContextItems" text=<<wikify-filter-context-items>>>
           <ol>
-            <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-              <!-- Do not use `allafter:include[]` to keep 5.1.18 compatibility, see https://github.com/Jermolene/TiddlyWiki5/issues/3962 -->
+            <!-- TODO: Implement $tagFilter$ and removing of already listed tags in fields filter -->
+            <!-- <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
               <$list filter="""[subfilter<filterContextItems>tags[]!subfilter<filterContextItems>] -[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>] -[<lastAncestorTag>] +[sort[title]] $tagFilter$""">
                 <li class="toc-item bimlas-locator">
                     {{||$:/plugins/bimlas/locator/buttons/add-direct-tag-filter}} <<tag>>
                 </li>
               </$list>
-            </$set>
+            </$set> -->
             {{$:/plugins/bimlas/locator/templates/fields-filter}}
             <$list filter=<<filterContextItems>>>
               <$droppable actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}>

@@ -4,3 +4,6 @@ type: text/vnd.tiddlywiki
 
 <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $subfilter="[all[current]]"/>
 <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="[all[current]]"/>
+<!-- TODO: It will break filtering of search results -->
+<$action-setfield $tiddler=<<contextState>> text=""/>
+<$action-setfield $tiddler={{{ [title<contextState>addsuffix[/fields-filter-visibility]] }}} text=""/>

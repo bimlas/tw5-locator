@@ -6,6 +6,8 @@ type: text/vnd.tiddlywiki
   <$set name="breadcrumbsUntilCurrent" filter="[subfilter<filter-breadcrumbs>allbefore<currentTiddler>] [all[current]]">
     <$action-listops $tiddler=<<contextState>> $field="ancestor-tags" $subfilter="-[!enlist<breadcrumbsUntilCurrent>]"/>
     <$action-listops $tiddler=<<contextState>> $field="breadcrumbs" $filter=<<breadcrumbsUntilCurrent>>/>
+    <$action-setfield $tiddler=<<contextState>> text=""/>
+    <$action-setfield $tiddler={{{ [title<contextState>addsuffix[/fields-filter-visibility]] }}} text=""/>
   </$set>
   {{$:/core/images/right-arrow}}
 </$button>
