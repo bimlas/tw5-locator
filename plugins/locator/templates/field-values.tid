@@ -14,7 +14,7 @@ type: text/vnd.tiddlywiki
   <$list filter="[enlist<fieldValuesInFilter>is[current]]" emptyMessage=<<filter-on>> variable="doNotOverrideCurrent"><<filter-off>></$list>
 \end
 
-<ol>
+<ol class="bimlas-locator">
   <$set name="filterCurrentFieldValues" filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>field:field-type[list]]" value="[each:list-item<currentField>]" emptyValue="[get<currentField>]">
     <$list filter="""[subfilter<filterContextItems>subfilter<filterCurrentFieldValues>sort[]unique[]]""">
       <li class="tc-menu-list-item bimlas-locator">

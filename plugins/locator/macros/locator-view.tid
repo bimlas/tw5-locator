@@ -18,7 +18,7 @@ type: text/vnd.tiddlywiki
         ---
 
         <$wikify name="filterContextItems" text=<<wikify-filter-context-items>>>
-          <ol>
+          <ol class="bimlas-locator">
             <!-- TODO: Implement $tagFilter$ and removing of already listed tags in fields filter -->
             <!-- <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
               <$list filter="""[subfilter<filterContextItems>tags[]!subfilter<filterContextItems>] -[subfilter<filter-breadcrumbs>allafter<lastAncestorTag>] -[<lastAncestorTag>] +[sort[title]] $tagFilter$""">

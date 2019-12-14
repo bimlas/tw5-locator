@@ -6,27 +6,25 @@ type: text/vnd.tiddlywiki
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <$set name="contextState" value="$:/state/bimlas/locator-search">
+      <$wikify name="filterContextItems" text=<<wikify-filter-search-context filter:"search{$(searchTiddler)$}">>>
 
-      {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+        {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
-      <$wikify name="filter" text=<<wikify-filter-search-context filter:"search{$(searchTiddler)$}count[]">>>
-        <$list filter=<<filter>> variable="resultCount" template="$:/language/Search/Matches"/>
+        <$list filter="[subfilter<filterContextItems>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
+
+        {{$:/plugins/bimlas/locator/templates/fields-filter}}
+
+        {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
+
+        //<small>{{$:/language/Search/Matches/Title}}</small>//
+
+        <$list filter="[subfilter<filterContextItems>search:title{$(searchTiddler)$}limit[250]]" template="$:/core/ui/ListItemTemplate"/>
+
+        //<small>{{$:/language/Search/Matches/All}}</small>//
+
+        <$list filter="[subfilter<filterContextItems>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
+
       </$wikify>
-
-      {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
-
-      //<small>{{$:/language/Search/Matches/Title}}</small>//
-
-      <$wikify name="filter" text=<<wikify-filter-search-context filter:"search:title{$(searchTiddler)$}limit[250]">>>
-        <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
-      </$wikify>
-
-      //<small>{{$:/language/Search/Matches/All}}</small>//
-
-      <$wikify name="filter" text=<<wikify-filter-search-context filter:"search{$(searchTiddler)$}limit[250]">>>
-        <$list filter=<<filter>> template="$:/core/ui/ListItemTemplate"/>
-      </$wikify>
-
     </$set>
   </$importvariables>
 \end

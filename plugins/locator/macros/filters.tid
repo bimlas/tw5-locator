@@ -8,11 +8,12 @@ type: text/vnd.tiddlywiki
 \define filter-ancestor-tags() [subfilter<filter-base-title>] [title<contextState>each:list-item[ancestor-tags]] -[[]]
 \define filter-grandchildren() [subfilter<filter-ancestor-tags>last[]tagging[]tagging[]kin::to[]]
 \define wikify-filter-search-context(filter)
-  <$text text="[!is[system]"/><$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list><$text text="$filter$]"/>
+  <$text text="[!is[system]"/><$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list><<_filter-by-fields>><$text text="$filter$]"/>
 \end
 \define wikify-filter-context-items()
   <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
   <!-- Do not use `allafter:include[]` to keep 5.1.18 compatibility, see https://github.com/Jermolene/TiddlyWiki5/issues/3962 -->
-    <$text text="[!has[draft.of]"/><$list filter="[<lastAncestorTag>] [subfilter<filter-breadcrumbs>allafter<lastAncestorTag>]">tag[<$view field="title"/>]</$list><$list filter="[<contextState>indexes[]]" variable="currentField"><$set name="fieldValuesInFilter" tiddler=<<contextState>> index=<<currentField>>><$list filter="[enlist<fieldValuesInFilter>]"><$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>field:field-type[list]]" emptyValue="field">contains</$list>:<$text text=<<currentField>>/>[<$view field="title"/>]</$list></$set></$list><$text text="] "/><$text text=<<__finalFilter__>>/>
+    <$text text="[!has[draft.of]tag["/><$text text=<<lastAncestorTag>>/>]<<_filter-by-fields>><$text text="] "/><$text text=<<__finalFilter__>>/>
   </$set>
 \end
+\define _filter-by-fields() <$list filter="[<contextState>indexes[]]" variable="currentField"><$set name="fieldValuesInFilter" tiddler=<<contextState>> index=<<currentField>>><$list filter="[enlist<fieldValuesInFilter>]"><$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>field:field-type[list]]" emptyMessage="field">contains</$list>:<$text text=<<currentField>>/>[<$view field="title"/>]</$list></$set></$list>

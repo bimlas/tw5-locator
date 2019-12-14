@@ -19,6 +19,10 @@ type: text/vnd.tiddlywiki
   display: inline-block;
   background-color: inherit;
 }
+ol.bimlas-locator {
+  padding-left: 1em;
+  list-style-type: none;
+}
 li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
   margin-top: 3px;
   margin-bottom: 0;
