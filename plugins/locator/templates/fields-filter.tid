@@ -5,7 +5,7 @@ type: text/vnd.tiddlywiki
 
 
 \define show-fields-filter()
-  <$button class="tc-btn-invisible tc-tiddlylink">
+  <$button class=<<fieldsFilterButtonClass>>>
     <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="-[[FIELDS-FILTER]]"/>
     {{$:/core/images/opacity}} Fields filter
   </$button>
@@ -13,12 +13,14 @@ type: text/vnd.tiddlywiki
 \end
 
 \define hide-fields-filter()
-  <$button class="tc-btn-invisible tc-tiddlylink">
+  <$button class=<<fieldsFilterButtonClass>>>
     <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="[[FIELDS-FILTER]]"/>
     {{$:/core/images/opacity}} Fields filter
   </$button>
 \end
 
 <div class="tc-menu-list-item bimlas-locator">
-  <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<hide-fields-filter>>><<show-fields-filter>></$list>
+  <$set name="fieldsFilterButtonClass" filter="[title<contextState>locator-selected-field-values[]first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible tc-tiddlylink bimlas-locator">
+    <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<hide-fields-filter>>><<show-fields-filter>></$list>
+  </$set>
 </div>

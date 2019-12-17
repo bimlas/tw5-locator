@@ -3,6 +3,7 @@ title: $:/plugins/bimlas/locator/macros/locator-view
 type: text/vnd.tiddlywiki
 
 \define locator-view(baseTitle finalFilter="" tagFilter="")
+  <!-- TODO: Implement finalFilter again, move tagFilter to field settings -->
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
@@ -17,7 +18,7 @@ type: text/vnd.tiddlywiki
 
         ---
 
-        <$wikify name="filterContextItems" text=<<wikify-filter-context-items>>>
+        <$set name="filterContextItems" value="[subfilter<filter-ancestor-tags>last[]tagging[]!has[draft.of]locator-fields-filter<contextState>]">
           <ol class="bimlas-locator">
             <!-- TODO: Implement $tagFilter$ and removing of already listed tags in fields filter -->
             <!-- <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
@@ -36,7 +37,7 @@ type: text/vnd.tiddlywiki
               </$droppable>
             </$list>
           </ol>
-        </$wikify>
+        </$set>
 
       </div>
     </$set>

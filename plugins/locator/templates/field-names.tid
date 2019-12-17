@@ -18,14 +18,12 @@ type: text/vnd.tiddlywiki
 \end
 
 <ol class="bimlas-locator">
-  <$list filter="""[subfilter<filterContextItems>fields[]] -[all[system+shadows]field:exclude-from-field-filters[yes]removeprefix[$:/config/bimlas/locator/fields/]] +[sort[]]""" variable="currentField">
+  <$list filter="""[subfilter<filterContextItems>fields[]locator-enabled-fields[]sort[]]""" variable="currentField">
     <$list filter="""[subfilter<filterContextItems>get<currentField>first[]]""" variable="doNotOverrideCurrent">
-      <$set name="fieldValuesInFilter" tiddler=<<contextState>> index=<<currentField>>>
-        <$set name="fieldButtonClass" filter="[enlist<fieldValuesInFilter>first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator tc-tiddlylink">
-          <li class="tc-menu-list-item bimlas-locator">
-            <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<hide-field-values>>><<show-field-values>></$list>
-          </li>
-        </$set>
+      <$set name="fieldButtonClass" filter="[title<contextState>locator-selected-field-values<currentField>first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator tc-tiddlylink">
+        <li class="tc-menu-list-item bimlas-locator">
+          <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<hide-field-values>>><<show-field-values>></$list>
+        </li>
       </$set>
     </$list>
   </$list>
