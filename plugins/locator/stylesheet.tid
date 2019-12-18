@@ -30,3 +30,7 @@ li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
 button.bimlas-locator.active svg {
   fill: <<colour dirty-indicator>>;
 }
+.bimlas-locator.right {
+  float: right;
+  margin-right: 1em;
+}

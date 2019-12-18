@@ -2,13 +2,16 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/go-down-to-context
 type: text/vnd.tiddlywiki
 
-<$list filter="[all[current]is[tag]]">
-  <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/add-ancestor-tag}}>
+\define branch-item()
+  <$button tooltip="Go to context, show chidlren of this tiddler" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/add-ancestor-tag}}>
     {{$:/core/images/right-arrow}}
   </$button>
-</$list>
-<$list filter="[all[current]!is[tag]]">
+\end
+
+\define leaf-item()
   <$button class="tc-btn-invisible bimlas-locator">
     {{$:/core/images/blank}}
   </$button>
-</$list>
+\end
+
+<$list filter="[all[current]locator-enlist-children<contextState>first[]]" emptyMessage=<<leaf-item>> variable="null"><<branch-item>></$list>

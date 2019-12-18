@@ -139,4 +139,30 @@ Special filters used by Locator
             : ["TODO: Join active filter values (array of arrays)"];
     };
 
+    /*
+    List children of input elements based on selected relationship field
+
+    Input: parent tiddlers
+    Param: contextState
+    */
+    exports["locator-enlist-children"] = function (source, operator, options) {
+        var contextState = options.wiki.getTiddler(operator.operand) || {fields: []};
+        var fieldOfRelationship = contextState.fields["field-of-relationship"] || "tags";
+        var fieldSettings = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + fieldOfRelationship) || {fields: []};
+        var shouldFindListings = (fieldSettings.fields["points-to"] || "parent") === "parent";
+        if(contextState.fields["invert-direction"] === "yes") {
+            shouldFindListings = !shouldFindListings;
+        }
+        var results = [];
+
+        source(function (tiddler, title) {
+            results = $tw.utils.pushTop(results, shouldFindListings
+                ? options.wiki.findListingsOfTiddler(title, fieldOfRelationship)
+                : options.wiki.getTiddlerList(title, fieldOfRelationship)
+            );
+        });
+
+        return results;
+    };
+
 })();

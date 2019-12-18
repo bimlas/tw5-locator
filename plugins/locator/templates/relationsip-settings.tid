@@ -1,0 +1,34 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/relationship-settings
+type: text/vnd.tiddlywiki
+
+\define show-relationsip-settings()
+  <$button class=<<relationshipSettingsButtonClass>>>
+    <$action-listops $tiddler=<<contextState>> $field="relationsip-settings-opened" $filter="[[]]"/>
+    {{$:/core/images/options-button}}
+  </$button>
+
+  <p>
+    Field of relationship:
+
+    <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
+      <$list filter="[all[tiddlers+shadows]prefix[$:/config/bimlas/locator/fields/]has[points-to]removeprefix[$:/config/bimlas/locator/fields/]]">
+        <option><<currentTiddler>></option>
+      </$list>
+    </$select>
+  </p>
+
+  <p><$checkbox tiddler=<<contextState>> field="invert-direction" checked="yes" unchecked="" default="">Invert direction</$checkbox></p>
+
+\end
+
+\define hide-relationsip-settings()
+  <$button class=<<relationshipSettingsButtonClass>>>
+    <$action-listops $tiddler=<<contextState>> $field="relationsip-settings-opened" $filter="yes"/>
+    {{$:/core/images/options-button}}
+  </$button>
+\end
+
+<$set name="relationshipSettingsButtonClass" filter="[title<contextState>has[invert-direction]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator right active" emptyValue="tc-btn-invisible tc-tiddlylink bimlas-locator right">
+  <$list filter="[title<contextState>field:relationsip-settings-opened[yes]]" emptyMessage=<<hide-relationsip-settings>>><<show-relationsip-settings>></$list>
+</$set>

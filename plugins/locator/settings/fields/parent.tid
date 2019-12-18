@@ -1,6 +1,6 @@
 tags:
-title: $:/config/bimlas/locator/fields/tags
+title: $:/config/bimlas/locator/fields/parent
 type: text/vnd.tiddlywiki
 field-type: list
-template: <<tag>>
+template: <$link/>
 points-to: parent

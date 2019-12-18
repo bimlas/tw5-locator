@@ -12,13 +12,13 @@ type: text/vnd.tiddlywiki
 
         {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$set name="tooltip-for-clear-context" value="Go back to the default context">
           {{$:/plugins/bimlas/locator/buttons/clear-context}}
-        </$set></$list>
+        </$set></$list> {{$:/plugins/bimlas/locator/templates/relationship-settings}}
 
         {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
 
         ---
 
-        <$set name="filterContextItems" value="[subfilter<filter-ancestor-tags>last[]tagging[]!has[draft.of]locator-fields-filter<contextState>]">
+        <$set name="filterContextItems" value="[subfilter<filter-ancestor-tags>last[]locator-enlist-children<contextState>!has[draft.of]locator-fields-filter<contextState>]">
           <ol class="bimlas-locator">
             <!-- TODO: Implement $tagFilter$ and removing of already listed tags in fields filter -->
             <!-- <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
