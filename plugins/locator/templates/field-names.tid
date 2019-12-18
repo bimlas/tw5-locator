@@ -19,7 +19,7 @@ type: text/vnd.tiddlywiki
 
 <ol class="bimlas-locator">
   <$list filter="""[subfilter<filterContextItems>fields[]locator-enabled-fields[]sort[]]""" variable="currentField">
-    <$list filter="""[subfilter<filterContextItems>get<currentField>first[]]""" variable="doNotOverrideCurrent">
+    <$list filter="""[subfilter<filterContextItems>get<currentField>search:title<searchedFieldValue>first[]]""" variable="doNotOverrideCurrent">
       <$set name="fieldButtonClass" filter="[title<contextState>locator-selected-field-values<currentField>first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator tc-tiddlylink">
         <li class="tc-menu-list-item bimlas-locator">
           <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<hide-field-values>>><<show-field-values>></$list>

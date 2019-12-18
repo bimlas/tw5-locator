@@ -15,7 +15,7 @@ type: text/vnd.tiddlywiki
 \end
 
 <ol class="bimlas-locator">
-  <$list filter="""[subfilter<filterContextItems>locator-enlist-field-values<currentField>sort[]]""">
+  <$list filter="""[subfilter<filterContextItems>locator-enlist-field-values<currentField>search:title<searchedFieldValue>sort[]]""">
     <li class="tc-menu-list-item bimlas-locator">
       <$set name="fieldValueButtonClass" filter="[title<contextState>locator-selected-field-values<currentField>is[current]]" value="tc-btn-invisible bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator">
         <$button tooltip="Toggle filtering to this value" class=<<fieldValueButtonClass>> actions=<<toggle-field-filter>>>
