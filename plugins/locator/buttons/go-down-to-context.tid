@@ -14,4 +14,4 @@ type: text/vnd.tiddlywiki
   </$button>
 \end
 
-<$list filter="[all[current]locator-enlist-children<contextState>first[]]" emptyMessage=<<leaf-item>> variable="null"><<branch-item>></$list>
+<$list filter="[all[current]locator-enlist-children<contextState>] [title<contextState>field:allow-to-open-leaves[yes]] +[first[]]" emptyMessage=<<leaf-item>> variable="null"><<branch-item>></$list>

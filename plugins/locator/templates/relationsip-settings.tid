@@ -20,6 +20,8 @@ type: text/vnd.tiddlywiki
 
   <p><$checkbox tiddler=<<contextState>> field="invert-direction" checked="yes" unchecked="" default="">Invert direction</$checkbox></p>
 
+  <p><$checkbox tiddler=<<contextState>> field="allow-to-open-leaves" checked="yes" unchecked="" default="">Allow to open leaves</$checkbox></p>
+
 \end
 
 \define hide-relationsip-settings()
