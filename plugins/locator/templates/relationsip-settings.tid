@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
     Field of relationship:
 
     <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
-      <$list filter="[all[tiddlers+shadows]prefix[$:/config/bimlas/locator/fields/]has[points-to]removeprefix[$:/config/bimlas/locator/fields/]]">
+      <$list filter="[all[tiddlers+shadows]prefix[$:/config/bimlas/locator/fields/]has[direction-of-field]removeprefix[$:/config/bimlas/locator/fields/]]">
         <option><<currentTiddler>></option>
       </$list>
     </$select>

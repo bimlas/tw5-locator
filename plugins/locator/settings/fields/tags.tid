@@ -3,4 +3,4 @@ title: $:/config/bimlas/locator/fields/tags
 type: text/vnd.tiddlywiki
 field-type: list
 template: <<tag>>
-points-to: parent
+direction-of-field: to

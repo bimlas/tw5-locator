@@ -149,7 +149,7 @@ Special filters used by Locator
         var contextState = options.wiki.getTiddler(operator.operand) || {fields: []};
         var fieldOfRelationship = contextState.fields["field-of-relationship"] || "tags";
         var fieldSettings = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + fieldOfRelationship) || {fields: []};
-        var shouldFindListings = (fieldSettings.fields["points-to"] || "parent") === "parent";
+        var shouldFindListings = (fieldSettings.fields["direction-of-field"] || "to") === "to";
         if(contextState.fields["invert-direction"] === "yes") {
             shouldFindListings = !shouldFindListings;
         }
