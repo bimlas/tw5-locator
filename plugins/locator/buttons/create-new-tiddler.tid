@@ -2,9 +2,45 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/create-new-tiddler
 type: text/vnd.tiddlywiki
 
+\define add-field-value-as-list()
+  <$action-listops $tiddler=<<title>> $field=<<field>> $filter="[title<contextState>locator-selected-field-values<field>]"/>
+\end
+
+\define add-field-value-as-value()
+  <$action-setfield $tiddler=<<title>> $field=<<field>> $value={{{ [title<contextState>locator-selected-field-values<field>] }}}/>
+\end
+
+\define add-field-values()
+  <$list filter="[title<contextState>indexes[]]" variable="field">
+    <$list filter="[title<contextState>locator-selected-field-values<field>first[]]">
+      <$list filter="[title<field>subfilter<filter-field-is-list>]" emptyMessage=<<add-field-value-as-value>>>
+        <<add-field-value-as-list>>
+      </$list>
+    <$list filter="[title<contextState>locator-selected-field-values<field>first[]]">
+  </$list>
+\end
+
+\define add-context-as-list()
+  <$action-listops $tiddler=<<title>> $field=<<field>> $subfilter="[subfilter<filter-history>last[]]"/>
+\end
+
+\define add-context-as-value()
+  <$action-setfield $tiddler=<<title>> $field=<<field>> $value={{{ [subfilter<filter-history>last[]] }}}/>
+\end
+
+\define add-context()
+  <$set name="field" filter="[title<contextState>get[field-of-relationship]]" emptyValue="tags">
+    <$list filter="[title<field>subfilter<filter-field-is-list>]" emptyMessage=<<add-context-as-value>>>
+      <<add-context-as-list>>
+    </$list>
+  </$set>
+\end
+
 <$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator">
-  <$set name="lastHistoryItem" filter="[subfilter<filter-history>last[]]">
-    <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<lastHistoryItem>>/>
+  <$set name="title" value={{{ [title<titleOfNewTiddler>] [title{$:/language/DefaultNewTiddlerTitle}] -[[]] +[first[]] }}}>
+    <<add-field-values>>
+    <<add-context>>
+    <$action-sendmessage $message="tm-new-tiddler" title=<<title>>/>
   </$set>
   {{$:/core/images/new-button}}
 </$button>
