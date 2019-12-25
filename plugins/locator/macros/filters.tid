@@ -7,5 +7,5 @@ type: text/vnd.tiddlywiki
 \define filter-history() [subfilter<filter-base-title>] [title<contextState>each:list-item[history]] -[[]]
 \define filter-grandchildren() [subfilter<filter-history>last[]tagging[]tagging[]kin::to[]]
 \define wikify-filter-search-context(filter)
-  <$text text="[!is[system]"/><$list filter=<<filter-history>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-history>] -[subfilter<filter-history>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list><$text text="locator-fields-filter<contextState>"/><$text text="$filter$]"/>
+  <$text text="[!is[system]"/><$list filter=<<filter-history>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-history>] -[subfilter<filter-history>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list><$text text="locator-fields-filter[$(contextState)$]"/><$text text="$filter$]"/>
 \end
