@@ -7,7 +7,7 @@ type: text/vnd.tiddlywiki
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
     <!-- If `currentTiddler` is empty (in the sidebar for example), then do not add trailing `/` -->
-    <$set name="contextState" value={{{ [all[current]] -[[]] +[addprefix[$:/state/bimlas/locator/]] [[$:/state/bimlas/locator]] +[first[]] }}}>
+    <$set name="contextState" value={{{ [all[current]] -[[]] +[addprefix[$:/state/bimlas/locator/view/]] [[$:/state/bimlas/locator/view]] +[first[]] }}}>
       <div class="tc-table-of-contents">
 
         {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$set name="tooltip-for-clear-context" value="Go back to the default context">

@@ -20,6 +20,12 @@ Special filters used by Locator
             : "field";
     }
 
+    function getFieldDirection(options, field) {
+        var fieldOptions = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + field);
+
+        return (fieldOptions || {fields: {}}).fields["field-direction"];
+    }
+
     function getActiveFilters(options, contextState) {
         var filteredFields = options.wiki.getTiddlerDataCached(contextState, {});
         var results = {};
@@ -34,20 +40,20 @@ Special filters used by Locator
         return results;
     }
 
-    function buildTiddlerFilter(options, contextState) {
+    function applyFieldsFilters(source, options, contextState, filterFunc) {
         var activeFilters = getActiveFilters(options, contextState);
-        var results = "";
+        var results = source;
 
-        $tw.utils.each(activeFilters, function (filteredValues, field) {
-            var fieldListingOperator = getFieldListingOperator(options, field);
-            $tw.utils.each(filteredValues, function (value) {
-                results += fieldListingOperator + ":" + field + "[" + value + "]"
+        if (!Object.keys(activeFilters).length) return results;
+
+        $tw.utils.each(activeFilters, function (values, field) {
+            $tw.utils.each(values, function (value) {
+                results = filterFunc(results, field, value);
+                results = options.wiki.makeTiddlerIterator(results);
             });
         });
 
-        return results
-            ? "[" + results + "]"
-            : "";
+        return results;
     }
 
     /*
@@ -55,25 +61,28 @@ Special filters used by Locator
 
     Input: list of tiddlers
     Param: contextState
+    Suffix: "recusive" enables recursive filtering
     */
     exports["locator-fields-filter"] = function (source, operator, options) {
-        var tiddlerFilter = buildTiddlerFilter(options, operator.operand);
-        var results = [];
+        var results = source;
+        var filterOperators = options.wiki.getFilterOperators();
 
-        if(!tiddlerFilter) {
-            source(function (tiddler, title) {
-                results.push(title);
-            });
-        } else {
-            var allMatchingTiddlers = options.wiki.filterTiddlers(tiddlerFilter);
-            source(function (tiddler, title) {
-                if(allMatchingTiddlers.indexOf(title) >= 0) {
-                    results.push(title)
-                }
-            });
+        if (operator.suffix === "recursive") {
+            results = applyFieldsFilters(results, options, "$:/state/bimlas/locator/search/recursive-filters", recursiveFilterFunc);
         }
+        results = applyFieldsFilters(results, options, operator.operand, directFilterFunc);
 
         return results;
+
+        function directFilterFunc(input, field, value) {
+            var fieldListingOperator = getFieldListingOperator(options, field);
+            return filterOperators[fieldListingOperator](input, { operand: value, suffix: field }, options);
+        }
+
+        function recursiveFilterFunc(input, field, value) {
+            var fieldDirection = getFieldDirection(options, field);
+            return filterOperators.kin(input, { operand: value, suffixes: [[field], [fieldDirection]] }, options);
+        }
     };
 
     /*
@@ -151,7 +160,7 @@ Special filters used by Locator
         var contextState = options.wiki.getTiddler(operator.operand) || {fields: []};
         var fieldOfRelationship = contextState.fields["field-of-relationship"] || "tags";
         var fieldSettings = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + fieldOfRelationship) || {fields: []};
-        var shouldFindListings = (fieldSettings.fields["direction-of-field"] || "to") === "to";
+        var shouldFindListings = (fieldSettings.fields["field-direction"] || "to") === "to";
         if(contextState.fields["invert-direction"] === "yes") {
             shouldFindListings = !shouldFindListings;
         }

@@ -8,8 +8,8 @@ list-before: $:/core/ui/Buttons/open-window
 \whitespace trim
 <$list filter="[all[current]is[tag]]">
 <$button tooltip="Browse hierarchy of tag in Locator sidebar" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="base-title" $filter="[all[current]]"/>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="history" $filter=[[]]/>
+<$action-listops $tiddler="$:/state/bimlas/locator/view" $field="base-title" $filter="[all[current]]"/>
+<$action-listops $tiddler="$:/state/bimlas/locator/view" $field="history" $filter=[[]]/>
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]" variable="listItem">
 {{$:/core/images/chevron-right}}
 </$list>

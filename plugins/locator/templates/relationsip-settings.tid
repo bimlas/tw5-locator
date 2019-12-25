@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
     Field of relationship:
 
     <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
-      <$list filter="[all[tiddlers+shadows]prefix[$:/config/bimlas/locator/fields/]has[direction-of-field]removeprefix[$:/config/bimlas/locator/fields/]]">
+      <$list filter=<<filter-enlist-relationship-fields>>>
         <option><<currentTiddler>></option>
       </$list>
     </$select>
@@ -22,6 +22,7 @@ type: text/vnd.tiddlywiki
 
   <p><$checkbox tiddler=<<contextState>> field="allow-to-open-leaves" checked="yes" unchecked="" default="">Allow to open leaves</$checkbox></p>
 
+  <hr/>
 \end
 
 \define hide-relationsip-settings()

@@ -5,8 +5,8 @@ type: text/vnd.tiddlywiki
 \define locator-fields()
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
-    <$set name="contextState" value="$:/state/bimlas/locator-search">
-      <$wikify name="filterContextItems" text=<<wikify-filter-search-context>>>
+    <$set name="contextState" value="$:/state/bimlas/locator/search">
+      <$set name="filterContextItems" value=<<filter-search-context>>>
 
         {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
@@ -23,7 +23,7 @@ type: text/vnd.tiddlywiki
           <$list filter="[subfilter<filterContextItems>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
         </$list>
 
-      </$wikify>
+      </$set>
     </$set>
   </$importvariables>
 \end

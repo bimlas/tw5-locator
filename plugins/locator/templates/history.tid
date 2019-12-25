@@ -18,7 +18,7 @@ type: text/vnd.tiddlywiki
   </$droppable>
 \end
 
-<$set name="historyItem" filter="[<contextState>contains:title[$:/state/bimlas/locator-search]]" value=<<history-item-in-search>> emptyValue=<<history-item-in-view>>>
+<$set name="historyItem" filter="[<contextState>field:title[$:/state/bimlas/locator/search]]" value=<<history-item-in-search>> emptyValue=<<history-item-in-view>>>
   <$list filter=<<filter-history>>>
     <div class="tc-menu-list-item bimlas-locator">
       <$list filter="[subfilter<filter-history>is[current]]">

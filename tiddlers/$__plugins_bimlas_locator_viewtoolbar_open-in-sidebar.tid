@@ -12,8 +12,8 @@ type: text/vnd.tiddlywiki
 <$button tooltip="Browse hierarchy of tag in Locator sidebar (MODIFIED, see Tips tab in plugin tiddler)" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
 <!-- MODIFIED: Let the "Locator sidebar" button automatically focus to the Locator sidebar - see Tips tab in plugin tiddler -->
 <$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="Locator view"/>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="base-title" $filter="[all[current]]"/>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="history" $filter=[[]]/>
+<$action-listops $tiddler="$:/state/bimlas/locator/view" $field="base-title" $filter="[all[current]]"/>
+<$action-listops $tiddler="$:/state/bimlas/locator/view" $field="history" $filter=[[]]/>
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]" variable="listItem">
 {{$:/core/images/chevron-right}}
 </$list>

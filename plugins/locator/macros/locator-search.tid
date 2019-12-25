@@ -5,8 +5,8 @@ type: text/vnd.tiddlywiki
 \define locator-search()
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
-    <$set name="contextState" value="$:/state/bimlas/locator-search">
-      <$wikify name="filterContextItems" text=<<wikify-filter-search-context filter:"search{$(searchTiddler)$}">>>
+    <$set name="contextState" value="$:/state/bimlas/locator/search">
+      <$set name="filterContextItems" value="[subfilter<filter-search-context>search{$(searchTiddler)$}]">
 
         {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
@@ -24,7 +24,7 @@ type: text/vnd.tiddlywiki
 
         <$list filter="[subfilter<filterContextItems>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
 
-      </$wikify>
+      </$set>
     </$set>
   </$importvariables>
 \end

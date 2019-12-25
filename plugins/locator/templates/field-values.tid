@@ -14,14 +14,31 @@ type: text/vnd.tiddlywiki
   <$list filter="[title<contextState>locator-selected-field-values<currentField>is[current]]" emptyMessage=<<filter-on>> variable="doNotOverrideCurrent"><<filter-off>></$list>
 \end
 
+\define toggle-button(icon)
+  <$set name="fieldValueButtonClass" filter="[title<contextState>locator-selected-field-values<currentField>is[current]]" value="tc-btn-invisible bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator">
+    <$button tooltip="Toggle filtering to this value" class=<<fieldValueButtonClass>> actions=<<toggle-field-filter>>>
+      <<__icon__>>
+    </$button>
+  </$set>
+\end
+
+\define recursive-filtering()
+  <$list filter=<<filter-kin-filteroperator-available>> variable="doNotOverrideCurrent">
+    <$list filter="[title<contextState>field:title[$:/state/bimlas/locator/search]]" variable="doNotOverrideCurrent">
+      <$list filter="[subfilter<filter-enlist-relationship-fields>regexp[^$(currentField)$$]]" variable="doNotOverrideCurrent">
+        <$set name="contextState" value="$:/state/bimlas/locator/search/recursive-filters">
+          <<toggle-button icon:{{$:/core/images/link}}>>
+        </$set>
+      </$list>
+    </$list>
+  </$list>
+\end
+
 <ol class="bimlas-locator">
   <$list filter="""[subfilter<filterContextItems>locator-enlist-field-values<currentField>search:title<searchedFieldValue>sort[]]""">
     <li class="tc-menu-list-item bimlas-locator">
-      <$set name="fieldValueButtonClass" filter="[title<contextState>locator-selected-field-values<currentField>is[current]]" value="tc-btn-invisible bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator">
-        <$button tooltip="Toggle filtering to this value" class=<<fieldValueButtonClass>> actions=<<toggle-field-filter>>>
-          {{$:/core/images/tag-button}}
-        </$button>
-      </$set>
+      <<recursive-filtering>>
+      <<toggle-button icon:{{$:/core/images/tag-button}}>>
       <$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>get[template]]" emptyMessage="""<$view field="title"/>""" variable="fieldValueTemplate">
         <<fieldValueTemplate>>
       </$list>

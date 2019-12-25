@@ -3,4 +3,4 @@ title: $:/config/bimlas/locator/fields/parent
 type: text/vnd.tiddlywiki
 field-type: list
 template: <$link/>
-direction-of-field: to
+field-direction: to
