@@ -14,7 +14,7 @@ type: text/vnd.tiddlywiki
 
         {{$:/plugins/bimlas/locator/templates/fields-filter}}
 
-        {{$:/plugins/bimlas/locator/templates/breadcrumbs}}
+        {{$:/plugins/bimlas/locator/templates/history}}
 
         //<small>{{$:/language/Search/Matches/Title}}</small>//
 

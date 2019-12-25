@@ -13,8 +13,7 @@ type: text/vnd.tiddlywiki
 <!-- MODIFIED: Let the "Locator sidebar" button automatically focus to the Locator sidebar - see Tips tab in plugin tiddler -->
 <$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="Locator view"/>
 <$action-listops $tiddler="$:/state/bimlas/locator" $field="base-title" $filter="[all[current]]"/>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="breadcrumbs" $filter=[[]]/>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="ancestor-tags" $filter=[[]]/>
+<$action-listops $tiddler="$:/state/bimlas/locator" $field="history" $filter=[[]]/>
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]" variable="listItem">
 {{$:/core/images/chevron-right}}
 </$list>

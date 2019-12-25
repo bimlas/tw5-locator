@@ -1,0 +1,29 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/history
+type: text/vnd.tiddlywiki
+
+\define history-item-in-search()
+  {{||$:/plugins/bimlas/locator/buttons/remove-from-history}}
+  <<tag>>
+\end
+
+\define history-item-in-view()
+  <$droppable actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}>
+    <div class="tc-droppable-placeholder" style="display: block">
+      {{||$:/plugins/bimlas/locator/buttons/go-up-to-context}}
+      <$link to=<<currentTiddler>>>
+        <$transclude field="caption"><$view field="title"/></$transclude>
+      </$link>
+    </div>
+  </$droppable>
+\end
+
+<$set name="historyItem" filter="[<contextState>contains:title[$:/state/bimlas/locator-search]]" value=<<history-item-in-search>> emptyValue=<<history-item-in-view>>>
+  <$list filter=<<filter-history>>>
+    <div class="tc-menu-list-item bimlas-locator">
+      <$list filter="[subfilter<filter-history>is[current]]">
+        <<historyItem>>
+      </$list>
+    </div>
+  </$list>
+</$set>

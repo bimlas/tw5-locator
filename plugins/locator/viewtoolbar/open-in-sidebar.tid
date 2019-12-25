@@ -9,8 +9,7 @@ list-before: $:/core/ui/Buttons/open-window
 <$list filter="[all[current]is[tag]]">
 <$button tooltip="Browse hierarchy of tag in Locator sidebar" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
 <$action-listops $tiddler="$:/state/bimlas/locator" $field="base-title" $filter="[all[current]]"/>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="breadcrumbs" $filter=[[]]/>
-<$action-listops $tiddler="$:/state/bimlas/locator" $field="ancestor-tags" $filter=[[]]/>
+<$action-listops $tiddler="$:/state/bimlas/locator" $field="history" $filter=[[]]/>
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]" variable="listItem">
 {{$:/core/images/chevron-right}}
 </$list>

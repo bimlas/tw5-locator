@@ -4,9 +4,8 @@ type: text/vnd.tiddlywiki
 
 \define filter-kin-filteroperator-available() [[$:/plugins/bimlas/kin-filter]is[tiddler]]
 \define filter-base-title() [title<contextState>each:list-item[base-title]] ~[<__baseTitle__>]
-\define filter-breadcrumbs() [subfilter<filter-base-title>] [title<contextState>each:list-item[breadcrumbs]] -[[]]
-\define filter-ancestor-tags() [subfilter<filter-base-title>] [title<contextState>each:list-item[ancestor-tags]] -[[]]
-\define filter-grandchildren() [subfilter<filter-ancestor-tags>last[]tagging[]tagging[]kin::to[]]
+\define filter-history() [subfilter<filter-base-title>] [title<contextState>each:list-item[history]] -[[]]
+\define filter-grandchildren() [subfilter<filter-history>last[]tagging[]tagging[]kin::to[]]
 \define wikify-filter-search-context(filter)
-  <$text text="[!is[system]"/><$list filter=<<filter-ancestor-tags>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-ancestor-tags>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list><$text text="locator-fields-filter<contextState>"/><$text text="$filter$]"/>
+  <$text text="[!is[system]"/><$list filter=<<filter-history>>><$text text="kin::to["/><$view field="title"/><$text text="]"/></$list><$list filter="[subfilter<filter-history>] -[subfilter<filter-history>]"><$text text="tag["/><$view field="title"/><$text text="]"/></$list><$text text="locator-fields-filter<contextState>"/><$text text="$filter$]"/>
 \end

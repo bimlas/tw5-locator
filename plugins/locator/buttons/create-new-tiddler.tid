@@ -3,10 +3,8 @@ title: $:/plugins/bimlas/locator/buttons/create-new-tiddler
 type: text/vnd.tiddlywiki
 
 <$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator">
-  <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-    <$set name="tagsOfCurrentContext" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]">
-      <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<tagsOfCurrentContext>>/>
-    </$set>
+  <$set name="lastHistoryItem" filter="[subfilter<filter-history>last[]]">
+    <$action-sendmessage $message="tm-new-tiddler" title=<<titleOfNewTiddler>> tags=<<lastHistoryItem>>/>
   </$set>
   {{$:/core/images/new-button}}
 </$button>

@@ -3,18 +3,9 @@ title: $:/plugins/bimlas/locator/buttons/copy-context-from-sidebar
 type: text/vnd.tiddlywiki
 
 <$button tooltip="Search in the context of Locator sidebar in any depth" class="tc-btn-invisible bimlas-locator">
-  <!--
-  Copy the breadcrumbs from the Locator sidebar; interpret each tag as an
-  ancestor tag, otherwise there would be no results for too many direct tags.
-  -->
   <$set name="searchContextState" value=<<contextState>>>
     <$set name="contextState" value="$:/state/bimlas/locator">
-      <$set name="lastAncestorTag" value={{{ [subfilter<filter-ancestor-tags>last[]] }}}>
-        <$set name="tagsOfCurrentContext" filter="[subfilter<filter-breadcrumbs>] -[subfilter<filter-breadcrumbs>allbefore<lastAncestorTag>]">
-          <$action-listops $tiddler=<<searchContextState>> $field="breadcrumbs" $filter=<<tagsOfCurrentContext>>/>
-          <$action-listops $tiddler=<<searchContextState>> $field="ancestor-tags" $filter=<<tagsOfCurrentContext>>/>
-        </$set>
-      </$set>
+      <$action-listops $tiddler=<<searchContextState>> $field="history" $filter="[subfilter<filter-history>last[]]"/>
     </$set>
   </$set>
   {{$:/core/images/close-others-button}}

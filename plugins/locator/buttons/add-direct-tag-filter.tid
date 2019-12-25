@@ -1,7 +1,0 @@
-tags:
-title: $:/plugins/bimlas/locator/buttons/add-direct-tag-filter
-type: text/vnd.tiddlywiki
-
-<$button tooltip="Look for tiddlers having this tag" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/add-direct-tag}}>
-  {{$:/core/images/tag-button}}
-</$button>

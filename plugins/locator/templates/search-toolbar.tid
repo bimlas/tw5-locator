@@ -12,5 +12,5 @@ type: text/vnd.tiddlywiki
     {{$:/plugins/bimlas/locator/buttons/copy-context-from-sidebar}}
   </$list>
   {{$:/plugins/bimlas/locator/buttons/copy-filter-to-advanced-search}}
-  <$list filter="[<contextState>get[breadcrumbs]first[]]">{{$:/plugins/bimlas/locator/buttons/clear-context}}</$list>
+  <$list filter="[<contextState>get[history]first[]]">{{$:/plugins/bimlas/locator/buttons/clear-context}}</$list>
 </$set>
