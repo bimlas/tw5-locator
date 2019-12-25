@@ -106,6 +106,8 @@ Special filters used by Locator
         var results = [];
 
         source(function (tiddler, title) {
+            if(!tiddler) return;
+
             var value = tiddler.fields[operator.operand];
             if(fieldListingOperator === "contains") {
                 value = $tw.utils.parseStringArray(value);
