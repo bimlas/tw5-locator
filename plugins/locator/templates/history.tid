@@ -2,12 +2,7 @@ tags:
 title: $:/plugins/bimlas/locator/templates/history
 type: text/vnd.tiddlywiki
 
-\define history-item-in-search()
-  {{||$:/plugins/bimlas/locator/buttons/remove-from-history}}
-  <<tag>>
-\end
-
-\define history-item-in-view()
+\define history-item()
   <$droppable actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}>
     <div class="tc-droppable-placeholder" style="display: block">
       {{||$:/plugins/bimlas/locator/buttons/go-up-to-context}}
@@ -18,12 +13,10 @@ type: text/vnd.tiddlywiki
   </$droppable>
 \end
 
-<$set name="historyItem" filter="[<contextState>field:title[$:/state/bimlas/locator/search]]" value=<<history-item-in-search>> emptyValue=<<history-item-in-view>>>
-  <$list filter=<<filter-history>>>
-    <div class="tc-menu-list-item bimlas-locator">
-      <$list filter="[subfilter<filter-history>is[current]]">
-        <<historyItem>>
-      </$list>
-    </div>
-  </$list>
-</$set>
+<$list filter=<<filter-history>>>
+  <div class="tc-menu-list-item bimlas-locator">
+    <$list filter="[subfilter<filter-history>is[current]]">
+      <<history-item>>
+    </$list>
+  </div>
+</$list>
