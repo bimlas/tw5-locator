@@ -3,11 +3,12 @@ title: $:/plugins/bimlas/locator/buttons/copy-context-from-sidebar
 type: text/vnd.tiddlywiki
 
 <$button tooltip="Search in the context of Locator sidebar in any depth" class="tc-btn-invisible bimlas-locator">
-  <$list filter="[[$:/state/bimlas/locator/view]fields[]] -[[title]]" variable="field">
+  <$list filter="[[$:/state/bimlas/locator/view]fields[]] -[[title]] -[[history]]" variable="field">
     <$set name="value" tiddler="$:/state/bimlas/locator/view" field=<<field>>>
       <$action-setfield $tiddler=<<contextState>> $field=<<field>> $value=<<value>>/>
     </$set>
   </$list>
-  <$action-listops $tiddler=<<contextState>> $field="history" $subfilter="+[last[]]"/>
+  <$action-setfield $tiddler="$:/state/bimlas/locator/search/recursive-filters" text=""/>
+  <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters" $index={{{ [[$:/state/bimlas/locator/view]get[field-of-relationship]] [[tags]] +[first[]] }}} $filter="[enlist{$:/state/bimlas/locator/view!!history}last[]]"/>
   {{$:/core/images/close-others-button}}
 </$button>
