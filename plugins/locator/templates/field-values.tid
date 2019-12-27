@@ -35,7 +35,7 @@ type: text/vnd.tiddlywiki
 \end
 
 <ol class="bimlas-locator">
-  <$list filter="""[subfilter<filterContextItems>locator-enlist-field-values<currentField>search:title<searchedFieldValue>sort[]]""">
+  <$list filter="""[subfilter<filterContextItems>locator-enlist-field-values<currentField>search:title<searchedFieldValue>] [title<contextState>locator-selected-field-values<currentField>] +[sort[]]""">
     <li class="tc-menu-list-item bimlas-locator">
       <<recursive-filtering>>
       <<toggle-button icon:{{$:/core/images/tag-button}}>>

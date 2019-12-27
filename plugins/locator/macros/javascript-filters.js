@@ -140,7 +140,9 @@ Special filters used by Locator
         var activeFilters = {};
 
         source(function (tiddler, title) {
-            activeFilters = getActiveFilters(options, title);
+            $tw.utils.each(getActiveFilters(options, title), function(value, key) {
+                activeFilters[key] = $tw.utils.pushTop(activeFilters[key] || [], value);
+            });
         });
 
         if (!Object.keys(activeFilters).length) return [];
@@ -148,6 +150,22 @@ Special filters used by Locator
         return operator.operand 
             ? activeFilters[operator.operand] || []
             : ["TODO: Join active filter values (array of arrays)"];
+    };
+
+    /*
+    List of active field names
+
+    Input: contextState - TODO: Cannot use variable as filter suffix?
+    Param (optional): none
+    */
+    exports["locator-selected-field-names"] = function (source, operator, options) {
+        var fieldNames = [];
+
+        source(function (tiddler, title) {
+            fieldNames = $tw.utils.pushTop(fieldNames, Object.keys(getActiveFilters(options, title)));
+        });
+
+        return fieldNames;
     };
 
     /*
