@@ -8,7 +8,9 @@ type: text/vnd.tiddlywiki
       <$action-setfield $tiddler=<<contextState>> $field=<<field>> $value=<<value>>/>
     </$set>
   </$list>
+  <!-- Set up recursive filtering for current context -->
   <$action-setfield $tiddler="$:/state/bimlas/locator/search/recursive-filters" text=""/>
   <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters" $index={{{ [[$:/state/bimlas/locator/view]get[field-of-relationship]] [[tags]] +[first[]] }}} $filter="[enlist{$:/state/bimlas/locator/view!!history}last[]]"/>
+  <$action-listops $tiddler=<<contextState>> $index={{{ [[$:/state/bimlas/locator/view]get[field-of-relationship]] [[tags]] +[first[]] }}} $subfilter="[enlist{$:/state/bimlas/locator/view!!history}last[]]"/>
   {{$:/core/images/close-others-button}}
 </$button>

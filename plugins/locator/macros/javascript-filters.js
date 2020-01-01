@@ -66,11 +66,13 @@ Special filters used by Locator
     exports["locator-fields-filter"] = function (source, operator, options) {
         var results = source;
         var filterOperators = options.wiki.getFilterOperators();
+        var activeRecursiveFilters = getActiveFilters(options, "$:/state/bimlas/locator/search/recursive-filters");
 
         if (operator.suffix === "recursive") {
-            results = applyFieldsFilters(results, options, "$:/state/bimlas/locator/search/recursive-filters", recursiveFilterFunc);
+            results = applyFieldsFilters(results, options, operator.operand, recursiveFilterFunc);
+        } else {
+            results = applyFieldsFilters(results, options, operator.operand, directFilterFunc);
         }
-        results = applyFieldsFilters(results, options, operator.operand, directFilterFunc);
 
         return results;
 
@@ -80,8 +82,13 @@ Special filters used by Locator
         }
 
         function recursiveFilterFunc(input, field, value) {
-            var fieldDirection = getFieldDirection(options, field);
-            return filterOperators.kin(input, { operand: value, suffixes: [[field], [fieldDirection]] }, options);
+            var isRecursiveFilteringActive = $tw.utils.hop(activeRecursiveFilters, field) && (activeRecursiveFilters[field].indexOf(value) >= 0);
+            if (isRecursiveFilteringActive) {
+                var fieldDirection = getFieldDirection(options, field);
+                return filterOperators.kin(input, { operand: value, suffixes: [[field], [fieldDirection]] }, options);
+            } else {
+                return directFilterFunc(input, field, value)
+            }
         }
     };
 
