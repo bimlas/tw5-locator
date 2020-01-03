@@ -20,7 +20,7 @@ type: text/vnd.tiddlywiki
 \end
 
 <div class="tc-menu-list-item bimlas-locator">
-  <$set name="fieldsFilterButtonClass" filter="[title<contextState>locator-selected-field-values[]first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible tc-tiddlylink bimlas-locator">
+  <$set name="fieldsFilterButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible tc-tiddlylink bimlas-locator">
     <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<hide-fields-filter>>><<show-fields-filter>></$list>
   </$set>
 </div>

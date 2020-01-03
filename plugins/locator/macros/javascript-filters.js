@@ -26,8 +26,8 @@ Special filters used by Locator
         return (fieldOptions || {fields: {}}).fields["field-direction"];
     }
 
-    function getActiveFilters(options, contextState) {
-        var filteredFields = options.wiki.getTiddlerDataCached(contextState, {});
+    function getActiveFilters(options, filterState) {
+        var filteredFields = options.wiki.getTiddlerDataCached(filterState, {});
         var results = {};
 
         $tw.utils.each(filteredFields, function(valuesAsString, field) {
@@ -40,15 +40,15 @@ Special filters used by Locator
         return results;
     }
 
-    function applyFieldsFilters(source, options, contextState, filterFunc) {
-        var activeFilters = getActiveFilters(options, contextState);
+    function applyFieldsFilters(source, options, filterState, filterFunc, prefix) {
+        var activeFilters = getActiveFilters(options, filterState);
         var results = source;
 
         if (!Object.keys(activeFilters).length) return results;
 
         $tw.utils.each(activeFilters, function (values, field) {
             $tw.utils.each(values, function (value) {
-                results = filterFunc(results, field, value);
+                results = filterFunc(results, field, value, prefix);
                 results = options.wiki.makeTiddlerIterator(results);
             });
         });
@@ -60,34 +60,35 @@ Special filters used by Locator
     Filter titles matching to Locator fields filter
 
     Input: list of tiddlers
-    Param: contextState
+    Param: filterState
+    Prefix: "!" to exclude matching tiddlers
     Suffix: "recusive" enables recursive filtering
     */
     exports["locator-fields-filter"] = function (source, operator, options) {
         var results = source;
         var filterOperators = options.wiki.getFilterOperators();
-        var activeRecursiveFilters = getActiveFilters(options, "$:/state/bimlas/locator/search/recursive-filters");
+        var activeRecursiveFilters = getActiveFilters(options, "$:/state/bimlas/locator/search/recursive-filters/");
 
         if (operator.suffix === "recursive") {
-            results = applyFieldsFilters(results, options, operator.operand, recursiveFilterFunc);
+            results = applyFieldsFilters(results, options, operator.operand, recursiveFilterFunc, operator.prefix);
         } else {
-            results = applyFieldsFilters(results, options, operator.operand, directFilterFunc);
+            results = applyFieldsFilters(results, options, operator.operand, directFilterFunc, operator.prefix);
         }
 
         return results;
 
-        function directFilterFunc(input, field, value) {
+        function directFilterFunc(input, field, value, prefix) {
             var fieldListingOperator = getFieldListingOperator(options, field);
-            return filterOperators[fieldListingOperator](input, { operand: value, suffix: field }, options);
+            return filterOperators[fieldListingOperator](input, { operand: value, prefix: prefix, suffix: field }, options);
         }
 
-        function recursiveFilterFunc(input, field, value) {
+        function recursiveFilterFunc(input, field, value, prefix) {
             var isRecursiveFilteringActive = $tw.utils.hop(activeRecursiveFilters, field) && (activeRecursiveFilters[field].indexOf(value) >= 0);
             if (isRecursiveFilteringActive) {
                 var fieldDirection = getFieldDirection(options, field);
-                return filterOperators.kin(input, { operand: value, suffixes: [[field], [fieldDirection]] }, options);
+                return filterOperators.kin(input, { operand: value, prefix: prefix, suffixes: [[field], [fieldDirection]] }, options);
             } else {
-                return directFilterFunc(input, field, value)
+                return directFilterFunc(input, field, value, prefix)
             }
         }
     };
@@ -140,7 +141,7 @@ Special filters used by Locator
     /*
     List of active field filters
 
-    Input: contextState - TODO: Cannot use variable as filter suffix?
+    Input: filterState - TODO: Cannot use variable as filter suffix?
     Param (optional): field
     */
     exports["locator-selected-field-values"] = function (source, operator, options) {
@@ -154,7 +155,7 @@ Special filters used by Locator
 
         if (!Object.keys(activeFilters).length) return [];
 
-        return operator.operand 
+        return operator.operand
             ? activeFilters[operator.operand] || []
             : ["TODO: Join active filter values (array of arrays)"];
     };
@@ -162,7 +163,7 @@ Special filters used by Locator
     /*
     List of active field names
 
-    Input: contextState - TODO: Cannot use variable as filter suffix?
+    Input: filterState - TODO: Cannot use variable as filter suffix?
     Param (optional): none
     */
     exports["locator-selected-field-names"] = function (source, operator, options) {

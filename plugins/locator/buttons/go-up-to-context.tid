@@ -4,7 +4,6 @@ type: text/vnd.tiddlywiki
 
 <$button tooltip="Go to context, show chidlren of this tiddler" class="tc-btn-invisible bimlas-locator">
   <$action-listops $tiddler=<<contextState>> $field="history" $filter="[subfilter<filter-history>allbefore<currentTiddler>] [all[current]]"/>
-  <$action-setfield $tiddler=<<contextState>> text=""/>
-  <$action-setfield $tiddler=<<contextState>> opened-fields-filters=""/>
+  {{$:/plugins/bimlas/locator/actions/remove-filters}}
   {{$:/core/images/right-arrow}}
 </$button>

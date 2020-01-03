@@ -4,5 +4,6 @@ type: text/vnd.tiddlywiki
 
 <$button tooltip=<<tooltip-for-clear-context>> class="tc-btn-invisible bimlas-locator">
   <$action-deletetiddler $tiddler=<<contextState>>/>
+  {{$:/plugins/bimlas/locator/actions/remove-filters}}
   {{$:/core/images/close-button}}
 </$button>

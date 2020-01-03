@@ -2,37 +2,31 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/create-new-tiddler
 type: text/vnd.tiddlywiki
 
-\define add-field-value-as-list()
-  <$action-listops $tiddler=<<title>> $field=<<field>> $filter="[title<contextState>locator-selected-field-values<field>]"/>
+\define add-as-list()
+  <$action-listops $tiddler=<<title>> $field=<<field>> $subfilter=<<__valueAsFilter__>>/>
 \end
 
-\define add-field-value-as-value()
-  <$action-setfield $tiddler=<<title>> $field=<<field>> $value={{{ [title<contextState>locator-selected-field-values<field>] }}}/>
+\define add-as-value()
+  <$action-setfield $tiddler=<<title>> $field=<<field>> $value={{{ [subfilter<__valueAsFilter__>] }}}/>
 \end
 
-\define add-field-values()
-  <$list filter="[title<contextState>indexes[]]" variable="field">
-    <$list filter="[title<contextState>locator-selected-field-values<field>first[]]">
-      <$list filter="[title<field>subfilter<filter-field-is-list>]" emptyMessage=<<add-field-value-as-value>>>
-        <<add-field-value-as-list>>
-      </$list>
-    <$list filter="[title<contextState>locator-selected-field-values<field>first[]]">
+\define add-field-value(valueAsFilter)
+  <$list filter="[title<field>subfilter<filter-field-is-list>]" emptyMessage=<<add-as-value>>>
+    <<add-as-list>>
   </$list>
 \end
 
-\define add-context-as-list()
-  <$action-listops $tiddler=<<title>> $field=<<field>> $subfilter="[subfilter<filter-history>last[]]"/>
-\end
-
-\define add-context-as-value()
-  <$action-setfield $tiddler=<<title>> $field=<<field>> $value={{{ [subfilter<filter-history>last[]] }}}/>
+\define add-field-values()
+  <$list filter="[title<intersectionState>indexes[]]" variable="field">
+    <$list filter="[title<intersectionState>locator-selected-field-values<field>first[]]">
+      <<add-field-value "[title<intersectionState>locator-selected-field-values<field>]">>
+    </$list>
+  </$list>
 \end
 
 \define add-context()
   <$set name="field" filter="[title<contextState>get[field-of-relationship]]" emptyValue="tags">
-    <$list filter="[title<field>subfilter<filter-field-is-list>]" emptyMessage=<<add-context-as-value>>>
-      <<add-context-as-list>>
-    </$list>
+    <<add-field-value "[subfilter<filter-history>last[]]">>
   </$set>
 \end
 

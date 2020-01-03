@@ -5,25 +5,29 @@ type: text/vnd.tiddlywiki
 \define locator-fields()
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
-    <$set name="contextState" value="$:/state/bimlas/locator/search">
+    <$set name="contextState" value="$:/state/bimlas/locator/search/context/">
+      <$set name="intersectionState" value="$:/state/bimlas/locator/search/intersection/">
+        <$set name="differenceState" value="$:/state/bimlas/locator/search/difference/">
 
-        {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+          {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
-        <$list filter="[title<contextState>locator-selected-field-values[]first[]]" emptyMessage="""<$list filter="0" variable="resultCount" template="$:/language/Search/Matches"/>""">
-          <$list filter="[subfilter<filter-search-context>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
-        </$list>
+          <$list filter="[subfilter<filter-selected-field-values>first[]]" emptyMessage="""<$list filter="0" variable="resultCount" template="$:/language/Search/Matches"/>""">
+            <$list filter="[subfilter<filter-search-context>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
+          </$list>
 
-        <!-- searchTiddler variable does not available in transcluded tiddlers by default -->
-        <$set name="filterContextItems" value="[!is[system]]">
-          <$set name="searchedFieldValue" value={{$(searchTiddler)$}}>
-            {{$:/plugins/bimlas/locator/templates/field-names}}
+          <!-- searchTiddler variable does not available in transcluded tiddlers by default -->
+          <$set name="filterContextItems" value="[!is[system]]">
+            <$set name="searchedFieldValue" value={{$(searchTiddler)$}}>
+              {{$:/plugins/bimlas/locator/templates/field-names}}
+            </$set>
           </$set>
+
+          <$list filter="[subfilter<filter-selected-field-values>first[]]">
+            <$list filter="[subfilter<filter-search-context>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
+          </$list>
+
         </$set>
-
-        <$list filter="[title<contextState>locator-selected-field-values[]first[]]">
-          <$list filter="[subfilter<filter-search-context>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
-        </$list>
-
+      </$set>
     </$set>
   </$importvariables>
 \end

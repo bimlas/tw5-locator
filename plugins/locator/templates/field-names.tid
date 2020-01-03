@@ -18,9 +18,9 @@ type: text/vnd.tiddlywiki
 \end
 
 <ol class="bimlas-locator">
-  <$list filter="""[subfilter<filterContextItems>fields[]locator-enabled-fields[]] [title<contextState>locator-selected-field-names[]] +[sort[]]""" variable="currentField">
-    <$list filter="""[subfilter<filterContextItems>get<currentField>search:title<searchedFieldValue>] [title<contextState>locator-selected-field-values<currentField>] +[first[]]""" variable="doNotOverrideCurrent">
-      <$set name="fieldButtonClass" filter="[title<contextState>locator-selected-field-values<currentField>first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator tc-tiddlylink">
+  <$list filter="""[title<intersectionState>] [title<differenceState>] +[locator-selected-field-names[]] [subfilter<filterContextItems>fields[]locator-enabled-fields[]] +[sort[]]""" variable="currentField">
+    <$list filter="""[subfilter<filterContextItems>get<currentField>search:title<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[first[]]""" variable="doNotOverrideCurrent">
+      <$set name="fieldButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator tc-tiddlylink">
         <li class="tc-menu-list-item bimlas-locator">
           <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<hide-field-values>>><<show-field-values>></$list>
         </li>

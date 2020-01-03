@@ -4,6 +4,8 @@ type: text/vnd.tiddlywiki
 
 ! Locator
 
+''DEVELOPER VERSION, DO NOT USE IT, USE ONLY THE OFFICIAL RELEASES FROM THE REPOSITORIES BELLOW!''
+
 For those who use many tags or store many different topics in a common wiki the Locator plugin is ''a table of contents widget and an enhanced search engine'' that gives you the opportunity to ''filter results by related tags without the need to write filters''. Unlike [[classic Table of Contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin offers these features in an organic, collaborative way.
 
 * https://gitlab.com/bimlas/tw5-locator (main repository)

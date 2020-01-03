@@ -2,43 +2,72 @@ tags:
 title: $:/plugins/bimlas/locator/templates/field-values
 type: text/vnd.tiddlywiki
 
-\define filter-on()
-  <$action-listops $tiddler=<<contextState>> $index=<<currentField>> $subfilter="[all[current]]"/>
+\define remove-from-other-filter-state()
+  <$list filter="[title<__removeFromOtherFieldState__>regexp[yes]]" variable="doNotOverrideCurrent">
+    <$action-listops $tiddler={{{ [title<intersectionState>] [title<differenceState>] -[title<__filterState__>first[]] }}} $index=<<currentField>> $subfilter="-[all[current]]"/>
+  </$list>
 \end
 
-\define filter-off()
-  <$action-listops $tiddler=<<contextState>> $index=<<currentField>> $subfilter="-[all[current]]"/>
+\define button-inactive()
+  <$button tooltip="Toggle filtering to this value" class="tc-btn-invisible bimlas-locator">
+    <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="[all[current]]"/>
+    <<remove-from-other-filter-state>>
+    <<__iconInactive__>>
+  </$button>
 \end
 
-\define toggle-field-filter()
-  <$list filter="[title<contextState>locator-selected-field-values<currentField>is[current]]" emptyMessage=<<filter-on>> variable="doNotOverrideCurrent"><<filter-off>></$list>
+\define button-active()
+  <$button tooltip="Toggle filtering to this value" class="tc-btn-invisible bimlas-locator active">
+    <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="-[all[current]]"/>
+    <<remove-from-other-filter-state>>
+    <$list filter="[title<contextState>field:title[$:/state/bimlas/locator/search/context/]]" variable="doNotOverrideCurrent">
+      <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index=<<currentField>> $subfilter="-[all[current]]"/>
+    </$list>
+    <<__iconActive__>>
+  </$button>
 \end
 
-\define toggle-button(icon)
-  <$set name="fieldValueButtonClass" filter="[title<contextState>locator-selected-field-values<currentField>is[current]]" value="tc-btn-invisible bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator">
-    <$button tooltip="Toggle filtering to this value" class=<<fieldValueButtonClass>> actions=<<toggle-field-filter>>>
-      <<__icon__>>
-    </$button>
-  </$set>
+\define toggle-button(filterState iconActive iconInactive removeFromOtherFieldState:"yes")
+  <$list filter="[title<__filterState__>locator-selected-field-values<currentField>is[current]]" emptyMessage=<<button-inactive>>>
+    <<button-active>>
+  </$list>
 \end
 
-\define recursive-filtering()
+\define recursive-filtering(filterState)
   <$list filter=<<filter-kin-filteroperator-available>> variable="doNotOverrideCurrent">
-    <$list filter="[title<contextState>field:title[$:/state/bimlas/locator/search]]" variable="doNotOverrideCurrent">
+    <$list filter="[title<contextState>field:title[$:/state/bimlas/locator/search/context/]]" variable="doNotOverrideCurrent">
       <$list filter="[subfilter<filter-enlist-relationship-fields>regexp[^$(currentField)$$]]" variable="doNotOverrideCurrent">
-        <$set name="contextState" value="$:/state/bimlas/locator/search/recursive-filters">
-          <<toggle-button icon:{{$:/core/images/link}}>>
-        </$set>
+        <$macrocall 
+          $name="toggle-button"
+          filterState=<<__filterState__>>
+          iconActive={{$:/core/images/link}}
+          iconInactive={{$:/core/images/tag-button}}
+          removeFromOtherFieldState="no"
+        />
       </$list>
     </$list>
   </$list>
 \end
 
 <ol class="bimlas-locator">
-  <$list filter="""[subfilter<filterContextItems>locator-enlist-field-values<currentField>search:title<searchedFieldValue>] [title<contextState>locator-selected-field-values<currentField>] +[sort[]]""">
+  <$list filter="""[subfilter<filterContextItems>locator-enlist-field-values<currentField>search:title<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[sort[]]""">
     <li class="tc-menu-list-item bimlas-locator">
-      <<recursive-filtering>>
-      <<toggle-button icon:{{$:/core/images/tag-button}}>>
+      <$macrocall
+        $name="recursive-filtering"
+        filterState="$:/state/bimlas/locator/search/recursive-filters/"
+      />
+      <$macrocall
+        $name="toggle-button"
+        filterState=<<intersectionState>>
+        iconActive={{$:/core/images/new-button}}
+        iconInactive={{$:/core/images/new-button}}
+      />
+      <$macrocall
+        $name="toggle-button"
+        filterState=<<differenceState>>
+        iconActive={{$:/core/images/close-button}}
+        iconInactive={{$:/core/images/close-button}}
+      />
       <$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>get[template]]" emptyMessage="""<$view field="title"/>""" variable="fieldValueTemplate">
         <<fieldValueTemplate>>
       </$list>
