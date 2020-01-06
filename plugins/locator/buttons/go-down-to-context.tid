@@ -4,7 +4,7 @@ type: text/vnd.tiddlywiki
 
 \define branch-item()
   <$button tooltip="Go to context, show chidlren of this tiddler" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/add-to-history}}>
-    {{$:/core/images/right-arrow}}
+    {{$:/plugins/bimlas/locator/buttons/context-arrow}}
   </$button>
 \end
 
