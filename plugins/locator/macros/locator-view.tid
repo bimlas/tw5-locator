@@ -13,11 +13,13 @@ type: text/vnd.tiddlywiki
 
             {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$set name="tooltip-for-clear-context" value="Go back to the default context">
               {{$:/plugins/bimlas/locator/buttons/clear-context}}
-            </$set></$list> {{$:/plugins/bimlas/locator/templates/relationship-settings}}
+            </$set></$list>
 
             {{$:/plugins/bimlas/locator/templates/history}}
 
             ---
+
+            {{$:/plugins/bimlas/locator/templates/relationship-settings}}
 
             <$set name="filterContextItems" value="[subfilter<filter-history>last[]locator-enlist-children<contextState>!has[draft.of]locator-fields-filter<intersectionState>!locator-fields-filter<differenceState>]">
               <ol class="bimlas-locator">
