@@ -11,12 +11,14 @@ type: text/vnd.tiddlywiki
 
           {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
+          <p><$checkbox tiddler=<<contextState>> field="limit-to-fields-of-filtered-tiddlers" checked="yes" unchecked="no" default="yes">Limit to fields of filtered tiddlers</$checkbox></p>
+
           <$list filter="[subfilter<filter-selected-field-values>first[]]" emptyMessage="""<$list filter="0" variable="resultCount" template="$:/language/Search/Matches"/>""">
             <$list filter="[subfilter<filter-search-context>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
           </$list>
 
           <!-- searchTiddler variable does not available in transcluded tiddlers by default -->
-          <$set name="filterContextItems" value="[!is[system]]">
+          <$set name="filterContextItems" filter="[<contextState>field:limit-to-fields-of-filtered-tiddlers[no]]" value="[!is[system]]" emptyValue=<<filter-search-context>>>
             <$set name="searchedFieldValue" value={{$(searchTiddler)$}}>
               {{$:/plugins/bimlas/locator/templates/field-names}}
             </$set>
