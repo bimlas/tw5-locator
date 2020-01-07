@@ -8,21 +8,22 @@ type: text/vnd.tiddlywiki
     {{$:/core/images/options-button}}
   </$button>
 
-  <p>
-    Field of relationship:
+  <div class="bimlas-locator relationship-settings">
+    <p>
+      Field of relationship:
 
-    <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
-      <$list filter=<<filter-enlist-relationship-fields>>>
-        <option><<currentTiddler>></option>
-      </$list>
-    </$select>
-  </p>
+      <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
+        <$list filter=<<filter-enlist-relationship-fields>>>
+          <option><<currentTiddler>></option>
+        </$list>
+      </$select>
+    </p>
 
-  <p><$checkbox tiddler=<<contextState>> field="invert-direction" checked="yes" unchecked="" default="">Invert direction</$checkbox></p>
+    <p><$checkbox tiddler=<<contextState>> field="invert-direction" checked="yes" unchecked="" default=""> Invert direction</$checkbox></p>
 
-  <p><$checkbox tiddler=<<contextState>> field="allow-to-open-leaves" checked="yes" unchecked="" default="">Allow to open leaves</$checkbox></p>
+    <p><$checkbox tiddler=<<contextState>> field="allow-to-open-leaves" checked="yes" unchecked="" default=""> Allow to open leaves</$checkbox></p>
+  </div>
 
-  <hr/>
 \end
 
 \define hide-relationsip-settings()
@@ -32,6 +33,6 @@ type: text/vnd.tiddlywiki
   </$button>
 \end
 
-<$set name="relationshipSettingsButtonClass" filter="[title<contextState>has[invert-direction]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator right active" emptyValue="tc-btn-invisible tc-tiddlylink bimlas-locator right">
+<$set name="relationshipSettingsButtonClass" filter="[title<contextState>field:relationsip-settings-opened[yes]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator right active" emptyValue="tc-btn-invisible tc-tiddlylink bimlas-locator right">
   <$list filter="[title<contextState>field:relationsip-settings-opened[yes]]" emptyMessage=<<hide-relationsip-settings>>><<show-relationsip-settings>></$list>
 </$set>
