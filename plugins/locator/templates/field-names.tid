@@ -2,14 +2,14 @@ tags:
 title: $:/plugins/bimlas/locator/templates/field-names
 type: text/vnd.tiddlywiki
 
-\define hide-field-values()
+\define closed()
   <$button class=<<fieldButtonClass>>>
     <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="[<currentField>]"/>
     {{$:/core/images/down-arrow}} <<currentField>>
   </$button>
 \end
 
-\define show-field-values()
+\define opened()
   <$button class=<<fieldButtonClass>>>
     <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="-[<currentField>]"/>
     {{$:/core/images/up-arrow}} <<currentField>>
@@ -17,12 +17,15 @@ type: text/vnd.tiddlywiki
   {{$:/plugins/bimlas/locator/templates/field-values}}
 \end
 
+\define field-names() [title<intersectionState>] [title<differenceState>] +[locator-selected-field-names[]] [subfilter<filterContextItems>fields[]locator-enabled-fields[]] +[sort[]]
+\define has-field-value-to-list() [subfilter<filterContextItems>get<currentField>search:title<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[first[]]
+
 <ol class="bimlas-locator">
-  <$list filter="""[title<intersectionState>] [title<differenceState>] +[locator-selected-field-names[]] [subfilter<filterContextItems>fields[]locator-enabled-fields[]] +[sort[]]""" variable="currentField">
-    <$list filter="""[subfilter<filterContextItems>get<currentField>search:title<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[first[]]""" variable="doNotOverrideCurrent">
-      <$set name="fieldButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator active" emptyValue="tc-btn-invisible bimlas-locator tc-tiddlylink">
-        <li class="tc-menu-list-item bimlas-locator">
-          <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<hide-field-values>>><<show-field-values>></$list>
+  <$list filter=<<field-names>> variable="currentField">
+    <$list filter=<<has-field-value-to-list>> variable="null">
+      <$set name="fieldButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
+        <li class=<<menu-list-item-class>>>
+          <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<closed>>><<opened>></$list>
         </li>
       </$set>
     </$list>

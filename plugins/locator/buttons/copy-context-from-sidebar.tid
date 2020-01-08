@@ -2,17 +2,28 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/copy-context-from-sidebar
 type: text/vnd.tiddlywiki
 
-<$button tooltip="Search in the context of Locator sidebar in any depth" class="tc-btn-invisible bimlas-locator">
+\define copy-context()
   <$list filter="[[$:/state/bimlas/locator/view/context/]fields[]] -[[title]] -[[history]]" variable="field">
     <$set name="value" tiddler="$:/state/bimlas/locator/view/context/" field=<<field>>>
       <$action-setfield $tiddler=<<contextState>> $field=<<field>> $value=<<value>>/>
     </$set>
   </$list>
+\end
+
+\define copy-filters()
   <$action-setfield $tiddler=<<intersectionState>> text={{$:/state/bimlas/locator/view/intersection/}} type={{$:/state/bimlas/locator/view/intersection/!!type}}/>
   <$action-setfield $tiddler=<<differenceState>> text={{$:/state/bimlas/locator/view/difference/}} type={{$:/state/bimlas/locator/view/difference/!!type}}/>
-  <!-- Set up recursive filtering for current context -->
+\end
+
+\define recursive-search-in-current-context()
   <$action-setfield $tiddler="$:/state/bimlas/locator/search/recursive-filters/" text=""/>
   <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [[$:/state/bimlas/locator/view/context/]get[field-of-relationship]] [[tags]] +[first[]] }}} $filter="[enlist{$:/state/bimlas/locator/view/context/!!history}last[]]"/>
   <$action-listops $tiddler=<<intersectionState>> $index={{{ [[$:/state/bimlas/locator/view/context/]get[field-of-relationship]] [[tags]] +[first[]] }}} $subfilter="[enlist{$:/state/bimlas/locator/view/context/!!history}last[]]"/>
+\end
+
+<$button tooltip="Search in the context of Locator sidebar in any depth" class=<<link-button-class>>>
+  <<copy-context>>
+  <<copy-filters>>
+  <<recursive-search-in-current-context>>
   {{$:/core/images/close-others-button}}
 </$button>

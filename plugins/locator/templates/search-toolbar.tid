@@ -8,7 +8,7 @@ type: text/vnd.tiddlywiki
   <$set name="titleOfNewTiddler" value={{$:/temp/search}}>
     {{$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
   </$set>
-  <$list filter=<<filter-kin-filteroperator-available>> variable="doNotOverrideCurrent">
+  <$list filter=<<filter-kin-filteroperator-available>> variable="null">
     {{$:/plugins/bimlas/locator/buttons/copy-context-from-sidebar}}
   </$list>
   {{$:/plugins/bimlas/locator/buttons/copy-filter-to-advanced-search}}

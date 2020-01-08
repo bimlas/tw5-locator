@@ -2,7 +2,7 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/go-up-to-context
 type: text/vnd.tiddlywiki
 
-<$button tooltip="Go to context, show chidlren of this tiddler" class="tc-btn-invisible bimlas-locator">
+<$button tooltip="Go to context, show chidlren of this tiddler" class=<<link-button-class>>>
   <$action-listops $tiddler=<<contextState>> $field="history" $filter="[subfilter<filter-history>allbefore<currentTiddler>] [all[current]]"/>
   {{$:/plugins/bimlas/locator/actions/remove-filters}}
   {{$:/plugins/bimlas/locator/buttons/context-arrow}}

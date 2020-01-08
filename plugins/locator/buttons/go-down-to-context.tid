@@ -2,16 +2,16 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/go-down-to-context
 type: text/vnd.tiddlywiki
 
-\define branch-item()
-  <$button tooltip="Go to context, show chidlren of this tiddler" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/add-to-history}}>
+\define node()
+  <$button tooltip="Go to context, show chidlren of this tiddler" class=<<link-button-class>> actions={{$:/plugins/bimlas/locator/actions/add-to-history}}>
     {{$:/plugins/bimlas/locator/buttons/context-arrow}}
   </$button>
 \end
 
-\define leaf-item()
-  <$button class="tc-btn-invisible bimlas-locator">
+\define leaf()
+  <$button class=<<link-button-class>>>
     {{$:/core/images/blank}}
   </$button>
 \end
 
-<$list filter="[all[current]locator-enlist-children<contextState>] [title<contextState>field:allow-to-open-leaves[yes]] +[first[]]" emptyMessage=<<leaf-item>> variable="null"><<branch-item>></$list>
+<$list filter="[all[current]locator-enlist-children<contextState>] [title<contextState>field:allow-to-open-leaves[yes]] +[first[]]" emptyMessage=<<leaf>> variable="null"><<node>></$list>

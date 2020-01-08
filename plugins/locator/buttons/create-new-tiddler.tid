@@ -16,7 +16,7 @@ type: text/vnd.tiddlywiki
   </$list>
 \end
 
-\define add-field-values()
+\define add-filters-as-field-values()
   <$list filter="[title<intersectionState>indexes[]]" variable="field">
     <$list filter="[title<intersectionState>locator-selected-field-values<field>first[]]">
       <<add-field-value "[title<intersectionState>locator-selected-field-values<field>]">>
@@ -24,16 +24,16 @@ type: text/vnd.tiddlywiki
   </$list>
 \end
 
-\define add-context()
+\define add-to-current-context()
   <$set name="field" filter="[title<contextState>get[field-of-relationship]]" emptyValue="tags">
     <<add-field-value "[subfilter<filter-history>last[]]">>
   </$set>
 \end
 
-<$button tooltip="Create new tiddler in the current context" class="tc-btn-invisible bimlas-locator">
+<$button tooltip="Create new tiddler in the current context" class=<<link-button-class>>>
   <$set name="title" value={{{ [title<titleOfNewTiddler>] [title{$:/language/DefaultNewTiddlerTitle}] -[[]] +[first[]] }}}>
-    <<add-field-values>>
-    <<add-context>>
+    <<add-filters-as-field-values>>
+    <<add-to-current-context>>
     <$action-sendmessage $message="tm-new-tiddler" title=<<title>>/>
   </$set>
   {{$:/core/images/new-button}}

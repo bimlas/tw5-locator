@@ -1,8 +1,0 @@
-tags:
-title: $:/plugins/bimlas/locator/buttons/remove-from-history
-type: text/vnd.tiddlywiki
-
-<$button tooltip="Remove filtering to this tag" class="tc-btn-invisible bimlas-locator">
-  <$action-listops $tiddler=<<contextState>> $field="history" $subfilter="-[all[current]]"/>
-  {{$:/core/images/link}}
-</$button>

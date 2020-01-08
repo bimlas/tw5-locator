@@ -2,37 +2,42 @@ tags:
 title: $:/plugins/bimlas/locator/templates/relationship-settings
 type: text/vnd.tiddlywiki
 
-\define show-relationsip-settings()
-  <$button class=<<relationshipSettingsButtonClass>>>
+\define field-of-relationship()
+  Field of relationship:
+  <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
+    <$list filter=<<filter-enlist-relationship-fields>>>
+      <option><<currentTiddler>></option>
+    </$list>
+  </$select>
+\end
+
+\define toggle-setting(field title)
+  <$checkbox tiddler=<<contextState>> field=<<__field__>> checked="yes" unchecked="" default=""> <<__title__>></$checkbox>
+\end
+
+\define opened()
+  <$button class=<<link-button-class additionalClasses:"right active">>>
     <$action-listops $tiddler=<<contextState>> $field="relationsip-settings-opened" $filter="[[]]"/>
     {{$:/core/images/options-button}}
   </$button>
 
   <div class="bimlas-locator relationship-settings">
-    <p>
-      Field of relationship:
 
-      <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
-        <$list filter=<<filter-enlist-relationship-fields>>>
-          <option><<currentTiddler>></option>
-        </$list>
-      </$select>
-    </p>
+    <<field-of-relationship>>
 
-    <p><$checkbox tiddler=<<contextState>> field="invert-direction" checked="yes" unchecked="" default=""> Invert direction</$checkbox></p>
+    <<toggle-setting field:"invert-direction" title:"Invert direction">>
 
-    <p><$checkbox tiddler=<<contextState>> field="allow-to-open-leaves" checked="yes" unchecked="" default=""> Allow to open leaves</$checkbox></p>
+    <<toggle-setting field:"allow-to-open-leaves" title:"Allow to open leaves">>
+
   </div>
 
 \end
 
-\define hide-relationsip-settings()
-  <$button class=<<relationshipSettingsButtonClass>>>
+\define closed()
+  <$button class=<<link-button-class additionalClasses:"right">>>
     <$action-listops $tiddler=<<contextState>> $field="relationsip-settings-opened" $filter="yes"/>
     {{$:/core/images/options-button}}
   </$button>
 \end
 
-<$set name="relationshipSettingsButtonClass" filter="[title<contextState>field:relationsip-settings-opened[yes]]" value="tc-btn-invisible tc-tiddlylink bimlas-locator right active" emptyValue="tc-btn-invisible tc-tiddlylink bimlas-locator right">
-  <$list filter="[title<contextState>field:relationsip-settings-opened[yes]]" emptyMessage=<<hide-relationsip-settings>>><<show-relationsip-settings>></$list>
-</$set>
+<$list filter="[title<contextState>field:relationsip-settings-opened[yes]]" emptyMessage=<<closed>>><<opened>></$list>

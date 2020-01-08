@@ -5,7 +5,7 @@ type: text/vnd.tiddlywiki
 \define locator-view(baseTitle finalFilter="" tagFilter="")
   <!-- TODO: Implement finalFilter again, move tagFilter to field settings -->
   <!-- Hide internal macros, do not make them globally available -->
-  <$importvariables filter="[[$:/plugins/bimlas/locator/macros/filters]]">
+  <$importvariables filter="[all[system+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
     <$set name="contextState" value="$:/state/bimlas/locator/view/context/$(currentTiddler)$">
       <$set name="intersectionState" value="$:/state/bimlas/locator/view/intersection/$(currentTiddler)$">
         <$set name="differenceState" value="$:/state/bimlas/locator/view/difference/$(currentTiddler)$">
@@ -25,11 +25,11 @@ type: text/vnd.tiddlywiki
               <ol class="bimlas-locator">
                 {{$:/plugins/bimlas/locator/templates/fields-filter}}
                 <$list filter=<<filterContextItems>>>
-                  <$droppable actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}>
-                    <li class="toc-item tc-droppable-placeholder bimlas-locator" style="display: block">
-                      {{||$:/plugins/bimlas/locator/buttons/go-down-to-context}} <$link to=<<currentTiddler>>><$transclude field="caption"><$view field="title"/></$transclude></$link>
-                    </li>
-                  </$droppable>
+                  <$macrocall
+                    $name="droppable-menu-list-item"
+                    content={{$:/plugins/bimlas/locator/templates/context-item}}
+                    actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
+                  />
                 </$list>
               </ol>
             </$set>

@@ -1,0 +1,8 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/context-item
+type: text/vnd.tiddlywiki
+
+<li class="toc-item">
+  {{||$:/plugins/bimlas/locator/buttons/go-down-to-context}}
+  {{||$:/plugins/bimlas/locator/templates/link}}
+</li>
