@@ -38,7 +38,7 @@ type: text/vnd.tiddlywiki
 \define recursive-filtering(filterState)
   <$list filter="[title<contextState>field:title[$:/state/bimlas/locator/search/context/]]" variable="null">
     <$list filter=<<filter-kin-filteroperator-available>> variable="null">
-      <$list filter="[locator-enlist-relationship-fields[]regexp[^$(currentField)$$]]" variable="null">
+      <$list filter="[locator-enlist-relationship-fields<currentField>]" variable="null">
         <$macrocall 
           $name="toggle-button"
           filterState=<<__filterState__>>

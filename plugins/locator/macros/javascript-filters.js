@@ -116,12 +116,20 @@ Special filters used by Locator
     List fields which can be used to build tree ("tags" for example)
 
     Input: none
-    Param: none
+    Param (optional): field to check if it's a relationship field
     */
     exports["locator-enlist-relationship-fields"] = function (source, operator, options) {
-        return options.wiki.getGlobalCache("bimlas-locator-enlist-relationship-fields", function() {
+        var relationshipFields = options.wiki.getGlobalCache("bimlas-locator-enlist-relationship-fields", function() {
             return options.wiki.filterTiddlers("[all[tiddlers+shadows]prefix[$:/config/bimlas/locator/fields/]has[field-direction]removeprefix[$:/config/bimlas/locator/fields/]]");
         });
+
+        if (operator.operand) {
+            return relationshipFields.indexOf(operator.operand) >= 0
+                ? [operator.operand]
+                : [];
+        }
+
+        return relationshipFields;
     };
 
     /*
