@@ -113,6 +113,18 @@ Special filters used by Locator
     };
 
     /*
+    List fields which can be used to build tree ("tags" for example)
+
+    Input: none
+    Param: none
+    */
+    exports["locator-enlist-relationship-fields"] = function (source, operator, options) {
+        return options.wiki.getGlobalCache("bimlas-locator-enlist-relationship-fields", function() {
+            return options.wiki.filterTiddlers("[all[tiddlers+shadows]prefix[$:/config/bimlas/locator/fields/]has[field-direction]removeprefix[$:/config/bimlas/locator/fields/]]");
+        });
+    };
+
+    /*
     List field values according to Locator field settings
 
     Input: list of tiddlers
