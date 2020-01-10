@@ -27,17 +27,19 @@ Special filters used by Locator
     }
 
     function getActiveFilters(options, filterState) {
-        var filteredFields = options.wiki.getTiddlerDataCached(filterState, {});
-        var results = {};
+        return options.wiki.getCacheForTiddler(filterState, "activeFilters", function() {
+            var filteredFields = options.wiki.getTiddlerDataCached(filterState, {});
+            var results = {};
 
-        $tw.utils.each(filteredFields, function(valuesAsString, field) {
-            var values = $tw.utils.parseStringArray(valuesAsString) || [];
-            if(values.length) {
-                results[field] = values;
-            }
+            $tw.utils.each(filteredFields, function(valuesAsString, field) {
+                var values = $tw.utils.parseStringArray(valuesAsString) || [];
+                if(values.length) {
+                    results[field] = values;
+                }
+            });
+
+            return results;
         });
-
-        return results;
     }
 
     function applyFieldsFilters(source, options, filterState, filterFunc, prefix) {
