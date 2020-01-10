@@ -104,7 +104,7 @@ Special filters used by Locator
     Param: none
     */
     exports["locator-enabled-fields"] = function (source, operator, options) {
-        var excludedFields = options.wiki.filterTiddlers("[all[system+shadows]field:exclude-from-field-filters[yes]removeprefix[$:/config/bimlas/locator/fields/]]");
+        var excludedFields = options.wiki.filterTiddlers("[all[tiddlers+shadows]field:exclude-from-field-filters[yes]removeprefix[$:/config/bimlas/locator/fields/]]");
         var results = [];
 
         source(function (tiddler, title) {
