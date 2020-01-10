@@ -66,7 +66,9 @@ Special filters used by Locator
     */
     exports["locator-fields-filter"] = function (source, operator, options) {
         var results = source;
-        var filterOperators = options.wiki.getFilterOperators();
+        var filterOperators = options.wiki.getGlobalCache("bimlas-locator-filterOperators", function() {
+            return options.wiki.getFilterOperators();
+        });
         var activeRecursiveFilters = getActiveFilters(options, "$:/state/bimlas/locator/search/recursive-filters/");
 
         if (operator.suffix === "recursive") {
