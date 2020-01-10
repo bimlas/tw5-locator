@@ -13,11 +13,15 @@ Special filters used by Locator
     "use strict";
 
     function getFieldListingOperator(options, field) {
-        var fieldOptions = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + field);
+        var fieldOptionsTiddler = "$:/config/bimlas/locator/fields/" + field;
 
-        return fieldOptions && fieldOptions.fields["field-type"] === "list"
-            ? "contains"
-            : "field";
+        return options.wiki.getCacheForTiddler(fieldOptionsTiddler, "fieldListingOperator", function() {
+            var fieldOptions = options.wiki.getTiddler(fieldOptionsTiddler);
+
+            return fieldOptions && fieldOptions.fields["field-type"] === "list"
+                ? "contains"
+                : "field";
+        });
     }
 
     function getFieldDirection(options, field) {
