@@ -18,7 +18,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define field-names() [title<intersectionState>] [title<differenceState>] +[locator-selected-field-names[]] [subfilter<filterContextItems>fields[]locator-enabled-fields[]] +[sort[]]
-\define has-field-value-to-list() [subfilter<filterContextItems>get<currentField>search:title<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[first[]]
+\define has-field-value-to-list() [subfilter<filterContextItems>search:$(currentField)$<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[first[]]
 
 <ol class="bimlas-locator">
   <$list filter=<<field-names>> variable="currentField">
