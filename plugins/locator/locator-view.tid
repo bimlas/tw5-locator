@@ -6,37 +6,37 @@ type: text/vnd.tiddlywiki
   <!-- TODO: Implement finalFilter again, move tagFilter to field settings -->
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
-    <$set name="contextState" value="$:/state/bimlas/locator/view/context/$(currentTiddler)$">
-      <$set name="intersectionState" value="$:/state/bimlas/locator/view/intersection/$(currentTiddler)$">
-        <$set name="differenceState" value="$:/state/bimlas/locator/view/difference/$(currentTiddler)$">
-          <div class="tc-table-of-contents">
+    <$vars
+      contextState="$:/state/bimlas/locator/view/context/$(currentTiddler)$"
+      intersectionState="$:/state/bimlas/locator/view/intersection/$(currentTiddler)$"
+      differenceState="$:/state/bimlas/locator/view/difference/$(currentTiddler)$"
+    >
+      <div class="tc-table-of-contents">
 
-            {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$set name="tooltip-for-clear-context" value="Go back to the default context">
-              {{$:/plugins/bimlas/locator/buttons/clear-context}}
-            </$set></$list>
+        {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$vars tooltip-for-clear-context="Go back to the default context">
+          {{$:/plugins/bimlas/locator/buttons/clear-context}}
+        </$vars></$list>
 
-            {{$:/plugins/bimlas/locator/templates/history}}
+        {{$:/plugins/bimlas/locator/templates/history}}
 
-            ---
+        ---
 
-            {{$:/plugins/bimlas/locator/templates/relationship-settings}}
+        {{$:/plugins/bimlas/locator/templates/relationship-settings}}
 
-            <$set name="filterContextItems" value="[subfilter<filter-history>last[]locator-enlist-children<contextState>!has[draft.of]locator-fields-filter<intersectionState>!locator-fields-filter<differenceState>]">
-              <ol class="bimlas-locator">
-                {{$:/plugins/bimlas/locator/templates/fields-filter}}
-                <$list filter=<<filterContextItems>>>
-                  <$macrocall
-                    $name="droppable-menu-list-item"
-                    content={{$:/plugins/bimlas/locator/templates/context-item}}
-                    actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
-                  />
-                </$list>
-              </ol>
-            </$set>
+        <$vars filterContextItems="[subfilter<filter-history>last[]locator-enlist-children<contextState>!has[draft.of]locator-fields-filter<intersectionState>!locator-fields-filter<differenceState>]">
+          <ol class="bimlas-locator">
+            {{$:/plugins/bimlas/locator/templates/fields-filter}}
+            <$list filter=<<filterContextItems>>>
+              <$macrocall
+                $name="droppable-menu-list-item"
+                content={{$:/plugins/bimlas/locator/templates/context-item}}
+                actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
+              />
+            </$list>
+          </ol>
+        </$vars>
 
-          </div>
-        </$set>
-      </$set>
-    </$set>
+      </div>
+    </$vars>
   </$importvariables>
 \end

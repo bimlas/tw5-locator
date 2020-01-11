@@ -5,28 +5,27 @@ type: text/vnd.tiddlywiki
 \define locator-search()
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
-    <$set name="contextState" value="$:/state/bimlas/locator/search/context/">
-      <$set name="intersectionState" value="$:/state/bimlas/locator/search/intersection/">
-        <$set name="differenceState" value="$:/state/bimlas/locator/search/difference/">
-          <$set name="filterContextItems" value="[subfilter<filter-search-context>search{$(searchTiddler)$}]">
+    <$vars
+      contextState="$:/state/bimlas/locator/search/context/"
+      intersectionState="$:/state/bimlas/locator/search/intersection/"
+      differenceState="$:/state/bimlas/locator/search/difference/"
+      filterContextItems="[subfilter<filter-search-context>search{$(searchTiddler)$}]"
+    >
 
-            {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+      {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
-            <$list filter="[subfilter<filterContextItems>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
+      <$list filter="[subfilter<filterContextItems>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
 
-            {{$:/plugins/bimlas/locator/templates/fields-filter}}
+      {{$:/plugins/bimlas/locator/templates/fields-filter}}
 
-            //<small>{{$:/language/Search/Matches/Title}}</small>//
+      //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-            <$list filter="[subfilter<filterContextItems>search:title{$(searchTiddler)$}limit[250]]" template="$:/core/ui/ListItemTemplate"/>
+      <$list filter="[subfilter<filterContextItems>search:title{$(searchTiddler)$}limit[250]]" template="$:/core/ui/ListItemTemplate"/>
 
-            //<small>{{$:/language/Search/Matches/All}}</small>//
+      //<small>{{$:/language/Search/Matches/All}}</small>//
 
-            <$list filter="[subfilter<filterContextItems>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
+      <$list filter="[subfilter<filterContextItems>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
 
-          </$set>
-        </$set>
-      </$set>
-    </$set>
+    </$vars>
   </$importvariables>
 \end
