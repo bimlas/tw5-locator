@@ -6,12 +6,6 @@ type: text/vnd.tiddlywiki
   <$action-listops $tiddler={{{ [title<intersectionState>] [title<differenceState>] -[title<__filterState__>first[]] }}} $index=<<currentField>> $subfilter="-[all[current]]"/>
 \end
 
-\define turn-off-recursive-filtering()
-  <$list filter="[title<contextState>field:title[$:/state/bimlas/locator/search/context/]]" variable="null">
-    <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index=<<currentField>> $subfilter="-[all[current]]"/>
-  </$list>
-\end
-
 \define button-inactive()
   <$button tooltip="Toggle filtering to this value" class=<<link-button-class>>>
     <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="[all[current]]"/>
@@ -24,7 +18,7 @@ type: text/vnd.tiddlywiki
   <$button tooltip="Toggle filtering to this value" class=<<link-button-class additionalClasses:"active">>>
     <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="-[all[current]]"/>
     <<__additionalActions__>>
-    <<turn-off-recursive-filtering>>
+    <<turnOffRecursiveFiltering>>
     <<__iconActive__>>
   </$button>
 \end
@@ -35,30 +29,19 @@ type: text/vnd.tiddlywiki
   </$list>
 \end
 
-\define recursive-filtering(filterState)
-  <$list filter="[title<contextState>field:title[$:/state/bimlas/locator/search/context/]]" variable="null">
-    <$list filter=<<filter-kin-filteroperator-available>> variable="null">
-      <$list filter="[locator-enlist-relationship-fields<currentField>]" variable="null">
-        <$macrocall 
-          $name="toggle-button"
-          filterState=<<__filterState__>>
-          iconActive={{$:/core/images/link}}
-          iconInactive={{$:/core/images/tag-button}}
-        />
-      </$list>
-    </$list>
-  </$list>
-\end
-
 \define field-values-of-context-items() [subfilter<filterContextItems>locator-enlist-field-values<currentField>search:title<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[sort[]]
 
 <ol class="bimlas-locator">
   <$list filter=<<field-values-of-context-items>>>
     <li class=<<menu-list-item-class>>>
-      <$macrocall
-        $name="recursive-filtering"
-        filterState="$:/state/bimlas/locator/search/recursive-filters/"
-      />
+      <$list filter="[enlist<turnOffRecursiveFiltering>first[]]" variable="null">
+        <$macrocall 
+          $name="toggle-button"
+          filterState="$:/state/bimlas/locator/search/recursive-filters/"
+          iconActive={{$:/core/images/link}}
+          iconInactive={{$:/core/images/tag-button}}
+        />
+      </$list>
       <$macrocall
         $name="toggle-button"
         filterState=<<intersectionState>>
