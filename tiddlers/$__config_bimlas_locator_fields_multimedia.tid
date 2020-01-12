@@ -1,0 +1,8 @@
+created: 20200112203509174
+field-direction: to
+field-type: list
+modified: 20200112204936433
+tags: 
+template: <$link to=<<currentTiddler>>><<currentTiddler>></$link><br/><$transclude/>
+title: $:/config/bimlas/locator/fields/multimedia
+type: text/vnd.tiddlywiki
