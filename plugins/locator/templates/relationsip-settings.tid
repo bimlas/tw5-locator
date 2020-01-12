@@ -3,12 +3,13 @@ title: $:/plugins/bimlas/locator/templates/relationship-settings
 type: text/vnd.tiddlywiki
 
 \define field-of-relationship()
-  Field of relationship:
+  Tree is based on
   <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
     <$list filter="[locator-enlist-relationship-fields[]]">
       <option><<currentTiddler>></option>
     </$list>
   </$select>
+  field
 \end
 
 \define toggle-setting(field title)
