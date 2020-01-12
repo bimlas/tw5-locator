@@ -29,6 +29,8 @@ type: text/vnd.tiddlywiki
 
     <<toggle-setting field:"allow-to-open-leaves" title:"Allow to open leaves">>
 
+    <<toggle-setting field:"use-template-of-relationship-field" title:"Use template of relationship field">>
+
   </div>
 
 \end

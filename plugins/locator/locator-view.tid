@@ -10,33 +10,35 @@ type: text/vnd.tiddlywiki
       contextState="$:/state/bimlas/locator/view/context/$(currentTiddler)$"
       intersectionState="$:/state/bimlas/locator/view/intersection/$(currentTiddler)$"
       differenceState="$:/state/bimlas/locator/view/difference/$(currentTiddler)$"
+      filterContextItems="[subfilter<filter-history>last[]locator-enlist-children<contextState>!has[draft.of]locator-fields-filter<intersectionState>!locator-fields-filter<differenceState>]"
     >
-      <div class="tc-table-of-contents">
+      <!-- Defining in vars not works -->
+      <$set name="currentField" value={{{ [title<contextState>get[field-of-relationship]] [[tags]] +[first[]] }}}>
+        <div class="tc-table-of-contents">
 
-        {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$vars tooltip-for-clear-context="Go back to the default context">
-          {{$:/plugins/bimlas/locator/buttons/clear-context}}
-        </$vars></$list>
+          {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$vars tooltip-for-clear-context="Go back to the default context">
+            {{$:/plugins/bimlas/locator/buttons/clear-context}}
+          </$vars></$list>
 
-        {{$:/plugins/bimlas/locator/templates/history}}
+          {{$:/plugins/bimlas/locator/templates/history}}
 
-        ---
+          ---
 
-        {{$:/plugins/bimlas/locator/templates/relationship-settings}}
+          {{$:/plugins/bimlas/locator/templates/relationship-settings}}
 
-        <$vars filterContextItems="[subfilter<filter-history>last[]locator-enlist-children<contextState>!has[draft.of]locator-fields-filter<intersectionState>!locator-fields-filter<differenceState>]">
           <ol class="bimlas-locator">
             {{$:/plugins/bimlas/locator/templates/fields-filter}}
-            <$list filter=<<filterContextItems>>>
-              <$macrocall
-                $name="droppable-menu-list-item"
-                content={{$:/plugins/bimlas/locator/templates/context-item}}
-                actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
-              />
-            </$list>
+              <$list filter=<<filterContextItems>>>
+                <$macrocall
+                  $name="droppable-menu-list-item"
+                  content={{$:/plugins/bimlas/locator/templates/context-item}}
+                  actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
+                />
+              </$list>
           </ol>
-        </$vars>
 
-      </div>
+        </div>
+      </$set>
     </$vars>
   </$importvariables>
 \end

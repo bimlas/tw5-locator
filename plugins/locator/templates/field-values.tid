@@ -61,9 +61,7 @@ type: text/vnd.tiddlywiki
         iconInactive={{$:/core/images/close-button}}
         additionalActivateActions=<<remove-from-other-filter-state>>
       />
-      <$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>get[template]]" emptyMessage="""<$view field="title"/>""" variable="fieldValueTemplate">
-        <<fieldValueTemplate>>
-      </$list>
+      {{||$:/plugins/bimlas/locator/templates/field-value-template}}
     </li>
   </$list>
 </ol>

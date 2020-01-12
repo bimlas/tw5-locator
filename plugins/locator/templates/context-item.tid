@@ -4,5 +4,7 @@ type: text/vnd.tiddlywiki
 
 <li class="toc-item">
   {{||$:/plugins/bimlas/locator/buttons/go-down-to-context}}
-  {{||$:/plugins/bimlas/locator/templates/link}}
+  <$list filter="[title<contextState>field:use-template-of-relationship-field[yes]]" emptyMessage={{$:/plugins/bimlas/locator/templates/link}} variable="null">
+    {{||$:/plugins/bimlas/locator/templates/field-value-template}}
+  </$list>
 </li>
