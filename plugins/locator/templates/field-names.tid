@@ -28,7 +28,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define field-names() [title<intersectionState>] [title<differenceState>] +[locator-selected-field-names[]] [subfilter<filterContextItems>fields[]locator-enabled-fields[]] +[sort[]]
-\define has-field-value-to-list() [subfilter<filterContextItems>search:$(currentField)$<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[first[]]
+\define has-field-value-to-list() [subfilter<filterContextItems>has<currentField>search:$(currentField)$<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[first[]]
 \define conditions-of-recursive-filtering-are-not-met() [title<contextState>field:title[$:/state/bimlas/locator/search/context/]] [subfilter<filter-kin-filteroperator-available>] [locator-enlist-relationship-fields<currentField>] +[count[]] -[[3]]
 
 <ol class="bimlas-locator">
