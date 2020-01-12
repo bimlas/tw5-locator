@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 \define button-inactive()
   <$button tooltip="Toggle filtering to this value" class=<<link-button-class>>>
     <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="[all[current]]"/>
-    <<__additionalActions__>>
+    <<__additionalActivateActions__>>
     <<__iconInactive__>>
   </$button>
 \end
@@ -17,13 +17,12 @@ type: text/vnd.tiddlywiki
 \define button-active()
   <$button tooltip="Toggle filtering to this value" class=<<link-button-class additionalClasses:"active">>>
     <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="-[all[current]]"/>
-    <<__additionalActions__>>
     <<turnOffRecursiveFiltering>>
     <<__iconActive__>>
   </$button>
 \end
 
-\define toggle-button(filterState iconActive iconInactive additionalActions)
+\define toggle-button(filterState iconActive iconInactive additionalActivateActions)
   <$list filter="[title<__filterState__>locator-selected-field-values<currentField>is[current]]" emptyMessage=<<button-inactive>>>
     <<button-active>>
   </$list>
@@ -47,14 +46,14 @@ type: text/vnd.tiddlywiki
         filterState=<<intersectionState>>
         iconActive={{$:/core/images/new-button}}
         iconInactive={{$:/core/images/new-button}}
-        additionalActions=<<remove-from-other-filter-state>>
+        additionalActivateActions=<<remove-from-other-filter-state>>
       />
       <$macrocall
         $name="toggle-button"
         filterState=<<differenceState>>
         iconActive={{$:/core/images/close-button}}
         iconInactive={{$:/core/images/close-button}}
-        additionalActions=<<remove-from-other-filter-state>>
+        additionalActivateActions=<<remove-from-other-filter-state>>
       />
       <$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>get[template]]" emptyMessage="""<$view field="title"/>""" variable="fieldValueTemplate">
         <<fieldValueTemplate>>
