@@ -5,7 +5,7 @@ type: text/vnd.tiddlywiki
 \define field-of-relationship()
   Field of relationship:
   <$select tiddler=<<contextState>> field="field-of-relationship" default="tags">
-    <$list filter=<<filter-enlist-relationship-fields>>>
+    <$list filter="[locator-enlist-relationship-fields[]]">
       <option><<currentTiddler>></option>
     </$list>
   </$select>

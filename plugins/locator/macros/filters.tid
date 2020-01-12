@@ -8,5 +8,4 @@ type: text/vnd.tiddlywiki
 \define filter-grandchildren() [subfilter<filter-history>last[]tagging[]tagging[]kin::to[]]
 \define filter-selected-field-values() [title<intersectionState>] [title<differenceState>] +[locator-selected-field-values<currentField>]
 \define filter-field-is-list() [addprefix[$:/config/bimlas/locator/fields/]field:field-type[list]]
-\define filter-enlist-relationship-fields() [all[tiddlers+shadows]prefix[$:/config/bimlas/locator/fields/]has[field-direction]removeprefix[$:/config/bimlas/locator/fields/]]
 \define filter-search-context() [!is[system]locator-fields-filter:recursive[$(intersectionState)$]!locator-fields-filter:recursive[$(differenceState)$]]

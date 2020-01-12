@@ -2,17 +2,23 @@ tags:
 title: $:/plugins/bimlas/locator/templates/fields-filter
 type: text/vnd.tiddlywiki
 
+\define open-actions()
+  <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="[[FIELDS-FILTER]]"/>
+\end
+
+\define close-actions()
+  <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="-[[FIELDS-FILTER]]"/>
+\end
+
 \define opened()
-  <$button class=<<fieldsFilterButtonClass>>>
-    <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="-[[FIELDS-FILTER]]"/>
+  <$button class=<<fieldsFilterButtonClass>> actions=<<close-actions>>>
     {{$:/core/images/opacity}} Fields filter
   </$button>
   {{$:/plugins/bimlas/locator/templates/field-names}}
 \end
 
 \define closed()
-  <$button class=<<fieldsFilterButtonClass>>>
-    <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="[[FIELDS-FILTER]]"/>
+  <$button class=<<fieldsFilterButtonClass>> actions=<<open-actions>>>
     {{$:/core/images/opacity}} Fields filter
   </$button>
 \end

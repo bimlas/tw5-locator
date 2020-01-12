@@ -13,11 +13,15 @@ Special filters used by Locator
     "use strict";
 
     function getFieldListingOperator(options, field) {
-        var fieldOptions = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + field);
+        var fieldOptionsTiddler = "$:/config/bimlas/locator/fields/" + field;
 
-        return fieldOptions && fieldOptions.fields["field-type"] === "list"
-            ? "contains"
-            : "field";
+        return options.wiki.getCacheForTiddler(fieldOptionsTiddler, "fieldListingOperator", function() {
+            var fieldOptions = options.wiki.getTiddler(fieldOptionsTiddler);
+
+            return fieldOptions && fieldOptions.fields["field-type"] === "list"
+                ? "contains"
+                : "field";
+        });
     }
 
     function getFieldDirection(options, field) {
@@ -27,17 +31,19 @@ Special filters used by Locator
     }
 
     function getActiveFilters(options, filterState) {
-        var filteredFields = options.wiki.getTiddlerDataCached(filterState, {});
-        var results = {};
+        return options.wiki.getCacheForTiddler(filterState, "activeFilters", function() {
+            var filteredFields = options.wiki.getTiddlerDataCached(filterState, {});
+            var results = {};
 
-        $tw.utils.each(filteredFields, function(valuesAsString, field) {
-            var values = $tw.utils.parseStringArray(valuesAsString) || [];
-            if(values.length) {
-                results[field] = values;
-            }
+            $tw.utils.each(filteredFields, function(valuesAsString, field) {
+                var values = $tw.utils.parseStringArray(valuesAsString) || [];
+                if(values.length) {
+                    results[field] = values;
+                }
+            });
+
+            return results;
         });
-
-        return results;
     }
 
     function applyFieldsFilters(source, options, filterState, filterFunc, prefix) {
@@ -66,7 +72,9 @@ Special filters used by Locator
     */
     exports["locator-fields-filter"] = function (source, operator, options) {
         var results = source;
-        var filterOperators = options.wiki.getFilterOperators();
+        var filterOperators = options.wiki.getGlobalCache("bimlas-locator-filterOperators", function() {
+            return options.wiki.getFilterOperators();
+        });
         var activeRecursiveFilters = getActiveFilters(options, "$:/state/bimlas/locator/search/recursive-filters/");
 
         if (operator.suffix === "recursive") {
@@ -100,7 +108,7 @@ Special filters used by Locator
     Param: none
     */
     exports["locator-enabled-fields"] = function (source, operator, options) {
-        var excludedFields = options.wiki.filterTiddlers("[all[system+shadows]field:exclude-from-field-filters[yes]removeprefix[$:/config/bimlas/locator/fields/]]");
+        var excludedFields = options.wiki.filterTiddlers("[all[tiddlers+shadows]field:exclude-from-field-filters[yes]removeprefix[$:/config/bimlas/locator/fields/]]");
         var results = [];
 
         source(function (tiddler, title) {
@@ -110,6 +118,26 @@ Special filters used by Locator
         });
 
         return results;
+    };
+
+    /*
+    List fields which can be used to build tree ("tags" for example)
+
+    Input: none
+    Param (optional): field to check if it's a relationship field
+    */
+    exports["locator-enlist-relationship-fields"] = function (source, operator, options) {
+        var relationshipFields = options.wiki.getGlobalCache("bimlas-locator-enlist-relationship-fields", function() {
+            return options.wiki.filterTiddlers("[all[tiddlers+shadows]prefix[$:/config/bimlas/locator/fields/]has[field-direction]removeprefix[$:/config/bimlas/locator/fields/]]");
+        });
+
+        if (operator.operand) {
+            return relationshipFields.indexOf(operator.operand) >= 0
+                ? [operator.operand]
+                : [];
+        }
+
+        return relationshipFields;
     };
 
     /*

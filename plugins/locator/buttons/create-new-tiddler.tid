@@ -31,10 +31,10 @@ type: text/vnd.tiddlywiki
 \end
 
 <$button tooltip="Create new tiddler in the current context" class=<<link-button-class>>>
-  <$set name="title" value={{{ [title<titleOfNewTiddler>] [title{$:/language/DefaultNewTiddlerTitle}] -[[]] +[first[]] }}}>
+  <$vars title={{{ [title<titleOfNewTiddler>] [title{$:/language/DefaultNewTiddlerTitle}] -[[]] +[first[]] }}}>
     <<add-filters-as-field-values>>
     <<add-to-current-context>>
     <$action-sendmessage $message="tm-new-tiddler" title=<<title>>/>
-  </$set>
+  </$vars>
   {{$:/core/images/new-button}}
 </$button>
