@@ -6,18 +6,24 @@ type: text/vnd.tiddlywiki
   <$action-listops $tiddler={{{ [title<intersectionState>] [title<differenceState>] -[title<__filterState__>first[]] }}} $index=<<currentField>> $subfilter="-[all[current]]"/>
 \end
 
+\define activate-actions()
+  <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="[all[current]]"/>
+  <<__additionalActivateActions__>>
+\end
+
+\define inactivate-actions()
+  <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="-[all[current]]"/>
+  <<turnOffRecursiveFiltering>>
+\end
+
 \define button-inactive()
-  <$button tooltip="Toggle filtering to this value" class=<<link-button-class>>>
-    <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="[all[current]]"/>
-    <<__additionalActivateActions__>>
+  <$button tooltip="Toggle filtering to this value" class=<<link-button-class>> actions=<<activate-actions>>>
     <<__iconInactive__>>
   </$button>
 \end
 
 \define button-active()
-  <$button tooltip="Toggle filtering to this value" class=<<link-button-class additionalClasses:"active">>>
-    <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="-[all[current]]"/>
-    <<turnOffRecursiveFiltering>>
+  <$button tooltip="Toggle filtering to this value" class=<<link-button-class additionalClasses:"active">> actions=<<inactivate-actions>>>
     <<__iconActive__>>
   </$button>
 \end
