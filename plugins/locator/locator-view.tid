@@ -12,8 +12,8 @@ type: text/vnd.tiddlywiki
       differenceState="$:/state/bimlas/locator/view/difference/$(currentTiddler)$"
       filterContextItems="[subfilter<filter-history>last[]locator-enlist-children<contextState>!has[draft.of]locator-fields-filter<intersectionState>!locator-fields-filter<differenceState>]"
     >
-      <!-- Defining in vars not works -->
-      <$set name="currentField" value={{{ [title<contextState>get[field-of-relationship]] [[tags]] +[first[]] }}}>
+      <!-- Defining above does not works -->
+      <$vars currentField={{{ [subfilter<filter-field-of-relationship>] }}}>
         <div class="tc-table-of-contents">
 
           {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} <$list filter="[title<contextState>get[base-title]]"><$vars tooltip-for-clear-context="Go back to the default context">
@@ -38,7 +38,7 @@ type: text/vnd.tiddlywiki
           </ol>
 
         </div>
-      </$set>
+      </$vars>
     </$vars>
   </$importvariables>
 \end

@@ -9,3 +9,4 @@ type: text/vnd.tiddlywiki
 \define filter-selected-field-values() [title<intersectionState>] [title<differenceState>] +[locator-selected-field-values<currentField>]
 \define filter-field-is-list() [addprefix[$:/config/bimlas/locator/fields/]field:field-type[list]]
 \define filter-search-context() [!is[system]locator-fields-filter:recursive[$(intersectionState)$]!locator-fields-filter:recursive[$(differenceState)$]]
+\define filter-field-of-relationship() [title<contextState>get[field-of-relationship]] [[tags]] +[first[]]
