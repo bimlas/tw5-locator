@@ -209,10 +209,11 @@ Special filters used by Locator
 
     Input: parent tiddlers
     Param: contextState
+    Suffix: field of relationship
     */
     exports["locator-enlist-children"] = function (source, operator, options) {
         var contextState = options.wiki.getTiddler(operator.operand) || {fields: []};
-        var fieldOfRelationship = contextState.fields["field-of-relationship"] || "tags";
+        var fieldOfRelationship = operator.suffix;
         var fieldSettings = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + fieldOfRelationship) || {fields: []};
         var shouldFindListings = (fieldSettings.fields["field-direction"] || "to") === "to";
         if(contextState.fields["invert-direction"] === "yes") {

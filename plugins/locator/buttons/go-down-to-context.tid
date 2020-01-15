@@ -14,4 +14,9 @@ type: text/vnd.tiddlywiki
   </$button>
 \end
 
-<$list filter="[all[current]locator-enlist-children<contextState>] [title<contextState>field:allow-to-open-leaves[yes]] +[first[]]" emptyMessage=<<leaf>> variable="null"><<node>></$list>
+\define go-down-to-context()
+  <!-- I have to use macro to use $(...)$ in filter expression -->
+  <$list filter="[all[current]locator-enlist-children:$(currentField)$<contextState>] [title<contextState>field:allow-to-open-leaves[yes]] +[first[]]" emptyMessage=<<leaf>> variable="null"><<node>></$list>
+\end
+
+<<go-down-to-context>>

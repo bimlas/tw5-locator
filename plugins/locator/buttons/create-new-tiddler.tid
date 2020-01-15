@@ -25,7 +25,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define add-to-current-context()
-  <$set name="field" filter="[title<contextState>get[field-of-relationship]]" emptyValue="tags">
+  <$set name="field" filter=<<filter-field-of-relationship>>>
     <<add-field-value "[subfilter<filter-history>last[]]">>
   </$set>
 \end
