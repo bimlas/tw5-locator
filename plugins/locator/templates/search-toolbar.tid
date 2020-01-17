@@ -9,9 +9,6 @@ type: text/vnd.tiddlywiki
   titleOfNewTiddler={{$:/temp/search}}
 >
   {{$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
-  <$list filter=<<filter-kin-filteroperator-available>> variable="null">
-    {{$:/plugins/bimlas/locator/buttons/copy-context-from-sidebar}}
-  </$list>
   {{$:/plugins/bimlas/locator/buttons/copy-filter-to-advanced-search}}
   <$list filter="[<contextState>get[history]first[]]">{{$:/plugins/bimlas/locator/buttons/clear-context}}</$list>
 </$vars>
