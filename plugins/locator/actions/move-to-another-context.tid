@@ -2,8 +2,7 @@ tags: $:/tags/Actions
 title: $:/plugins/bimlas/locator/actions/move-to-another-context
 type: text/vnd.tiddlywiki
 
-<!-- TODO: Use "field of relationship" -->
-<$fieldmangler tiddler=<<actionTiddler>>>
-  <$action-sendmessage $message="tm-remove-tag" $param={{{ [subfilter<filter-history>last[]] }}}/>
-  <$action-sendmessage $message="tm-add-tag" $param=<<currentTiddler>>/>
-</$fieldmangler>
+<$tiddler tiddler={{{ [subfilter<filter-history>last[]] }}}>
+  {{||$:/plugins/bimlas/locator/actions/remove-field-value}}
+</$tiddler>
+{{||$:/plugins/bimlas/locator/actions/assign-field-value}}
