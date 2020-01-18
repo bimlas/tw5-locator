@@ -2,18 +2,9 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/search-in-context
 type: text/vnd.tiddlywiki
 
-\define copy-list-of-opened-field-filters()
-    <$set name="openedFieldFilters" tiddler=<<contextState>> field="opened-fields-filters">
-      <$action-setfield $tiddler="$:/state/bimlas/locator/search/context/" $field="opened-fields-filters" $value=<<openedFieldFilters>>/>
-    </$set>
-\end
-
-\define copy-filters()
-  <$set name="intersectionStateText" tiddler=<<intersectionState>>>
-    <$set name="differenceStateText" tiddler=<<intersectionState>>>
-      <$action-setfield $tiddler="$:/state/bimlas/locator/search/intersection/" text=<<intersectionStateText>> type="application/json"/>
-      <$action-setfield $tiddler="$:/state/bimlas/locator/search/difference/" text=<<differenceStateText>> type="application/json"/>
-    </$set>
+\define copy-field(sourceTiddler destinationTiddler field)
+  <$set name="value" tiddler=<<__sourceTiddler__>> field=<<__field__>>>
+    <$action-setfield $tiddler=<<__destinationTiddler__>> $field=<<__field__>> $value=<<value>>/>
   </$set>
 \end
 
@@ -25,9 +16,16 @@ type: text/vnd.tiddlywiki
   </$set>
 \end
 
+\define copy-context()
+  <$macrocall $name="copy-field" sourceTiddler=<<contextState>> destinationTiddler="$:/state/bimlas/locator/search/context/" field="opened-fields-filters"/>
+  <$macrocall $name="copy-field" sourceTiddler=<<intersectionState>> destinationTiddler="$:/state/bimlas/locator/search/intersection/" field="text"/>
+  <$action-setfield $tiddler="$:/state/bimlas/locator/search/intersection/" type="application/json"/>
+  <$macrocall $name="copy-field" sourceTiddler=<<differenceState>> destinationTiddler="$:/state/bimlas/locator/search/difference/" field="text"/>
+  <$action-setfield $tiddler="$:/state/bimlas/locator/search/difference/" type="application/json"/>
+\end
+
 <$button tooltip="Search in the context of Locator sidebar in any depth" class=<<link-button-class>>>
-  <<copy-list-of-opened-field-filters>>
-  <<copy-filters>>
+  <<copy-context>>
   <<recursive-search-in-current-context>>
   {{$:/core/images/close-others-button}}
 </$button>
