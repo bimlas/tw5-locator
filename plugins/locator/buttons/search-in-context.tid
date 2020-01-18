@@ -13,10 +13,12 @@ type: text/vnd.tiddlywiki
   <$action-setfield $tiddler=<<__tiddler__>> type="application/json"/>
 \end
 
-\define recursive-search-in-current-context()
+\define search-in-current-context()
   <$set name="history" tiddler=<<contextState>> field="history">
-    <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[enlist<history>last[]]"/>
     <$action-listops $tiddler="$:/state/bimlas/locator/search/intersection/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $subfilter="[enlist<history>last[]]"/>
+    <$list filter=<<filter-kin-filteroperator-available>> variable="null">
+      <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[enlist<history>last[]]"/>
+    </$list>
   </$set>
 \end
 
@@ -35,6 +37,6 @@ type: text/vnd.tiddlywiki
 <$button tooltip="Search in the context of Locator sidebar in any depth" class=<<link-button-class>>>
   <<reset-search-context>>
   <<copy-filters>>
-  <<recursive-search-in-current-context>>
+  <<search-in-current-context>>
   {{$:/core/images/close-others-button}}
 </$button>
