@@ -14,12 +14,10 @@ type: text/vnd.tiddlywiki
 \end
 
 \define search-in-current-context()
-  <$set name="history" tiddler=<<contextState>> field="history">
-    <$action-listops $tiddler="$:/state/bimlas/locator/search/intersection/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $subfilter="[enlist<history>last[]]"/>
-    <$list filter=<<filter-kin-filteroperator-available>> variable="null">
-      <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[enlist<history>last[]]"/>
-    </$list>
-  </$set>
+  <$action-listops $tiddler="$:/state/bimlas/locator/search/intersection/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $subfilter="[subfilter<filter-history>last[]]"/>
+  <$list filter=<<filter-kin-filteroperator-available>> variable="null">
+    <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[subfilter<filter-history>last[]]"/>
+  </$list>
 \end
 
 \define copy-filters()
