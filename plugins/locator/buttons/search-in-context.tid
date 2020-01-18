@@ -8,8 +8,12 @@ type: text/vnd.tiddlywiki
   </$set>
 \end
 
+\define clear-data-tiddler(tiddler)
+  <$action-deletetiddler $tiddler=<<__tiddler__>>/>
+  <$action-setfield $tiddler=<<__tiddler__>> type="application/json"/>
+\end
+
 \define recursive-search-in-current-context()
-  <$action-setfield $tiddler="$:/state/bimlas/locator/search/recursive-filters/" text=""/>
   <$set name="history" tiddler=<<contextState>> field="history">
     <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[enlist<history>last[]]"/>
     <$action-listops $tiddler="$:/state/bimlas/locator/search/intersection/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $subfilter="[enlist<history>last[]]"/>
@@ -18,17 +22,18 @@ type: text/vnd.tiddlywiki
 
 \define copy-filters()
   <$macrocall $name="copy-field" sourceTiddler=<<intersectionState>> destinationTiddler="$:/state/bimlas/locator/search/intersection/" field="text"/>
-  <$action-setfield $tiddler="$:/state/bimlas/locator/search/intersection/" type="application/json"/>
   <$macrocall $name="copy-field" sourceTiddler=<<differenceState>> destinationTiddler="$:/state/bimlas/locator/search/difference/" field="text"/>
-  <$action-setfield $tiddler="$:/state/bimlas/locator/search/difference/" type="application/json"/>
 \end
 
-\define close-fields-filters-in-search()
-  <$action-setfield $tiddler="$:/state/bimlas/locator/search/context/" opened-fields-filters=""/>
+\define reset-search-context()
+  <$action-deletetiddler $tiddler="$:/state/bimlas/locator/search/context/"/>
+  <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/recursive-filters/"/>
+  <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/intersection/"/>
+  <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/difference/"/>
 \end
 
 <$button tooltip="Search in the context of Locator sidebar in any depth" class=<<link-button-class>>>
-  <<close-fields-filters-in-search>>
+  <<reset-search-context>>
   <<copy-filters>>
   <<recursive-search-in-current-context>>
   {{$:/core/images/close-others-button}}
