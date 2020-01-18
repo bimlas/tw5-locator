@@ -5,4 +5,4 @@ type: text/vnd.tiddlywiki
 <$tiddler tiddler={{{ [subfilter<filter-history>last[]] }}}>
   {{||$:/plugins/bimlas/locator/actions/remove-field-value}}
 </$tiddler>
-{{||$:/plugins/bimlas/locator/actions/assign-field-value}}
+{{||$:/plugins/bimlas/locator/actions/add-field-value}}

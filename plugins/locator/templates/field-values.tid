@@ -64,7 +64,7 @@ type: text/vnd.tiddlywiki
       <$macrocall
         $name="droppable-menu-list-item"
         content={{$:/plugins/bimlas/locator/templates/field-value-template}}
-        actions={{$:/plugins/bimlas/locator/actions/assign-field-value}}
+        actions={{$:/plugins/bimlas/locator/actions/add-field-value}}
       />
     </li>
   </$list>
