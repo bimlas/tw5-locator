@@ -1,9 +1,0 @@
-tags:
-title: $:/plugins/bimlas/locator/buttons/open-field-value
-type: text/vnd.tiddlywiki
-
-<!-- TODO: Duplication of $:/plugins/bimlas/locator/buttons/go-down-to-context -->
-
-<$button tooltip="Browse hierarchy of tag in Locator sidebar" aria-label="locator sidebar" class=<<tv-config-toolbar-class>> actions={{$:/plugins/bimlas/locator/actions/add-to-history}}>
-  {{$:/core/images/right-arrow}}
-</$button>
