@@ -1,0 +1,40 @@
+tags:
+title: $:/plugins/bimlas/locator/buttons/search-in-context
+type: text/vnd.tiddlywiki
+
+\define copy-field(sourceTiddler destinationTiddler field)
+  <$set name="value" tiddler=<<__sourceTiddler__>> field=<<__field__>>>
+    <$action-setfield $tiddler=<<__destinationTiddler__>> $field=<<__field__>> $value=<<value>>/>
+  </$set>
+\end
+
+\define clear-data-tiddler(tiddler)
+  <$action-deletetiddler $tiddler=<<__tiddler__>>/>
+  <$action-setfield $tiddler=<<__tiddler__>> type="application/json"/>
+\end
+
+\define recursive-search-in-current-context()
+  <$set name="history" tiddler=<<contextState>> field="history">
+    <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[enlist<history>last[]]"/>
+    <$action-listops $tiddler="$:/state/bimlas/locator/search/intersection/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $subfilter="[enlist<history>last[]]"/>
+  </$set>
+\end
+
+\define copy-filters()
+  <$macrocall $name="copy-field" sourceTiddler=<<intersectionState>> destinationTiddler="$:/state/bimlas/locator/search/intersection/" field="text"/>
+  <$macrocall $name="copy-field" sourceTiddler=<<differenceState>> destinationTiddler="$:/state/bimlas/locator/search/difference/" field="text"/>
+\end
+
+\define reset-search-context()
+  <$action-deletetiddler $tiddler="$:/state/bimlas/locator/search/context/"/>
+  <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/recursive-filters/"/>
+  <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/intersection/"/>
+  <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/difference/"/>
+\end
+
+<$button tooltip="Search in the context of Locator sidebar in any depth" class=<<link-button-class>>>
+  <<reset-search-context>>
+  <<copy-filters>>
+  <<recursive-search-in-current-context>>
+  {{$:/core/images/close-others-button}}
+</$button>
