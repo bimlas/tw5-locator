@@ -40,7 +40,7 @@ type: text/vnd.tiddlywiki
   <$list filter=<<field-values-of-context-items>>>
     <li class=<<menu-list-item-class>>>
       <$list filter="[enlist<turnOffRecursiveFiltering>first[]]" variable="null">
-        <$macrocall 
+        <$macrocall
           $name="toggle-button"
           filterState="$:/state/bimlas/locator/search/recursive-filters/"
           iconActive={{$:/core/images/link}}
@@ -61,7 +61,11 @@ type: text/vnd.tiddlywiki
         iconInactive={{$:/core/images/close-button}}
         additionalActivateActions=<<remove-from-other-filter-state>>
       />
-      {{||$:/plugins/bimlas/locator/templates/field-value-template}}
+      <$macrocall
+        $name="droppable-menu-list-item"
+        content={{$:/plugins/bimlas/locator/templates/field-value-template}}
+        actions={{$:/plugins/bimlas/locator/actions/assign-field-value}}
+      />
     </li>
   </$list>
 </ol>

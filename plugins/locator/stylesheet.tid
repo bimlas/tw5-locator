@@ -27,6 +27,15 @@ li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
   margin-top: 3px;
   margin-bottom: 0;
 }
+.tc-menu-list-item.bimlas-locator .tc-droppable {
+  display: inline-block;
+}
+.tc-block-dropdown.tc-search-drop-down .bimlas-locator a {
+  padding: 0;
+}
+.tc-block-dropdown.tc-search-drop-down .bimlas-locator a:hover {
+  background-color: initial;
+}
 button.bimlas-locator.active svg {
   fill: <<colour dirty-indicator>>;
 }
