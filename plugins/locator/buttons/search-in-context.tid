@@ -16,16 +16,20 @@ type: text/vnd.tiddlywiki
   </$set>
 \end
 
-\define copy-context()
-  <$macrocall $name="copy-field" sourceTiddler=<<contextState>> destinationTiddler="$:/state/bimlas/locator/search/context/" field="opened-fields-filters"/>
+\define copy-filters()
   <$macrocall $name="copy-field" sourceTiddler=<<intersectionState>> destinationTiddler="$:/state/bimlas/locator/search/intersection/" field="text"/>
   <$action-setfield $tiddler="$:/state/bimlas/locator/search/intersection/" type="application/json"/>
   <$macrocall $name="copy-field" sourceTiddler=<<differenceState>> destinationTiddler="$:/state/bimlas/locator/search/difference/" field="text"/>
   <$action-setfield $tiddler="$:/state/bimlas/locator/search/difference/" type="application/json"/>
 \end
 
+\define close-fields-filters-in-search()
+  <$action-setfield $tiddler="$:/state/bimlas/locator/search/context/" opened-fields-filters=""/>
+\end
+
 <$button tooltip="Search in the context of Locator sidebar in any depth" class=<<link-button-class>>>
-  <<copy-context>>
+  <<close-fields-filters-in-search>>
+  <<copy-filters>>
   <<recursive-search-in-current-context>>
   {{$:/core/images/close-others-button}}
 </$button>
