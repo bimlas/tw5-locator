@@ -39,7 +39,7 @@ type: text/vnd.tiddlywiki
 <ol class="bimlas-locator">
   <$list filter=<<field-values-of-context-items>>>
     <li class=<<menu-list-item-class>>>
-      <$list filter=<<recursiveFilteringOfCurrentFieldAvailable>> variable="null">
+      <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" variable="null">
         <$macrocall
           $name="toggle-button"
           filterState="$:/state/bimlas/locator/search/recursive-filters/"

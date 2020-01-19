@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
       defaultFieldOfRelationship=<<__fieldOfRelationship__>>
       filterContextItems="[subfilter<filter-search-context>search{$(searchTiddler)$}]"
     >
-      <$set name="recursiveFilteringAvailable" filter=<<filter-kin-filteroperator-available>> value="yes" emptyValue="">
+      <$set name="recursiveFilteringAvailable" filter=<<filter-kin-filteroperator-available>> value="yes" emptyValue="no">
 
         {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 

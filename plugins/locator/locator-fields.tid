@@ -11,7 +11,7 @@ type: text/vnd.tiddlywiki
       differenceState="$:/state/bimlas/locator/search/difference/"
       defaultFieldOfRelationship=<<__fieldOfRelationship__>>
     >
-      <$set name="recursiveFilteringAvailable" filter=<<filter-kin-filteroperator-available>> value="yes" emptyValue="">
+      <$set name="recursiveFilteringAvailable" filter=<<filter-kin-filteroperator-available>> value="yes" emptyValue="no">
 
         {{$:/plugins/bimlas/locator/templates/search-toolbar}} {{$:/plugins/bimlas/locator/buttons/remove-filters}}
 

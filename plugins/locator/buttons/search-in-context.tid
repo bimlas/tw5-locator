@@ -15,7 +15,7 @@ type: text/vnd.tiddlywiki
 
 \define search-in-current-context()
   <$action-listops $tiddler="$:/state/bimlas/locator/search/intersection/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $subfilter="[subfilter<filter-history>last[]]"/>
-  <$list filter=<<recursiveFilteringAvailable>> variable="null">
+  <$list filter=<<filter-kin-filteroperator-available>> variable="null">
     <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[subfilter<filter-history>last[]]"/>
   </$list>
 \end
@@ -27,7 +27,7 @@ type: text/vnd.tiddlywiki
 
 \define reset-search-context()
   <$action-deletetiddler $tiddler="$:/state/bimlas/locator/search/context/"/>
-  <$list filter=<<recursiveFilteringAvailable>> variable="null">
+  <$list filter="[<recursiveFilteringAvailable>regexp[yes]]" variable="null">
     <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/recursive-filters/"/>
   </$list>
   <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/intersection/"/>
