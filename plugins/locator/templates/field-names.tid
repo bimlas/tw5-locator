@@ -34,16 +34,16 @@ type: text/vnd.tiddlywiki
 
 <ol class="bimlas-locator">
   <$list filter=<<field-names>> variable="currentField">
-    <$set name="recursiveFilteringOfCurrentFieldAvailable" filter="[<recursiveFilteringAvailable>] [locator-enlist-relationship-fields<currentField>] -[[]] +[count[]regexp[^2$]]" value="yes" emptyValue="">
-      <$set name="turnOffRecursiveFiltering" filter=<<recursiveFilteringOfCurrentFieldAvailable>> value=<<turn-off-recursive-filtering-action>>>
-        <$list filter=<<has-field-value-to-list>> variable="null">
+    <$list filter=<<has-field-value-to-list>> variable="null">
+      <$set name="recursiveFilteringOfCurrentFieldAvailable" filter="[<recursiveFilteringAvailable>] [locator-enlist-relationship-fields<currentField>] -[[]] +[count[]regexp[^2$]]" value="yes" emptyValue="">
+        <$set name="turnOffRecursiveFiltering" filter=<<recursiveFilteringOfCurrentFieldAvailable>> value=<<turn-off-recursive-filtering-action>>>
           <$set name="fieldButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
             <li class=<<menu-list-item-class>>>
               <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<closed>>><<opened>></$list>
             </li>
           </$set>
-        </$list>
+        </$set>
       </$set>
-    </$set>
+    </$list>
   </$list>
 </ol>
