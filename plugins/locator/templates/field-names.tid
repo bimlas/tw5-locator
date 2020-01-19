@@ -14,6 +14,7 @@ type: text/vnd.tiddlywiki
   <$button class=<<fieldButtonClass>> actions=<<open-actions>>>
     {{$:/core/images/down-arrow}} <<currentField>>
   </$button>
+  {{$:/plugins/bimlas/locator/buttons/remove-filters-of-current-field}}
 \end
 
 \define turn-off-recursive-filtering-action()
@@ -24,6 +25,7 @@ type: text/vnd.tiddlywiki
   <$button class=<<fieldButtonClass>> actions=<<close-actions>>>
     {{$:/core/images/up-arrow}} <<currentField>>
   </$button>
+  {{$:/plugins/bimlas/locator/buttons/remove-filters-of-current-field}}
   {{$:/plugins/bimlas/locator/templates/field-values}}
 \end
 
