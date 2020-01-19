@@ -17,10 +17,6 @@ type: text/vnd.tiddlywiki
   {{$:/plugins/bimlas/locator/buttons/remove-filters-of-current-field}}
 \end
 
-\define turn-off-recursive-filtering-action()
-  <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index=<<currentField>> $subfilter="-[all[current]]"/>
-\end
-
 \define opened()
   <$button class=<<fieldButtonClass>> actions=<<close-actions>>>
     {{$:/core/images/up-arrow}} <<currentField>>
@@ -36,12 +32,10 @@ type: text/vnd.tiddlywiki
   <$list filter=<<field-names>> variable="currentField">
     <$list filter=<<has-field-value-to-list>> variable="null">
       <$set name="recursiveFilteringOfCurrentFieldAvailable" filter="[<recursiveFilteringAvailable>regexp[yes]] [locator-enlist-relationship-fields<currentField>] +[count[]regexp[2]]" value="yes" emptyValue="no">
-        <$set name="turnOffRecursiveFiltering" filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" value=<<turn-off-recursive-filtering-action>> emptyValue="">
-          <$set name="fieldButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
-            <li class=<<menu-list-item-class>>>
-              <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<closed>>><<opened>></$list>
-            </li>
-          </$set>
+        <$set name="fieldButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
+          <li class=<<menu-list-item-class>>>
+            <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<closed>>><<opened>></$list>
+          </li>
         </$set>
       </$set>
     </$list>

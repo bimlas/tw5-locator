@@ -2,8 +2,12 @@ tags:
 title: $:/plugins/bimlas/locator/templates/field-values
 type: text/vnd.tiddlywiki
 
-\define remove-from-other-filter-state()
-  <$action-listops $tiddler={{{ [title<intersectionState>] [title<differenceState>] -[title<__filterState__>first[]] }}} $index=<<currentField>> $subfilter="-[all[current]]"/>
+\define remove-from-intersection-state()
+  <$action-listops $tiddler=<<intersectionState>> $index=<<currentField>> $subfilter="-[all[current]]"/>
+\end
+
+\define remove-from-difference-state()
+  <$action-listops $tiddler=<<differenceState>> $index=<<currentField>> $subfilter="-[all[current]]"/>
 \end
 
 \define activate-actions()
@@ -13,7 +17,9 @@ type: text/vnd.tiddlywiki
 
 \define inactivate-actions()
   <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="-[all[current]]"/>
-  <<turnOffRecursiveFiltering>>
+  <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" variable="null">
+    <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index=<<currentField>> $subfilter="-[all[current]]"/>
+  </$list>
 \end
 
 \define button-inactive()
@@ -52,14 +58,14 @@ type: text/vnd.tiddlywiki
         filterState=<<intersectionState>>
         iconActive={{$:/core/images/new-button}}
         iconInactive={{$:/core/images/new-button}}
-        additionalActivateActions=<<remove-from-other-filter-state>>
+        additionalActivateActions=<<remove-from-difference-state>>
       />
       <$macrocall
         $name="toggle-button"
         filterState=<<differenceState>>
         iconActive={{$:/core/images/close-button}}
         iconInactive={{$:/core/images/close-button}}
-        additionalActivateActions=<<remove-from-other-filter-state>>
+        additionalActivateActions=<<remove-from-intersection-state>>
       />
       <$macrocall
         $name="droppable-menu-list-item"
