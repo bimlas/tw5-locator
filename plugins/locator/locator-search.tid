@@ -12,21 +12,23 @@ type: text/vnd.tiddlywiki
       defaultFieldOfRelationship=<<__fieldOfRelationship__>>
       filterContextItems="[subfilter<filter-search-context>search{$(searchTiddler)$}]"
     >
+      <$set name="recursiveFilteringAvailable" filter=<<filter-kin-filteroperator-available>> value="yes" emptyValue="">
 
-      {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+        {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
-      <$list filter="[subfilter<filterContextItems>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
+        <$list filter="[subfilter<filterContextItems>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
 
-      {{$:/plugins/bimlas/locator/templates/fields-filter}}
+        {{$:/plugins/bimlas/locator/templates/fields-filter}}
 
-      //<small>{{$:/language/Search/Matches/Title}}</small>//
+        //<small>{{$:/language/Search/Matches/Title}}</small>//
 
-      <$list filter="[subfilter<filterContextItems>search:title{$(searchTiddler)$}limit[250]]" template="$:/core/ui/ListItemTemplate"/>
+        <$list filter="[subfilter<filterContextItems>search:title{$(searchTiddler)$}limit[250]]" template="$:/core/ui/ListItemTemplate"/>
 
-      //<small>{{$:/language/Search/Matches/All}}</small>//
+        //<small>{{$:/language/Search/Matches/All}}</small>//
 
-      <$list filter="[subfilter<filterContextItems>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
+        <$list filter="[subfilter<filterContextItems>limit[250]]" template="$:/core/ui/ListItemTemplate"/>
 
+      </$set>
     </$vars>
   </$importvariables>
 \end

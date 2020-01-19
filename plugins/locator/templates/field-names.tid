@@ -31,18 +31,19 @@ type: text/vnd.tiddlywiki
 
 \define field-names() [title<intersectionState>] [title<differenceState>] +[locator-selected-field-names[]] [subfilter<filterContextItems>fields[]locator-enabled-fields[]] +[sort[]]
 \define has-field-value-to-list() [subfilter<filterContextItems>has<currentField>search:$(currentField)$<searchedFieldValue>] [subfilter<filter-selected-field-values>] +[first[]]
-\define conditions-of-recursive-filtering-are-not-met() [title<contextState>field:title[$:/state/bimlas/locator/search/context/]] [subfilter<filter-kin-filteroperator-available>] [locator-enlist-relationship-fields<currentField>] +[count[]] -[[3]]
 
 <ol class="bimlas-locator">
   <$list filter=<<field-names>> variable="currentField">
-    <$set name="turnOffRecursiveFiltering" filter=<<conditions-of-recursive-filtering-are-not-met>> value="" emptyValue=<<turn-off-recursive-filtering-action>>>
-      <$list filter=<<has-field-value-to-list>> variable="null">
-        <$set name="fieldButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
-          <li class=<<menu-list-item-class>>>
-            <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<closed>>><<opened>></$list>
-          </li>
-        </$set>
-      </$list>
+    <$set name="recursiveFilteringOfCurrentFieldAvailable" filter="[<recursiveFilteringAvailable>] [locator-enlist-relationship-fields<currentField>] -[[]] +[count[]regexp[^2$]]" value="yes" emptyValue="">
+      <$set name="turnOffRecursiveFiltering" filter=<<recursiveFilteringOfCurrentFieldAvailable>> value=<<turn-off-recursive-filtering-action>>>
+        <$list filter=<<has-field-value-to-list>> variable="null">
+          <$set name="fieldButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
+            <li class=<<menu-list-item-class>>>
+              <$list filter="[title<contextState>contains:opened-fields-filters<currentField>]" emptyMessage=<<closed>>><<opened>></$list>
+            </li>
+          </$set>
+        </$list>
+      </$set>
     </$set>
   </$list>
 </ol>
