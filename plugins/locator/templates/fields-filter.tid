@@ -14,6 +14,7 @@ type: text/vnd.tiddlywiki
   <$button class=<<fieldsFilterButtonClass>> actions=<<close-actions>>>
     {{$:/core/images/opacity}} Fields filter
   </$button>
+  {{$:/plugins/bimlas/locator/buttons/remove-filters}}
   {{$:/plugins/bimlas/locator/templates/field-names}}
 \end
 
@@ -21,6 +22,7 @@ type: text/vnd.tiddlywiki
   <$button class=<<fieldsFilterButtonClass>> actions=<<open-actions>>>
     {{$:/core/images/opacity}} Fields filter
   </$button>
+  {{$:/plugins/bimlas/locator/buttons/remove-filters}}
 \end
 
 <div class=<<menu-list-item-class>>>

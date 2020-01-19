@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
       defaultFieldOfRelationship=<<__fieldOfRelationship__>>
     >
 
-      {{$:/plugins/bimlas/locator/templates/search-toolbar}}
+      {{$:/plugins/bimlas/locator/templates/search-toolbar}} {{$:/plugins/bimlas/locator/buttons/remove-filters}}
 
       <p><$checkbox tiddler=<<contextState>> field="limit-to-fields-of-filtered-tiddlers" checked="yes" unchecked="no" default="yes">Limit to fields of filtered tiddlers</$checkbox></p>
 
