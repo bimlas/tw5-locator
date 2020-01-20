@@ -18,7 +18,7 @@ type: text/vnd.tiddlywiki
 
 \define opened()
   <$button class=<<link-button-class additionalClasses:"right active">>>
-    <$action-listops $tiddler=<<contextState>> $field="relationsip-settings-opened" $filter="[[]]"/>
+    <$action-listops $tiddler=<<contextState>> $field="relationship-settings-opened" $filter="[[]]"/>
     {{$:/core/images/options-button}}
   </$button>
 
@@ -38,9 +38,9 @@ type: text/vnd.tiddlywiki
 
 \define closed()
   <$button class=<<link-button-class additionalClasses:"right">>>
-    <$action-listops $tiddler=<<contextState>> $field="relationsip-settings-opened" $filter="yes"/>
+    <$action-listops $tiddler=<<contextState>> $field="relationship-settings-opened" $filter="yes"/>
     {{$:/core/images/options-button}}
   </$button>
 \end
 
-<$list filter="[title<contextState>field:relationsip-settings-opened[yes]]" emptyMessage=<<closed>>><<opened>></$list>
+<$list filter="[title<contextState>field:relationship-settings-opened[yes]]" emptyMessage=<<closed>>><<opened>></$list>
