@@ -169,7 +169,7 @@ Special filters used by Locator
     /*
     List of active field filters
 
-    Input: filterState - TODO: Cannot use variable as filter suffix?
+    Input: filterState
     Param (optional): field
     */
     exports["locator-selected-field-values"] = function (source, operator, options) {
@@ -191,7 +191,7 @@ Special filters used by Locator
     /*
     List of active field names
 
-    Input: filterState - TODO: Cannot use variable as filter suffix?
+    Input: filterState
     Param (optional): none
     */
     exports["locator-selected-field-names"] = function (source, operator, options) {

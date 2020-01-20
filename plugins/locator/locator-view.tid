@@ -3,7 +3,6 @@ title: $:/plugins/bimlas/locator/macros/locator-view
 type: text/vnd.tiddlywiki
 
 \define locator-view(baseTitle finalFilter:"" tagFilter:"" fieldOfRelationship:"tags")
-  <!-- TODO: Implement finalFilter again, move tagFilter to field settings -->
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
     <$vars
