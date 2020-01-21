@@ -3,11 +3,11 @@ title: $:/plugins/bimlas/locator/buttons/create-new-tiddler
 type: text/vnd.tiddlywiki
 
 \define add-as-list()
-  <$action-listops $tiddler=<<title>> $field=<<field>> $subfilter=<<__valueAsFilter__>>/>
+  <$action-listops $tiddler="$:/temp/bimlas/locator/new-tiddler" $field=<<field>> $subfilter=<<__valueAsFilter__>>/>
 \end
 
 \define add-as-value()
-  <$action-setfield $tiddler=<<title>> $field=<<field>> $value={{{ [subfilter<__valueAsFilter__>] }}}/>
+  <$action-setfield $tiddler="$:/temp/bimlas/locator/new-tiddler" $field=<<field>> $value={{{ [subfilter<__valueAsFilter__>] }}}/>
 \end
 
 \define add-field-value(valueAsFilter)
@@ -31,10 +31,9 @@ type: text/vnd.tiddlywiki
 \end
 
 <$button tooltip="Create new tiddler in the current context" class=<<link-button-class>>>
-  <$vars title={{{ [title<titleOfNewTiddler>] [title{$:/language/DefaultNewTiddlerTitle}] -[[]] +[first[]] }}}>
-    <<add-filters-as-field-values>>
-    <<add-to-current-context>>
-    <$action-sendmessage $message="tm-new-tiddler" title=<<title>>/>
-  </$vars>
+  <<add-filters-as-field-values>>
+  <<add-to-current-context>>
+  <$action-sendmessage $message="tm-new-tiddler" $param="$:/temp/bimlas/locator/new-tiddler" title={{{ [title<titleOfNewTiddler>] [title{$:/language/DefaultNewTiddlerTitle}] -[[]] +[first[]] }}}/>
+  <$action-deletetiddler $tiddler="$:/temp/bimlas/locator/new-tiddler"/>
   {{$:/core/images/new-button}}
 </$button>
