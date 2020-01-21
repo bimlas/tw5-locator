@@ -4,7 +4,7 @@ description: Browse hierarchy of tag in Locator sidebar (MODIFIED, see Tips tab 
 list-before: $:/core/ui/Buttons/open-window
 modified: 20200103160552040
 tags: $:/tags/ViewToolbar
-title: $:/plugins/bimlas/locator/viewtoolbar/open-in-sidebar
+title: $:/plugins/bimlas/locator/viewtemplate/open-in-sidebar
 type: text/vnd.tiddlywiki
 
 \whitespace trim

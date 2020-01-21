@@ -1,5 +1,5 @@
 tags: $:/tags/ViewToolbar
-title: $:/plugins/bimlas/locator/viewtoolbar/open-in-sidebar
+title: $:/plugins/bimlas/locator/viewtemplate/open-in-sidebar
 type: text/vnd.tiddlywiki
 caption: {{$:/core/images/chevron-right}} locator sidebar
 description: Browse hierarchy of tag in Locator sidebar
