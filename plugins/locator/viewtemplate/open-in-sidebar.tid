@@ -8,11 +8,13 @@ list-before: $:/core/ui/Buttons/open-window
 \whitespace trim
 <$list filter="[all[current]is[tag]]">
 <$button tooltip="Browse hierarchy of tag in Locator sidebar" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
-<!-- TODO: Drop `base-title`, just add to history, but add an option to reset the history -->
-<$action-deletetiddler $tiddler="$:/state/bimlas/locator/view/intersection/"/>
-<$action-deletetiddler $tiddler="$:/state/bimlas/locator/view/difference/"/>
-<$action-deletetiddler $tiddler="$:/state/bimlas/locator/view/context/"/>
-<$action-listops $tiddler="$:/state/bimlas/locator/view/context/" $field="base-title" $filter="[all[current]]"/>
+<$vars
+  contextState="$:/state/bimlas/locator/view/context/"
+  intersectionState="$:/state/bimlas/locator/view/intersection/"
+  differenceState="$:/state/bimlas/locator/view/difference/"
+>
+  {{||$:/plugins/bimlas/locator/actions/add-to-history}}
+</$vars>
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]" variable="listItem">
 {{$:/core/images/chevron-right}}
 </$list>

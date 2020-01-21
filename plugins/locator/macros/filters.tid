@@ -3,8 +3,7 @@ title: $:/plugins/bimlas/locator/macros/filters
 type: text/vnd.tiddlywiki
 
 \define filter-kin-filteroperator-available() [[$:/plugins/bimlas/kin-filter]is[tiddler]]
-\define filter-base-title() [title<contextState>each:list-item[base-title]] ~[<__baseTitle__>]
-\define filter-history() [subfilter<filter-base-title>] [title<contextState>each:list-item[history]] -[[]]
+\define filter-history() [<__baseTitle__>] [title<contextState>each:list-item[history]] -[[]]
 \define filter-grandchildren() [subfilter<filter-history>last[]tagging[]tagging[]kin::to[]]
 \define filter-selected-field-values() [title<intersectionState>] [title<differenceState>] +[locator-selected-field-values<currentField>]
 \define filter-field-is-list() [addprefix[$:/config/bimlas/locator/fields/]field:field-type[list]]

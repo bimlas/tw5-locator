@@ -16,9 +16,7 @@ type: text/vnd.tiddlywiki
         <$vars filterContextItems=<<filter-view-context>>>
           <div class="tc-table-of-contents">
 
-            {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} {{$:/plugins/bimlas/locator/buttons/search-in-context}} <$list filter="[title<contextState>get[base-title]]"><$vars tooltip-for-clear-context="Go back to the default context">
-              {{$:/plugins/bimlas/locator/buttons/clear-context}}
-            </$vars></$list>
+            {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} {{$:/plugins/bimlas/locator/buttons/search-in-context}}
 
             {{$:/plugins/bimlas/locator/templates/history}}
 

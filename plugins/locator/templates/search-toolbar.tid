@@ -10,5 +10,4 @@ type: text/vnd.tiddlywiki
 >
   {{$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
   {{$:/plugins/bimlas/locator/buttons/copy-filter-to-advanced-search}}
-  <$list filter="[<contextState>get[history]first[]]">{{$:/plugins/bimlas/locator/buttons/clear-context}}</$list>
 </$vars>
