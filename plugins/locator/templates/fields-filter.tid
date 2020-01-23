@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
 
 \define opened()
   <$button class=<<fieldsFilterButtonClass>> actions=<<close-actions>>>
-    {{$:/core/images/opacity}} Fields filter
+    {{$:/core/images/up-arrow}} __Filter by fields__
   </$button>
   {{$:/plugins/bimlas/locator/buttons/remove-filters}}
   <ol class="bimlas-locator">
@@ -22,7 +22,7 @@ type: text/vnd.tiddlywiki
 
 \define closed()
   <$button class=<<fieldsFilterButtonClass>> actions=<<open-actions>>>
-    {{$:/core/images/opacity}} Fields filter
+    {{$:/core/images/down-arrow}} __Filter by fields__
   </$button>
   {{$:/plugins/bimlas/locator/buttons/remove-filters}}
 \end
