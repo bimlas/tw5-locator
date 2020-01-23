@@ -23,18 +23,18 @@ type: text/vnd.tiddlywiki
 \end
 
 \define button-inactive()
-  <$button tooltip="Toggle filtering to this value" class=<<link-button-class>> actions=<<activate-actions>>>
+  <$button tooltip=<<__tooltip__>> class=<<link-button-class>> actions=<<activate-actions>>>
     <<__iconInactive__>>
   </$button>
 \end
 
 \define button-active()
-  <$button tooltip="Toggle filtering to this value" class=<<link-button-class additionalClasses:"active">> actions=<<inactivate-actions>>>
+  <$button tooltip=<<__tooltip__>> class=<<link-button-class additionalClasses:"active">> actions=<<inactivate-actions>>>
     <<__iconActive__>>
   </$button>
 \end
 
-\define toggle-button(filterState iconActive iconInactive additionalActivateActions)
+\define toggle-button(filterState iconActive iconInactive additionalActivateActions tooltip)
   <$list filter="[title<__filterState__>locator-selected-field-values<currentField>is[current]]" emptyMessage=<<button-inactive>>>
     <<button-active>>
   </$list>
@@ -51,6 +51,7 @@ type: text/vnd.tiddlywiki
           filterState="$:/state/bimlas/locator/search/recursive-filters/"
           iconActive={{$:/core/images/link}}
           iconInactive={{$:/core/images/tag-button}}
+          tooltip="Toggle recursive filtering to this value"
         />
       </$list>
       <$macrocall
@@ -59,6 +60,7 @@ type: text/vnd.tiddlywiki
         iconActive={{$:/core/images/new-button}}
         iconInactive={{$:/core/images/new-button}}
         additionalActivateActions=<<remove-from-difference-state>>
+        tooltip="Toggle filtering to this value"
       />
       <$macrocall
         $name="toggle-button"
@@ -66,6 +68,7 @@ type: text/vnd.tiddlywiki
         iconActive={{$:/core/images/close-button}}
         iconInactive={{$:/core/images/close-button}}
         additionalActivateActions=<<remove-from-intersection-state>>
+        tooltip="Toggle filtering to this value"
       />
       <$macrocall
         $name="droppable-menu-list-item"

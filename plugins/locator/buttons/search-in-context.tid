@@ -34,7 +34,7 @@ type: text/vnd.tiddlywiki
   <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/difference/"/>
 \end
 
-<$button tooltip="Search in the context of Locator sidebar in any depth" class=<<link-button-class>>>
+<$button tooltip="Restrict searching to this context (in any depth)" class=<<link-button-class>>>
   <<reset-search-context>>
   <<copy-filters>>
   <<search-in-current-context>>
