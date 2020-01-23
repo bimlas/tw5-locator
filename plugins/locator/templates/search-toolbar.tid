@@ -2,10 +2,7 @@ tags:
 title: $:/plugins/bimlas/locator/templates/search-toolbar
 type: text/vnd.tiddlywiki
 
-\define tooltip-for-clear-context() Remove filters
-
 <$vars
-  tooltip-for-clear-context="Remove filters"
   titleOfNewTiddler={{$:/temp/search}}
 >
   {{$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
