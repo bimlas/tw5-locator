@@ -16,12 +16,7 @@ type: text/vnd.tiddlywiki
   <$checkbox tiddler=<<contextState>> field=<<__field__>> checked="yes" unchecked="" default=""> <<__title__>></$checkbox>
 \end
 
-\define opened()
-  <$button class=<<link-button-class additionalClasses:"right active">>>
-    <$action-setfield $tiddler=<<contextState>> $field="relationship-settings-opened" $value=""/>
-    {{$:/core/images/options-button}}
-  </$button>
-
+<$list filter="[title<contextState>field:relationship-settings-opened[yes]]">
   <div class="bimlas-locator relationship-settings">
 
     <<field-of-relationship>>
@@ -33,14 +28,4 @@ type: text/vnd.tiddlywiki
     <<toggle-setting field:"use-template-of-relationship-field" title:"Use template of relationship field">>
 
   </div>
-
-\end
-
-\define closed()
-  <$button class=<<link-button-class additionalClasses:"right">>>
-    <$action-setfield $tiddler=<<contextState>> $field="relationship-settings-opened" $value="yes"/>
-    {{$:/core/images/options-button}}
-  </$button>
-\end
-
-<$list filter="[title<contextState>field:relationship-settings-opened[yes]]" emptyMessage=<<closed>>><<opened>></$list>
+</$list>

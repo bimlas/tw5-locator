@@ -15,7 +15,9 @@ type: text/vnd.tiddlywiki
     {{$:/core/images/opacity}} Fields filter
   </$button>
   {{$:/plugins/bimlas/locator/buttons/remove-filters}}
-  {{$:/plugins/bimlas/locator/templates/field-names}}
+  <ol class="bimlas-locator">
+    {{$:/plugins/bimlas/locator/templates/field-names}}
+  </ol>
 \end
 
 \define closed()
@@ -25,8 +27,6 @@ type: text/vnd.tiddlywiki
   {{$:/plugins/bimlas/locator/buttons/remove-filters}}
 \end
 
-<div class=<<menu-list-item-class>>>
-  <$set name="fieldsFilterButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
-    <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<closed>>><<opened>></$list>
-  </$set>
-</div>
+<$set name="fieldsFilterButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
+  <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<closed>>><<opened>></$list>
+</$set>

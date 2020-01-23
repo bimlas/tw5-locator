@@ -46,5 +46,6 @@ button.bimlas-locator.active svg {
 .bimlas-locator.relationship-settings {
   border-width: 1px;
   border-style: dashed;
-  padding: 0.5em
+  padding: 0.5em;
+  padding-top: 1.5em;
 }

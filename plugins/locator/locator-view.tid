@@ -16,23 +16,26 @@ type: text/vnd.tiddlywiki
         <$vars filterContextItems=<<filter-view-context>>>
           <div class="tc-table-of-contents">
 
-            {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}} {{$:/plugins/bimlas/locator/buttons/search-in-context}} {{$:/plugins/bimlas/locator/buttons/collapse-history}}
-
             {{$:/plugins/bimlas/locator/templates/history}}
 
             ---
 
+            <div class="bimlas-locator right">
+              {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
+              {{$:/plugins/bimlas/locator/buttons/search-in-context}}
+              {{$:/plugins/bimlas/locator/buttons/collapse-history}}
+              {{$:/plugins/bimlas/locator/buttons/toggle-relationship-settings}}
+            </div>
             {{$:/plugins/bimlas/locator/templates/relationship-settings}}
-
+            {{$:/plugins/bimlas/locator/templates/fields-filter}}
             <ol class="bimlas-locator">
-              {{$:/plugins/bimlas/locator/templates/fields-filter}}
-                <$list filter=<<filterContextItems>>>
-                  <$macrocall
-                    $name="droppable-menu-list-item"
-                    content={{$:/plugins/bimlas/locator/templates/context-item}}
-                    actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
-                  />
-                </$list>
+              <$list filter=<<filterContextItems>>>
+                <$macrocall
+                  $name="droppable-menu-list-item"
+                  content={{$:/plugins/bimlas/locator/templates/context-item}}
+                  actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
+                />
+            </$list>
             </ol>
 
           </div>
