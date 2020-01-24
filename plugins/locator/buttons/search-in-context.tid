@@ -38,5 +38,5 @@ type: text/vnd.tiddlywiki
   <<reset-search-context>>
   <<copy-filters>>
   <<search-in-current-context>>
-  {{$:/core/images/close-others-button}}
+  {{$:/core/images/advanced-search-button}}
 </$button>
