@@ -47,6 +47,7 @@ Special filters used by Locator
     }
 
     function applyFieldsFilters(source, options, filterState, filterFunc, prefix) {
+        var filterOperators = options.wiki.getFilterOperators();
         var activeFilters = getActiveFilters(options, filterState);
         var results = source;
 
@@ -54,7 +55,11 @@ Special filters used by Locator
 
         $tw.utils.each(activeFilters, function (values, field) {
             $tw.utils.each(values, function (value) {
-                results = filterFunc(results, field, value, prefix);
+                if (value === "ANY-VALUE") {
+                    results = filterOperators["has"](results, { operand: field, prefix: prefix }, options);
+                } else {
+                    results = filterFunc(filterOperators, results, field, value, prefix);
+                }
                 results = options.wiki.makeTiddlerIterator(results);
             });
         });
@@ -72,9 +77,6 @@ Special filters used by Locator
     */
     exports["locator-fields-filter"] = function (source, operator, options) {
         var results = source;
-        var filterOperators = options.wiki.getGlobalCache("bimlas-locator-filterOperators", function() {
-            return options.wiki.getFilterOperators();
-        });
         var activeRecursiveFilters = getActiveFilters(options, "$:/state/bimlas/locator/search/recursive-filters/");
 
         if (operator.suffix === "recursive") {
@@ -85,18 +87,18 @@ Special filters used by Locator
 
         return results;
 
-        function directFilterFunc(input, field, value, prefix) {
+        function directFilterFunc(filterOperators, input, field, value, prefix) {
             var fieldListingOperator = getFieldListingOperator(options, field);
             return filterOperators[fieldListingOperator](input, { operand: value, prefix: prefix, suffix: field }, options);
         }
 
-        function recursiveFilterFunc(input, field, value, prefix) {
+        function recursiveFilterFunc(filterOperators, input, field, value, prefix) {
             var isRecursiveFilteringActive = $tw.utils.hop(activeRecursiveFilters, field) && (activeRecursiveFilters[field].indexOf(value) >= 0);
             if (isRecursiveFilteringActive) {
                 var fieldDirection = getFieldDirection(options, field);
                 return filterOperators.kin(input, { operand: value, prefix: prefix, suffixes: [[field], [fieldDirection]] }, options);
             } else {
-                return directFilterFunc(input, field, value, prefix)
+                return directFilterFunc(filterOperators, input, field, value, prefix)
             }
         }
     };
