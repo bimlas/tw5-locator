@@ -75,15 +75,6 @@ type: text/vnd.tiddlywiki
   <$list filter="[subfilter<field-values-of-context-items>regexp[^ANY-VALUE$]count[]] -[[1]]" variable="null">
     <$list filter=<<field-values-of-context-items>>>
       <li class=<<menu-list-item-class>>>
-        <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" variable="null">
-          <$macrocall
-            $name="toggle-button"
-            filterState="$:/state/bimlas/locator/search/recursive-filters/"
-            iconActive={{$:/core/images/link}}
-            iconInactive={{$:/core/images/tag-button}}
-            tooltip="Toggle recursive filtering to this value"
-          />
-        </$list>
         <$macrocall
           $name="toggle-button"
           filterState=<<intersectionState>>
@@ -100,6 +91,15 @@ type: text/vnd.tiddlywiki
           beforeActivateActions=<<remove-from-intersection-state>>
           tooltip="Toggle filtering to this value"
         />
+        <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" variable="null">
+          <$macrocall
+            $name="toggle-button"
+            filterState="$:/state/bimlas/locator/search/recursive-filters/"
+            iconActive={{$:/core/images/link}}
+            iconInactive={{$:/core/images/tag-button}}
+            tooltip="Toggle recursive filtering to this value"
+          />
+        </$list>
         <$macrocall
           $name="droppable-menu-list-item"
           content={{$:/plugins/bimlas/locator/templates/field-value-template}}
