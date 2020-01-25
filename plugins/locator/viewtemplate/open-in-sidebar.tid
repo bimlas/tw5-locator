@@ -6,7 +6,6 @@ description: Browse hierarchy of tag in Locator sidebar
 list-before: $:/core/ui/Buttons/open-window
 
 \whitespace trim
-<$list filter="[all[current]is[tag]]">
 <$button tooltip="Browse hierarchy of tag in Locator sidebar" aria-label="locator sidebar" class=<<tv-config-toolbar-class>>>
 <$vars
   contextState="$:/state/bimlas/locator/view/context/"
@@ -25,4 +24,3 @@ list-before: $:/core/ui/Buttons/open-window
 </span>
 </$list>
 </$button>
-</$list>
