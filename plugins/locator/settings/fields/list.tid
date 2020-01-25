@@ -2,4 +2,5 @@ tags:
 title: $:/config/bimlas/locator/fields/list
 type: text/vnd.tiddlywiki
 field-type: list
-template: <$link/>
+
+<$link/>

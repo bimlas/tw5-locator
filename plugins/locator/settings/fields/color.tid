@@ -1,4 +1,5 @@
 tags:
 title: $:/config/bimlas/locator/fields/color
 type: text/vnd.tiddlywiki
-template: <input type="color" name="favcolor" value=<<currentTiddler>> disabled> <$view field="title"/>
+
+<input type="color" name="favcolor" value=<<currentTiddler>> disabled> <$view field="title"/>

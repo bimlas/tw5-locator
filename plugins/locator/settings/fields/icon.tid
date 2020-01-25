@@ -1,4 +1,5 @@
 tags:
 title: $:/config/bimlas/locator/fields/icon
 type: text/vnd.tiddlywiki
-template: <button class="tc-btn-invisible" disabled><$transclude/></button> <$link>
+
+<button class="tc-btn-invisible" disabled><$transclude/></button> <$link>

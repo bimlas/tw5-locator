@@ -2,6 +2,6 @@ tags:
 title: $:/plugins/bimlas/locator/templates/field-value-template
 type: text/vnd.tiddlywiki
 
-<$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>get[template]]" emptyMessage="""<$view field="title"/>""" variable="fieldValueTemplate">
+<$list filter="[[$:/config/bimlas/locator/fields/]addsuffix<currentField>get[text]]" emptyMessage="""<$view field="title"/>""" variable="fieldValueTemplate">
   <<fieldValueTemplate>>
 </$list>
