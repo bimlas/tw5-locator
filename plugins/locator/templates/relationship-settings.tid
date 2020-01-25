@@ -5,8 +5,12 @@ type: text/vnd.tiddlywiki
 \define field-of-relationship()
   Tree is based on
   <$select tiddler=<<contextState>> field="field-of-relationship" default=<<defaultFieldOfRelationship>>>
-    <$list filter="[locator-enlist-relationship-fields[]]">
-      <option><<currentTiddler>></option>
+    <$list filter="[locator-enlist-relationship-fields[]]" variable="currentField">
+      <option value=<<currentField>>>
+        <$list filter="[subfilter<filter-unfiltered-view-context-items>count[]]" variable="count">
+          (<<count>>) <<currentField>>
+        </$list>
+      </option>
     </$list>
   </$select>
 \end
