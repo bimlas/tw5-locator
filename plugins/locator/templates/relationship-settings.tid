@@ -9,7 +9,6 @@ type: text/vnd.tiddlywiki
       <option><<currentTiddler>></option>
     </$list>
   </$select>
-  field
 \end
 
 \define toggle-setting(field title)
