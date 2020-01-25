@@ -224,13 +224,25 @@ Special filters used by Locator
         var results = [];
 
         source(function (tiddler, title) {
-            results = $tw.utils.pushTop(results, shouldFindListings
-                ? options.wiki.findListingsOfTiddler(title, fieldOfRelationship)
-                : options.wiki.getTiddlerList(title, fieldOfRelationship)
+            results = $tw.utils.pushTop(results, fieldOfRelationship === "LINKS-IN-TEXT"
+                ? byLinksInText(title)
+                : byField(title)
             );
         });
 
         return results;
+
+        function byLinksInText(title) {
+            return shouldFindListings
+                ? options.wiki.getTiddlerBacklinks(title)
+                : options.wiki.getTiddlerLinks(title);
+        }
+
+        function byField(title) {
+            return shouldFindListings
+                ? options.wiki.findListingsOfTiddler(title, fieldOfRelationship)
+                : options.wiki.getTiddlerList(title, fieldOfRelationship);
+        }
     };
 
 })();
