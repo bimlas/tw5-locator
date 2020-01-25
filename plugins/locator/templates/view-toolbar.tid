@@ -1,0 +1,10 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/view-toolbar
+type: text/vnd.tiddlywiki
+
+<$list filter="[subfilter<filter-field-of-relationship>!regexp[^LINKS-IN-TEXT$]]">
+  {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
+  {{$:/plugins/bimlas/locator/buttons/search-in-context}}
+</$list>
+{{$:/plugins/bimlas/locator/buttons/collapse-history}}
+{{$:/plugins/bimlas/locator/buttons/toggle-relationship-settings}}

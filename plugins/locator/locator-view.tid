@@ -21,10 +21,7 @@ type: text/vnd.tiddlywiki
             ---
 
             <div class="bimlas-locator right">
-              {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
-              {{$:/plugins/bimlas/locator/buttons/search-in-context}}
-              {{$:/plugins/bimlas/locator/buttons/collapse-history}}
-              {{$:/plugins/bimlas/locator/buttons/toggle-relationship-settings}}
+              {{||$:/plugins/bimlas/locator/templates/view-toolbar}}
             </div>
             {{$:/plugins/bimlas/locator/templates/relationship-settings}}
             {{$:/plugins/bimlas/locator/templates/fields-filter}}
