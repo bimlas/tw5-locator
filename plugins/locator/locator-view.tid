@@ -26,9 +26,11 @@ type: text/vnd.tiddlywiki
             </div>
             {{$:/plugins/bimlas/locator/templates/fields-filter}}
             <ol class="bimlas-locator">
-              <$list filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]" emptyMessage={{$:/plugins/bimlas/locator/templates/list-of-context-items}}>
-                {{||$:/plugins/bimlas/locator/templates/list-of-links-in-text}}
-              </$list>
+              <$vars isListingLocatorViewContextItems="yes">
+                <$list filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]" emptyMessage={{$:/plugins/bimlas/locator/templates/list-of-context-items}}>
+                  {{||$:/plugins/bimlas/locator/templates/list-of-links-in-text}}
+                </$list>
+              </$vars>
             </ol>
 
           </div>
