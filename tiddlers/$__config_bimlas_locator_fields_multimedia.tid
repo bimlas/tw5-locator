@@ -1,9 +1,9 @@
 created: 20200112203509174
 field-direction: to
 field-type: list
-modified: 20200125193113753
+modified: 20200126214451978
 tags: 
 title: $:/config/bimlas/locator/fields/multimedia
 type: text/vnd.tiddlywiki
 
-<$link to=<<currentTiddler>>><<currentTiddler>></$link><br/><$list filter="[<isListingLocatorViewContextItems>regexp[yes]]" variable="null"><$transclude/></$list>
+<$link to=<<currentTiddler>>><<currentTiddler>></$link><$list filter="[<isListingLocatorViewContextItems>regexp[yes]]" variable="null"><br/><$transclude/></$list>
