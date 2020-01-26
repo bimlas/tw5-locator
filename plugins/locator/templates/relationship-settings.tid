@@ -24,7 +24,7 @@ type: text/vnd.tiddlywiki
     <<field-of-relationship>><br/>
     <<toggle-setting field:"invert-direction" title:"Invert direction">><br/>
     <<toggle-setting field:"allow-to-open-leaves" title:"Allow to open leaves">><br/>
-    <<toggle-setting field:"use-template-of-relationship-field" title:"Use template of relationship field">><br/>
+    <$checkbox tiddler=<<contextState>> field="use-template-of-relationship-field" checked="yes" unchecked="no" default=<<__useTemplateOfRelationshipField__>>> Use template of relationship field</$checkbox><br/>
     {{$:/plugins/bimlas/locator/buttons/open-field-settings}}
   </div>
 </$list>
