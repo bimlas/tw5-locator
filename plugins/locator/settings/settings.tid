@@ -21,7 +21,7 @@ type: text/vnd.tiddlywiki
       </$select>
     </td>
     <td>
-      <$select field="exclude-from-field-filters" default="">
+      <$select field="hide-in-fields-filter" default="">
         <option value="">Show</option>
         <option value="yes">Hide</option>
       </$select>
