@@ -10,9 +10,6 @@ type: text/vnd.tiddlywiki
       <tr class="tc-view-field">
         <td class="tc-view-field-name">
           <$text text=<<currentField>>/>
-          <$button to={{{ [[$:/config/bimlas/locator/fields/]addsuffix<currentField>] }}} class="tc-btn-invisible tc-tiddlylink">
-            {{$:/core/images/options-button}}
-          </$button>
         </td>
         <td class="tc-view-field-value">
           <$list filter="[all[current]locator-enlist-field-values<currentField>]">
@@ -23,3 +20,5 @@ type: text/vnd.tiddlywiki
     </$list>
   </tbody>
 </table>
+
+{{$:/plugins/bimlas/locator/buttons/open-field-settings}}

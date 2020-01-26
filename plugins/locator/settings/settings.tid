@@ -1,0 +1,48 @@
+tags:
+title: $:/plugins/bimlas/locator/settings/settings
+type: text/vnd.tiddlywiki
+
+\define line(field)
+  <tr>
+    <th><$link to="$:/config/bimlas/locator/fields/$field$"><$text text=<<__field__>>/></$link></th>
+    <td>//{{$:/language/Docs/Fields/$field$}}//</td>
+    <td><$edit-text tag="input" default="" size="50" field="text"/></td>
+    <td>
+      <$select field="field-type" default="">
+        <option value="">Value</option>
+        <option value="list">List</option>
+      </$select>
+    </td>
+    <td>
+      <$select field="field-direction" default="">
+        <option value="">-</option>
+        <option value="from">From</option>
+        <option value="to">To</option>
+      </$select>
+    </td>
+    <td>
+      <$select field="exclude-from-field-filters" default="">
+        <option value="">Show</option>
+        <option value="yes">Hide</option>
+      </$select>
+    </td>
+  </tr>
+\end
+
+<table>
+  <thead>
+    <th>Field</th>
+    <th style="width: 20em">Description</th>
+    <th>Template</th>
+    <th>Field type</th>
+    <th>Field direction<br/><small>If the field used for trees, then the children pointing ... the current tiddler</small></th>
+    <th>Show in fields filter</th>
+  </thead>
+  <tbody>
+    <$list filter="[all[tiddlers+shadows]fields[]sort[]]" variable="field">
+      <$list filter="[title<field>addprefix[$:/config/bimlas/locator/fields/]]">
+        <$macrocall $name="line" field=<<field>>/>
+      </$list>
+    </$list>
+  </tbody>
+</table>
