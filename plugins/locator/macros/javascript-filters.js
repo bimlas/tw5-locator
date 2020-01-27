@@ -67,6 +67,16 @@ Special filters used by Locator
         return results;
     }
 
+    function getDirectionOfTraverse(options, contextState, fieldOfRelationship) {
+        var contextStateTiddler = options.wiki.getTiddler(contextState) || {fields: []};
+        var fieldSettings = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + fieldOfRelationship) || {fields: []};
+        var direction = fieldSettings.fields["field-direction"];
+        if (contextStateTiddler.fields["invert-direction"] === "yes") {
+            direction = ["from", "to"][(direction === "from") + 0];
+        }
+        return direction;
+    }
+
     /*
     Filter titles matching to Locator fields filter
 
@@ -214,13 +224,8 @@ Special filters used by Locator
     Suffix: field of relationship
     */
     exports["locator-enlist-children"] = function (source, operator, options) {
-        var contextState = options.wiki.getTiddler(operator.operand) || {fields: []};
         var fieldOfRelationship = operator.suffix;
-        var fieldSettings = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + fieldOfRelationship) || {fields: []};
-        var shouldFindListings = (fieldSettings.fields["field-direction"] || "to") === "to";
-        if(contextState.fields["invert-direction"] === "yes") {
-            shouldFindListings = !shouldFindListings;
-        }
+        var directionOfTraverse = getDirectionOfTraverse(options, operator.operand, fieldOfRelationship);
         var results = [];
 
         source(function (tiddler, title) {
@@ -233,16 +238,32 @@ Special filters used by Locator
         return results;
 
         function byLinksInText(title) {
-            return shouldFindListings
+            return directionOfTraverse === "to"
                 ? options.wiki.getTiddlerBacklinks(title)
                 : options.wiki.getTiddlerLinks(title);
         }
 
         function byField(title) {
-            return shouldFindListings
+            return directionOfTraverse === "to"
                 ? options.wiki.findListingsOfTiddler(title, fieldOfRelationship)
                 : options.wiki.getTiddlerList(title, fieldOfRelationship);
         }
     };
+
+    /*
+    Get direction of traverse: field direction + optional invert direction
+
+    Input: contextState
+    Param: field of relationship
+    */
+    exports["locator-direction-of-traverse"] = function (source, operator, options) {
+        var results = [];
+
+        source(function (tiddler, title) {
+            results = [getDirectionOfTraverse(options, title, operator.operand)];
+        });
+
+        return results;
+    }
 
 })();
