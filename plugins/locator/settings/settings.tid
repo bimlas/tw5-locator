@@ -52,16 +52,27 @@ type: text/vnd.tiddlywiki
 
 \end
 
+\define option()
+  <option value=<<currentTiddler>>>
+    <$view field="title"/>
+    <$list filter="[subfilter<settingsTiddler>is[tiddler]] [subfilter<settingsTiddler>is[shadow]] +[first[]]">*</$list>
+  </option>
+\end
+
 \define settingsTiddler() [title<currentTiddler>addprefix[$:/config/bimlas/locator/fields/]]
 
 Select field to edit its settings:
 <$select tiddler="$:/temp/bimlas/locator/settings-of-field">
-  <$list filter="[all[tiddlers+shadows]fields[]sort[]]">
-    <option value=<<currentTiddler>>>
-      <$view field="title"/>
-      <$list filter="[subfilter<settingsTiddler>is[tiddler]] [subfilter<settingsTiddler>is[shadow]] +[first[]]">*</$list>
-    </option>
-  </$list>
+  <optgroup label="Fields of regular tiddlers">
+    <$list filter="[!is[system]fields[]sort[]]">
+      <<option>>
+    </$list>
+  </optgroup>
+  <optgroup label="Fields of system tiddlers">
+    <$list filter="[all[tiddlers+shadows]is[system]fields[]] -[!is[system]fields[]] +[sort[]]">
+      <<option>>
+    </$list>
+  </optgroup>
 </$select>
 
 <$list filter="[title{$:/temp/bimlas/locator/settings-of-field}] -[[]]">
