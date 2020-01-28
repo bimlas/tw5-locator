@@ -1,14 +1,16 @@
 created: 20190120115910162
-modified: 20200128095500229
+modified: 20200128215958443
 tags: 
 title: README
 type: text/vnd.tiddlywiki
+
+\define _icon(icon) <button class="tc-btn-invisible" disabled><<__icon__>></button>
 
 This is the ''demo of the Locator [[TiddlyWiki|https://tiddlywiki.com/]] plugin''. Here you can try everything what you want.
 
 Feel free to write down your thoughts and suggestions, ''you can comment at the bottom of each tiddler'' ("Show Disqus comments").
 
-!! What is the Locator exactly?
+! What is the Locator exactly?
 
 Before I explain, ''let's clarify a few things about TiddlyWiki'':
 
@@ -24,26 +26,35 @@ Before I explain, ''let's clarify a few things about TiddlyWiki'':
 
 Locator provides ''a universal interface for navigating between your tiddlers and searching, filtering them'' without the need to write [[filter expressions|https://tiddlywiki.com/#Filters]].
 
-!! Tutorial
+! Tutorial
 
-''To understand the plugin, please read this tutorial:''
+''To understand the plugin, please read this tutorial''. While discovering, you will certainly notice buttons that arouse your curiosity, but please do not use them until asked in the tutorial.
 
-<div class="bimlas-locator-explanation">
+!! Basic usage
 
-! TODO
+; Locator sidebar for navigating
+: In this demo, I placed the `locator-view` macro in the sidebar, which you can access in the "Locator" tab, but the macro can be placed anywhere (as is the one in the [[Family tree of Ford]] tiddler). Before you try it, switch to the [[Classic ToC]] tab (just to understand what is going to happen) and use the <<_icon {{$:/core/images/right-arrow}}>> icon next to the titles to navigate to the Larry's Cookbook -> Categories -> Pasta "directory" (hereinafter referred to as "context"). Do the same in the Locator sidebar. To move up in the hierarchy, click on the <<_icon {{$:/core/images/right-arrow}}>> icon next to a previously selected title (such as TableOfContents). To get used to the controls, try opening several "directories" side by side in Classic ToC and Locator.
 
-Ne  a részek jellemzésével kezd, hanem a használat szintjével (alap ToC + search -> filterek -> playlist)
+; Locator search tab for searching
+: The "Locator" tab in the standard search can be used in the same way as the default search ("List" tab): you enter the text you want to search for and the list of matching tiddlers will be shown. The number of standard search results is displayed next to the text entry, whereas the Locator search displays it at the top of the dropdown.
 
-!!! Sidebar, Table of Contents
+So far, there is practically no difference from the available solutions.
 
-; Locator sidebar
-: In this demo, I placed the `locator-view` macro in the sidebar, which you can access in the "Locator" tab, but the macro can be placed anywhere (as is the one in the [[Family tree of Ford]] tiddler).
+!! Visual filter builder
 
-; Navigation
-: Switch to the [[Classic ToC]] tab and use the <<_icon {{$:/core/images/right-arrow}}>> icon next to the titles to navigate to the Larry's Cookbook -> Categories -> Pasta "directory". Do the same in the Locator sidebar. To move up in the hierarchy, click on the <<_icon {{$:/core/images/right-arrow}}>> icon next to a previously selected title (such as TableOfContents). Before continuing with the tutorial, go to the "directory" mentioned above.
+; Filter for field values in sidebar
+: As you can see, in addition to the tiddlers titles, the Locator sidebar also has a fields filter ("Filter by fields") which contains the values of the fields in the listed tiddlers. Go to the Larry's Cookbook -> Categories -> Pasta context again and open fields filter -> tags: you can see all the tags of the listed tiddlers at once. To understand what that means, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]]. It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the <<_icon {{$:/core/images/new-button}}>> icon next to it. Click the icon again to deactivate the filter. If you are wondering which tiddlers do not contain this tag, click the <<_icon {{$:/core/images/close-button}}>> icon. You can mix filters, for example, look for the tiddlers that are tagged with only the [[chicken]] but not the [[Rachel Ray]] tag.
 
-; Filter for hidden tags
-: As you can see, in addition to the tiddlers titles, the Locator also has a list of tags. These are tags of the listed tiddlers that are not listed in the Classic ToC. For example, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]] . It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the {{$:/core/images/tag-button}} icon next to it. If you don't see the advantages of this feature, then try to install the [[plugin|$:/plugins/bimlas/locator]] and the [[Locator view]] sidebar on a copy of https://tiddlywiki.com/ and navigate to Reference -> Filters -> Filter Operators. You can disable this feature if you don't like it, see the plugin description.
+; Narrow search results by field filters
+: You can also apply this filtering mechanism to search results. Search for "cook" in standard search and use the fields filter to narrow down the list of tiddlers that contain the [[Howto]] tag.
+
+TODO: 
+
+* Kin filter, rekursive search
+* Fields search tab
+* Ford family-re átterelni a szót, hogy ott keresse meg ezt-meg azt; a CEO, Marketing, stb. kerüljön át egy külön field-be (role)
+
+---
 
 ; Create a new tiddler in the current context
 : To create a new tiddler in the current context (Larry's Cookbook -> Categories -> Pasta -> Howto), click on the {{$:/core/images/new-button}} icon at the top of the Locator sidebar: the newly created tiddler will automatically be assigned the [[Howto]] and [[pasta]] tags.
@@ -54,10 +65,7 @@ Ne  a részek jellemzésével kezd, hanem a használat szintjével (alap ToC + s
 ; Browse any tag in the sidebar
 : To easily review the hierarchy of any tag (even if it's not related to the TableOfContents), there is a new button in the header of tiddlers to which are tagging other tiddlers. For example, open the [[asian]] or [[Howto]] tiddler and click on the {{$:/core/images/chevron-right}} icon on the top to open it in the sidebar. To switch back to the default context (TableOfContext in this case), click the {{$:/core/images/close-button}} icon at the top of the Locator sidebar.
 
-!!! Search and tags tab in the search box
-
-; The Locator search tab can be used in the same way as the default search
-: You enter the text you want to search for and the list of matching tiddlers will be shown.
+!! Search and tags tab in the search box
 
 ; Restrict search to current context
 : Now search for "marketing" only in Family Tree of Ford -> Henry Ford -> Edsel Ford -> Henry Ford II (search in his and his descendants' tiddlers): first navigate to him in the sidebar, enter "marketing" to the search entry and press the {{$:/core/images/close-others-button}} icon: this limits the filtering to tiddlers of any depth to the current context ({{$:/core/images/link}} = ancestor tag). Try typing spaces only to get a list of all tiddlers to which your search is restricted. To search all tiddlers again, press the {{$:/core/images/close-button}} icon.
@@ -73,9 +81,7 @@ Ne  a részek jellemzésével kezd, hanem a használat szintjével (alap ToC + s
 
 ''Please [[star on GitHub|https://github.com/bimlas/tw5-locator]] if you like the plugin!''
 
-</div>
-
-!! How to install
+! How to install
 
 Drag-n-drop its [[tiddler|$:/plugins/bimlas/locator]] and these pre-made tiddlers into your wiki.
 
