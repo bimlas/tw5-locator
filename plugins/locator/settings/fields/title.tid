@@ -1,6 +1,6 @@
 tags:
 title: $:/config/bimlas/locator/fields/title
 type: text/vnd.tiddlywiki
-hide-in-fields-filter: yes
+hide-in-view-fields-filter: yes
 
 <$link/>

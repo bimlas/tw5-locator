@@ -16,10 +16,14 @@ type: text/vnd.tiddlywiki
       <tr>
         <td>Show in fields filter</td>
         <td>
-          <$select field="hide-in-fields-filter" default="">
+          <$select field="hide-in-view-fields-filter" default="">
             <option value="">Show</option>
             <option value="yes">Hide</option>
-          </$select>
+          </$select> in `locator-view`<br/>
+          <$select field="hide-in-search-fields-filter" default="">
+            <option value="">Show</option>
+            <option value="yes">Hide</option>
+          </$select> in `locator-search`, `locator-fields` and tiddler info
         </td>
       </tr>
       <tr>

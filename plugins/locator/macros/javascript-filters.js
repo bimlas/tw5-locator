@@ -117,10 +117,11 @@ Special filters used by Locator
     Filter fields that are not disabled in Locator field options
 
     Input: list of fields
-    Param: none
+    Param (optional): contextState
     */
     exports["locator-enabled-fields"] = function (source, operator, options) {
-        var excludedFields = options.wiki.filterTiddlers("[all[tiddlers+shadows]field:hide-in-fields-filter[yes]removeprefix[$:/config/bimlas/locator/fields/]]");
+        var mainMacro = operator.operand.replace(/^\$:\/state\/bimlas\/locator\//, "").replace(/\/.*/, "") || "search";
+        var excludedFields = options.wiki.filterTiddlers("[all[tiddlers+shadows]field:hide-in-" + mainMacro + "-fields-filter[yes]removeprefix[$:/config/bimlas/locator/fields/]]") || [];
         var results = [];
 
         source(function (tiddler, title) {
