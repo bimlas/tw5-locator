@@ -2,3 +2,4 @@ tags:
 title: $:/config/bimlas/locator/fields/modified
 type: text/vnd.tiddlywiki
 hide-in-view-fields-filter: yes
+hide-in-search-fields-filter: yes

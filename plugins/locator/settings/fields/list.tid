@@ -2,5 +2,7 @@ tags:
 title: $:/config/bimlas/locator/fields/list
 type: text/vnd.tiddlywiki
 field-type: list
+hide-in-view-fields-filter: yes
+hide-in-search-fields-filter: yes
 
 <$link/>

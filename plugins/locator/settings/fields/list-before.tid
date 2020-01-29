@@ -2,5 +2,6 @@ tags:
 title: $:/config/bimlas/locator/fields/list-before
 type: text/vnd.tiddlywiki
 hide-in-view-fields-filter: yes
+hide-in-search-fields-filter: yes
 
 <$link/>

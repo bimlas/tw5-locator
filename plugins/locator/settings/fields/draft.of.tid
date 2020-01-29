@@ -1,5 +1,5 @@
 tags:
-title: $:/config/bimlas/locator/fields/created
+title: $:/config/bimlas/locator/fields/draft.of
 type: text/vnd.tiddlywiki
 hide-in-view-fields-filter: yes
 hide-in-search-fields-filter: yes
