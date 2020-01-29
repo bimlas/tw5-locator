@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200128215958443
+modified: 20200129125238437
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -24,7 +24,7 @@ Before I explain, ''let's clarify a few things about TiddlyWiki'':
 * Because `tags` is no different from the other fields, ''any field can be used as tags''
 * ''The links in the text also form a hierarchy''
 
-Locator provides ''a universal interface for navigating between your tiddlers and searching, filtering them'' without the need to write [[filter expressions|https://tiddlywiki.com/#Filters]].
+Locator provides ''a universal interface for navigating between your tiddlers and searching, filtering them'' without the need to write [[filter expressions|https://tiddlywiki.com/#Filters]]. The plugin contains ''a table of contents widget and an enhanced search engine'' that gives you the opportunity to ''filter results by tags and field values without the need to write filter expressions'' and to ''organize the tiddlers to any number of trees, even by custom fields or links in text''. Unlike [[classic Table of Contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin offers these features in an organic, collaborative way.
 
 ! Tutorial
 
@@ -38,7 +38,7 @@ Locator provides ''a universal interface for navigating between your tiddlers an
 ; Locator search tab for searching
 : The "Locator" tab in the standard search can be used in the same way as the default search ("List" tab): you enter the text you want to search for and the list of matching tiddlers will be shown. The number of standard search results is displayed next to the text entry, whereas the Locator search displays it at the top of the dropdown.
 
-So far, there is practically no difference from the available solutions.
+So far, there is practically no difference from the vanilla solutions.
 
 !! Visual filter builder
 
