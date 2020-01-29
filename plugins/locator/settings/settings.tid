@@ -59,7 +59,8 @@ type: text/vnd.tiddlywiki
 \define option()
   <option value=<<currentTiddler>>>
     <$view field="title"/>
-    <$list filter="[subfilter<settingsTiddler>is[tiddler]] [subfilter<settingsTiddler>is[shadow]] +[first[]]">*</$list>
+    <$list filter="[subfilter<settingsTiddler>is[tiddler]] [subfilter<settingsTiddler>is[shadow]] +[first[]]">~</$list>
+    <$list filter="[subfilter<settingsTiddler>is[tiddler]]">*</$list>
   </option>
 \end
 
@@ -78,6 +79,9 @@ Select field to edit its settings:
     </$list>
   </optgroup>
 </$select>
+
+* //`~`: Has custom settings//
+* //`*`: Settings modified by user//
 
 <$list filter="[title{$:/temp/bimlas/locator/settings-of-field}] -[[]]">
   <$list filter=<<settingsTiddler>>>
