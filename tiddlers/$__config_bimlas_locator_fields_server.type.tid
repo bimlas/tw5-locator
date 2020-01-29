@@ -1,6 +1,6 @@
 created: 20200128213134136
-hide-in-search-fields-filter: yes
-hide-in-view-fields-filter: yes
+hide-in-regular-fields-filter: yes
+hide-in-nested-fields-filter: yes
 modified: 20200128213136711
 title: $:/config/bimlas/locator/fields/server.type
 type: text/vnd.tiddlywiki

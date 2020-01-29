@@ -28,5 +28,7 @@ type: text/vnd.tiddlywiki
 \end
 
 <$set name="fieldsFilterButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
-  <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<closed>>><<opened>></$list>
+  <$vars typeOfFieldsFilter="nested">
+    <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<closed>>><<opened>></$list>
+  </$vars>
 </$set>
