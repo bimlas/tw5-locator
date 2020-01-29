@@ -15,9 +15,7 @@ type: text/vnd.tiddlywiki
 
 \define search-in-current-context()
   <$action-listops $tiddler="$:/state/bimlas/locator/search/intersection/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $subfilter="[subfilter<filter-history>last[]]"/>
-  <$list filter=<<filter-kin-filteroperator-available>> variable="null">
-    <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[subfilter<filter-history>last[]]"/>
-  </$list>
+  <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index={{{ [subfilter<filter-field-of-relationship>] }}} $filter="[subfilter<filter-history>last[]]"/>
 \end
 
 \define copy-filters()

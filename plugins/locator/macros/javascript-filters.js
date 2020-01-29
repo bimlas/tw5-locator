@@ -77,6 +77,26 @@ Special filters used by Locator
 		return direction;
 	}
 
+	function enlistChildren(options,parentTitle,fieldOfRelationship,directionOfTraverse) {
+		return options.wiki.getGlobalCache("bimlas-locator-enlist-children-" + parentTitle + "-" + fieldOfRelationship + "-" + directionOfTraverse, function() {
+			return fieldOfRelationship === "LINKS-IN-TEXT"
+				? byLinksInText(parentTitle)
+				: byField(parentTitle);
+		});
+
+		function byLinksInText(title) {
+			return directionOfTraverse === "to"
+				? options.wiki.getTiddlerBacklinks(title)
+				: options.wiki.getTiddlerLinks(title);
+		}
+
+		function byField(title) {
+			return directionOfTraverse === "to"
+				? options.wiki.findListingsOfTiddler(title,fieldOfRelationship)
+				: options.wiki.getTiddlerList(title,fieldOfRelationship);
+		}
+	}
+
 	/*
 	Filter titles matching to Locator fields filter
 
@@ -102,13 +122,35 @@ Special filters used by Locator
 			return filterOperators[fieldListingOperator](input,{operand: value,prefix: prefix,suffix: field},options);
 		}
 
-		function recursiveFilterFunc(filterOperators,input,field,value,prefix) {
-			var isRecursiveFilteringActive = $tw.utils.hop(activeRecursiveFilters,field) && (activeRecursiveFilters[field].indexOf(value) >= 0);
+		function recursiveFilterFunc(filterOperators,input,field,fieldValue,prefix) {
+			var isRecursiveFilteringActive = $tw.utils.hop(activeRecursiveFilters,field) && (activeRecursiveFilters[field].indexOf(fieldValue) >= 0);
 			if(isRecursiveFilteringActive) {
 				var fieldDirection = getFieldDirection(options,field);
-				return filterOperators.kin(input,{operand: value,prefix: prefix,suffixes: [[field],[fieldDirection]]},options);
+				var children = [];
+				collectChildrenRecursively(fieldValue);
+				var compareFunc = (prefix !== "!")
+					? function(index) { return index >= 0 }
+					: function(index) { return index < 0 };
+				var results = [];
+
+				input(function(tiddler,title) {
+					if(compareFunc(children.indexOf(title))) {
+						results = $tw.utils.pushTop(results, title);
+					}
+				});
+
+				return results;
+
+				function collectChildrenRecursively(parent) {
+					$tw.utils.each(enlistChildren(options,parent,field,fieldDirection),function(child) {
+						if(children.indexOf(child) < 0) {
+							$tw.utils.pushTop(children, child);
+							$tw.utils.pushTop(children, collectChildrenRecursively(child));
+						}
+					});
+				}
 			} else {
-				return directFilterFunc(filterOperators,input,field,value,prefix);
+				return directFilterFunc(filterOperators,input,field,fieldValue,prefix);
 			}
 		}
 	};
@@ -230,25 +272,10 @@ Special filters used by Locator
 		var results = [];
 
 		source(function(tiddler,title) {
-			results = $tw.utils.pushTop(results,fieldOfRelationship === "LINKS-IN-TEXT"
-				? byLinksInText(title)
-				: byField(title)
-			);
+			results = $tw.utils.pushTop(results, enlistChildren(options,title,fieldOfRelationship,directionOfTraverse));
 		});
 
 		return results;
-
-		function byLinksInText(title) {
-			return directionOfTraverse === "to"
-				? options.wiki.getTiddlerBacklinks(title)
-				: options.wiki.getTiddlerLinks(title);
-		}
-
-		function byField(title) {
-			return directionOfTraverse === "to"
-				? options.wiki.findListingsOfTiddler(title,fieldOfRelationship)
-				: options.wiki.getTiddlerList(title,fieldOfRelationship);
-		}
 	};
 
 	/*
