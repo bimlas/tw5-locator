@@ -68,13 +68,22 @@ Special filters used by Locator
 	}
 
 	function getDirectionOfTraverse(options,contextState,fieldOfRelationship) {
-		var contextStateTiddler = options.wiki.getTiddler(contextState) || {fields: []};
 		var direction = getFieldDirection(options,fieldOfRelationship);
 
-		if(contextStateTiddler.fields["invert-direction"] === "yes") {
-			direction = ["from","to"][(direction === "from") + 0];
+		if(isDirectionInverted(options,contextState)) {
+			direction = invertDirection(direction);
 		}
+
 		return direction;
+	}
+
+	function isDirectionInverted(options,contextState) {
+		var contextStateTiddler = options.wiki.getTiddler(contextState) || {fields: []};
+		return contextStateTiddler.fields["invert-direction"] === "yes"
+	}
+
+	function invertDirection(direction) {
+		return ["from","to"][(direction === "from") + 0];
 	}
 
 	function enlistChildren(options,parentTitle,fieldOfRelationship,directionOfTraverse) {
