@@ -69,8 +69,8 @@ Special filters used by Locator
 
 	function getDirectionOfTraverse(options,contextState,fieldOfRelationship) {
 		var contextStateTiddler = options.wiki.getTiddler(contextState) || {fields: []};
-		var fieldSettings = options.wiki.getTiddler("$:/config/bimlas/locator/fields/" + fieldOfRelationship) || {fields: []};
-		var direction = fieldSettings.fields["field-direction"];
+		var direction = getFieldDirection(options,fieldOfRelationship);
+
 		if(contextStateTiddler.fields["invert-direction"] === "yes") {
 			direction = ["from","to"][(direction === "from") + 0];
 		}
