@@ -2,7 +2,7 @@ tags: $:/tags/Macro
 title: $:/plugins/bimlas/locator/macros/locator-view
 type: text/vnd.tiddlywiki
 
-\define locator-view(baseTitle fieldOfRelationship:"tags" useTemplateOfRelationshipField:"no")
+\define locator-view(baseTitle fieldOfRelationship:"tags" templateOfContextItems:"$:/plugins/bimlas/locator/field-templates/link")
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
     <$vars

@@ -3,4 +3,4 @@ title: $:/plugins/bimlas/locator/templates/history-item
 type: text/vnd.tiddlywiki
 
 {{||$:/plugins/bimlas/locator/buttons/go-up-to-context}}
-{{||$:/plugins/bimlas/locator/templates/link}}
+{{||$:/plugins/bimlas/locator/field-templates/link}}

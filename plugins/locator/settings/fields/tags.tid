@@ -4,4 +4,4 @@ type: text/vnd.tiddlywiki
 field-type: list
 field-direction: to
 
-<<tag>>
+$:/plugins/bimlas/locator/field-templates/tag

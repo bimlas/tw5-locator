@@ -1,5 +1,6 @@
-tags:
-title: $:/plugins/bimlas/locator/templates/link
+caption: Link
+tags: $:/tags/bimlas/locator/field-templates
+title: $:/plugins/bimlas/locator/field-templates/link
 type: text/vnd.tiddlywiki
 
 <$link to=<<currentTiddler>>>

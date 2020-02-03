@@ -15,9 +15,19 @@ type: text/vnd.tiddlywiki
   </$select>
 \end
 
+\define template-of-context-items()
+  Template of context items:
+  <$select tiddler=<<contextState>> field="template-of-context-items" default=<<__templateOfContextItems__>>>
+    <$list filter=<<filter-field-templates>>>
+      <option value=<<currentTiddler>>><$transclude field="caption"><$view field="title"/></$transclude></option>
+    </$list>
+  </$select>
+\end
+
 <$list filter="[title<contextState>field:relationship-settings-opened[yes]]">
   <div class="bimlas-locator relationship-settings">
     <<field-of-relationship>><br/>
+    <<template-of-context-items>><br/>
     <$checkbox
       tiddler=<<contextState>>
       field="invert-direction"
@@ -35,15 +45,6 @@ type: text/vnd.tiddlywiki
       default="no"
     >
       Allow to open leaves
-    </$checkbox><br/>
-    <$checkbox
-      tiddler=<<contextState>>
-      field="use-template-of-relationship-field"
-      checked="yes"
-      unchecked="no"
-      default=<<__useTemplateOfRelationshipField__>>
-    >
-      Use template of relationship field
     </$checkbox><br/>
     {{$:/plugins/bimlas/locator/buttons/open-field-settings}}
   </div>

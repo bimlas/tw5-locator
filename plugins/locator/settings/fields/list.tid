@@ -5,4 +5,4 @@ field-type: list
 hide-in-nested-fields-filter: yes
 hide-in-regular-fields-filter: yes
 
-<$link/>
+$:/plugins/bimlas/locator/field-templates/link
