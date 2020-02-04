@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200202212440715
+modified: 20200205183838583
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -37,7 +37,7 @@ While discovering, you will certainly notice buttons that arouse your curiosity,
 !!! Basic usage
 
 ; Locator sidebar for navigating
-: In this demo, I placed the `locator-view` macro in the sidebar, which you can access in the "Locator" tab, but the macro can be placed anywhere (as is the one in the [[Family tree of Ford]] tiddler). Before you try it, switch to the [[Classic ToC]] tab (just to understand what is going to happen) and use the <<_icon {{$:/core/images/right-arrow}}>> icon next to the titles to navigate one of the "directories" (hereinafter referred to as //context//). Do the same in the Locator sidebar. The titles of previously opened contexts (so the higher levels of the hierarchy) appear above the horizontal line (hereinafter referred to as //history//). To get used to the controls, go to several contexts side by side in Classic ToC and Locator.
+: In this demo, I placed the `locator-view` macro in the sidebar, which you can access in the "Locator" tab, but the macro can be placed anywhere (as is the one in the [[Family tree of Ford]] tiddler). Before you try it, switch to the [[Classic ToC]] tab (just to understand what is going to happen) and use the <<_icon {{$:/core/images/right-arrow}}>> icon next to the titles to navigate one of the "directories" (hereinafter referred to as //context//). Do the same in the Locator sidebar. The titles of previously opened contexts (so the higher levels of the tree) appear above the horizontal line (hereinafter referred to as //history//). To get used to the controls, go to several contexts side by side in Classic ToC and Locator.
 
 ; View the "table of contents" of any tiddler
 : Open the [[category]] tiddler by clicking on its link. You will find a <<_icon {{$:/core/images/chevron-right}}>> icon in the toolbar (on the top) of the tiddler: it opens the current tiddler in the Locator sidebar to show the other tiddlers associated with it, so this button can be used to view the tiddler's own table of contents. This is useful if we did not open the tiddler from the table of contents but from the search results or through a link in another tiddler.
@@ -75,20 +75,43 @@ While discovering, you will certainly notice buttons that arouse your curiosity,
 ; Using More sidebar -> Tags?
 : If you prefer to browse tags, field values in the sidebar, check out the contents of [[Locator fields sidebar]] ("Fields" tab of sidebar).
 
-; Recursive filtering
-: In standard search, you will find an <<_icon {{$:/core/images/link}}>> button along with field values to enable recursive search. To understand exactly what this means, open the [[Family tree of Ford]] tiddler. Each person shown here has a tiddler, you can see them in the Locator below the image. We are curious about the descendants of [[Josephine Clay Ford]], for example. In the Locator fields, search for her name and turn on filtering. Only [[Josephine Ford]] is listed because she is the direct child ([[Jospehine Ford]] has the [[Josephine Clay Ford]] tag). If we turn on recursive search, [[Jody Ingle Jr.]] will also be listed, as at a deeper level he is the successor to Josephine Clay Ford ([[Jody Ingle Jr.]] -> [[Josephine Ford]] -> [[Josephine Clay Ford]] are connected by tags). Of course, recursive search can also be mixed, for example, we are curious about the [[Family tree of Ford]], with the exception of [[Henry Ford II]]'s descendants: in the Fields search tab, filter for <<_icon {{$:/core/images/new-button}}>> <<_icon {{$:/core/images/link}}>> [[Family tree of Ford]] and <<_icon {{$:/core/images/close-button}}>> <<_icon {{$:/core/images/link}}>> [[Henry Ford II]].
+!!!  Recursive filtering
+
+: In standard search, you will find an <<_icon {{$:/core/images/link}}>> button along with field values to enable recursive search. To understand exactly what this means, open the [[Family tree of Ford]] tiddler. Each person shown here has a tiddler, you can see them in the Locator below the image. We are curious about the descendants of [[Josephine Clay Ford]], for example. In the Locator fields, search for her name and turn on filtering. Only [[Josephine Ford]] is listed because she is the direct child ([[Josephine Ford]] has the [[Josephine Clay Ford]] tag). If we turn on recursive search, [[Jody Ingle Jr.]] will also be listed, as at a deeper level he is the successor to Josephine Clay Ford ([[Jody Ingle Jr.]] -> [[Josephine Ford]] -> [[Josephine Clay Ford]] are connected by tags). Of course, recursive search can also be mixed, for example, we are curious about the [[Family tree of Ford]], with the exception of [[Henry Ford II]]'s descendants: in the Fields search tab, filter for <<_icon {{$:/core/images/new-button}}>> <<_icon {{$:/core/images/link}}>> [[Family tree of Ford]] and <<_icon {{$:/core/images/close-button}}>> <<_icon {{$:/core/images/link}}>> [[Henry Ford II]].
 
 ; Restrict searching to context
 : Recursive search can also be applied to desired parts of any tree, such as the table of contents. For example, open the Family Tree of Ford -> Henry Ford -> Edsel Ford -> Henry Ford II context and press the <<_icon {{$:/core/images/advanced-search-button}}>> button: standard search will look for the text in successors of [[Henry Ford II]], so searching for "Edsel" will only list [[Edsel Ford II]], not [[Edsel Ford]]. This can be very useful, for example, if you are storing several different topics in a single wiki, so that you can exclude tiddlers that are not related to the current topic from the search. For example, if you search for "Ford" now, you'll get a list of members of the Ford family. However, if you open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/advanced-search-button}}>> button, your search will be limited to this context so you can easily find the description where I mention the Ford family.
 
 ; Filter the list further in [[$:/AdvancedSearch]]
-: Click the <<_icon {{$:/core/images/advanced-search-button}}>> button in any of the search tabs to continue the search in [[$:/AdvancedSearch]] (the same list should be displayed as in the Locator search results). You can still enter the text you are looking for in the search box in the sidebar, but add extra filters in [[$:/AdvancedSearch]].
+: Click the <<_icon {{$:/core/images/advanced-search-button}}>> button in any of the search tabs to continue the search in [[$:/AdvancedSearch]] (the same list should be displayed as in the Locator search results). You can still enter the text you are looking for in the search box in the sidebar, but add extra [[filters|https://tiddlywiki.com/#Filter%20Operators]] in [[$:/AdvancedSearch]] (for example, append `+[reverse[]]`).
+
+!! Multidimensional table of contents, mindmap features
+
+In [[Classic ToC]], you can only traverse a tree from top to bottom, as with a table of contents in a printed book: Larry's Cookbook, then Categories, Pasta, and so on. It's easy to use because we've known this kind of navigation for a long time, but that doesn't mean it's efficient.
+
+; Invert direction, find out where the tiddler is in the tree
+: Use [[Classic ToC]] to find which branches of the table of contents the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler is in. This cannot be done using the [[Classic ToC]] (as far as I know), but only by opening the tiddler, its tags, then their tags, and so on until you find the TableOfContents tag, so you have to go up in the table of contents levels yourself. You can use the Locator to simplify this process by opening the tiddler in the sidebar (with the toolbar button), displaying the options by the <<_icon {{$:/core/images/options-button}}>> button and turning on "Invert direction". It does exactly what its name says: you have traveled from top to bottom in the tree of table of contents so far, but now you will see the parents of the current tiddler instead of its children. Try turning this option off and on at different points in the tree to understand how it works.
+
+; Find the different parents of the lowest elements (leaves)
+: Go to TableOfContents -> Larry's Cookbook -> Categories -> Pasta context. Let's say you want to know where [[Brown Rice Crispy Bar]] is in the table of contents besides the current context. You can do this by opening the tiddler, using the toolbar button to open the sidebar and turning on the "Invert direction" option. To make it easier, turn on the "Allow to open leaves" option so you can "focus" on the bottom elements, you can open them even if even if they have no children.
+
+!!! Use any field to define a tree, add tiddler to any number of trees
+
+Honestly, I see great potential in these features, but I have not yet experienced how to use them in the right way. If you already have experience with similar systems or have a proven method of using them, please write it in the "Disqus comments" at the bottom of this tiddler!
+
+; Use links in text as table of contents
+: The table of contents is structured in such a way that when one tiddler is tagged with another, the latter becomes the parent of the first, they becomes connected. Since the links in the text also connect the tiddlers, could we have a table of contents built by the links? Open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/options-button}}>> to open settings, set the tree to be "LINKS-IN-TEXT" based. Each of the links in a tiddler becomes an entry, and if they contain links too, you can open them as you do with branches of the table of contents.
+
+; template
+: [[$:/tags/Image]]
 
 TODO:
 
 * Links in text
 * Különböző field-ek szerinti tree-k
+* Template-ek használata
 * Playlist
+* Field settings
 * Egyéb példák a jegyzetekből
 
 ''Please [[star on GitHub|https://github.com/bimlas/tw5-locator]] if you like the plugin!''
