@@ -1,5 +1,5 @@
 tags:
-title: $:/plugins/bimlas/locator/templates/relationship-settings
+title: $:/plugins/bimlas/locator/templates/context-settings
 type: text/vnd.tiddlywiki
 
 \define field-of-relationship()
@@ -29,8 +29,8 @@ type: text/vnd.tiddlywiki
   </$select>
 \end
 
-<$list filter="[title<contextState>field:relationship-settings-opened[yes]]">
-  <div class="bimlas-locator relationship-settings">
+<$list filter="[title<contextState>field:context-settings-opened[yes]]">
+  <div class="bimlas-locator context-settings">
     <<field-of-relationship>><br/>
     <<template-of-context-items>><br/>
     <$checkbox

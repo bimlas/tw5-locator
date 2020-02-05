@@ -7,4 +7,4 @@ type: text/vnd.tiddlywiki
   {{$:/plugins/bimlas/locator/buttons/search-in-context}}
 </$list>
 {{$:/plugins/bimlas/locator/buttons/collapse-history}}
-{{$:/plugins/bimlas/locator/buttons/toggle-relationship-settings}}
+{{$:/plugins/bimlas/locator/buttons/toggle-context-settings}}
