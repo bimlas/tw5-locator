@@ -272,7 +272,7 @@ Special filters used by Locator
 	List children of input elements based on selected relationship field
 
 	Input: parent tiddlers
-	Param: contextState
+	Param (optional): contextState
 	Suffix: field of relationship
 	*/
 	exports["locator-enlist-children"] = function(source,operator,options) {
