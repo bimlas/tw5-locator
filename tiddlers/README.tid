@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200206100306639
+modified: 20200206222657021
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -105,14 +105,13 @@ Honestly, I see great potential in these features, but I have not yet experience
 ; Transclude or use any template for context items
 : Within the context options you can specify which template you want to view the context items with. They appear as links by default, but you can even select transclusion to display the contents of the tiddler in addition to its title. A good example of this is a music collection: using the link template you first filter the list of audio files or YouTube videos for the items you want to listen to, then use the transclusion template to turn the list of tiddlers into a playlist. 
 
-''TODO: Playlist, or TiddlyHangouts, how to define own templates''
+''TODO: Playlist, transclude + info template; saját template-ek létrehozása; transclusion-hoz vagy a Music-ot nyissa meg, vagy a sidebar-t, hogy szélesebb legyen a kép, a sidebar tetejére akár tehet egy önmagára mutató linket is épp ezért''
 
 TODO:
 
-* Links in text
+* Term char-tnál említsd meg a macro paramétert (fieldOfRelationship)
 * Különböző field-ek szerinti tree-k
 * Template-ek használata
-* Playlist
 * Field settings
 * Egyéb példák a jegyzetekből
 

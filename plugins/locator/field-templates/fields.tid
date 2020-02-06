@@ -1,9 +1,8 @@
-caption: Transclusion
+caption: Fields
 tags: $:/tags/bimlas/locator/context-item-templates
-title: $:/plugins/bimlas/locator/field-templates/transclusion
+title: $:/plugins/bimlas/locator/field-templates/fields
 type: text/vnd.tiddlywiki
 
 {{||$:/plugins/bimlas/locator/field-templates/link}}
-<br/>
-<$transclude mode="block"/>
+{{||$:/plugins/bimlas/locator/viewtemplate/field-list}}
 <hr style="border-top: double"/>
