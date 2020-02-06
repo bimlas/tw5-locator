@@ -1,11 +1,9 @@
 caption: Transclusion
-tags: $:/tags/bimlas/locator/field-templates
+tags: $:/tags/bimlas/locator/context-item-templates
 title: $:/plugins/bimlas/locator/field-templates/transclusion
 type: text/vnd.tiddlywiki
 
 {{||$:/plugins/bimlas/locator/field-templates/link}}
-<$list filter="[<isListingLocatorViewContextItems>regexp[yes]]" variable="null">
-  <br/>
-  <$transclude/>
-  <hr style="border-top: 1px dashed"/>
-</$list>
+<br/>
+<$transclude/>
+<hr style="border-top: 1px dashed"/>

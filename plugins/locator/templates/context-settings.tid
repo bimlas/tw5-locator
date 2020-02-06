@@ -18,14 +18,11 @@ type: text/vnd.tiddlywiki
 \define template-of-context-items()
   Template of context items:<br/>
   <$select tiddler=<<contextState>> field="template-of-context-items" default=<<__templateOfContextItems__>>>
-    <$vars templateOfTreeField={{{ [subfilter<filter-field-of-relationship>addprefix[$:/config/bimlas/locator/fields/]get[text]] }}}>
-      <$list filter=<<filter-field-templates>>>
-        <option value=<<currentTiddler>>>
-          <$transclude field="caption"><$view field="title"/></$transclude>
-          <$list filter="[title<templateOfTreeField>is[current]]">*</$list>
-        </option>
-      </$list>
-    </$vars>
+    <$list filter="[all[tiddlers+shadows]tag[$:/tags/bimlas/locator/context-item-templates]]">
+      <option value=<<currentTiddler>>>
+        <$transclude field="caption"><$view field="title"/></$transclude>
+      </option>
+    </$list>
   </$select>
 \end
 

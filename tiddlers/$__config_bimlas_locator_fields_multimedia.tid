@@ -1,9 +1,0 @@
-created: 20200112203509174
-field-direction: to
-field-type: list
-modified: 20200203221612676
-tags: 
-title: $:/config/bimlas/locator/fields/multimedia
-type: text/vnd.tiddlywiki
-
-$:/plugins/bimlas/locator/field-templates/transclusion

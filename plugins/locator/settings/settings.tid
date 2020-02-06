@@ -52,7 +52,7 @@ type: text/vnd.tiddlywiki
 \define template()
   <$select field="text" default="">
     <option value="">-</option>
-    <$list filter=<<filter-field-templates>>>
+    <$list filter="[all[tiddlers+shadows]tag[$:/tags/bimlas/locator/field-templates]]">
       <option value=<<currentTiddler>>><$transclude field="caption"><$view field="title"/></$transclude></option>
     </$list>
   </$select>
@@ -92,7 +92,7 @@ type: text/vnd.tiddlywiki
             <td>Template</td>
             <td>
               <<template>>
-              <p>//You can create your own template tiddlers by adding the// <<tag "$:/tags/bimlas/locator/field-templates">> //tag to them (click on this tag pill for examples).//</p>
+              <p>//You can create your own field template tiddlers by adding the// <<tag "$:/tags/bimlas/locator/field-templates">> //tag to them (click on this tag pill for examples).//</p>
             </td>
           </tr>
         </tbody>
@@ -128,6 +128,8 @@ Select field to edit its settings:
 
 * //`~`: Has custom settings//
 * //`*`: Settings modified by user//
+
+<p>//You can create your own context item template tiddlers by adding the// <<tag "$:/tags/bimlas/locator/context-item-templates">> //tag to them (click on this tag pill for examples).//</p>
 
 <$list filter="[title{$:/temp/bimlas/locator/settings-of-field}] -[[]]">
   <$list filter=<<settingsTiddler>>>
