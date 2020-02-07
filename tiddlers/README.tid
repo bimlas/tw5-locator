@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200206222657021
+modified: 20200207091244927
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -130,4 +130,9 @@ Drag-n-drop its [[tiddler|$:/plugins/bimlas/locator]] and these pre-made tiddler
 ! Similar plugins
 
 * [[GenTags|https://ooktech.com/jed/ExampleWikis/GenericTagFields/]]
+* [[Generic Add or Remove mk2|https://ooktech.com/jed/ExampleWikis/Version518Fun/#Generic%20Add%20or%20Remove%20mk%202]]
 * [[tocP|https://wikilabs.github.io/editions/tocP/]]
+* [[TOC-Generic|https://hchaase.github.io/HC-Plugins/#TOC-Generic%20Introduction]]
+* [[TiddlyMap|http://tiddlymap.org/]]
+* [[list-search|https://tobibeer.github.io/tb5/#list-search]]
+* [[Category List|https://ooktech.com/jed/ExampleWikis/CategoryList/]]
