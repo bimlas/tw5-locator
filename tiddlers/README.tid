@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200207091244927
+modified: 20200207141414433
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -92,7 +92,7 @@ In [[Classic ToC]], you can only traverse a tree from top to bottom, as with a t
 ; Invert direction, find out where the tiddler is in the tree
 : Use [[Classic ToC]] to find which branches of the table of contents the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler is in. This cannot be done using the [[Classic ToC]] (as far as I know), but only by opening the tiddler, its tags, then their tags, and so on until you find the TableOfContents tag, so you have to go up in the table of contents levels yourself. You can use the Locator to simplify this process by opening the tiddler in the sidebar (with the toolbar button), opening the context settings by the <<_icon {{$:/core/images/options-button}}>> button and turning on "Invert direction". It does exactly what its name says: you have traveled from top to bottom in the tree of table of contents so far, but now you will see the parents of the current tiddler instead of its children. Try turning this option off and on at different points in the tree to understand how it works.
 
-; Find the different parents of the lowest elements (leaves)
+; Find other parents of the lowest elements (leaves)
 : Go to TableOfContents -> Larry's Cookbook -> Categories -> Pasta context. Let's say you want to know where [[Brown Rice Crispy Bar]] is in the table of contents besides the current context. You can do this by opening the tiddler, using the toolbar button to open the sidebar and turning on the "Invert direction" option in context settings (<<_icon {{$:/core/images/options-button}}>>). To make it easier, turn on the "Allow to open leaves" option so you can "focus" on the bottom elements, you can open them even if even if they have no children.
 
 !!! Use any field to define a tree, add tiddler to any number of trees
@@ -129,10 +129,10 @@ Drag-n-drop its [[tiddler|$:/plugins/bimlas/locator]] and these pre-made tiddler
 
 ! Similar plugins
 
-* [[GenTags|https://ooktech.com/jed/ExampleWikis/GenericTagFields/]]
-* [[Generic Add or Remove mk2|https://ooktech.com/jed/ExampleWikis/Version518Fun/#Generic%20Add%20or%20Remove%20mk%202]]
-* [[tocP|https://wikilabs.github.io/editions/tocP/]]
-* [[TOC-Generic|https://hchaase.github.io/HC-Plugins/#TOC-Generic%20Introduction]]
-* [[TiddlyMap|http://tiddlymap.org/]]
-* [[list-search|https://tobibeer.github.io/tb5/#list-search]]
 * [[Category List|https://ooktech.com/jed/ExampleWikis/CategoryList/]]
+* [[Generic Add or Remove mk2|https://ooktech.com/jed/ExampleWikis/Version518Fun/#Generic%20Add%20or%20Remove%20mk%202]]
+* [[GenTags|https://ooktech.com/jed/ExampleWikis/GenericTagFields/]]
+* [[list-search|https://tobibeer.github.io/tb5/#list-search]]
+* [[TiddlyMap|http://tiddlymap.org/]]
+* [[TOC-Generic|https://hchaase.github.io/HC-Plugins/#TOC-Generic%20Introduction]]
+* [[tocP|https://wikilabs.github.io/editions/tocP/]]
