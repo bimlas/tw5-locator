@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200208233859619
+modified: 20200208234531903
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -50,6 +50,8 @@ While discovering, you will certainly notice buttons that arouse your curiosity,
 : Go to the TableOfContents -> Larry's Cookbook -> Categories -> Pasta context. These titles will remain at the top of the sidebar, so you can move up in context as you have done so far. But in fact, the top of the sidebar is a history, such as the "back" button of your browser: this keeps track of which tiddler contexts you opened. If you open for example the [[Howto]] and [[chicken]] tiddlers with the above mentioned "open in Locator sidebar" toolbar button, you will understand how it works. If you want to focus on a topic or if your history has become too long, press the <<_icon {{$:/core/images/fold-button}}>> icon in the sidebar to restrict the history to contain only the main and currently open context titles.
 
 !!! Visual filter builder
+
+TODO: A tag-ek használhatóak a table of contents felépítésére, de ha arra akarjuk használni őket, hogy különböző feltételek szerint csoportosítsuk a tiddler-eket, hamar kevésnek találhatjuk őket: ha bizonyos tag-eket a table of contents miatt akarunk használni, más tag-eket pedig azért, hogy kulcsszavakkal lássuk el a tiddler-t, akkor a tag-ek megkülönböztetésére használhatunk egyedi színt (pl. a kulcsszó tag-ek zölddel lesznek jelölve), vagy ikon-t, de ezek nem igazán hasznosak. Jobb lenne, ha magukat a tag-eket a jellegük szerint tudnánk csoportosítani. Ezért a tag-eket használjuk csak a table of contents-re, minden más csoportosításra pedig használjunk dedikált field-eket.
 
 ; Filter for field values
 : As you can see, in addition to the tiddlers titles, the Locator sidebar also has a fields filter ("Filter by fields") which contains the values of the fields in the listed tiddlers. Go to the Larry's Cookbook -> Categories -> [[Pasta|pasta]] context (or simply use the toolbar button) and open fields filter -> tags: you can see all the tags of the listed tiddlers at once. To understand what that means, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]]. It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the <<_icon {{$:/core/images/new-button}}>> icon next to it. Click the icon again to deactivate the filter (you can also turn off the filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button). If you are wondering which tiddlers do not contain this tag, click the <<_icon {{$:/core/images/close-button}}>> icon. You can mix the filters of multiple fields: [[Music]] contains an even more complex list, where tiddlers have "author", "album", "genre", etc. fields. Try to find the music that best fits your mood by mixing different filters.
