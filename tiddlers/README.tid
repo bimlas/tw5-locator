@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200208195715057
+modified: 20200208233859619
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -52,7 +52,7 @@ While discovering, you will certainly notice buttons that arouse your curiosity,
 !!! Visual filter builder
 
 ; Filter for field values
-: As you can see, in addition to the tiddlers titles, the Locator sidebar also has a fields filter ("Filter by fields") which contains the values of the fields in the listed tiddlers. Go to the Larry's Cookbook -> Categories -> [[Pasta|pasta]] context (or simply use the toolbar button) and open fields filter -> tags: you can see all the tags of the listed tiddlers at once. To understand what that means, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]]. It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the <<_icon {{$:/core/images/new-button}}>> icon next to it. Click the icon again to deactivate the filter (you can also turn off the filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button). If you are wondering which tiddlers do not contain this tag, click the <<_icon {{$:/core/images/close-button}}>> icon. You can mix filters, for example, look for the tiddlers that are tagged with only [[chicken]] but not [[Rachel Ray]] tag.
+: As you can see, in addition to the tiddlers titles, the Locator sidebar also has a fields filter ("Filter by fields") which contains the values of the fields in the listed tiddlers. Go to the Larry's Cookbook -> Categories -> [[Pasta|pasta]] context (or simply use the toolbar button) and open fields filter -> tags: you can see all the tags of the listed tiddlers at once. To understand what that means, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]]. It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the <<_icon {{$:/core/images/new-button}}>> icon next to it. Click the icon again to deactivate the filter (you can also turn off the filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button). If you are wondering which tiddlers do not contain this tag, click the <<_icon {{$:/core/images/close-button}}>> icon. You can mix the filters of multiple fields: [[Music]] contains an even more complex list, where tiddlers have "author", "album", "genre", etc. fields. Try to find the music that best fits your mood by mixing different filters.
 
 !!! Reorganization of the tree
 
@@ -92,7 +92,7 @@ While discovering, you will certainly notice buttons that arouse your curiosity,
 !! View items with different templates 
 
 ; Use any template for context items or even transclude them
-: Within the context settings (<<_icon {{$:/core/images/options-button}}>> button in the sidebar) you can specify which template you want to view the context items with. They appear as links by default, but you can even select transclusion to display the contents of the tiddler in addition to its title. A good example of this is a music collection: using the link template you first filter the list of audio files or YouTube videos for the items you want to listen to, then use the transclusion template to turn the list of tiddlers into a playlist. Take a look at [[Music]] for a real example (and don't miss to filter by fields). 
+: Within the context settings (<<_icon {{$:/core/images/options-button}}>> button in the sidebar) you can specify which template you want to view the context items with. They appear as links by default, but you can even select transclusion to display the contents of the tiddler in addition to its title. A good example of this is a music collection: using the link template you first filter the list of audio files or YouTube videos for the items you want to listen to, then use the transclusion template to turn the list of tiddlers into a playlist. Take a look at [[Music]] for a real example. 
 
 ; View and edit multiple tiddler fields at once
 : With the context items template you can view the fields of the tiddlers or even use the field editors.
@@ -115,7 +115,7 @@ In [[Classic ToC]], you can only traverse a tree from top to bottom, as with a t
 Honestly, I see great potential in these features, but I have not yet experienced how to use them in the right way. If you already have experience with similar systems or have a proven method of using them, please write it in the "Disqus comments" at the bottom of this tiddler!
 
 ; Use links in text as table of contents
-: The table of contents is structured in such a way that when one tiddler is tagged with another, the latter becomes the parent of the first, they becomes connected. Since the links in the text also connect the tiddlers, could we have a table of contents built by the links? Open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/options-button}}>> to open settings, set the tree to be "LINKS-IN-TEXT" based. Each of the links in a tiddler becomes an entry, and if they contain links too, you can open them as you do with branches of the table of contents.
+: The table of contents is structured in such a way that when one tiddler is tagged with another, the latter becomes the parent of the first, they becomes connected. Since the links in the text also connect the tiddlers, could we have a table of contents built by the links (so without tags at all)? Open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/options-button}}>> to open settings, set the tree to be "LINKS-IN-TEXT" based. Each of the links in the tiddler becomes an entry, and if they contain links too, you can open them as you do with branches of the table of contents.
 
 TODO:
 
