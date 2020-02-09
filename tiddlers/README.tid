@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200209162055711
+modified: 20200209214508679
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -128,13 +128,12 @@ Honestly, I see great potential in these features, but I have not yet experience
 ; Use links in text as table of contents
 : The table of contents is structured in such a way that when one tiddler is tagged with another, the latter becomes the parent of the first, they becomes connected. Since the links in the text also connect the tiddlers, could we have a table of contents built by the links (so without tags at all)? Open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/options-button}}>> to open settings, set the tree to be "LINKS-IN-TEXT" based. Each of the links in the tiddler becomes an entry, and if they contain links too, you can open them as you do with branches of the table of contents.
 
-TODO:
+; Connect tiddlers by fields
+: Like tags, any field can bind tiddlers, and the resulting tree can be traversed just like the table of contents. It's practically a non-graphical, text only mindmap. To see how it works, open [[TiddlyMap Activities example]].
 
-* Term char-tnál említsd meg a macro paramétert (fieldOfRelationship)
-* Különböző field-ek szerinti tree-k
-* Template-ek használata
-* Field settings
-* Egyéb példák a jegyzetekből
+!! Field settings
+
+To configure the fields, what template to use, etc., open [[field settings|$:/plugins/bimlas/locator/settings/settings]]. You can also access this from context settings and search tabs by the <<_icon {{$:/core/images/options-button}}>> button.
 
 ''Please [[star on GitHub|https://github.com/bimlas/tw5-locator]] if you like the plugin!''
 

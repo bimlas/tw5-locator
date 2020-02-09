@@ -50,8 +50,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define template()
-  <$select field="text" default="">
-    <option value="">-</option>
+  <$select field="text" default="$:/plugins/bimlas/locator/field-templates/text">
     <$list filter="[all[tiddlers+shadows]tag[$:/tags/bimlas/locator/field-templates]]">
       <option value=<<currentTiddler>>><$transclude field="caption"><$view field="title"/></$transclude></option>
     </$list>
@@ -81,18 +80,21 @@ type: text/vnd.tiddlywiki
             <td>Field type</td>
             <td>
               <<field-type>>
+              <p>//Does the field contain a single value (for example `Franz Kafka`) or a list of values (`[[Franz Kafka]] [[Dostojevskij]]`)?//</p>
             </td>
           </tr>
           <tr>
             <td>Does the field represent a tree?</td>
             <td>
               <<field-direction>>
+              <p>//If the field contains the title(s) of other tiddler(s) (like "tags"), set it to "Yes".//</p>
             </td>
           </tr>
           <tr>
             <td>Template</td>
             <td>
               <<template>>
+              <p>//The template to display in the field filter.//</p>
               <p>//You can create your own field template tiddlers by adding the// <<tag "$:/tags/bimlas/locator/field-templates">> //tag to them (click on this tag pill for examples).//</p>
             </td>
           </tr>
@@ -129,6 +131,8 @@ Select field to edit its settings:
 
 * //`~`: Has custom settings//
 * //`*`: Settings modified by user//
+
+To set up a new field, first add it to at least one tiddler.
 
 <p>//You can create your own context item template tiddlers by adding the// <<tag "$:/tags/bimlas/locator/context-item-templates">> //tag to them (click on this tag pill for examples).//</p>
 
