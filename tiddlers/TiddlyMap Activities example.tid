@@ -1,0 +1,15 @@
+created: 20200209170848824
+modified: 20200209203434364
+tags: TableOfContents
+title: TiddlyMap Activities example
+type: text/vnd.tiddlywiki
+
+[img[TiddlyMap Activities example.png]]
+
+//Image taken from http://tiddlymap.org/ //
+
+This tree does not use tags at all. The default field for the tree is "likes" and the default title (hence the current "main" tiddler for the tree) is [[Franz Kafka]]. [[Sharon]] is on the list because she likes [[Franz Kafka]] (she has the "Franz Kafka" value in "likes" field) so by default the list shows items that have an arrow pointing to the current tiddler in the image (just like the children of a tag). If you are curious about where the "arrows" from the current tiddler are pointing to, invert the direction in the context settings. If you want to see other connections of the tiddler (for example, "author-of"), change the "field of tree" parameter. To open any tree element, also enable the "allow to open leaves" option.
+
+Because this works based on the field values, you can easily search the "Fields" tab in standard search to find out who is reading "The Trial," for example.
+
+<<locator-view baseTitle:"Franz Kafka" fieldOfRelationship:"likes">>
