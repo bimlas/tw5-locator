@@ -2,14 +2,13 @@ tags: $:/tags/Macro
 title: $:/plugins/bimlas/locator/macros/locator-search
 type: text/vnd.tiddlywiki
 
-\define locator-search(fieldOfRelationship:"tags")
+\define locator-search()
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
     <$vars
       contextState="$:/state/bimlas/locator/search/context/"
       intersectionState="$:/state/bimlas/locator/search/intersection/"
       differenceState="$:/state/bimlas/locator/search/difference/"
-      defaultFieldOfRelationship=<<__fieldOfRelationship__>>
       filterContextItems="[subfilter<filter-search-context>search{$(searchTiddler)$}]"
       recursiveFilteringAvailable="yes"
     >
