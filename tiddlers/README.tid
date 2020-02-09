@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200208234531903
+modified: 20200209162055711
 tags: 
 title: README
 type: text/vnd.tiddlywiki
@@ -51,12 +51,14 @@ While discovering, you will certainly notice buttons that arouse your curiosity,
 
 !!! Visual filter builder
 
-TODO: A tag-ek használhatóak a table of contents felépítésére, de ha arra akarjuk használni őket, hogy különböző feltételek szerint csoportosítsuk a tiddler-eket, hamar kevésnek találhatjuk őket: ha bizonyos tag-eket a table of contents miatt akarunk használni, más tag-eket pedig azért, hogy kulcsszavakkal lássuk el a tiddler-t, akkor a tag-ek megkülönböztetésére használhatunk egyedi színt (pl. a kulcsszó tag-ek zölddel lesznek jelölve), vagy ikon-t, de ezek nem igazán hasznosak. Jobb lenne, ha magukat a tag-eket a jellegük szerint tudnánk csoportosítani. Ezért a tag-eket használjuk csak a table of contents-re, minden más csoportosításra pedig használjunk dedikált field-eket.
+If you use a lot of tags, you may have encountered the problem of grouping tags: you added one to the tiddler to be in table of contents, another tag for hashtag-like grouping, and so on. You can differentiate tags by their name, color, or icon, but this is not enough, a more flexible grouping would be better: fields can also be used for grouping.
 
 ; Filter for field values
 : As you can see, in addition to the tiddlers titles, the Locator sidebar also has a fields filter ("Filter by fields") which contains the values of the fields in the listed tiddlers. Go to the Larry's Cookbook -> Categories -> [[Pasta|pasta]] context (or simply use the toolbar button) and open fields filter -> tags: you can see all the tags of the listed tiddlers at once. To understand what that means, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]]. It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the <<_icon {{$:/core/images/new-button}}>> icon next to it. Click the icon again to deactivate the filter (you can also turn off the filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button). If you are wondering which tiddlers do not contain this tag, click the <<_icon {{$:/core/images/close-button}}>> icon. You can mix the filters of multiple fields: [[Music]] contains an even more complex list, where tiddlers have "author", "album", "genre", etc. fields. Try to find the music that best fits your mood by mixing different filters.
 
 !!! Reorganization of the tree
+
+If you want to move a tiddler from one section of the table of contents to another, you need to open it in edit mode and modify its tag. If you want to do this with multiple tiddlers, the process can be slow and cumbersome. Take advantage of drag-n-drop to reach your goal!
 
 ; Create a new tiddler in the current context
 : To create a new tiddler in the Larry's Cookbook -> Categories -> Pasta context, go to there and click on the <<_icon {{$:/core/images/new-button}}>> icon at the top of the Locator sidebar: the newly created tiddler will automatically be assigned to [[pasta]] tag, so it will appear in the context you are currently viewing. It automatically adds each selected value of the fields filter to the new tiddler.
@@ -68,6 +70,8 @@ TODO: A tag-ek használhatóak a table of contents felépítésére, de ha arra 
 : You can place any tiddler from the text of tiddlers in the tree by droping its link to titles in the sidebar. For example, open the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler and watch for its tags while dropping its link directly from this tutorial into the "P.F. Chang" tiddler in the sidebar. This type of operation works with all elements of the fields filter: if you drop a tiddler on a field value, you add that field value to the tiddler.
 
 !! Locator search and fields tabs
+
+Only the title, tags, and text fields of the tiddler are considered in the search. To search in other fields, you need to use field expressions, which is not always easy. The Locator also offers a solution for this.
 
 ; Locator search tab for searching in text of tiddlers
 : The "Locator" tab in the standard search can be used in the same way as the default search ("List" tab): you enter the text you want to search for and the list of matching tiddlers will be shown. The number of standard search results is displayed next to the text entry, whereas the Locator search displays it at the top of the dropdown. You can filter the results with the fields filter just as you did in the sidebar. Search for "cook" in standard search and use the fields filter to narrow down the list of tiddlers that contain the [[Howto]] tag. You can deactivate the field filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button at the top of the dropdown.
@@ -81,8 +85,11 @@ TODO: A tag-ek használhatóak a table of contents felépítésére, de ha arra 
 ; Using More sidebar -> Tags?
 : If you prefer to browse tags, field values in the sidebar, check out the contents of [[Locator fields sidebar]] ("Fields" tab of sidebar).
 
-!!!  Recursive filtering
+!!!  Scope of the search
 
+If you have more than one topic on a wiki (eg cookbook, family tree, music), then you probably want to limit your search to the tiddlers you are interested in.
+
+; Recursive filtering
 : In standard search, you will find an <<_icon {{$:/core/images/link}}>> button along with field values to enable recursive search. To understand exactly what this means, open the [[Family tree of Ford]] tiddler. Each person shown here has a tiddler, you can see them in the Locator below the image. We are curious about the descendants of [[Josephine Clay Ford]], for example. In the Locator fields, search for her name and turn on filtering. Only [[Josephine Ford]] is listed because she is the direct child ([[Josephine Ford]] has the [[Josephine Clay Ford]] tag). If we turn on recursive search, [[Jody Ingle Jr.]] will also be listed, as at a deeper level he is the successor to Josephine Clay Ford ([[Jody Ingle Jr.]] -> [[Josephine Ford]] -> [[Josephine Clay Ford]] are connected by tags). Of course, recursive search can also be mixed, for example, we are curious about the [[Family tree of Ford]], with the exception of [[Henry Ford II]]'s descendants: in the Fields search tab, filter for <<_icon {{$:/core/images/new-button}}>> <<_icon {{$:/core/images/link}}>> [[Family tree of Ford]] and <<_icon {{$:/core/images/close-button}}>> <<_icon {{$:/core/images/link}}>> [[Henry Ford II]].
 
 ; Restrict search to context
@@ -91,7 +98,9 @@ TODO: A tag-ek használhatóak a table of contents felépítésére, de ha arra 
 ; Filter the list further in [[$:/AdvancedSearch]]
 : Click the <<_icon {{$:/core/images/advanced-search-button}}>> button in any of the search tabs to continue the search in [[$:/AdvancedSearch]] (the same list should be displayed as in the Locator search results). You can still enter the text you are looking for in the search box in the sidebar, but add extra [[filters|https://tiddlywiki.com/#Filter%20Operators]] in [[$:/AdvancedSearch]] (for example, append `+[reverse[]]`).
 
-!! View items with different templates 
+!! View items with different templates
+
+It is useful if you can open each of the desired tiddlers in the story river at the touch of a button, but there is an even more productive way.
 
 ; Use any template for context items or even transclude them
 : Within the context settings (<<_icon {{$:/core/images/options-button}}>> button in the sidebar) you can specify which template you want to view the context items with. They appear as links by default, but you can even select transclusion to display the contents of the tiddler in addition to its title. A good example of this is a music collection: using the link template you first filter the list of audio files or YouTube videos for the items you want to listen to, then use the transclusion template to turn the list of tiddlers into a playlist. Take a look at [[Music]] for a real example. 
