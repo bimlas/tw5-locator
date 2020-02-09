@@ -100,9 +100,16 @@ Special filters used by Locator
 		}
 
 		function byField(title) {
-			return directionOfTraverse === "to"
-				? options.wiki.findListingsOfTiddler(title,fieldOfRelationship)
-				: options.wiki.getTiddlerList(title,fieldOfRelationship);
+			var fieldListingOperator = getFieldListingOperator(options, fieldOfRelationship);
+			if(directionOfTraverse === "to") {
+				var filterOperators = options.wiki.getFilterOperators();
+				var allTiddlers = options.wiki.makeTiddlerIterator(options.wiki.getTiddlers());
+				return filterOperators[fieldListingOperator](allTiddlers,{operand: title,suffix: fieldOfRelationship},options);
+			} else {
+				return fieldListingOperator === "contains"
+					? options.wiki.getTiddlerList(title,fieldOfRelationship)
+					: (options.wiki.getTiddler(title) || {fields: {}}).fields[fieldOfRelationship] || [];
+			}
 		}
 	}
 
