@@ -154,33 +154,33 @@ Special filters used by Locator
 
 		function recursiveFilterFunc(input,field,fieldValue,prefix) {
 			var isRecursiveFilteringActive = $tw.utils.hop(activeRecursiveFilters,field) && (activeRecursiveFilters[field].indexOf(fieldValue) >= 0);
-			if(isRecursiveFilteringActive) {
-				var fieldDirection = getFieldDefinition(options,field).direction;
-				var children = [];
-				collectChildrenRecursively(fieldValue);
-				var compareFunc = (prefix !== "!")
-					? function(index) { return index >= 0 }
-					: function(index) { return index < 0 };
-				var results = [];
+			if(!isRecursiveFilteringActive) {
+				return directFilterFunc(input,field,fieldValue,prefix);
+			}
 
-				input(function(tiddler,title) {
-					if(compareFunc(children.indexOf(title))) {
-						results = $tw.utils.pushTop(results, title);
+			var fieldDirection = getFieldDefinition(options,field).direction;
+			var children = [];
+			collectChildrenRecursively(fieldValue);
+			var compareFunc = (prefix !== "!")
+				? function(index) { return index >= 0 }
+				: function(index) { return index < 0 };
+			var results = [];
+
+			input(function(tiddler,title) {
+				if(compareFunc(children.indexOf(title))) {
+					results = $tw.utils.pushTop(results, title);
+				}
+			});
+
+			return results;
+
+			function collectChildrenRecursively(parent) {
+				$tw.utils.each(enlistChildren(options,parent,field,fieldDirection),function(child) {
+					if(children.indexOf(child) < 0) {
+						$tw.utils.pushTop(children, child);
+						$tw.utils.pushTop(children, collectChildrenRecursively(child));
 					}
 				});
-
-				return results;
-
-				function collectChildrenRecursively(parent) {
-					$tw.utils.each(enlistChildren(options,parent,field,fieldDirection),function(child) {
-						if(children.indexOf(child) < 0) {
-							$tw.utils.pushTop(children, child);
-							$tw.utils.pushTop(children, collectChildrenRecursively(child));
-						}
-					});
-				}
-			} else {
-				return directFilterFunc(input,field,fieldValue,prefix);
 			}
 		}
 	};
