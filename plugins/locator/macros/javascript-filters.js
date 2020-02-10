@@ -289,6 +289,7 @@ Special filters used by Locator
 
 		source(function(tiddler,title) {
 			results = $tw.utils.pushTop(results, enlistChildren(options,title,fieldOfRelationship,directionOfTraverse));
+			results = options.wiki.sortByList(results,title);
 		});
 
 		return results;

@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200209222323578
+modified: 20200210072228812
 tags: TableOfContents
 title: README
 type: text/vnd.tiddlywiki
@@ -68,6 +68,9 @@ If you want to move a tiddler from one section of the table of contents to anoth
 
 ; Add field values, tags to tiddlers by drag-n-drop
 : You can place any tiddler from the text of tiddlers in the tree by droping its link to titles in the sidebar. For example, open the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler and watch for its tags while dropping its link directly from this tutorial into the "P.F. Chang" tiddler in the sidebar. This type of operation works with all elements of the fields filter: if you drop a tiddler on a field value, you add that field value to the tiddler.
+
+; Order of context items
+: If you want to change the order of context items, use the tag dropdown menu. For example, open [[TableOfContents]] in the Locator sidebar, open an item and click on its <<tag "TableOfContents">> tag to bring up the dropdown menu, and [[drag-n-drop to rearrange the order of the tiddlers|https://tiddlywiki.com/#Drag%20and%20Drop]].
 
 !! Locator search and fields tabs
 
