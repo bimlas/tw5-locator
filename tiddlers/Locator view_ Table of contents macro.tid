@@ -1,0 +1,39 @@
+created: 20200210155335440
+modified: 20200210155941001
+tags: Tutorial
+title: Locator view: Table of contents macro
+type: text/vnd.tiddlywiki
+
+!!! Basic usage
+
+; Locator sidebar for navigating
+: In this demo, I placed the `locator-view` macro in the sidebar, which you can access in the "Locator" tab, but the macro can be placed anywhere (as is the one in the [[Family tree of Ford]] tiddler). Before you try it, switch to the [[Classic ToC]] tab (just to understand what is going to happen) and use the <<_icon {{$:/core/images/right-arrow}}>> icon next to the titles to navigate one of the "directories" (hereinafter referred to as //context//). Do the same in the Locator sidebar. The titles of previously opened contexts (so the higher levels of the tree) appear above the horizontal line (hereinafter referred to as //history//). To get used to the controls, go to several contexts side by side in Classic ToC and Locator.
+
+; View the "table of contents" of any tiddler
+: Open the [[category]] tiddler by clicking on its link. You will find a <<_icon {{$:/core/images/chevron-right}}>> icon in the toolbar (on the top) of the tiddler: it opens the current tiddler in the Locator sidebar to show the other tiddlers associated with it, so this button can be used to view the tiddler's own table of contents even if the tiddler itself is not linked to a "global" hierarchy (like [[TableOfContents]]). This is useful if we did not open the tiddler from the table of contents but from the search results or through a link in another tiddler.
+
+; Clear history, focus on the current context
+: Go to the TableOfContents -> Larry's Cookbook -> Categories -> Pasta context. These titles will remain at the top of the sidebar, so you can move up in context as you have done so far. But in fact, the top of the sidebar is a history, such as the "back" button of your browser: this keeps track of which tiddler contexts you opened. If you open for example the [[Howto]] and [[chicken]] tiddlers with the above mentioned "open in Locator sidebar" toolbar button, you will understand how it works. If you want to focus on a topic or if your history has become too long, press the <<_icon {{$:/core/images/fold-button}}>> icon in the sidebar to restrict the history to contain only the main and currently open context titles.
+
+!!! Visual filter builder
+
+If you use a lot of tags, you may have encountered the problem of grouping tags: you added one to the tiddler to be in table of contents, another tag for hashtag-like grouping, and so on. You can differentiate tags by their name, color, or icon, but this is not enough, a more flexible grouping would be better: fields can also be used for grouping.
+
+; Filter for field values
+: As you can see, in addition to the tiddlers titles, the Locator sidebar also has a fields filter ("Filter by fields") which contains the values of the fields in the listed tiddlers. Go to the Larry's Cookbook -> Categories -> [[Pasta|pasta]] context (or simply use the toolbar button) and open fields filter -> tags: you can see all the tags of the listed tiddlers at once. To understand what that means, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]]. It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the <<_icon {{$:/core/images/new-button}}>> icon next to it. Click the icon again to deactivate the filter (you can also turn off the filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button). If you are wondering which tiddlers do not contain this tag, click the <<_icon {{$:/core/images/close-button}}>> icon. You can mix the filters of multiple fields: [[Music]] contains an even more complex list, where tiddlers have "author", "album", "genre", etc. fields. Try to find the music that best fits your mood by mixing different filters.
+
+!!! Reorganization of the tree
+
+If you want to move a tiddler from one section of the table of contents to another, you need to open it in edit mode and modify its tag. If you want to do this with multiple tiddlers, the process can be slow and cumbersome. Take advantage of drag-n-drop to reach your goal!
+
+; Create a new tiddler in the current context
+: To create a new tiddler in the Larry's Cookbook -> Categories -> Pasta context, go to there and click on the <<_icon {{$:/core/images/new-button}}>> icon at the top of the Locator sidebar: the newly created tiddler will automatically be assigned to [[pasta]] tag, so it will appear in the context you are currently viewing. It automatically adds each selected value of the fields filter to the new tiddler.
+
+; Move the tiddler to a different context
+: If you want to move a tiddler from one context to another, or to split a large list into several smaller topics, simply grab the tiddler and drop it at the appropriate title. To see exactly what's going on, open the tiddler and watch for the tags. For example you want to move [[How to Cook Rice Perfectly]] from Larry's Cookbook -> Categories -> Pasta to Larry's Cookbook -> Categories -> Asian: navigate to Pasta, grab the tiddler and drop it on the Categories title, navigate to Categories, grab the tiddler and drop it on Asian. You can create new subcategories from any tiddler. For example, create a new "P.F. Chang" tiddler in Asian with the aforementioned <<_icon {{$:/core/images/new-button}}>> icon and drop the P. F. Chang's Chang's Spicy Chicken and P. F. Chang's Mongolian Beef tiddlers on it.
+
+; Add field values, tags to tiddlers by drag-n-drop
+: You can place any tiddler from the text of tiddlers in the tree by droping its link to titles in the sidebar. For example, open the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler and watch for its tags while dropping its link directly from this tutorial into the "P.F. Chang" tiddler in the sidebar. This type of operation works with all elements of the fields filter: if you drop a tiddler on a field value, you add that field value to the tiddler.
+
+; Order of context items
+: If you want to change the order of context items, use the tag dropdown menu. For example, open [[TableOfContents]] in the Locator sidebar, open an item and click on its <<tag "TableOfContents">> tag to bring up the dropdown menu, and [[drag-n-drop to rearrange the order of the tiddlers|https://tiddlywiki.com/#Drag%20and%20Drop]].

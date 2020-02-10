@@ -1,0 +1,14 @@
+created: 20200210155848582
+list: Quickstart [[Locator view: Table of contents macro]] [[Locator search and fields tabs]] [[View items with different templates]] [[Field settings]]
+modified: 20200210163706686
+tags: README
+title: Tutorial
+type: text/vnd.tiddlywiki
+
+I'm sorry that ''the description is long, but despite its simple appearance and ease of use, the plugin can be used for a lot of things''. If you don't have enough time to read it, ''at least read the headlines'' to see if it might be useful to you. ''You decide which features you want to use'' and which you don't want, so even though the plugin can handle complex tasks, you can use the simplest parts as well.
+
+While discovering, you will certainly notice buttons that arouse your curiosity, but please do not use them until asked in the tutorial.
+
+<<list-links filter:"[tag[Tutorial]]">>
+
+''Please [[star on GitHub|https://github.com/bimlas/tw5-locator]] if you like the plugin!''

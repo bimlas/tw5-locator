@@ -1,0 +1,36 @@
+created: 20200210155717608
+modified: 20200210155945755
+tags: Tutorial
+title: View items with different templates
+type: text/vnd.tiddlywiki
+
+It is useful if you can open each of the desired tiddlers in the story river at the touch of a button, but there is an even more productive way.
+
+; Use any template for context items or even transclude them
+: Within the context settings (<<_icon {{$:/core/images/options-button}}>> button in the sidebar) you can specify which template you want to view the context items with. They appear as links by default, but you can even select transclusion to display the contents of the tiddler in addition to its title. A good example of this is a music collection: using the link template you first filter the list of audio files or YouTube videos for the items you want to listen to, then use the transclusion template to turn the list of tiddlers into a playlist. Take a look at [[Music]] for a real example. 
+
+; View and edit multiple tiddler fields at once
+: With the context items template you can view the fields of the tiddlers or even use the field editors.
+
+; Define your own templates
+: Open the [[field settings|$:/plugins/bimlas/locator/settings/settings]] to learn how to create your own templates.
+
+!! Multidimensional table of contents, mindmap features
+
+In [[Classic ToC]], you can only traverse a tree from top to bottom, as with a table of contents in a printed book: Larry's Cookbook, then Categories, Pasta, and so on. It's easy to use because we've known this kind of navigation for a long time, but that doesn't mean it's efficient.
+
+; Invert direction, find out where the tiddler is in the tree
+: Use [[Classic ToC]] to find which branches of the table of contents the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler is in. This cannot be done using the [[Classic ToC]] (as far as I know), but only by opening the tiddler, its tags, then their tags, and so on until you find the TableOfContents tag, so you have to go up in the table of contents levels yourself. You can use the Locator to simplify this process by opening the tiddler in the sidebar (with the toolbar button), opening the context settings by the <<_icon {{$:/core/images/options-button}}>> button and turning on "Invert direction". It does exactly what its name says: you have traveled from top to bottom in the tree of table of contents so far, but now you will see the parents of the current tiddler instead of its children. Try turning this option off and on at different points in the tree to understand how it works.
+
+; Find other parents of the lowest elements (leaves)
+: Go to TableOfContents -> Larry's Cookbook -> Categories -> Pasta context. Let's say you want to know where [[Brown Rice Crispy Bar]] is in the table of contents besides the current context. You can do this by opening the tiddler, using the toolbar button to open the sidebar and turning on the "Invert direction" option in context settings (<<_icon {{$:/core/images/options-button}}>>). To make it easier, turn on the "Allow to open leaves" option so you can "focus" on the bottom elements, you can open them even if even if they have no children.
+
+!!! Use any field to define a tree, add tiddler to any number of trees
+
+Honestly, I see great potential in these features, but I have not yet experienced how to use them in the right way. If you already have experience with similar systems or have a proven method of using them, please write it in the "Disqus comments" at the bottom of this tiddler!
+
+; Use links in text as table of contents
+: The table of contents is structured in such a way that when one tiddler is tagged with another, the latter becomes the parent of the first, they becomes connected. Since the links in the text also connect the tiddlers, could we have a table of contents built by the links (so without tags at all)? Open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/options-button}}>> to open settings, set the tree to be "LINKS-IN-TEXT" based. Each of the links in the tiddler becomes an entry, and if they contain links too, you can open them as you do with branches of the table of contents.
+
+; Connect tiddlers by fields
+: Like tags, any field can bind tiddlers, and the resulting tree can be traversed just like the table of contents. It's practically a non-graphical, text only mindmap. To see how it works, open [[TiddlyMap Activities example]].

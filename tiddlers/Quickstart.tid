@@ -1,0 +1,28 @@
+created: 20200210160506659
+modified: 20200210163658203
+tags: Tutorial
+title: Quickstart
+type: text/vnd.tiddlywiki
+
+The simplest is to show you a quick example of how you can use the basic features:
+
+* Navigate in table of contents
+** Go to [[Music]] in the Locator sidebar by clicking on <<_icon {{$:/core/images/right-arrow}}>> (this is the same entry as you would see in the classic table of contents, but different in presentation, compare with [[Classic ToC]] sidebar if you want)
+** Open [[Subway]] from the list and view its fields in the [[Info panel|https://tiddlywiki.com/#InfoPanel]]
+** As you can see, the value of the `author` field is` Rawtekk`
+** Now, look for the context items that also contain `Rawtekk` in the`author` field
+* Filter context items by field value
+** Open the "Filter by fields" menu above the context items, you can see the fields of the context elements
+** Open the `author` list so you can see each`author` value of context items at once
+** Click on <<_icon {{$:/core/images/new-button}}>> to narrow the list to the desired condition
+** To filter out tiddlers with other artists (eg Audeka) from the list, press the <<_icon {{$:/core/images/close-button}}>> next to it
+** Press the <<_icon {{$:/core/images/cancel-button}}>> to remove all of the filters at once
+* Search all tiddler fields
+** If you want to filter for field values not only at a given table of contents level, but in each tiddler, enter the search term in standard search
+** Search for `beans` field value in the Fields search tab
+** Press the <<_icon {{$:/core/images/new-button}}>> button again to filter, the list contains only matching tiddlers
+** Switch to the Locator search tab, which searches in the text instead of field values
+** Search for "chili"
+** Because field filters specify "beans" tag and the search string is "chili", you will see tiddlers that match these parameters
+
+These are just the most basic capabilities of the plugin, so please read the full [[tutorial|Tutorial]].

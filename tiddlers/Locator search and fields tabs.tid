@@ -1,0 +1,32 @@
+created: 20200210155638339
+modified: 20200210155943100
+tags: Tutorial
+title: Locator search and fields tabs
+type: text/vnd.tiddlywiki
+
+Only the title, tags, and text fields of the tiddler are considered in the search. To search in other fields, you need to use [[filter expressions|https://tiddlywiki.com/#Filters]], which is not always easy and does not list possible values for the fields. The Locator also offers a solution for this.
+
+; Locator search tab for searching in text of tiddlers
+: The "Locator" tab in the standard search can be used in the same way as the default search ("List" tab): you enter the text you want to search for and the list of matching tiddlers will be shown. The number of standard search results is displayed next to the text entry, whereas the Locator search displays it at the top of the dropdown. You can filter the results with the fields filter just as you did in the sidebar. Search for "cook" in standard search and use the fields filter to narrow down the list of tiddlers that contain the [[Howto]] tag. You can deactivate the field filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button at the top of the dropdown.
+
+; Locator fields tab for searching field values
+: If you want to search in fields instead of text, use the Fields tab in standard search. For example, look for [[pasta]] and turn on the filter: the list of related tiddlers is only displayed when at least one filter is enabled, the field filter contains the other field values of the listed tiddlers. The list of field values only lists the field values that match the currently entered text, so to see each field value, fill in the search entry with spaces. You can do this more easily by pressing the <<_icon {{$:/core/images/preview-open}}>> button.
+
+; Use a combination of field value and text search
+: Because Locator search and Locator fields tabs use the same context, you can easily find the desired field values in the Fields tab and search for the text in the filtered list tiddlers with Locator search.
+
+; Using More sidebar -> Tags?
+: If you prefer to browse tags, field values in the sidebar, check out the contents of [[Locator fields sidebar]] ("Fields" tab of sidebar).
+
+!!!  Scope of the search
+
+If you have more than one topic on a wiki (eg cookbook, family tree, music), then you probably want to limit your search to the tiddlers you are interested in.
+
+; Recursive filtering
+: In standard search, you will find an <<_icon {{$:/core/images/link}}>> button along with field values to enable recursive search. To understand exactly what this means, open the [[Family tree of Ford]] tiddler. Each person shown here has a tiddler, you can see them in the Locator below the image. We are curious about the descendants of [[Josephine Clay Ford]], for example. In the Locator fields, search for her name and turn on filtering. Only [[Josephine Ford]] is listed because she is the direct child ([[Josephine Ford]] has the [[Josephine Clay Ford]] tag). If we turn on recursive search, [[Jody Ingle Jr.]] will also be listed, as at a deeper level he is the successor to Josephine Clay Ford ([[Jody Ingle Jr.]] -> [[Josephine Ford]] -> [[Josephine Clay Ford]] are connected by tags). Of course, recursive search can also be mixed, for example, we are curious about the [[Family tree of Ford]], with the exception of [[Henry Ford II]]'s descendants: in the Fields search tab, filter for <<_icon {{$:/core/images/new-button}}>> <<_icon {{$:/core/images/link}}>> [[Family tree of Ford]] and <<_icon {{$:/core/images/close-button}}>> <<_icon {{$:/core/images/link}}>> [[Henry Ford II]].
+
+; Restrict search to context
+: Recursive search can also be applied to desired parts of any tree, such as the table of contents. For example, open the Family Tree of Ford -> Henry Ford -> Edsel Ford -> Henry Ford II context and press the <<_icon {{$:/core/images/advanced-search-button}}>> button: standard search will look for the text in successors of [[Henry Ford II]], so searching for "Edsel" will only list [[Edsel Ford II]], not [[Edsel Ford]]. This can be very useful, for example, if you are storing several different topics in a single wiki, so that you can exclude tiddlers that are not related to the current topic from the search. For example, if you search for "Ford" now, you'll get a list of members of the Ford family. However, if you open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/advanced-search-button}}>> button, your search will be limited to this context so you can easily find the description where I mention the Ford family.
+
+; Filter the list further in [[$:/AdvancedSearch]]
+: Click the <<_icon {{$:/core/images/advanced-search-button}}>> button in any of the search tabs to continue the search in [[$:/AdvancedSearch]] (the same list should be displayed as in the Locator search results). You can still enter the text you are looking for in the search box in the sidebar, but add extra [[filters|https://tiddlywiki.com/#Filter%20Operators]] in [[$:/AdvancedSearch]] (for example, append `+[reverse[]]`).

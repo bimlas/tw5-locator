@@ -1,0 +1,7 @@
+created: 20200210155754200
+modified: 20200210155947237
+tags: Tutorial
+title: Field settings
+type: text/vnd.tiddlywiki
+
+To configure the fields, what template to use, etc., open [[field settings|$:/plugins/bimlas/locator/settings/settings]]. You can also access this from context settings and search tabs by the <<_icon {{$:/core/images/options-button}}>> button.
