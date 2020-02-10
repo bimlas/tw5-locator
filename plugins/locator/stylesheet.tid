@@ -2,10 +2,6 @@ tags: $:/tags/Stylesheet
 title: $:/plugins/bimlas/locator/stylesheet
 type: text/vnd.tiddlywiki
 
-.bimlas-locator-warning {
-  color: red;
-  font-weight: bold;
-}
 .tc-tiddler-frame.bimlas-locator-explanation {
   max-width: 400px;
 }

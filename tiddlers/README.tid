@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200210072228812
+modified: 20200210131927948
 tags: TableOfContents
 title: README
 type: text/vnd.tiddlywiki
@@ -25,6 +25,8 @@ Before I explain, ''let's clarify a few things about TiddlyWiki'':
 * ''The links in the text also form a tree''
 
 Locator provides ''a universal interface for navigating between your tiddlers and searching, filtering them'' without the need to write [[filter expressions|https://tiddlywiki.com/#Filters]]. The plugin contains ''a table of contents widget and an enhanced search engine'' that contains a ''visual filter builder to filter results by tags and field values''. You can ''organize the tiddlers to any number of trees, even by custom fields or links in text''. Unlike [[classic Table of Contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]], [[filter search|$:/core/ui/AdvancedSearch/Filter]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin handles these functions organically.
+
+''If you have used the previous version, be sure to check [[changelog|$:/plugins/bimlas/locator/README/CHANGELOG]] for incompatible changes.''
 
 Introducing some features:
 
