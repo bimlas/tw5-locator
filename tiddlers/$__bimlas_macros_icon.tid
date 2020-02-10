@@ -1,0 +1,7 @@
+created: 20200210162320311
+modified: 20200210162410480
+tags: $:/tags/Macro
+title: $:/bimlas/macros/icon
+type: text/vnd.tiddlywiki
+
+\define _icon(icon) <button class="tc-btn-invisible" disabled><<__icon__>></button>
