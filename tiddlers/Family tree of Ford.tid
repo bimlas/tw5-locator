@@ -1,5 +1,5 @@
 created: 20190109181535967
-modified: 20191024062333478
+modified: 20200209212320314
 tags: TableOfContents
 title: Family tree of Ford
 type: text/vnd.tiddlywiki
@@ -8,6 +8,11 @@ In this example, the Ford family tree can be seen, and the underlying Locator re
 
 [img[ford.png]]
 
-//Image taken from https://hu.pinterest.com/pin/16747829837549219/ //
+//Image taken from https://hu.pinterest.com/pin/16747829837549219/ - it's not part of the plugin//
+
+The story began with [[Henry Ford]]...
 
 <<locator-view "Family tree of Ford">>
+
+//See [[README]] for complete tutorial//
+

@@ -1,7 +1,0 @@
-tags:
-title: $:/plugins/bimlas/locator/buttons/add-ancestor-tag-filter
-type: text/vnd.tiddlywiki
-
-<$button tooltip="Look for successors of the tag at any depth" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/add-ancestor-tag}}>
-  {{$:/core/images/link}}
-</$button>

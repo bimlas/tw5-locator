@@ -1,0 +1,8 @@
+created: 20200209201717204
+field-direction: to
+field-type: list
+modified: 20200209201832756
+title: $:/config/bimlas/locator/fields/cites
+type: text/vnd.tiddlywiki
+
+$:/plugins/bimlas/locator/field-templates/link

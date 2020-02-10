@@ -6,6 +6,24 @@ Unreleased
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/master...dev]]
 
+!! 2.0.0
+
+[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.5.0...v2.0.0]]
+
+''ALMOST COMPLETE REWRITING, BACKWARDS INCOMPATIBLE CHANGES ARE INTRODUCED''
+
+* ''It does not require the `kin` filter operator at all''
+* ''You can filter to any field besides the tags''
+* You can use the standard search from any `locator-view`
+* You can use any field to link tiddlers (as "tags")
+* You can also navigate through tiddler links
+* You can use arbitrary templates to display context items and field values
+* ''INCOMPATIBLE CHANGES''<br />//Before upgrading to the new version, make a backup (as before upgrading any plugin) and make the following changes.//
+** Renamed `locator-tags` to `locator-fields`<br />//Change the macro call in your tiddlers//
+** `locator-view` does not supporting `finalFilter` and `tagFilter`<br />//Remove them from your macrocalls//
+** Removed `filter-grandchildren` filter<br />//Because it can no longer be passed through parameters.//
+** The "Open in Locator sidebar" toolbar button is moved from `$:/plugins/bimlas/locator/viewtemplate/open-in-sidebar` to `$:/plugins/bimlas/locator/viewtemplate/open-in-sidebar` and its code is changed as well<br />//Compare the old tiddler with the shadow and note the changes if any. Transfer them to the new tiddler and delete the old tiddler.//
+
 !! 1.5.0
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v1.4.0...v1.5.0]]

@@ -2,13 +2,21 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/go-down-to-context
 type: text/vnd.tiddlywiki
 
-<$list filter="[all[current]is[tag]]">
-  <$button tooltip="Go to context, show tiddlers tagged by this" class="tc-btn-invisible bimlas-locator" actions={{$:/plugins/bimlas/locator/actions/add-ancestor-tag}}>
-    {{$:/core/images/right-arrow}}
+\define node()
+  <$button tooltip="Go to context, show chidlren of this tiddler" class=<<link-button-class>> actions={{$:/plugins/bimlas/locator/actions/add-to-history}}>
+    {{$:/plugins/bimlas/locator/buttons/context-arrow}}
   </$button>
-</$list>
-<$list filter="[all[current]!is[tag]]">
-  <$button class="tc-btn-invisible bimlas-locator">
+\end
+
+\define leaf()
+  <$button class=<<link-button-class>>>
     {{$:/core/images/blank}}
   </$button>
-</$list>
+\end
+
+\define go-down-to-context()
+  <!-- I have to use macro to use $(...)$ in filter expression -->
+  <$list filter="[all[current]locator-enlist-children:$(currentField)$<contextState>] [title<contextState>field:allow-to-open-leaves[yes]] +[first[]]" emptyMessage=<<leaf>> variable="null"><<node>></$list>
+\end
+
+<<go-down-to-context>>

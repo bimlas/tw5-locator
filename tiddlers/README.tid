@@ -1,59 +1,148 @@
 created: 20190120115910162
-modified: 20191025195753455
-tags:
+modified: 20200210131927948
+tags: TableOfContents
 title: README
 type: text/vnd.tiddlywiki
 
-This is the ''demo of the Locator [[TiddlyWiki|https://tiddlywiki.com/]] plugin''. Here you can try everything what you want.
+\define _icon(icon) <button class="tc-btn-invisible" disabled><<__icon__>></button>
+
+This is the ''demo of the Locator [[TiddlyWiki|https://tiddlywiki.com/]] plugin''.
 
 Feel free to write down your thoughts and suggestions, ''you can comment at the bottom of each tiddler'' ("Show Disqus comments").
 
-''To understand the plugin, please read this tutorial:''
+! What is the Locator exactly?
 
-<div class="bimlas-locator-explanation">
+Before I explain, ''let's clarify a few things about TiddlyWiki'':
 
-!! Sidebar, Table of Contents
+* Tiddlers can contain any data (notes, tasks, phone numbers, photos, music videos, recipes, products, family members, ...)
+* Tiddlers can have ''tags''
+* Tags can be used to ''"label" tiddlers'' to categorize them (just like hashtags)
+* Tags can be used to ''create hierarchies'', trees (table of contents) by adding the parent tiddler as a tag to the current tiddler
+* Tiddlers can have ''fields''
+* Fields can ''contain arbitrary data'' (date, numeric value, text, even a list of other tiddlers) which characterize the tiddler
+* ''Tags are stored in `tags` field'' of tiddler
+* Because `tags` is no different from the other fields, ''any field can be used as tags''
+* ''The links in the text also form a tree''
 
-; Locator sidebar
-: The Locator sidebar is available in the Locator tab. Although the `locator-view` macro can be placed anywhere (as is the one in the [[Family tree of Ford]] tiddler), the sidebar has a prominent role because it is linked to the search box (see later).
+Locator provides ''a universal interface for navigating between your tiddlers and searching, filtering them'' without the need to write [[filter expressions|https://tiddlywiki.com/#Filters]]. The plugin contains ''a table of contents widget and an enhanced search engine'' that contains a ''visual filter builder to filter results by tags and field values''. You can ''organize the tiddlers to any number of trees, even by custom fields or links in text''. Unlike [[classic Table of Contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]], [[filter search|$:/core/ui/AdvancedSearch/Filter]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin handles these functions organically.
 
-; Navigation
-: Switch to the [[Classic ToC]] tab and use the {{$:/core/images/right-arrow}} icon next to the titles to navigate to the Larry's Cookbook -> Categories -> Pasta "directory". Do the same in the Locator sidebar. To move up in the hierarchy, click on the icon next to a previously selected title (such as TableOfContents). Before continuing with the tutorial, go to the "directory" mentioned above.
+''If you have used the previous version, be sure to check [[changelog|$:/plugins/bimlas/locator/README/CHANGELOG]] for incompatible changes.''
 
-; Filter for hidden tags
-: As you can see, in addition to the tiddlers titles, the Locator also has a list of tags. These are tags of the listed tiddlers that are not listed in the Classic ToC. For example, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]] . It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the {{$:/core/images/tag-button}} icon next to it. If you don't see the advantages of this feature, then try to install the [[plugin|$:/plugins/bimlas/locator]] and the [[Locator view]] sidebar on a copy of https://tiddlywiki.com/ and navigate to Reference -> Filters -> Filter Operators. You can disable this feature if you don't like it, see the plugin description.
+Introducing some features:
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/vqSKjafeZyE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+! Tutorial
+
+I'm sorry that ''the description is long, but despite its simple appearance and ease of use, the plugin can be used for a lot of things''. If you don't have enough time to read it, ''at least read the headlines'' to see if it might be useful to you. ''You decide which features you want to use'' and which you don't want, so even though the plugin can handle complex tasks, you can use the simplest parts as well.
+
+While discovering, you will certainly notice buttons that arouse your curiosity, but please do not use them until asked in the tutorial.
+
+!! Locator view: Table of contents macro
+
+!!! Basic usage
+
+; Locator sidebar for navigating
+: In this demo, I placed the `locator-view` macro in the sidebar, which you can access in the "Locator" tab, but the macro can be placed anywhere (as is the one in the [[Family tree of Ford]] tiddler). Before you try it, switch to the [[Classic ToC]] tab (just to understand what is going to happen) and use the <<_icon {{$:/core/images/right-arrow}}>> icon next to the titles to navigate one of the "directories" (hereinafter referred to as //context//). Do the same in the Locator sidebar. The titles of previously opened contexts (so the higher levels of the tree) appear above the horizontal line (hereinafter referred to as //history//). To get used to the controls, go to several contexts side by side in Classic ToC and Locator.
+
+; View the "table of contents" of any tiddler
+: Open the [[category]] tiddler by clicking on its link. You will find a <<_icon {{$:/core/images/chevron-right}}>> icon in the toolbar (on the top) of the tiddler: it opens the current tiddler in the Locator sidebar to show the other tiddlers associated with it, so this button can be used to view the tiddler's own table of contents even if the tiddler itself is not linked to a "global" hierarchy (like [[TableOfContents]]). This is useful if we did not open the tiddler from the table of contents but from the search results or through a link in another tiddler.
+
+; Clear history, focus on the current context
+: Go to the TableOfContents -> Larry's Cookbook -> Categories -> Pasta context. These titles will remain at the top of the sidebar, so you can move up in context as you have done so far. But in fact, the top of the sidebar is a history, such as the "back" button of your browser: this keeps track of which tiddler contexts you opened. If you open for example the [[Howto]] and [[chicken]] tiddlers with the above mentioned "open in Locator sidebar" toolbar button, you will understand how it works. If you want to focus on a topic or if your history has become too long, press the <<_icon {{$:/core/images/fold-button}}>> icon in the sidebar to restrict the history to contain only the main and currently open context titles.
+
+!!! Visual filter builder
+
+If you use a lot of tags, you may have encountered the problem of grouping tags: you added one to the tiddler to be in table of contents, another tag for hashtag-like grouping, and so on. You can differentiate tags by their name, color, or icon, but this is not enough, a more flexible grouping would be better: fields can also be used for grouping.
+
+; Filter for field values
+: As you can see, in addition to the tiddlers titles, the Locator sidebar also has a fields filter ("Filter by fields") which contains the values of the fields in the listed tiddlers. Go to the Larry's Cookbook -> Categories -> [[Pasta|pasta]] context (or simply use the toolbar button) and open fields filter -> tags: you can see all the tags of the listed tiddlers at once. To understand what that means, open the [[How to Cook Rice Perfectly]] tiddler. It is assigned to two tags: [[Howto]] and [[pasta]]. It is listed in the current context (Larry's Cookbook -> Categories -> Pasta) because it has the [[pasta]] tag, but the [[Howto]] tag is not visible in Classic ToC, only in the Locator. To narrow the list in the Locator sidebar to those tiddlers that have the [[Howto]] tag, click on the <<_icon {{$:/core/images/new-button}}>> icon next to it. Click the icon again to deactivate the filter (you can also turn off the filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button). If you are wondering which tiddlers do not contain this tag, click the <<_icon {{$:/core/images/close-button}}>> icon. You can mix the filters of multiple fields: [[Music]] contains an even more complex list, where tiddlers have "author", "album", "genre", etc. fields. Try to find the music that best fits your mood by mixing different filters.
+
+!!! Reorganization of the tree
+
+If you want to move a tiddler from one section of the table of contents to another, you need to open it in edit mode and modify its tag. If you want to do this with multiple tiddlers, the process can be slow and cumbersome. Take advantage of drag-n-drop to reach your goal!
 
 ; Create a new tiddler in the current context
-: To create a new tiddler in the current context (Larry's Cookbook -> Categories -> Pasta -> Howto), click on the {{$:/core/images/new-button}} icon at the top of the Locator sidebar: the newly created tiddler will automatically be assigned the [[Howto]] and [[pasta]] tags.
+: To create a new tiddler in the Larry's Cookbook -> Categories -> Pasta context, go to there and click on the <<_icon {{$:/core/images/new-button}}>> icon at the top of the Locator sidebar: the newly created tiddler will automatically be assigned to [[pasta]] tag, so it will appear in the context you are currently viewing. It automatically adds each selected value of the fields filter to the new tiddler.
 
-; Move tiddlers between contexts, reorganize hierarchy
-: If you want to move a tiddler from one context ("directory") to another, or to split a large list into several smaller topics, simply grab the tiddler and drop it at the appropriate title. To see exactly what's going on, open the tiddler and watch for the tags. For example you want to move [[How to Cook Rice Perfectly]] from Larry's Cookbook -> Categories -> Pasta to Larry's Cookbook -> Categories -> Asian, so you navigate to Pasta, you grab the tiddler and drop it on the Categories title, navigate to Categories, grab the tiddler and drop it on Asian. You can create new subcategories from any tiddler. For example, create a new "P.F. Chang" tiddler in Asian with the aforementioned {{$:/core/images/new-button}} icon and drop the [[P. F. Chang's Chang's Spicy Chicken]] and [[P. F. Chang's Mongolian Beef]] tiddlers on it. This way you can place any tiddler from the text of tiddlers in the hierarchy, but in this case it just adds the tags, does not changing them. For example, open the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler and watch for its tags while dropping its link directly from this tutorial into the "P.F. Chang" tiddler in the sidebar.
+; Move the tiddler to a different context
+: If you want to move a tiddler from one context to another, or to split a large list into several smaller topics, simply grab the tiddler and drop it at the appropriate title. To see exactly what's going on, open the tiddler and watch for the tags. For example you want to move [[How to Cook Rice Perfectly]] from Larry's Cookbook -> Categories -> Pasta to Larry's Cookbook -> Categories -> Asian: navigate to Pasta, grab the tiddler and drop it on the Categories title, navigate to Categories, grab the tiddler and drop it on Asian. You can create new subcategories from any tiddler. For example, create a new "P.F. Chang" tiddler in Asian with the aforementioned <<_icon {{$:/core/images/new-button}}>> icon and drop the P. F. Chang's Chang's Spicy Chicken and P. F. Chang's Mongolian Beef tiddlers on it.
 
-; Browse any tag in the sidebar
-: To easily review the hierarchy of any tag (even if it's not related to the TableOfContents), there is a new button in the header of tiddlers to which are tagging other tiddlers. For example, open the [[asian]] or [[Howto]] tiddler and click on the {{$:/core/images/chevron-right}} icon on the top to open it in the sidebar. To switch back to the default context (TableOfContext in this case), click the {{$:/core/images/close-button}} icon at the top of the Locator sidebar.
+; Add field values, tags to tiddlers by drag-n-drop
+: You can place any tiddler from the text of tiddlers in the tree by droping its link to titles in the sidebar. For example, open the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler and watch for its tags while dropping its link directly from this tutorial into the "P.F. Chang" tiddler in the sidebar. This type of operation works with all elements of the fields filter: if you drop a tiddler on a field value, you add that field value to the tiddler.
 
-!! Search and tags tab in the search box
+; Order of context items
+: If you want to change the order of context items, use the tag dropdown menu. For example, open [[TableOfContents]] in the Locator sidebar, open an item and click on its <<tag "TableOfContents">> tag to bring up the dropdown menu, and [[drag-n-drop to rearrange the order of the tiddlers|https://tiddlywiki.com/#Drag%20and%20Drop]].
 
-; The Locator search tab can be used in the same way as the default search
-: You enter the text you want to search for and the list of matching tiddlers will be shown.
+!! Locator search and fields tabs
 
-; Restrict search to current context
-: Now search for "marketing" only in Family Tree of Ford -> Henry Ford -> Edsel Ford -> Henry Ford II (search in his and his descendants' tiddlers): first navigate to him in the sidebar, enter "marketing" to the search entry and press the {{$:/core/images/close-others-button}} icon: this limits the filtering to tiddlers of any depth to the current context ({{$:/core/images/link}} = ancestor tag). Try typing spaces only to get a list of all tiddlers to which your search is restricted. To search all tiddlers again, press the {{$:/core/images/close-button}} icon.
+Only the title, tags, and text fields of the tiddler are considered in the search. To search in other fields, you need to use [[filter expressions|https://tiddlywiki.com/#Filters]], which is not always easy and does not list possible values for the fields. The Locator also offers a solution for this.
 
-; Search for tags by name, filter tiddlers by custom tag intersections
-: You can use the search box to search for tags by name in the Tags tab. For example, you remember a sauce recipe that could be used for chicken dishes, so you search for "sauce" and click on the {{$:/core/images/tag-button}} icon next to [[sauces]] in the list because you are sure you added this tag to the tiddler (so it's a direct tag) and then search for "chicken", and you click the {{$:/core/images/link}} icon next to [[chicken]] in the list because you only know that it is related to the chicken topic somewhere, but you do not know the depth (ancestor tag).
+; Locator search tab for searching in text of tiddlers
+: The "Locator" tab in the standard search can be used in the same way as the default search ("List" tab): you enter the text you want to search for and the list of matching tiddlers will be shown. The number of standard search results is displayed next to the text entry, whereas the Locator search displays it at the top of the dropdown. You can filter the results with the fields filter just as you did in the sidebar. Search for "cook" in standard search and use the fields filter to narrow down the list of tiddlers that contain the [[Howto]] tag. You can deactivate the field filters by pressing the <<_icon {{$:/core/images/cancel-button}}>> button at the top of the dropdown.
+
+; Locator fields tab for searching field values
+: If you want to search in fields instead of text, use the Fields tab in standard search. For example, look for [[pasta]] and turn on the filter: the list of related tiddlers is only displayed when at least one filter is enabled, the field filter contains the other field values of the listed tiddlers. The list of field values only lists the field values that match the currently entered text, so to see each field value, fill in the search entry with spaces. You can do this more easily by pressing the <<_icon {{$:/core/images/preview-open}}>> button.
+
+; Use a combination of field value and text search
+: Because Locator search and Locator fields tabs use the same context, you can easily find the desired field values in the Fields tab and search for the text in the filtered list tiddlers with Locator search.
+
+; Using More sidebar -> Tags?
+: If you prefer to browse tags, field values in the sidebar, check out the contents of [[Locator fields sidebar]] ("Fields" tab of sidebar).
+
+!!!  Scope of the search
+
+If you have more than one topic on a wiki (eg cookbook, family tree, music), then you probably want to limit your search to the tiddlers you are interested in.
+
+; Recursive filtering
+: In standard search, you will find an <<_icon {{$:/core/images/link}}>> button along with field values to enable recursive search. To understand exactly what this means, open the [[Family tree of Ford]] tiddler. Each person shown here has a tiddler, you can see them in the Locator below the image. We are curious about the descendants of [[Josephine Clay Ford]], for example. In the Locator fields, search for her name and turn on filtering. Only [[Josephine Ford]] is listed because she is the direct child ([[Josephine Ford]] has the [[Josephine Clay Ford]] tag). If we turn on recursive search, [[Jody Ingle Jr.]] will also be listed, as at a deeper level he is the successor to Josephine Clay Ford ([[Jody Ingle Jr.]] -> [[Josephine Ford]] -> [[Josephine Clay Ford]] are connected by tags). Of course, recursive search can also be mixed, for example, we are curious about the [[Family tree of Ford]], with the exception of [[Henry Ford II]]'s descendants: in the Fields search tab, filter for <<_icon {{$:/core/images/new-button}}>> <<_icon {{$:/core/images/link}}>> [[Family tree of Ford]] and <<_icon {{$:/core/images/close-button}}>> <<_icon {{$:/core/images/link}}>> [[Henry Ford II]].
+
+; Restrict search to context
+: Recursive search can also be applied to desired parts of any tree, such as the table of contents. For example, open the Family Tree of Ford -> Henry Ford -> Edsel Ford -> Henry Ford II context and press the <<_icon {{$:/core/images/advanced-search-button}}>> button: standard search will look for the text in successors of [[Henry Ford II]], so searching for "Edsel" will only list [[Edsel Ford II]], not [[Edsel Ford]]. This can be very useful, for example, if you are storing several different topics in a single wiki, so that you can exclude tiddlers that are not related to the current topic from the search. For example, if you search for "Ford" now, you'll get a list of members of the Ford family. However, if you open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/advanced-search-button}}>> button, your search will be limited to this context so you can easily find the description where I mention the Ford family.
 
 ; Filter the list further in [[$:/AdvancedSearch]]
-: Click the {{$:/core/images/advanced-search-button}} icon in any of the search tabs to copy the search term ([[chicken]] and [[sauces]] tags) into [[$:/AdvancedSearch]] (the same list should be displayed as in the search results). You can still enter the text you are looking for in the search box in the sidebar, but add extra filters in [[$:/AdvancedSearch]].
+: Click the <<_icon {{$:/core/images/advanced-search-button}}>> button in any of the search tabs to continue the search in [[$:/AdvancedSearch]] (the same list should be displayed as in the Locator search results). You can still enter the text you are looking for in the search box in the sidebar, but add extra [[filters|https://tiddlywiki.com/#Filter%20Operators]] in [[$:/AdvancedSearch]] (for example, append `+[reverse[]]`).
 
-; Create a new tiddler from the search text
-: Create a new tiddler by clicking on the {{$:/core/images/new-button}} icon, it's title will be the search term and assigned to the last selected ancestor ({{$:/core/images/link}}, [[chicken]] in this example) and all direct tags ({{$:/core/images/tag-button}}, e.g. [[sauces]]).
+!! View items with different templates
+
+It is useful if you can open each of the desired tiddlers in the story river at the touch of a button, but there is an even more productive way.
+
+; Use any template for context items or even transclude them
+: Within the context settings (<<_icon {{$:/core/images/options-button}}>> button in the sidebar) you can specify which template you want to view the context items with. They appear as links by default, but you can even select transclusion to display the contents of the tiddler in addition to its title. A good example of this is a music collection: using the link template you first filter the list of audio files or YouTube videos for the items you want to listen to, then use the transclusion template to turn the list of tiddlers into a playlist. Take a look at [[Music]] for a real example. 
+
+; View and edit multiple tiddler fields at once
+: With the context items template you can view the fields of the tiddlers or even use the field editors.
+
+; Define your own templates
+: Open the [[field settings|$:/plugins/bimlas/locator/settings/settings]] to learn how to create your own templates.
+
+!! Multidimensional table of contents, mindmap features
+
+In [[Classic ToC]], you can only traverse a tree from top to bottom, as with a table of contents in a printed book: Larry's Cookbook, then Categories, Pasta, and so on. It's easy to use because we've known this kind of navigation for a long time, but that doesn't mean it's efficient.
+
+; Invert direction, find out where the tiddler is in the tree
+: Use [[Classic ToC]] to find which branches of the table of contents the [[P. F. Chang's Lemon Pepper Shrimp]] tiddler is in. This cannot be done using the [[Classic ToC]] (as far as I know), but only by opening the tiddler, its tags, then their tags, and so on until you find the TableOfContents tag, so you have to go up in the table of contents levels yourself. You can use the Locator to simplify this process by opening the tiddler in the sidebar (with the toolbar button), opening the context settings by the <<_icon {{$:/core/images/options-button}}>> button and turning on "Invert direction". It does exactly what its name says: you have traveled from top to bottom in the tree of table of contents so far, but now you will see the parents of the current tiddler instead of its children. Try turning this option off and on at different points in the tree to understand how it works.
+
+; Find other parents of the lowest elements (leaves)
+: Go to TableOfContents -> Larry's Cookbook -> Categories -> Pasta context. Let's say you want to know where [[Brown Rice Crispy Bar]] is in the table of contents besides the current context. You can do this by opening the tiddler, using the toolbar button to open the sidebar and turning on the "Invert direction" option in context settings (<<_icon {{$:/core/images/options-button}}>>). To make it easier, turn on the "Allow to open leaves" option so you can "focus" on the bottom elements, you can open them even if even if they have no children.
+
+!!! Use any field to define a tree, add tiddler to any number of trees
+
+Honestly, I see great potential in these features, but I have not yet experienced how to use them in the right way. If you already have experience with similar systems or have a proven method of using them, please write it in the "Disqus comments" at the bottom of this tiddler!
+
+; Use links in text as table of contents
+: The table of contents is structured in such a way that when one tiddler is tagged with another, the latter becomes the parent of the first, they becomes connected. Since the links in the text also connect the tiddlers, could we have a table of contents built by the links (so without tags at all)? Open [[Larry's Cookbook]] in the sidebar and press the <<_icon {{$:/core/images/options-button}}>> to open settings, set the tree to be "LINKS-IN-TEXT" based. Each of the links in the tiddler becomes an entry, and if they contain links too, you can open them as you do with branches of the table of contents.
+
+; Connect tiddlers by fields
+: Like tags, any field can bind tiddlers, and the resulting tree can be traversed just like the table of contents. It's practically a non-graphical, text only mindmap. To see how it works, open [[TiddlyMap Activities example]].
+
+!! Field settings
+
+To configure the fields, what template to use, etc., open [[field settings|$:/plugins/bimlas/locator/settings/settings]]. You can also access this from context settings and search tabs by the <<_icon {{$:/core/images/options-button}}>> button.
 
 ''Please [[star on GitHub|https://github.com/bimlas/tw5-locator]] if you like the plugin!''
 
-</div>
-
-!! How to install
+! How to install
 
 Drag-n-drop its [[tiddler|$:/plugins/bimlas/locator]] and these pre-made tiddlers into your wiki.
 
@@ -63,4 +152,12 @@ Drag-n-drop its [[tiddler|$:/plugins/bimlas/locator]] and these pre-made tiddler
 <$link><<currentTiddler>></$link><br/>
 </$list>
 
-  You may also need the [[Kin filter|https://bimlas.gitlab.io/tw5-kin-filter]], see the plugin's description for details.
+! Similar plugins
+
+* [[Category List|https://ooktech.com/jed/ExampleWikis/CategoryList/]]
+* [[Generic Add or Remove mk2|https://ooktech.com/jed/ExampleWikis/Version518Fun/#Generic%20Add%20or%20Remove%20mk%202]]
+* [[GenTags|https://ooktech.com/jed/ExampleWikis/GenericTagFields/]]
+* [[list-search|https://tobibeer.github.io/tb5/#list-search]]
+* [[TiddlyMap|http://tiddlymap.org/]]
+* [[TOC-Generic|https://hchaase.github.io/HC-Plugins/#TOC-Generic%20Introduction]]
+* [[tocP|https://wikilabs.github.io/editions/tocP/]]
