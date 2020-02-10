@@ -1,5 +1,5 @@
 created: 20190120115910162
-modified: 20200210162320716
+modified: 20200210183722354
 tags: TableOfContents
 title: README
 type: text/vnd.tiddlywiki
@@ -36,7 +36,7 @@ Drag-n-drop its [[tiddler|$:/plugins/bimlas/locator]] and these pre-made tiddler
 
 ''The plugin consists of separate parts'', each of them can be used on its own, so ''it is possible to use only the parts you like'', but they can be used most effectively together because ''they interact with each other''.
 
-<$list filter="[prefix[Locator]]">
+<$list filter="[prefix[Locator]!tag[Tutorial]]">
 <$link><<currentTiddler>></$link><br/>
 </$list>
 
