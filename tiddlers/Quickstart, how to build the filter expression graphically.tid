@@ -1,5 +1,5 @@
 created: 20200210160506659
-modified: 20200211111017542
+modified: 20200211114335422
 tags: Tutorial
 title: Quickstart, how to build the filter expression graphically
 type: text/vnd.tiddlywiki
@@ -85,10 +85,54 @@ The simplest is to show you a quick example of how you can use the basic feature
 </tr>
 <tr><th colspan="2">View context items with different templates</th></tr>
 <tr>
-<td><tr>Let's look at the sidebar again. Currently, children of [[Music]] are listed, more precisely links to them. If you would like to view their contents without opening their tiddlers, click the <<_icon {{$:/core/images/options-button}}>> button and select "Transclusion" from the context item templates. After trying out the different templates, switch back to "Link".</tr></td>
+<td><tr>Let's look at the sidebar again. Currently, children of [[Music]] are listed, more precisely links to them. If you would like to view their contents without opening their tiddlers, click the <<_icon {{$:/core/images/options-button}}>> (context settings) button and select "Transclusion" from the context item templates. After trying out the different templates, switch back to "Link".</tr></td>
 <td><pre>`<$list
   filter="[tag[Music]]"
   template="$:/plugins/bimlas/locator/field-templates/transclusion"
+>
+
+</$list>`</pre></td>
+</tr>
+<tr><th colspan="2">Use table of contents as a mindmap</th></tr>
+<tr>
+<td><tr>You cannot go deeper into the list because this is the end of the [[Music]] section of the table of contents, the tiddlers listed here are not tags of other tiddlers.
+In the context settings you will find an "Allow to open leaves" button, which allows you to position the "lowest" edge elements, even if they have no children. Turn it on and "open [[Splinters]] directory".</tr></td>
+<td><pre>`<$list
+  filter="[tag[Splinters]]"
+>
+
+</$list>`</pre></td>
+</tr>
+<tr>
+<td><tr>Also in the context settings is the "Invert direction" option: if you enable it, it will list its "parents" instead of [[Splinters]] 's "children", ie its [[Splinters]] tags. This is useful because it allows you to move up in the tree, so you can move to the higher levels of the table of contents, and see which branches are contains the tiddler besides the current.</tr></td>
+<td><pre>`<$list
+  filter="[[Splinters]tags[]]"
+>
+
+</$list>`</pre></td>
+</tr>
+<tr>
+<td><tr>Turn off "Invert direction" and "Allow to open leaves" and go to TableOfContents -> [[README]] context. You currently see the tiddlers that have the README tag.</tr></td>
+<td><pre>`<$list
+  filter="[tag[README]]"
+>
+
+</$list>`</pre></td>
+</tr>
+<tr>
+<td><tr>The links in the README will now be listed. Which tiddler also contains links, you can open its context, so you can navigate through links like in the table of context.</tr></td>
+<td><pre>`<$list
+  filter="[[README]links[]]"
+>
+
+</$list>`</pre></td>
+</tr>
+<tr>
+<td><tr>Just like `tags`, any field can connect tiddlers. To be able to select your desired field from this list, [[set the field|$:/plugins/bimlas/locator/settings/settings]] to be usable to build a tree. For example, if you wanted to view README children by `custom` field instead of `tags`, this would be the list.</tr></td>
+<td>
+//`[tag[README]]` is equivalent to `[contains:tags[README]]`, so you can do this with any field//
+<pre>`<$list
+  filter="[contains:custom[README]]"
 >
 
 </$list>`</pre></td>
