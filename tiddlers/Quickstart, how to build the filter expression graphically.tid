@@ -1,18 +1,20 @@
 created: 20200210160506659
-modified: 20200211091937340
+modified: 20200211111017542
 tags: Tutorial
 title: Quickstart, how to build the filter expression graphically
 type: text/vnd.tiddlywiki
 
-The simplest is to show you a quick example of how you can use the basic features. On the left side of the table are the steps of the Locator and on the right side are the terms that would give a list of the contextual items you see in the Locator.
+The simplest is to show you a quick example of how you can use the basic features. On the left side of the table are the steps of Locator and on the right side are the codes that would give the list of context items you see in the Locator.
 
 <table>
-<tr><th style="width: 40%">Locator</th><th>List widget</th></tr>
+<tr><th style="width: 50%">Locator</th><th>List widget</th></tr>
 <tr><th  colspan="2">Navigate in table of contents</th></tr>
 <tr>
 <td>Go to [[Music]] in the Locator sidebar by clicking on <<_icon {{$:/core/images/right-arrow}}>> (this is the same entry as you would see in the classic table of contents, but different in presentation, compare with [[Classic ToC]] sidebar if you want). Open [[Subway]] from the list and view its fields in the [[Info panel|https://tiddlywiki.com/#InfoPanel]]. As you can see, the value of the `author` field is` Rawtekk`. Now, look for the context items that also contain `Rawtekk` in the`author` field...</td>
 <td>
-<pre>`<$list filter="[tag[Music]]">
+<pre>`<$list
+  filter="[tag[Music]]"
+>
 
 </$list>`
 </pre></td>
@@ -31,26 +33,34 @@ The simplest is to show you a quick example of how you can use the basic feature
 </tr>
 <tr>
 <td>Click on <<_icon {{$:/core/images/new-button}}>> to narrow the list to the desired condition</td>
-<td><pre>`<$list filter="[tag[Music]contains:author[Rawtekk]]">
+<td><pre>`<$list
+  filter="[tag[Music]contains:author[Rawtekk]]"
+>
 
 </$list>`</pre></td>
 </tr>
 <tr>
 <td>To filter out tiddlers with other artists (eg Audeka) from the list, press the <<_icon {{$:/core/images/close-button}}>> next to it</td>
-<td><pre>`<$list filter="[tag[Music]contains:author[Rawtekk]!contains:author[Audeka]]">
+<td><pre>`<$list
+  filter="[tag[Music]contains:author[Rawtekk]!contains:author[Audeka]]"
+>
 
 </$list>`</pre></td>
 </tr>
 <tr>
 <td>Press the <<_icon {{$:/core/images/cancel-button}}>> to remove all of the filters at once</td>
-<td><pre>`<$list filter="[tag[Music]]">
+<td><pre>`<$list
+  filter="[tag[Music]]"
+>
 
 </$list>`</pre></td>
 </tr>
 <tr><th colspan="2">Search all tiddler fields</th></tr>
 <tr>
 <td>If you want to filter for field values not only at a given table of contents level, but in each tiddler, enter the search term in standard search. Search for `beans` field value in the Fields search tab.</td>
-<td><pre>`<$list filter="[search:*[beans]]">
+<td><pre>`<$list
+  filter="[search:*[beans]]"
+>
 
 </$list>`</pre>
 
@@ -59,16 +69,30 @@ The simplest is to show you a quick example of how you can use the basic feature
 </tr>
 <tr>
 <td>Press the <<_icon {{$:/core/images/new-button}}>> button again to filter, the list contains only matching tiddlers</td>
-<td><pre>`<$list filter="[contains:tags[beans]]">
+<td><pre>`<$list
+  filter="[contains:tags[beans]]"
+>
 
 </$list>`</pre></td>
 </tr>
 <tr>
 <td>Switch to the Locator search tab, which searches in the text instead of field values. Search for "chili". Because field filters specify "beans" tag and the search string is "chili", you will see tiddlers that match these parameters.</td>
-<td><pre>`<$list filter="[contains:tags[beans]search[chili]]">
+<td><pre>`<$list
+  filter="[contains:tags[beans]search[chili]]"
+>
+
+</$list>`</pre></td>
+</tr>
+<tr><th colspan="2">View context items with different templates</th></tr>
+<tr>
+<td><tr>Let's look at the sidebar again. Currently, children of [[Music]] are listed, more precisely links to them. If you would like to view their contents without opening their tiddlers, click the <<_icon {{$:/core/images/options-button}}>> button and select "Transclusion" from the context item templates. After trying out the different templates, switch back to "Link".</tr></td>
+<td><pre>`<$list
+  filter="[tag[Music]]"
+  template="$:/plugins/bimlas/locator/field-templates/transclusion"
+>
 
 </$list>`</pre></td>
 </tr>
 </table>
 
-These are just the most basic capabilities of the plugin, so please read the full [[tutorial|Tutorial]].
+Please don't miss to read the full [[tutorial|Tutorial]].
