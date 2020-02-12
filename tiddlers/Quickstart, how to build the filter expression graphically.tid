@@ -1,5 +1,5 @@
 created: 20200210160506659
-modified: 20200211114335422
+modified: 20200212104438719
 tags: Tutorial
 title: Quickstart, how to build the filter expression graphically
 type: text/vnd.tiddlywiki
@@ -22,13 +22,11 @@ The simplest is to show you a quick example of how you can use the basic feature
 <tr><th colspan="2">Filter context items by field value</th></tr>
 <tr>
 <td>Open the "Filter by fields" menu above the context items, you can see the fields of the context elements. Open the `author` list so you can see each`author` value of context items at once.</td>
-<td><pre>`<$set name="fieldValues" filter="[tag[Music]get[author]each:value[]]">
-  <$list filter="[enlist<fieldValues>]">
+<td><pre>`<$list
+  filter="[tag[Music]each:list-item[author]]"
+>
 
-  </$list>
-</$set>`</pre>
-
-//Please help me improving this example//
+</$list>`</pre>
 </td>
 </tr>
 <tr>
