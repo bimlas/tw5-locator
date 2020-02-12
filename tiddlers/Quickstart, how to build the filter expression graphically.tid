@@ -1,5 +1,5 @@
 created: 20200210160506659
-modified: 20200212104438719
+modified: 20200212155605758
 tags: Tutorial
 title: Quickstart, how to build the filter expression graphically
 type: text/vnd.tiddlywiki
@@ -118,7 +118,7 @@ In the context settings you will find an "Allow to open leaves" button, which al
 </$list>`</pre></td>
 </tr>
 <tr>
-<td><tr>The links in the README will now be listed. Which tiddler also contains links, you can open its context, so you can navigate through links like in the table of context.</tr></td>
+<td><tr>In the context settings set the field of the tree to "LINK-IN-TEXT", the links in the README will be listed. Which tiddler also contains links, you can open its context, so you can navigate through links like in the table of context.</tr></td>
 <td><pre>`<$list
   filter="[[README]links[]]"
 >
@@ -126,7 +126,7 @@ In the context settings you will find an "Allow to open leaves" button, which al
 </$list>`</pre></td>
 </tr>
 <tr>
-<td><tr>Just like `tags`, any field can connect tiddlers. To be able to select your desired field from this list, [[set the field|$:/plugins/bimlas/locator/settings/settings]] to be usable to build a tree. For example, if you wanted to view README children by `custom` field instead of `tags`, this would be the list.</tr></td>
+<td><tr>Just like `tags`, any field can connect tiddlers. To be able to select your desired field from this list, [[set the field|$:/plugins/bimlas/locator/settings/settings]] to be selectable as field of tree. For example, if you want to view the children of README by `custom` field instead of `tags`, you would see the output of the code on the right.</tr></td>
 <td>
 //`[tag[README]]` is equivalent to `[contains:tags[README]]`, so you can do this with any field//
 <pre>`<$list
