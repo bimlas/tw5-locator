@@ -2,7 +2,7 @@ tags: $:/tags/Macro
 title: $:/plugins/bimlas/locator/macros/locator-view
 type: text/vnd.tiddlywiki
 
-\define locator-view(baseTitle fieldOfRelationship:"tags" templateOfContextItems:"$:/plugins/bimlas/locator/field-templates/link")
+\define locator-view(baseTitle fieldOfRelationship:"tags" templateOfContextItems:"$:/plugins/bimlas/locator/field-templates/link" beforeList afterList)
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
     <$vars
@@ -14,6 +14,7 @@ type: text/vnd.tiddlywiki
       <!-- I have to create them nested because internal variables use external ones -->
       <$vars currentField={{{ [subfilter<filter-field-of-relationship>] }}}>
         <$vars filterContextItems=<<filter-view-context>>>
+          <<__beforeList__>>
           <div class="tc-table-of-contents">
 
             {{$:/plugins/bimlas/locator/templates/history}}
@@ -32,6 +33,7 @@ type: text/vnd.tiddlywiki
             </ol>
 
           </div>
+          <<__afterList__>>
         </$vars>
       </$vars>
     </$vars>

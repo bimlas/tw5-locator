@@ -1,0 +1,20 @@
+tags: $:/tags/Macro
+title: $:/plugins/bimlas/locator/macros/locator-list
+type: text/vnd.tiddlywiki
+
+\define locator-list(filter template beforeList afterList)
+  <!-- Hide internal macros, do not make them globally available -->
+  <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
+    <$vars
+      contextState="$:/state/bimlas/locator/list/context/$(currentTiddler)$"
+      intersectionState="$:/state/bimlas/locator/list/intersection/$(currentTiddler)$"
+      differenceState="$:/state/bimlas/locator/list/difference/$(currentTiddler)$"
+      filterContextItems="[subfilter<filter-list-context>]"
+    >
+      <<__beforeList__>>
+      {{$:/plugins/bimlas/locator/templates/fields-filter}}
+      <$list filter=<<filterContextItems>> template=<<__template__>>/>
+      <<__afterList__>>
+    </$vars>
+  </$importvariables>
+\end
