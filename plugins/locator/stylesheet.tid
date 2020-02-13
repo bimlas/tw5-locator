@@ -29,6 +29,9 @@ li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
   margin-top: 3px;
   margin-bottom: 0;
 }
+.bimlas-locator .toc-item.current-story > a {
+  color: <<colour dirty-indicator>>;
+}
 .tc-menu-list-item.bimlas-locator > .tc-droppable {
   display: inline-block;
 }
