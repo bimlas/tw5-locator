@@ -3,7 +3,7 @@ title: $:/plugins/bimlas/locator/buttons/go-down-to-context
 type: text/vnd.tiddlywiki
 
 \define node()
-  <$button tooltip="Go to context, show chidlren of this tiddler" class=<<link-button-class>> actions={{$:/plugins/bimlas/locator/actions/add-to-history}}>
+  <$button tooltip="Go to context, show children of this tiddler" class=<<link-button-class>> actions={{$:/plugins/bimlas/locator/actions/add-to-history}}>
     {{$:/plugins/bimlas/locator/buttons/context-arrow}}
   </$button>
 \end
