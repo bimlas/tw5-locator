@@ -1,5 +1,5 @@
 created: 20200210160506659
-modified: 20200215111428933
+modified: 20200215131315210
 tags: Tutorial
 title: Quickstart, how to build the filter expression graphically
 type: text/vnd.tiddlywiki
@@ -55,7 +55,7 @@ The simplest is to show you a quick example of how you can use the basic feature
 </tr>
 <tr><th colspan="2">Add new field values to tiddlers</th></tr>
 <tr>
-<td>To add a field value to a tiddler, open it for editing and enter any value in the field input at the bottom. For example, add a `release-date` field to [[Subway]] with the value `2016-12-06`. If you open the field filter now, you will also find this new value. Try filtering the results for the tiddlers that contain this value. Please clear the field filters after you are done.</td>
+<td>To add a field value to a tiddler, open it for editing and enter any value in the field input at the bottom. For example, add a `release-date` field to [[Subway]] with the value `2016-12-06`. If you open the field filter now, you will also find this new value. Try filtering the results for the tiddlers that contain this value. Please clear the field filters after you are done. You can set up the type of the field (`single value` or `[[list of]] [[tiddler titles]]`) in [[field settings|$:/plugins/bimlas/locator/settings/settings]].</td>
 <td><pre>`<$list
   filter="[tag[Music]contains:release-date[2016-12-06]]"
 >
