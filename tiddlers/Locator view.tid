@@ -1,7 +1,7 @@
 caption: Locator
 created: 20190109213701491
 list-before: $:/core/ui/SideBar/Open
-modified: 20191026000128685
+modified: 20200215110738662
 tags: $:/tags/SideBar
 title: Locator view
 type: text/vnd.tiddlywiki
@@ -10,4 +10,4 @@ type: text/vnd.tiddlywiki
   <<locator-view baseTitle:"TableOfContents">>
 </$reveal>
 
-> This sidebar is hidden when the focus is on the search entry to increase responsiveness - see [[Locator view]] for the code.
+> The content of the Locator sidebar is hidden in this demo when standard search is in focus to increase responsiveness. See [[Tips tab|$:/plugins/bimlas/locator/README/TIPS]] of the plugin for details.

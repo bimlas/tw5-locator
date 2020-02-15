@@ -1,5 +1,5 @@
 created: 20200210160506659
-modified: 20200212155605758
+modified: 20200215105006476
 tags: Tutorial
 title: Quickstart, how to build the filter expression graphically
 type: text/vnd.tiddlywiki
@@ -10,7 +10,7 @@ The simplest is to show you a quick example of how you can use the basic feature
 <tr><th style="width: 50%">Locator</th><th>List widget</th></tr>
 <tr><th  colspan="2">Navigate in table of contents</th></tr>
 <tr>
-<td>Go to [[Music]] in the Locator sidebar by clicking on <<_icon {{$:/core/images/right-arrow}}>> (this is the same entry as you would see in the classic table of contents, but different in presentation, compare with [[Classic ToC]] sidebar if you want). Open [[Subway]] from the list and view its fields in the [[Info panel|https://tiddlywiki.com/#InfoPanel]]. As you can see, the value of the `author` field is` Rawtekk`. Now, look for the context items that also contain `Rawtekk` in the`author` field...</td>
+<td>Go to [[Music]] in the Locator sidebar by clicking on <<_icon {{$:/core/images/right-arrow}}>> (this is the same entry as you would see in the classic table of contents, but different in presentation, compare with [[Classic ToC]] sidebar if you want).</td>
 <td>
 <pre>`<$list
   filter="[tag[Music]]"
@@ -21,7 +21,7 @@ The simplest is to show you a quick example of how you can use the basic feature
 </tr>
 <tr><th colspan="2">Filter context items by field value</th></tr>
 <tr>
-<td>Open the "Filter by fields" menu above the context items, you can see the fields of the context elements. Open the `author` list so you can see each`author` value of context items at once.</td>
+<td>Open [[Subway]] from the list and view its fields in the [[Info panel|https://tiddlywiki.com/#InfoPanel]]. As you can see, the value of the `author` field is `Rawtekk`. Now, look for the context items that also contain `Rawtekk` in the `author` field. Open the "Filter by fields" menu above the context items. You will see the fields of the context items, now open the `author` list so you will see each `author` of the context items at once.</td>
 <td><pre>`<$list
   filter="[tag[Music]each:list-item[author]]"
 >
@@ -30,7 +30,7 @@ The simplest is to show you a quick example of how you can use the basic feature
 </td>
 </tr>
 <tr>
-<td>Click on <<_icon {{$:/core/images/new-button}}>> to narrow the list to the desired condition</td>
+<td>Click on <<_icon {{$:/core/images/new-button}}>> near `Rawtekk` to narrow the list to the desired condition</td>
 <td><pre>`<$list
   filter="[tag[Music]contains:author[Rawtekk]]"
 >
@@ -38,7 +38,7 @@ The simplest is to show you a quick example of how you can use the basic feature
 </$list>`</pre></td>
 </tr>
 <tr>
-<td>To filter out tiddlers with other artists (eg Audeka) from the list, press the <<_icon {{$:/core/images/close-button}}>> next to it</td>
+<td>To filter out tiddlers with other artists (eg `Audeka`) from the list, press the <<_icon {{$:/core/images/close-button}}>> next to it</td>
 <td><pre>`<$list
   filter="[tag[Music]contains:author[Rawtekk]!contains:author[Audeka]]"
 >
@@ -49,6 +49,15 @@ The simplest is to show you a quick example of how you can use the basic feature
 <td>Press the <<_icon {{$:/core/images/cancel-button}}>> to remove all of the filters at once</td>
 <td><pre>`<$list
   filter="[tag[Music]]"
+>
+
+</$list>`</pre></td>
+</tr>
+<tr><th colspan="2">Add new field values to tiddlers</th></tr>
+<tr>
+<td>To add a field value to a tiddler, open it for editing and enter any value in the field input at the bottom. For example, add a `release-date` field to [[Subway]] with the value `2016-12-06`. If you open the field filter now, you will also find this new value. Try filtering the results for the tiddlers that contain this value. Please clear the field filters after you are done.<br>//You can read about field setups later.//</td>
+<td><pre>`<$list
+  filter="[tag[Music]contains:release-date[2016-12-06]]"
 >
 
 </$list>`</pre></td>
@@ -74,9 +83,18 @@ The simplest is to show you a quick example of how you can use the basic feature
 </$list>`</pre></td>
 </tr>
 <tr>
-<td>Switch to the Locator search tab, which searches in the text instead of field values. Search for "chili". Because field filters specify "beans" tag and the search string is "chili", you will see tiddlers that match these parameters.</td>
+<td>Switch to the Locator search tab, which searches in the text instead of field values. Search for "chili". Because field filters specify "beans" tag and the search string is "chili", you will see tiddlers that match these parameters. Clear the field filter by pressing the <<_icon {{$:/core/images/cancel-button}}>> on the top of the dropdown.</td>
 <td><pre>`<$list
   filter="[contains:tags[beans]search[chili]]"
+>
+
+</$list>`</pre></td>
+</tr>
+<tr><th colspan="2">Filter search results by field value</th></tr>
+<tr>
+<td>You can use the fields filter in the Locator search tab as you would in the sidebar. Search for "chili". The fields filter at the top of the dropdown lists the fields in the results. Filter the list of tiddlers by "beans" tag. You will get the same list of results as in the previous step.</td>
+<td><pre>`<$list
+  filter="[search[chili]contains:tags[beans]]"
 >
 
 </$list>`</pre></td>
@@ -125,6 +143,7 @@ In the context settings you will find an "Allow to open leaves" button, which al
 
 </$list>`</pre></td>
 </tr>
+<tr><th colspan="2">Connect tiddlers by any field besides tags</th></tr>
 <tr>
 <td><tr>Just like `tags`, any field can connect tiddlers. To be able to select your desired field from this list, [[set the field|$:/plugins/bimlas/locator/settings/settings]] to be selectable as field of tree. For example, if you want to view the children of README by `custom` field instead of `tags`, you would see the output of the code on the right.</tr></td>
 <td>
