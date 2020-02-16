@@ -8,5 +8,7 @@ type: text/vnd.tiddlywiki
   </$list>
   {{$:/plugins/bimlas/locator/buttons/search-in-context}}
 </$list>
-{{$:/plugins/bimlas/locator/buttons/collapse-history}}
+<$list filter="[subfilter<filter-history>rest[2]first[]]" variable="null">
+  {{$:/plugins/bimlas/locator/buttons/collapse-history}}
+</$list>
 {{$:/plugins/bimlas/locator/buttons/toggle-context-settings}}
