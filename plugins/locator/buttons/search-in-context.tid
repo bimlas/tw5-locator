@@ -36,5 +36,6 @@ type: text/vnd.tiddlywiki
   <<reset-search-context>>
   <<copy-filters>>
   <<search-in-current-context>>
+  <$action-sendmessage message $message="tm-notify" $param="$:/plugins/bimlas/locator/language/search-in-context"/>
   {{$:/core/images/advanced-search-button}}
 </$button>

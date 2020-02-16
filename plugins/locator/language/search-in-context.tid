@@ -1,0 +1,5 @@
+tags:
+title: $:/plugins/bimlas/locator/language/search-in-context
+type: text/vnd.tiddlywiki
+
+Locator search tab is limited to the current context.
