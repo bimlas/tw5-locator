@@ -2,5 +2,7 @@ tags:
 title: $:/plugins/bimlas/locator/templates/history-item
 type: text/vnd.tiddlywiki
 
-{{||$:/plugins/bimlas/locator/buttons/go-up-to-context}}
+<$list filter="[subfilter<filter-history>last[]!is[current]]" emptyMessage={{$:/plugins/bimlas/locator/buttons/blank}} variable="null">
+  {{||$:/plugins/bimlas/locator/buttons/go-up-to-context}}
+</$list>
 {{||$:/plugins/bimlas/locator/field-templates/link}}
