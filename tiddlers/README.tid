@@ -1,32 +1,34 @@
 created: 20190120115910162
-modified: 20200210183722354
+modified: 20200215095310420
 tags: TableOfContents
 title: README
 type: text/vnd.tiddlywiki
 
 This is the ''demo of the Locator [[TiddlyWiki|https://tiddlywiki.com/]] plugin''.
 
-Feel free to write down your thoughts and suggestions, ''you can comment at the bottom of each tiddler'' ("Show Disqus comments").
+Feel free to write down your thoughts and suggestions, you can comment at the bottom of each tiddler ("Show Disqus comments").
 
 ! What is the Locator exactly?
 
-Before I explain, ''let's clarify a few things about TiddlyWiki'':
+Before I explain, let's clarify a few things about TiddlyWiki:
 
 * Tiddlers can contain any data (notes, tasks, phone numbers, photos, music videos, recipes, products, family members, ...)
-* Tiddlers can have ''tags''
-* Tags can be used to ''"label" tiddlers'' to categorize them (just like hashtags)
-* Tags can be used to ''create hierarchies'', trees (table of contents) by adding the parent tiddler as a tag to the current tiddler
-* Tiddlers can have ''fields''
-* Fields can ''contain arbitrary data'' (date, numeric value, text, even a list of other tiddlers) which characterize the tiddler
-* ''Tags are stored in `tags` field'' of tiddler
+* Tiddlers can have tags
+* Tags can be used to "label" tiddlers to categorize them (just like hashtags)
+* Tags can be used to create hierarchies, trees (table of contents) by adding the parent tiddler as a tag to the current tiddler
+* Tiddlers can have fields
+* Fields can contain arbitrary data (date, numeric value, text, even a list of other tiddlers) which characterize the tiddler
+* Tags are stored in `tags` field of tiddler
 * Because `tags` is no different from the other fields, ''any field can be used as tags''
-* ''The links in the text also form a tree''
+* The links in the text also form a tree
 
-Locator provides ''a universal interface for navigating between your tiddlers and searching, filtering them'' without the need to write [[filter expressions|https://tiddlywiki.com/#Filters]]. The plugin contains ''a table of contents widget and an enhanced search engine'' that contains a ''visual filter builder to filter results by tags and field values''. You can ''organize the tiddlers to any number of trees, even by custom fields or links in text''. Unlike [[classic Table of Contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]], [[filter search|$:/core/ui/AdvancedSearch/Filter]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin handles these functions organically.
+Locator provides a universal interface for navigating between your tiddlers and searching, filtering them without the need to write [[filter expressions|https://tiddlywiki.com/#Filters]]. The plugin contains ''a table of contents macro'' and an enhanced search engine that contains a ''visual filter builder to filter results by tags and field values''. You can organize the tiddlers to any number of trees, even by custom fields or links in text. Unlike [[classic Table of Contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]], [[filter search|$:/core/ui/AdvancedSearch/Filter]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin handles these functions organically.
 
 ''If you have used the previous version, be sure to check [[changelog|$:/plugins/bimlas/locator/README/CHANGELOG]] for incompatible changes.''
 
-!! Introducing some features, ''read the [[tutorial|Tutorial]] to learn how to use the plugin'':
+!! Read the [[tutorial|Tutorial]] to learn how to use the plugin
+
+Introducing some features
 
 <iframe width="1280" height="720" src="https://www.youtube.com/embed/vqSKjafeZyE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -34,7 +36,7 @@ Locator provides ''a universal interface for navigating between your tiddlers an
 
 Drag-n-drop its [[tiddler|$:/plugins/bimlas/locator]] and these pre-made tiddlers into your wiki.
 
-''The plugin consists of separate parts'', each of them can be used on its own, so ''it is possible to use only the parts you like'', but they can be used most effectively together because ''they interact with each other''.
+The plugin consists of separate parts, each of them can be used on its own, so ''it is possible to use only the parts you like'', but they can be used most effectively together because they interact with each other.
 
 <$list filter="[prefix[Locator]!tag[Tutorial]]">
 <$link><<currentTiddler>></$link><br/>
