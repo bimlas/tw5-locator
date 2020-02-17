@@ -2,6 +2,6 @@ tags:
 title: $:/plugins/bimlas/locator/buttons/blank
 type: text/vnd.tiddlywiki
 
-<$button class=<<link-button-class>>>
+<button class=<<link-button-class>> disabled>
   {{$:/core/images/blank}}
-</$button>
+</button>
