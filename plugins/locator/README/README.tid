@@ -4,6 +4,8 @@ type: text/vnd.tiddlywiki
 
 ! Locator
 
+''DEVELOPER VERSION, DO NOT USE IT, USE ONLY THE OFFICIAL RELEASES FROM THE REPOSITORIES BELLOW!''
+
 Locator provides ''a universal interface for navigating between your tiddlers and searching, filtering them'' without the need to write [[filter expressions|https://tiddlywiki.com/#Filters]]. The plugin contains ''a table of contents widget and an enhanced search engine'' that contains a ''visual filter builder to filter results by tags and field values''. You can ''organize the tiddlers to any number of trees, even by custom fields or links in text''. Unlike [[classic Table of Contents|https://tiddlywiki.com/#Table-of-Contents%20Macros%20(Examples)]], [[standard search|$:/core/ui/AdvancedSearch/Standard]], [[filter search|$:/core/ui/AdvancedSearch/Filter]] and [[list of tags|$:/core/ui/MoreSideBar/Tags]], this plugin handles these functions organically.
 
 * https://bimlas.gitlab.io/tw5-locator (demo + install)
