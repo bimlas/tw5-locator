@@ -11,6 +11,7 @@ Unreleased
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v2.0.0...dev]]
 
 * Highlight currently opened tiddler in context items
+* Show buttons only if they have an effect (eg arrow next to last element of history makes no sense as we are already in this context)
 
 !! 2.0.0
 
