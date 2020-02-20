@@ -1,0 +1,39 @@
+created: 20200220211801338
+modified: 20200221115643883
+tags: Tutorial
+title: Very quick tutorial
+type: text/vnd.tiddlywiki
+
+''Basic navigation in table of contents''
+
+* Create a new tiddler named [[Top level]] and add the <<tag "TableOfContents">> tag
+* Notice that the tiddler appears in the table of contents in the Locator sidebar tab
+* Create a new tiddler named [[First item]] with the text "Primary" and add the <<tag "Top level">> tag
+* Next to the [[Top level]] in the sidebar, a <<_icon {{$:/core/images/right-arrow}}>> button has appeared, click on it to view its "children" (currently it's only [[First item]])
+* Create a new tiddler named [[Second item]] with the text "Secondary" and add the <<tag "Top level">> tag
+* Notice that the [[Second item]] appears in the table of contents in the Locator sidebar tab, so this sidebar mostly works like classic ToC (you can compare it by opening the [[Classic ToC]] sidebar)
+* Press the <<_icon {{$:/core/images/new-button}}>> button in the sidebar to create the [[Third item]] tiddler with the text "Tertiary" in the current context
+
+''Filter current context by field values''
+
+* Add the <<tag "First">> and <<tag "First and second">> tag to the [[First item]] tiddler, <<tag "Second">> and <<tag "First and second">> to [[Second item]]
+* Open the "Filter by fields" menu below the horizontal line
+* Open "tags" list
+* Press the <<_icon {{$:/core/images/new-button}}>> button next to <<tag "First">> to narrow the list to items that contain this tag
+* Press this button again to turn off the filter
+* Press the <<_icon {{$:/core/images/close-button}}>> button next to <<tag "First">> to narrow the list to items that does not contain this tag
+* Press this button again to turn off the filter
+* Press the <<_icon {{$:/core/images/new-button}}>> button next to <<tag "First and second">> and <<_icon {{$:/core/images/close-button}}>> next to <<tag "First">> to narrow the list to the desired items
+* Press the <<_icon {{$:/core/images/cancel-button}}>> next to "tags" to clear active filters
+
+''Narrow list of search results, search for field values''
+
+* In standard search, type "First" and switch to the "Fields" tab
+* Open the "tags" list and press <<_icon {{$:/core/images/new-button}}>> next to <<tag "First">>, the result is the same as in the sidebar
+* Press the <<_icon {{$:/core/images/close-button}}>> button next to <<tag "First">> and notice that this will list all tiddlers that do not have <<tag "First">> tag
+* Press the <<_icon {{$:/core/images/close-button}}>> button again to turn off the filter
+* Press the <<_icon {{$:/core/images/new-button}}>> next to <<tag "First and second">>
+* In standard search, type "Primary" and notice that the list has not changed because this tab only lists active filters besides the field values that match the text you are looking for
+* Switch to "Locator" search tab and notice that the list contains items that have <<tag "First and second">> tag and include "Primary" in their text
+* Open the field filter at the top of the search results and turn off <<tag "First and second">> tag filtering
+* Notice that the field filter lists the fields of all search results so you can use it to narrow down the list of results
