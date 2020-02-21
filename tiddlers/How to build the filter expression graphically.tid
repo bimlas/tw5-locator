@@ -1,7 +1,7 @@
 created: 20200210160506659
-modified: 20200215131315210
+modified: 20200221221119505
 tags: Tutorial
-title: Quickstart, how to build the filter expression graphically
+title: How to build the filter expression graphically
 type: text/vnd.tiddlywiki
 
 The simplest is to show you a quick example of how you can use the basic features. On the left side of the table are the steps of Locator and on the right side are the codes that would give the list of context items you see in the Locator.
