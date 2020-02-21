@@ -1,5 +1,5 @@
 created: 20200220211801338
-modified: 20200221115643883
+modified: 20200221142728819
 tags: Tutorial
 title: Very quick tutorial
 type: text/vnd.tiddlywiki
@@ -14,10 +14,10 @@ type: text/vnd.tiddlywiki
 * Notice that the [[Second item]] appears in the table of contents in the Locator sidebar tab, so this sidebar mostly works like classic ToC (you can compare it by opening the [[Classic ToC]] sidebar)
 * Press the <<_icon {{$:/core/images/new-button}}>> button in the sidebar to create the [[Third item]] tiddler with the text "Tertiary" in the current context
 
-''Filter current context by field values''
+''Filter current context by field values'' (you can filter for any field value in the same way as for tags)
 
 * Add the <<tag "First">> and <<tag "First and second">> tag to the [[First item]] tiddler, <<tag "Second">> and <<tag "First and second">> to [[Second item]]
-* Open the "Filter by fields" menu below the horizontal line
+* Open the "Filter by fields" menu below the horizontal line in the sidebar
 * Open "tags" list
 * Press the <<_icon {{$:/core/images/new-button}}>> button next to <<tag "First">> to narrow the list to items that contain this tag
 * Press this button again to turn off the filter
@@ -37,3 +37,21 @@ type: text/vnd.tiddlywiki
 * Switch to "Locator" search tab and notice that the list contains items that have <<tag "First and second">> tag and include "Primary" in their text
 * Open the field filter at the top of the search results and turn off <<tag "First and second">> tag filtering
 * Notice that the field filter lists the fields of all search results so you can use it to narrow down the list of results
+
+''Assign field values to tiddlers by drag and drop''
+
+* From the sidebar open [[First item]] and in edit mode add `my-field` field with `one two` value at the bottom of the tiddler, save the tiddler
+* Open the "my-field" list inside the fields filter menu in the sidebar
+* Open [[Second item]], select "Info" from the drop-down menu at the top and look at its fields
+* In the sidebar, drag and drop the [[Second item]] to `one two`
+* Look at [[Second item]] again and notice that it also got `my-field: one two`
+
+''Move tiddlers to other levels of the tree by drag and drop''
+
+* Open [[Second item]] and view it's tags
+* In the sidebar grab [[Second item]] and drop it onto [[First item]]
+* [[Second item]] disappeared from list, but <<_icon {{$:/core/images/right-arrow}}>> button appeared next to [[First item]], click on it
+* Only [[Second item]] is visible and its tags reveal what happened: <<tag "Top level">> tag changed to <<tag "First item">>, so we moved [[Second item]] to another level of the tree
+* Open the [[Top level]] context by clicking on the <<_icon {{$:/core/images/right-arrow}}>> next to it
+* Grab [[Third Item]] and drop it onto [[TableOfContents]] above the horizontal line
+* Open the [[TableOfContents]] context and notice that the [[Third item]] has been moved there, so we moved it to a higher level in the tree
