@@ -1,8 +1,10 @@
 created: 20200222174925637
-modified: 20200222174950922
+modified: 20200222200101487
 tags: Walk-through
 title: Narrow list of search results, search for field values
 type: text/vnd.tiddlywiki
+
+{{$:/_videos/search-for-field-values.mp4}}
 
 * In standard search, type "First" and switch to the "Fields" tab
 * Open the "tags" list and press <<_icon {{$:/core/images/new-button}}>> next to <<tag "First">>, the result is the same as in the sidebar
