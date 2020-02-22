@@ -1,0 +1,15 @@
+created: 20200222175105272
+modified: 20200222175120748
+tags: Walk-through
+title: Recursive search
+type: text/vnd.tiddlywiki
+
+* Switch to the [[Classic ToC]] sidebar and open the context of [[Top level]] and all its descendants to have an overview of the tree (it has to be [[Top level]] -> [[First item]] -> [[Second item]])
+* In standard search "Fields" tab, search for the <<tag "Top level">> tag and press the <<_icon {{$:/core/images/new-button}}>> button next to it: as before, you will see the tiddlers that have the specified tag
+* Also press the <<_icon {{$:/core/images/link}}>> button to include each descendants (recursively) of the specified tag to the list
+* Press the <<_icon {{$:/core/images/close-button}}>> to exclude them from the search results so every tiddler will be listed expect descendants of [[Top level]]
+* Turn off the filters by pressing these buttons again
+* With few tiddlers unable to show why this is useful, so open the [[Family tree of Ford]] tiddler for a better example: each person in the picture has a tiddler, the family tree is structured as the table of contents works: the parents tag the children
+* In the standard search "Fields" tab, search for [[Henry Ford II]] and press the <<_icon {{$:/core/images/new-button}}>> and <<_icon {{$:/core/images/link}}>> buttons next to it: all of [[Henry Ford II]]'s successor will be on the list
+* Switch to the Locator search tab and search for "Edsel": although the family tree includes both [[Edsel Ford]] and [[Edsel Ford II]], only the latter is the successor to Henry Ford II, so only he will appear in the results
+* Turn off the filters by pressing <<_icon {{$:/core/images/cancel-button}}>> at the top of the search dropdown

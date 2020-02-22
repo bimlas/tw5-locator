@@ -1,0 +1,15 @@
+created: 20200222174925637
+modified: 20200222174950922
+tags: Walk-through
+title: Narrow list of search results, search for field values
+type: text/vnd.tiddlywiki
+
+* In standard search, type "First" and switch to the "Fields" tab
+* Open the "tags" list and press <<_icon {{$:/core/images/new-button}}>> next to <<tag "First">>, the result is the same as in the sidebar
+* Press the <<_icon {{$:/core/images/close-button}}>> button next to <<tag "First">> and notice that this will list all tiddlers that do not have <<tag "First">> tag
+* Press the <<_icon {{$:/core/images/close-button}}>> button again to turn off the filter
+* Press the <<_icon {{$:/core/images/new-button}}>> next to <<tag "First and second">>
+* In standard search, type "Primary" and notice that the list has not changed because this tab only lists active filters besides the field values that match the text you are looking for
+* Switch to "Locator" search tab and notice that the list contains items that have <<tag "First and second">> tag and include "Primary" in their text
+* Open the field filter at the top of the search results and turn off <<tag "First and second">> tag filtering
+* Notice that the field filter lists the fields of all search results so you can use it to narrow down the list of results

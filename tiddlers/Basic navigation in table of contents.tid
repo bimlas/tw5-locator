@@ -1,0 +1,15 @@
+created: 20200222174043938
+modified: 20200222174144717
+tags: Walk-through
+title: Basic navigation in table of contents
+type: text/vnd.tiddlywiki
+
+{{$:/_videos/basic-navigation.mp4}}
+
+* Create a new tiddler named [[Top level]] and add the <<tag "TableOfContents">> tag
+* Notice that the tiddler appears in the table of contents in the Locator sidebar tab
+* Create a new tiddler named [[First item]] with the text "Primary" and add the <<tag "Top level">> tag
+* Next to the [[Top level]] in the sidebar, a <<_icon {{$:/core/images/right-arrow}}>> button has appeared, click on it to view its "children" (currently it's only [[First item]])
+* Create a new tiddler named [[Second item]] with the text "Secondary" and add the <<tag "Top level">> tag
+* Notice that the [[Second item]] appears in the table of contents in the Locator sidebar tab, so this sidebar mostly works like classic ToC (you can compare it by opening the [[Classic ToC]] sidebar)
+* Press the <<_icon {{$:/core/images/new-button}}>> button in the sidebar to create the [[Third item]] tiddler with the text "Tertiary" in the current context

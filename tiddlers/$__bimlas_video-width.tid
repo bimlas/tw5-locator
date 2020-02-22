@@ -1,0 +1,10 @@
+created: 20200222173726873
+modified: 20200222173759273
+tags: $:/tags/Stylesheet
+title: $:/bimlas/video-width
+type: text/vnd.tiddlywiki
+
+video {
+  width: 100%;
+  object-fit: contain;
+}

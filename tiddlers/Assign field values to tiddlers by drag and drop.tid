@@ -1,0 +1,11 @@
+created: 20200222175026727
+modified: 20200222175037585
+tags: Walk-through
+title: Assign field values to tiddlers by drag and drop
+type: text/vnd.tiddlywiki
+
+* From the sidebar open [[First item]] and in edit mode add `my-field` field with `one two` value at the bottom of the tiddler, save the tiddler
+* Open the "my-field" list inside the fields filter menu in the sidebar
+* Open [[Second item]], select "Info" from the drop-down menu at the top and look at its fields
+* In the sidebar, drag and drop the [[Second item]] to `one two`
+* Look at [[Second item]] again and notice that it also got `my-field: one two`

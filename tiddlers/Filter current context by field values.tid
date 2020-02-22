@@ -1,0 +1,18 @@
+created: 20200222174845300
+modified: 20200222174917327
+tags: Walk-through
+title: Filter current context by field values
+type: text/vnd.tiddlywiki
+
+* Add the <<tag "First">> and <<tag "First and second">> tag to the [[First item]] tiddler, <<tag "Second">> and <<tag "First and second">> to [[Second item]]
+* Open the "Filter by fields" menu below the horizontal line in the sidebar
+* Open "tags" list
+* Press the <<_icon {{$:/core/images/new-button}}>> button next to <<tag "First">> to narrow the list to items that contain this tag
+* Press this button again to turn off the filter
+* Press the <<_icon {{$:/core/images/close-button}}>> button next to <<tag "First">> to narrow the list to items that does not contain this tag
+* Press this button again to turn off the filter
+* Press the <<_icon {{$:/core/images/new-button}}>> button next to <<tag "First and second">> and <<_icon {{$:/core/images/close-button}}>> next to <<tag "First">> to narrow the list to the desired items
+* Press the <<_icon {{$:/core/images/cancel-button}}>> next to "tags" to clear active filters
+* To practice using the fields filter, open the [[Music]] tiddler and try filtering items under different conditions
+
+//You can filter for any field value in the same way as for tags//

@@ -1,78 +1,8 @@
 created: 20200220211801338
-modified: 20200221220904367
+list: [[Basic navigation in table of contents]] [[Filter current context by field values]] [[Narrow list of search results, search for field values]] [[Assign field values to tiddlers by drag and drop]] [[Move tiddlers to other levels of the tree by drag and drop]] [[Recursive search]] [[Search in current context]]
+modified: 20200222181024254
 tags: Tutorial
 title: Walk-through
 type: text/vnd.tiddlywiki
 
-''Basic navigation in table of contents''
-
-* Create a new tiddler named [[Top level]] and add the <<tag "TableOfContents">> tag
-* Notice that the tiddler appears in the table of contents in the Locator sidebar tab
-* Create a new tiddler named [[First item]] with the text "Primary" and add the <<tag "Top level">> tag
-* Next to the [[Top level]] in the sidebar, a <<_icon {{$:/core/images/right-arrow}}>> button has appeared, click on it to view its "children" (currently it's only [[First item]])
-* Create a new tiddler named [[Second item]] with the text "Secondary" and add the <<tag "Top level">> tag
-* Notice that the [[Second item]] appears in the table of contents in the Locator sidebar tab, so this sidebar mostly works like classic ToC (you can compare it by opening the [[Classic ToC]] sidebar)
-* Press the <<_icon {{$:/core/images/new-button}}>> button in the sidebar to create the [[Third item]] tiddler with the text "Tertiary" in the current context
-
-''Filter current context by field values'' (you can filter for any field value in the same way as for tags)
-
-* Add the <<tag "First">> and <<tag "First and second">> tag to the [[First item]] tiddler, <<tag "Second">> and <<tag "First and second">> to [[Second item]]
-* Open the "Filter by fields" menu below the horizontal line in the sidebar
-* Open "tags" list
-* Press the <<_icon {{$:/core/images/new-button}}>> button next to <<tag "First">> to narrow the list to items that contain this tag
-* Press this button again to turn off the filter
-* Press the <<_icon {{$:/core/images/close-button}}>> button next to <<tag "First">> to narrow the list to items that does not contain this tag
-* Press this button again to turn off the filter
-* Press the <<_icon {{$:/core/images/new-button}}>> button next to <<tag "First and second">> and <<_icon {{$:/core/images/close-button}}>> next to <<tag "First">> to narrow the list to the desired items
-* Press the <<_icon {{$:/core/images/cancel-button}}>> next to "tags" to clear active filters
-
-''Narrow list of search results, search for field values''
-
-* In standard search, type "First" and switch to the "Fields" tab
-* Open the "tags" list and press <<_icon {{$:/core/images/new-button}}>> next to <<tag "First">>, the result is the same as in the sidebar
-* Press the <<_icon {{$:/core/images/close-button}}>> button next to <<tag "First">> and notice that this will list all tiddlers that do not have <<tag "First">> tag
-* Press the <<_icon {{$:/core/images/close-button}}>> button again to turn off the filter
-* Press the <<_icon {{$:/core/images/new-button}}>> next to <<tag "First and second">>
-* In standard search, type "Primary" and notice that the list has not changed because this tab only lists active filters besides the field values that match the text you are looking for
-* Switch to "Locator" search tab and notice that the list contains items that have <<tag "First and second">> tag and include "Primary" in their text
-* Open the field filter at the top of the search results and turn off <<tag "First and second">> tag filtering
-* Notice that the field filter lists the fields of all search results so you can use it to narrow down the list of results
-
-''Assign field values to tiddlers by drag and drop''
-
-* From the sidebar open [[First item]] and in edit mode add `my-field` field with `one two` value at the bottom of the tiddler, save the tiddler
-* Open the "my-field" list inside the fields filter menu in the sidebar
-* Open [[Second item]], select "Info" from the drop-down menu at the top and look at its fields
-* In the sidebar, drag and drop the [[Second item]] to `one two`
-* Look at [[Second item]] again and notice that it also got `my-field: one two`
-
-''Move tiddlers to other levels of the tree by drag and drop''
-
-* Open [[Second item]] and view it's tags
-* In the sidebar grab [[Second item]] and drop it onto [[First item]]
-* [[Second item]] disappeared from list, but <<_icon {{$:/core/images/right-arrow}}>> button appeared next to [[First item]], click on it
-* Only [[Second item]] is visible and its tags reveal what happened: <<tag "Top level">> tag changed to <<tag "First item">>, so we moved [[Second item]] to another level of the tree
-* Open the [[Top level]] context by clicking on the <<_icon {{$:/core/images/right-arrow}}>> next to it
-* Grab [[Third Item]] and drop it onto [[TableOfContents]] above the horizontal line
-* Open the [[TableOfContents]] context and notice that the [[Third item]] has been moved there, so we moved it to a higher level in the tree
-
-''Recursive search''
-
-* Switch to the [[Classic ToC]] sidebar and open the context of [[Top level]] and all its descendants to have an overview of the tree (it has to be [[Top level]] -> [[First item]] -> [[Second item]])
-* In standard search "Fields" tab, search for the <<tag "Top level">> tag and press the <<_icon {{$:/core/images/new-button}}>> button next to it: as before, you will see the tiddlers that have the specified tag
-* Also press the <<_icon {{$:/core/images/link}}>> button to include each descendants (recursively) of the specified tag to the list
-* Press the <<_icon {{$:/core/images/close-button}}>> to exclude them from the search results so every tiddler will be listed expect descendants of [[Top level]]
-* Turn off the filters by pressing these buttons again
-* With few tiddlers unable to show why this is useful, so open the [[Family tree of Ford]] tiddler for a better example: each person in the picture has a tiddler, the family tree is structured as the table of contents works: the parents tag the children
-* In the standard search "Fields" tab, search for [[Henry Ford II]] and press the <<_icon {{$:/core/images/new-button}}>> and <<_icon {{$:/core/images/link}}>> buttons next to it: all of [[Henry Ford II]]'s successor will be on the list
-* Switch to the Locator search tab and search for "Edsel": although the family tree includes both [[Edsel Ford]] and [[Edsel Ford II]], only the latter is the successor to Henry Ford II, so only he will appear in the results
-* Turn off the filters by pressing <<_icon {{$:/core/images/cancel-button}}>> at the top of the search dropdown
-
-''Search in current context''
-
-* Search for "   " (type enough space to display the dropdown) in the standard search Locator tab and notice that all tiddlers will be listed
-* Switch to Locator sidebar tab and navigate to [[TableOfContext]] -> [[Family tree of Ford]] -> [[Henry Ford]] -> [[Edsel Ford]] -> [[Henry Ford II]] and press the <<_icon {{$:/core/images/advanced-search-button}}>> button
-* Search for "   " in the standard search Locator tab and notice that only descendants of [[Henry Ford II]] are included in the search results (recursively)
-* In the Locator sidebar navigate to [[TableOfContext]] -> [[Music]] and press the <<_icon {{$:/core/images/advanced-search-button}}>> button again
-* Search for "   " in the standard search Locator tab and notice that only descendants of [[Music]] are included in the search results (recursively)
-* Turn off the filters by pressing <<_icon {{$:/core/images/cancel-button}}>> at the top of the search dropdown
+<<tabs "[tag[Walk-through]]" "" "$:/state/walk-through-tabs" "tc-vertical">>

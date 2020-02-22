@@ -1,0 +1,13 @@
+created: 20200222175045668
+modified: 20200222175058506
+tags: Walk-through
+title: Move tiddlers to other levels of the tree by drag and drop
+type: text/vnd.tiddlywiki
+
+* Open [[Second item]] and view it's tags
+* In the sidebar grab [[Second item]] and drop it onto [[First item]]
+* [[Second item]] disappeared from list, but <<_icon {{$:/core/images/right-arrow}}>> button appeared next to [[First item]], click on it
+* Only [[Second item]] is visible and its tags reveal what happened: <<tag "Top level">> tag changed to <<tag "First item">>, so we moved [[Second item]] to another level of the tree
+* Open the [[Top level]] context by clicking on the <<_icon {{$:/core/images/right-arrow}}>> next to it
+* Grab [[Third Item]] and drop it onto [[TableOfContents]] above the horizontal line
+* Open the [[TableOfContents]] context and notice that the [[Third item]] has been moved there, so we moved it to a higher level in the tree

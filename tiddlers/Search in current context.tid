@@ -1,0 +1,12 @@
+created: 20200222175125627
+modified: 20200222175206845
+tags: Walk-through
+title: Search in current context
+type: text/vnd.tiddlywiki
+
+* Search for "   " (type enough space to display the dropdown) in the standard search Locator tab and notice that all tiddlers will be listed
+* Switch to Locator sidebar tab and navigate to [[TableOfContext]] -> [[Family tree of Ford]] -> [[Henry Ford]] -> [[Edsel Ford]] -> [[Henry Ford II]] and press the <<_icon {{$:/core/images/advanced-search-button}}>> button
+* Search for "   " in the standard search Locator tab and notice that only descendants of [[Henry Ford II]] are included in the search results (recursively)
+* In the Locator sidebar navigate to [[TableOfContext]] -> [[Music]] and press the <<_icon {{$:/core/images/advanced-search-button}}>> button again
+* Search for "   " in the standard search Locator tab and notice that only descendants of [[Music]] are included in the search results (recursively)
+* Turn off the filters by pressing <<_icon {{$:/core/images/cancel-button}}>> at the top of the search dropdown
