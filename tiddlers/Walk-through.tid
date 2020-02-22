@@ -1,8 +1,8 @@
 created: 20200220211801338
 list: [[Basic navigation in table of contents]] [[Filter current context by field values]] [[Narrow list of search results, search for field values]] [[Assign field values to tiddlers by drag and drop]] [[Move tiddlers to other levels of the tree by drag and drop]] [[Recursive search]] [[Search in current context]]
-modified: 20200222181024254
+modified: 20200222181341536
 tags: Tutorial
 title: Walk-through
 type: text/vnd.tiddlywiki
 
-<<tabs "[tag[Walk-through]]" "" "$:/state/walk-through-tabs" "tc-vertical">>
+<<tabs "[tag[Walk-through]]" "Basic navigation in table of contents" "$:/state/walk-through-tabs" "tc-vertical">>
