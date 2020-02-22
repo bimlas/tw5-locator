@@ -15,6 +15,7 @@ pages:
     # GitLab needs 'public' dirname for deploy
     # https://gitlab.com/gitlab-org/gitlab-ee/issues/1719
     - mv output public
+    - mv videos public/
   artifacts:
     paths:
     - public
