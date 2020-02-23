@@ -1,10 +1,12 @@
 created: 20200222174845300
-modified: 20200222182756517
+modified: 20200223131236977
 tags: Walk-through
 title: Filter current context by field values
 type: text/vnd.tiddlywiki
 
 {{$:/_videos/fields-filter.mp4}}
+
+If you use a lot of tags, you may have encountered the problem of grouping tags: you added one to the tiddler to be in table of contents, another tag for hashtag-like grouping, and so on. You can differentiate tags by their name, color, or icon, but this is not enough, a more flexible grouping would be better: fields can also be used for grouping.
 
 * Add the <<tag "First">> and <<tag "First and second">> tag to the [[First item]] tiddler, <<tag "Second">> and <<tag "First and second">> to [[Second item]]
 * Open the "Filter by fields" menu below the horizontal line in the sidebar

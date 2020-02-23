@@ -1,10 +1,12 @@
 created: 20200222174043938
-modified: 20200222174144717
+modified: 20200223132139109
 tags: Walk-through
 title: Basic navigation in table of contents
 type: text/vnd.tiddlywiki
 
 {{$:/_videos/basic-navigation.mp4}}
+
+The sidebar works much like a classic table of contents, but it can only display one context at a time (a single level of a branch in a tree).
 
 * Create a new tiddler named [[Top level]] and add the <<tag "TableOfContents">> tag
 * Notice that the tiddler appears in the table of contents in the Locator sidebar tab
@@ -13,3 +15,5 @@ type: text/vnd.tiddlywiki
 * Create a new tiddler named [[Second item]] with the text "Secondary" and add the <<tag "Top level">> tag
 * Notice that the [[Second item]] appears in the table of contents in the Locator sidebar tab, so this sidebar mostly works like classic ToC (you can compare it by opening the [[Classic ToC]] sidebar)
 * Press the <<_icon {{$:/core/images/new-button}}>> button in the sidebar to create the [[Third item]] tiddler with the text "Tertiary" in the current context
+
+//Use the <<_icon {{$:/core/images/right-arrow}}>> icon next to titles to open its contexts.//

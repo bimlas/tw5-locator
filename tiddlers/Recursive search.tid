@@ -1,10 +1,12 @@
 created: 20200222175105272
-modified: 20200223114849664
+modified: 20200223131714892
 tags: Walk-through
 title: Recursive search
 type: text/vnd.tiddlywiki
 
 {{$:/_videos/recursive-search.mp4}}
+
+If you have more than one topic on a wiki (eg cookbook, family tree, music), then you probably want to limit your search to the tiddlers you are interested in.
 
 * Switch to the [[Classic ToC]] sidebar and open the context of [[Top level]] and all its descendants to have an overview of the tree (it has to be [[Top level]] -> [[First item]] -> [[Second item]])
 * In standard search "Fields" tab, search for the <<tag "Top level">> tag and press the <<_icon {{$:/core/images/new-button}}>> button next to it: as before, you will see the tiddlers that have the specified tag
