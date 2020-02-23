@@ -1,8 +1,10 @@
 created: 20200222175125627
-modified: 20200222175206845
+modified: 20200223120033302
 tags: Walk-through
 title: Search in current context
 type: text/vnd.tiddlywiki
+
+{{$:/_videos/search-in-current-context.mp4}}
 
 * Search for "   " (type enough space to display the dropdown) in the standard search Locator tab and notice that all tiddlers will be listed
 * Switch to Locator sidebar tab and navigate to [[TableOfContext]] -> [[Family tree of Ford]] -> [[Henry Ford]] -> [[Edsel Ford]] -> [[Henry Ford II]] and press the <<_icon {{$:/core/images/advanced-search-button}}>> button
