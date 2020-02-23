@@ -1,8 +1,10 @@
 created: 20200222175045668
-modified: 20200222175058506
+modified: 20200223105208496
 tags: Walk-through
 title: Move tiddlers to other levels of the tree by drag and drop
 type: text/vnd.tiddlywiki
+
+{{$:/_videos/move-tiddlers.mp4}}
 
 * Open [[Second item]] and view it's tags
 * In the sidebar grab [[Second item]] and drop it onto [[First item]]
