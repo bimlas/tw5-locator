@@ -1,0 +1,26 @@
+tags:
+title: $:/plugins/bimlas/locator/macros/action-macros
+type: text/vnd.tiddlywiki
+
+\define copy-field(sourceTiddler destinationTiddler field)
+  <$set name="value" tiddler=<<__sourceTiddler__>> field=<<__field__>>>
+    <$action-setfield $tiddler=<<__destinationTiddler__>> $field=<<__field__>> $value=<<value>>/>
+  </$set>
+\end
+
+\define copy-state(sourceMacro sourceTitle destinationMacro destinationTitle state)
+  <$action-deletetiddler $tiddler="$:/state/bimlas/locator/$destinationMacro$/$state$/$destinationTitle$"/>
+  <$list filter="[title[$:/state/bimlas/locator/$sourceMacro$/$state$/$sourceTitle$]fields[]] -[[title]]" variable="field">
+    <$macrocall
+      $name="copy-field"
+      sourceTiddler="$:/state/bimlas/locator/$sourceMacro$/$state$/$sourceTitle$"
+      destinationTiddler="$:/state/bimlas/locator/$destinationMacro$/$state$/$destinationTitle$"
+      field=<<field>>
+    />
+  </$list>
+\end
+
+\define clear-data-tiddler(tiddler)
+  <$action-deletetiddler $tiddler=<<__tiddler__>>/>
+  <$action-setfield $tiddler=<<__tiddler__>> type="application/json"/>
+\end

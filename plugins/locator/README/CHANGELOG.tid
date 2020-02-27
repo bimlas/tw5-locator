@@ -2,16 +2,13 @@ tags:
 title: $:/plugins/bimlas/locator/README/CHANGELOG
 type: text/vnd.tiddlywiki
 
-Unreleased
-
-[[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/master...dev]]
-
 !! Unreleased
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v2.0.0...dev]]
 
 * Highlight currently opened tiddler in context items
 * Show buttons only if they have an effect (eg arrow next to last element of history makes no sense as we are already in this context)
+* Add "Open in story river" button to `locator-view`
 
 !! 2.0.0
 

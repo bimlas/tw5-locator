@@ -6,9 +6,10 @@ type: text/vnd.tiddlywiki
   <$list filter="[subfilter<filter-field-of-relationship>!regexp[^LINKS-IN-TEXT$]]">
     {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
   </$list>
-  {{$:/plugins/bimlas/locator/buttons/search-in-context}}
+  {{||$:/plugins/bimlas/locator/buttons/search-in-context}}
 </$list>
 <$list filter="[subfilter<filter-history>rest[2]first[]]" variable="null">
   {{$:/plugins/bimlas/locator/buttons/collapse-history}}
 </$list>
+{{||$:/plugins/bimlas/locator/buttons/open-in-story-river}}
 {{$:/plugins/bimlas/locator/buttons/toggle-context-settings}}
