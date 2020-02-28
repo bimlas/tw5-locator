@@ -2,6 +2,9 @@ tags: $:/tags/Actions
 title: $:/plugins/bimlas/locator/actions/remove-filters
 type: text/vnd.tiddlywiki
 
-<$action-deletetiddler $tiddler=<<intersectionState>>/>
-<$action-deletetiddler $tiddler=<<differenceState>>/>
+<$macrocall $name="clear-data-tiddler" tiddler=<<intersectionState>>/>
+<$macrocall $name="clear-data-tiddler" tiddler=<<differenceState>>/>
+<$list filter="[<recursiveFilteringAvailable>regexp[yes]]" variable="null">
+  <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/recursive-filters/"/>
+</$list>
 <$action-setfield $tiddler=<<contextState>> opened-fields-filters=""/>
