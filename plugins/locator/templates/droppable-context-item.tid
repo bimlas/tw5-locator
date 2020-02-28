@@ -1,0 +1,9 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/droppable-context-item
+type: text/vnd.tiddlywiki
+
+<$macrocall
+  $name="droppable-menu-list-item"
+  content={{$:/plugins/bimlas/locator/templates/context-item}}
+  actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
+/>

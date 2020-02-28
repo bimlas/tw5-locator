@@ -2,10 +2,19 @@ tags:
 title: $:/plugins/bimlas/locator/templates/list-of-context-items
 type: text/vnd.tiddlywiki
 
-<$list filter=<<filterContextItems>>>
-  <$macrocall
-    $name="droppable-menu-list-item"
-    content={{$:/plugins/bimlas/locator/templates/context-item}}
-    actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
-  />
-</$list>
+\define regular-context-items()
+  <$list filter=<<filterContextItems>> template="$:/plugins/bimlas/locator/templates/droppable-context-item"/>
+\end
+
+\define links-in-text()
+  <$list filter="[subfilter<filterContextItems>sort[]]" template="$:/plugins/bimlas/locator/templates/context-item"/>
+\end
+
+<$vars
+  templateOfContextItems={{{ [title<contextState>get[template-of-context-items]] [title<__templateOfContextItems__>] -[[]] +[first[]] }}}
+  buttonOfContextItems="$:/plugins/bimlas/locator/buttons/go-down-to-context"
+>
+  <$list filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]" emptyMessage=<<regular-context-items>>>
+    <<links-in-text>>
+  </$list>
+</$vars>

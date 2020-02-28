@@ -16,7 +16,9 @@ type: text/vnd.tiddlywiki
         <$vars filterContextItems=<<filter-view-context>>>
           <div class="tc-table-of-contents">
 
-            {{$:/plugins/bimlas/locator/templates/history}}
+            <ol class="bimlas-locator">
+              {{$:/plugins/bimlas/locator/templates/history}}
+            </ol>
 
             ---
 
@@ -26,9 +28,7 @@ type: text/vnd.tiddlywiki
             </div>
             {{$:/plugins/bimlas/locator/templates/fields-filter}}
             <ol class="bimlas-locator">
-              <$list filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]" emptyMessage={{$:/plugins/bimlas/locator/templates/list-of-context-items}}>
-                {{||$:/plugins/bimlas/locator/templates/list-of-links-in-text}}
-              </$list>
+              {{$:/plugins/bimlas/locator/templates/list-of-context-items}}
             </ol>
 
           </div>

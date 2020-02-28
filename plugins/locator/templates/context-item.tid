@@ -4,9 +4,7 @@ type: text/vnd.tiddlywiki
 
 <$set name="class" filter="[[$:/HistoryList]field:current-tiddler<currentTiddler>]" value="toc-item current-story" emptyValue="toc-item">
   <li class=<<class>>>
-    {{||$:/plugins/bimlas/locator/buttons/go-down-to-context}}
-    <$list filter="[title<contextState>get[template-of-context-items]] [title<__templateOfContextItems__>] -[[]] +[first[]]" variable="template">
-      <$transclude tiddler=<<template>>/>
-    </$list>
+    <$transclude tiddler=<<buttonOfContextItems>>/>
+    <$transclude tiddler=<<templateOfContextItems>>/>
   </li>
 </$set>
