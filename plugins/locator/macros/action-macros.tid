@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define copy-state(sourceMacro sourceTitle destinationMacro destinationTitle state)
-  <$action-deletetiddler $tiddler="$:/state/bimlas/locator/$destinationMacro$/$state$/$destinationTitle$"/>
+  <<clear-data-tiddler tiddler:"$:/state/bimlas/locator/$destinationMacro$/$state$/$destinationTitle$">>
   <$list filter="[title[$:/state/bimlas/locator/$sourceMacro$/$state$/$sourceTitle$]fields[]] -[[title]]" variable="field">
     <$macrocall
       $name="copy-field"
