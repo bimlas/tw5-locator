@@ -16,7 +16,7 @@ type: text/vnd.tiddlywiki
         <$vars filterContextItems=<<filter-view-context>>>
           <div class="tc-table-of-contents">
 
-            <ol class="bimlas-locator">
+            <ol class="bimlas-locator view-history">
               {{$:/plugins/bimlas/locator/templates/history}}
             </ol>
 
@@ -27,7 +27,7 @@ type: text/vnd.tiddlywiki
               {{||$:/plugins/bimlas/locator/templates/view-toolbar}}
             </div>
             {{$:/plugins/bimlas/locator/templates/fields-filter}}
-            <ol class="bimlas-locator">
+            <ol class="bimlas-locator view-context-items">
               {{$:/plugins/bimlas/locator/templates/list-of-context-items}}
             </ol>
 

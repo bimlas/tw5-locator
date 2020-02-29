@@ -29,6 +29,12 @@ li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
   margin-top: 3px;
   margin-bottom: 0;
 }
+.bimlas-locator .toc-item a {
+  font-weight: initial;
+}
+.bimlas-locator.view-history li:last-of-type a {
+  font-weight: bold;
+}
 .bimlas-locator .current-story > a {
   color: <<colour dirty-indicator>>;
 }
