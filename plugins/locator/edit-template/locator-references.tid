@@ -4,7 +4,7 @@ title: $:/plugins/bimlas/locator/edit-template/locator-references
 type: text/vnd.tiddlywiki
 
 \define prompt()
-  The following references to this tiddler in //<<__field__>>// [[Locator field|$:/plugins/bimlas/locator/settings/settings]] will not be automatically updated:
+  The following references to this tiddler in //<<__field__>>// [[Locator field|$:/plugins/bimlas/locator/settings/fields]] will not be automatically updated:
 \end
 
 \define children-by-field(field)

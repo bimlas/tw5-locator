@@ -1,0 +1,18 @@
+tags:
+title: $:/plugins/bimlas/locator/settings/toolbars
+type: text/vnd.tiddlywiki
+
+\define config-base() $:/config/bimlas/locator/toolbars/
+
+! `locator-view` toolbar
+
+<$vars
+  tv-config-toolbar-icons="yes"
+  tv-config-toolbar-text="yes"
+>
+  <$macrocall
+    $name="list-tagged-draggable"
+    tag="$:/tags/bimlas/locator/view-toolbar"
+    itemTemplate="$:/core/ui/ControlPanel/Toolbars/ItemTemplate"
+  />
+</$vars>

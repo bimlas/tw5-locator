@@ -14,11 +14,12 @@ type: text/vnd.tiddlywiki
       <!-- I have to create them nested because internal variables use external ones -->
       <$vars currentField={{{ [subfilter<filter-field-of-relationship>] }}}>
         <$vars filterContextItems=<<filter-view-context>>>
-          <div class="tc-table-of-contents">
 
-            <ol class="bimlas-locator view-history">
-              {{$:/plugins/bimlas/locator/templates/history}}
-            </ol>
+            <div class="tc-table-of-contents">
+              <ol class="bimlas-locator view-history">
+                {{$:/plugins/bimlas/locator/templates/history}}
+              </ol>
+            </div>
 
             ---
 
@@ -27,11 +28,12 @@ type: text/vnd.tiddlywiki
               {{||$:/plugins/bimlas/locator/templates/view-toolbar}}
             </div>
             {{$:/plugins/bimlas/locator/templates/fields-filter}}
-            <ol class="bimlas-locator view-context-items">
-              {{$:/plugins/bimlas/locator/templates/list-of-context-items}}
-            </ol>
+            <div class="tc-table-of-contents">
+              <ol class="bimlas-locator view-context-items">
+                {{$:/plugins/bimlas/locator/templates/list-of-context-items}}
+              </ol>
+            </div>
 
-          </div>
         </$vars>
       </$vars>
     </$vars>

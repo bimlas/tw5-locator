@@ -1,0 +1,22 @@
+caption: {{$:/core/images/menu-button}} {{$:/plugins/bimlas/locator/language/buttons/view-toolbar-dropdown}}
+description: {{$:/plugins/bimlas/locator/language/buttons/view-toolbar-dropdown}}
+tags: $:/tags/bimlas/locator/view-toolbar
+title: $:/plugins/bimlas/locator/buttons/view-toolbar-dropdown
+type: text/vnd.tiddlywiki
+
+\define tooltip() {{$:/plugins/bimlas/locator/language/buttons/view-toolbar-dropdown}}
+\define icon() {{$:/core/images/menu-button}}
+
+<$button
+  popup={{{ [[$:/state/popup/bimlas/locator/view-toolbar-dropdown/]addsuffix<storyTiddler>] }}}
+  tooltip={{$:/plugins/bimlas/locator/language/buttons/view-toolbar-dropdown}}
+  aria-label={{$:/plugins/bimlas/locator/language/buttons/view-toolbar-dropdown}}
+  class={{{ [<tv-config-toolbar-class>addsuffix[ bimlas-locator]] }}}
+>
+  <$list filter="[<tv-config-toolbar-icons>match[yes]]">
+    {{$:/core/images/menu-button}}
+  </$list>
+  <$list filter="[<tv-config-toolbar-text>match[yes]]">
+    <span class="tc-btn-text"><$text text={{$:/plugins/bimlas/locator/language/buttons/view-toolbar-dropdown}}/></span>
+  </$list>
+</$button>

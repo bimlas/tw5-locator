@@ -2,14 +2,25 @@ tags:
 title: $:/plugins/bimlas/locator/templates/view-toolbar
 type: text/vnd.tiddlywiki
 
-<$list filter="[title<contextState>!field:invert-direction[yes]]" variable="null">
-  <$list filter="[subfilter<filter-field-of-relationship>!regexp[^LINKS-IN-TEXT$]]">
-    {{||$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
-  </$list>
-  {{||$:/plugins/bimlas/locator/buttons/search-in-context}}
+\define config-title() $:/config/bimlas/locator/toolbars/$(listItem)$
+
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/bimlas/locator/view-toolbar]!has[draft.of]]" variable="listItem">
+  <$reveal type="nomatch" state=<<config-title>> text="hide">
+    <$transclude tiddler=<<listItem>> mode="inline"/>
+  </$reveal>
 </$list>
-<$list filter="[subfilter<filter-history>rest[2]first[]]" variable="null">
-  {{$:/plugins/bimlas/locator/buttons/collapse-history}}
-</$list>
-{{||$:/plugins/bimlas/locator/buttons/open-in-story-river}}
-{{$:/plugins/bimlas/locator/buttons/toggle-context-settings}}
+<$reveal state={{{ [[$:/state/popup/bimlas/locator/view-toolbar-dropdown/]addsuffix<storyTiddler>] }}} type="popup" position="belowleft" animate="yes" tag="div">
+  <div class="tc-drop-down">
+    <$vars
+      tv-config-toolbar-icons="yes"
+      tv-config-toolbar-text="yes"
+      tv-config-toolbar-class="tc-btn-invisible"
+    >
+      <$list filter="[all[shadows+tiddlers]tag[$:/tags/bimlas/locator/view-toolbar]!title<currentTiddler>!has[draft.of]]" variable="listItem">
+        <$reveal type="match" state=<<config-title>> text="hide" tag="div">
+          <$transclude tiddler=<<listItem>> mode="inline"/>
+        </$reveal>
+      </$list>
+    </$vars>
+  </div>
+</$reveal>

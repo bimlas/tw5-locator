@@ -1,4 +1,6 @@
-tags:
+caption: {{$:/core/images/chevron-left}} {{$:/plugins/bimlas/locator/language/buttons/open-in-story-river}}
+description: {{$:/plugins/bimlas/locator/language/buttons/open-in-story-river}}
+tags: $:/tags/bimlas/locator/view-toolbar
 title: $:/plugins/bimlas/locator/buttons/open-in-story-river
 type: text/vnd.tiddlywiki
 
@@ -16,6 +18,11 @@ type: text/vnd.tiddlywiki
   <$action-navigate $to=<<currentTab>>/>
 \end
 
-<$button tooltip="Open in story river" class=<<link-button-class>> actions=<<actions>>>
-  {{$:/core/images/chevron-left}}
-</$button>
+<$list filter="[title<currentTab>!title<currentTiddler>]" variable="null">
+  <$macrocall
+    $name="toolbar-button"
+    icon={{$:/core/images/chevron-left}}
+    tooltip={{$:/plugins/bimlas/locator/language/buttons/open-in-story-river}}
+    actions=<<actions>>
+  />
+</$list>

@@ -7,13 +7,13 @@ type: text/vnd.tiddlywiki
 It is useful if you can open each of the desired tiddlers in the story river at the touch of a button, but there is an even more productive way.
 
 ; Use any template for context items or even transclude them
-: Within the context settings (<<_icon {{$:/core/images/options-button}}>> button in the sidebar) you can specify which template you want to view the context items with. They appear as links by default, but you can even select transclusion to display the contents of the tiddler in addition to its title. A good example of this is a music collection: using the link template you first filter the list of audio files or YouTube videos for the items you want to listen to, then use the transclusion template to turn the list of tiddlers into a playlist. Take a look at [[Music]] for a real example. 
+: Within the context settings (<<_icon {{$:/core/images/options-button}}>> button in the sidebar) you can specify which template you want to view the context items with. They appear as links by default, but you can even select transclusion to display the contents of the tiddler in addition to its title. A good example of this is a music collection: using the link template you first filter the list of audio files or YouTube videos for the items you want to listen to, then use the transclusion template to turn the list of tiddlers into a playlist. Take a look at [[Music]] for a real example.
 
 ; View and edit multiple tiddler fields at once
 : With the context items template you can view the fields of the tiddlers or even use the field editors.
 
 ; Define your own templates
-: Open the [[field settings|$:/plugins/bimlas/locator/settings/settings]] to learn how to create your own templates.
+: Open the [[field settings|$:/plugins/bimlas/locator/settings/fields]] to learn how to create your own templates.
 
 !! Multidimensional table of contents, mindmap features
 

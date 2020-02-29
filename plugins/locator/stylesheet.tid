@@ -9,11 +9,10 @@ type: text/vnd.tiddlywiki
   width: 1rem;
   height: 1rem;
 }
-.tc-drop-down button.bimlas-locator {
+.tc-editor-toolbar .tc-drop-down button.bimlas-locator {
   width: auto;
   padding: 0;
   display: inline-block;
-  background-color: inherit;
 }
 ol.bimlas-locator {
   list-style-type: none;

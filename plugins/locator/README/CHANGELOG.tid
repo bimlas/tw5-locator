@@ -10,6 +10,7 @@ type: text/vnd.tiddlywiki
 * Show buttons only if they have an effect (eg arrow next to last element of history makes no sense as we are already in this context)
 * Add "Open in story river" button to `locator-view`
 * History was different in function from context items (drag-and-drop behavior, highlighting of current title)
+* The `locator-view` toolbar buttons can also be accessed from a drop-down menu
 
 !! 2.0.0
 

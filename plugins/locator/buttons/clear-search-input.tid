@@ -1,8 +1,16 @@
+caption: {{$:/core/images/preview-open}} {{$:/plugins/bimlas/locator/language/buttons/clear-search-input}}
+description: {{$:/plugins/bimlas/locator/language/buttons/clear-search-input}}
 tags:
 title: $:/plugins/bimlas/locator/buttons/clear-search-input
 type: text/vnd.tiddlywiki
 
-<$button tooltip="Clear search text, show all results" class=<<link-button-class>>>
+\define actions()
   <$action-setfield $tiddler="$:/temp/search" text="   "/>
-  {{$:/core/images/preview-open}}
-</$button>
+\end
+
+<$macrocall
+  $name="toolbar-button"
+  icon={{$:/core/images/preview-open}}
+  tooltip={{$:/plugins/bimlas/locator/language/buttons/clear-search-input}}
+  actions=<<actions>>
+/>

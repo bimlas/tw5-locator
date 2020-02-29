@@ -1,5 +1,5 @@
 tags:
-title: $:/plugins/bimlas/locator/settings/settings
+title: $:/plugins/bimlas/locator/settings/fields
 type: text/vnd.tiddlywiki
 
 \define show-in-fields()
@@ -114,6 +114,8 @@ type: text/vnd.tiddlywiki
 \end
 
 \define settingsTiddler() [title<currentTiddler>addprefix[$:/config/bimlas/locator/fields/]]
+
+! Field settings
 
 Select field to edit its settings:
 <$select tiddler="$:/temp/bimlas/locator/settings-of-field">

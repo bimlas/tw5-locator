@@ -6,4 +6,13 @@ type: text/vnd.tiddlywiki
 
 {{||$:/plugins/bimlas/locator/viewtemplate/field-list}}
 
-{{$:/plugins/bimlas/locator/buttons/open-field-settings}}
+<!-- Hide internal macros, do not make them globally available -->
+<$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
+  <$vars
+    tv-config-toolbar-icons="yes"
+    tv-config-toolbar-text="yes"
+    tv-config-toolbar-class="tc-btn-invisible"
+  >
+    {{$:/plugins/bimlas/locator/buttons/open-field-settings}}
+  </$vars>
+</$importvariables>

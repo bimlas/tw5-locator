@@ -1,4 +1,6 @@
-tags:
+caption: {{$:/core/images/new-button}} {{$:/plugins/bimlas/locator/language/buttons/create-new-tiddler}}
+description: {{$:/plugins/bimlas/locator/language/buttons/create-new-tiddler}}
+tags: $:/tags/bimlas/locator/view-toolbar
 title: $:/plugins/bimlas/locator/buttons/create-new-tiddler
 type: text/vnd.tiddlywiki
 
@@ -30,10 +32,20 @@ type: text/vnd.tiddlywiki
   </$set>
 \end
 
-<$button tooltip="Create new tiddler in the current context" class=<<link-button-class>>>
+\define actions()
   <<add-filters-as-field-values>>
   <<add-to-current-context>>
   <$action-sendmessage $message="tm-new-tiddler" $param="$:/temp/bimlas/locator/new-tiddler" title={{{ [title<titleOfNewTiddler>] [title{$:/language/DefaultNewTiddlerTitle}] -[[]] +[first[]] }}}/>
   <$action-deletetiddler $tiddler="$:/temp/bimlas/locator/new-tiddler"/>
-  {{$:/core/images/new-button}}
-</$button>
+\end
+
+<$list filter="[title<contextState>!field:invert-direction[yes]]" variable="null">
+  <$list filter="[subfilter<filter-field-of-relationship>!regexp[^LINKS-IN-TEXT$]]" variable="null">
+    <$macrocall
+      $name="toolbar-button"
+      icon={{$:/core/images/new-button}}
+      tooltip={{$:/plugins/bimlas/locator/language/buttons/create-new-tiddler}}
+      actions=<<actions>>
+    />
+  </$list>
+</$list>

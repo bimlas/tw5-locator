@@ -1,4 +1,6 @@
-tags:
+caption: {{$:/core/images/advanced-search-button}} {{$:/plugins/bimlas/locator/language/buttons/search-in-context}}
+description: {{$:/plugins/bimlas/locator/language/buttons/search-in-context}}
+tags: $:/tags/bimlas/locator/view-toolbar
 title: $:/plugins/bimlas/locator/buttons/search-in-context
 type: text/vnd.tiddlywiki
 
@@ -19,6 +21,11 @@ type: text/vnd.tiddlywiki
   <$action-sendmessage message $message="tm-notify" $param="$:/plugins/bimlas/locator/language/search-in-context"/>
 \end
 
-<$button tooltip="Restrict search to this context (in full depth)" class=<<link-button-class>> actions=<<actions>>>
-  {{$:/core/images/advanced-search-button}}
-</$button>
+<$list filter="[title<contextState>!field:invert-direction[yes]]" variable="null">
+  <$macrocall
+    $name="toolbar-button"
+    icon={{$:/core/images/advanced-search-button}}
+    tooltip={{$:/plugins/bimlas/locator/language/buttons/search-in-context}}
+    actions=<<actions>>
+  />
+</$list>

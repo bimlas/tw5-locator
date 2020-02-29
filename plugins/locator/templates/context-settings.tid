@@ -48,6 +48,12 @@ type: text/vnd.tiddlywiki
     >
       Allow to open leaves
     </$checkbox><br/>
-    {{$:/plugins/bimlas/locator/buttons/open-field-settings}}
+    <$vars
+      tv-config-toolbar-icons="yes"
+      tv-config-toolbar-text="yes"
+      tv-config-toolbar-class="tc-btn-invisible"
+    >
+      {{$:/plugins/bimlas/locator/buttons/open-field-settings}}
+    </$vars>
   </div>
 </$list>

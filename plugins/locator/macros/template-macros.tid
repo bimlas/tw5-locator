@@ -9,3 +9,14 @@ type: text/vnd.tiddlywiki
     </div>
   </$droppable>
 \end
+
+\define toolbar-button(tooltip icon actions)
+  <$button tooltip=<<__tooltip__>> class={{{ [<tv-config-toolbar-class>addsuffix[ bimlas-locator]] }}} actions=<<__actions__>>>
+    <$list filter="[<tv-config-toolbar-icons>match[yes]]">
+      <<__icon__>>
+    </$list>
+    <$list filter="[<tv-config-toolbar-text>match[yes]]">
+      <span class="tc-btn-text"><$text text=<<__tooltip__>>/></span>
+    </$list>
+  </$button>
+\end
