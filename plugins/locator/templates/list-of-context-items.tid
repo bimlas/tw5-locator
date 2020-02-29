@@ -2,19 +2,16 @@ tags:
 title: $:/plugins/bimlas/locator/templates/list-of-context-items
 type: text/vnd.tiddlywiki
 
-\define regular-context-items()
-  <$list filter=<<filterContextItems>> template="$:/plugins/bimlas/locator/templates/droppable-context-item"/>
+\define list-item-content()
+  {{||$:/plugins/bimlas/locator/buttons/go-down-to-context}}
+  <$transclude tiddler={{{ [title<contextState>get[template-of-context-items]] [title<__templateOfContextItems__>] -[[]] +[first[]] }}}/>
 \end
 
-\define links-in-text()
-  <$list filter="[subfilter<filterContextItems>sort[]]" template="$:/plugins/bimlas/locator/templates/context-item"/>
-\end
-
-<$vars
-  templateOfContextItems={{{ [title<contextState>get[template-of-context-items]] [title<__templateOfContextItems__>] -[[]] +[first[]] }}}
-  buttonOfContextItems="$:/plugins/bimlas/locator/buttons/go-down-to-context"
+<$set
+  name="filter"
+  filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]"
+  value="[subfilter<filterContextItems>sort[]]"
+  emptyValue=<<filterContextItems>>
 >
-  <$list filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]" emptyMessage=<<regular-context-items>>>
-    <<links-in-text>>
-  </$list>
-</$vars>
+  {{$:/plugins/bimlas/locator/templates/list-items-and-highlight-current-story}}
+</$set>

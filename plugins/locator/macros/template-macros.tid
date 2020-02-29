@@ -2,9 +2,9 @@ tags:
 title: $:/plugins/bimlas/locator/macros/template-macros
 type: text/vnd.tiddlywiki
 
-\define droppable-menu-list-item(content actions)
+\define droppable-menu-list-item(content actions class)
   <$droppable actions=<<__actions__>>>
-    <div class="tc-droppable-placeholder" style="display: block">
+    <div class="tc-droppable-placeholder $class$" style="display: block">
       <<__content__>>
     </div>
   </$droppable>

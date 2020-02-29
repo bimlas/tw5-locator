@@ -2,16 +2,11 @@ tags:
 title: $:/plugins/bimlas/locator/templates/history
 type: text/vnd.tiddlywiki
 
-<$vars
-  templateOfContextItems="$:/plugins/bimlas/locator/field-templates/link"
-  buttonOfContextItems="$:/plugins/bimlas/locator/buttons/go-up-to-context"
->
-  <$set
-    name="template"
-    filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]"
-    value="$:/plugins/bimlas/locator/templates/context-item"
-    emptyValue="$:/plugins/bimlas/locator/templates/droppable-context-item"
-   >
-    <$list filter=<<filter-history>> template=<<template>>/>
-  </$set>
+\define list-item-content()
+  {{||$:/plugins/bimlas/locator/buttons/go-up-to-context}}
+  {{||$:/plugins/bimlas/locator/field-templates/link}}
+\end
+
+<$vars filter=<<filter-history>>>
+  {{$:/plugins/bimlas/locator/templates/list-items-and-highlight-current-story}}
 </$vars>

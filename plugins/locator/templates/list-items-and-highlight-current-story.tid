@@ -1,0 +1,32 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/list-items-and-highlight-current-story
+type: text/vnd.tiddlywiki
+
+\define droppable-list-item()
+  <$macrocall
+    $name="droppable-menu-list-item"
+    content=<<list-item-content>>
+    actions={{$:/plugins/bimlas/locator/actions/move-to-another-context}}
+    class="$(class)$"
+  />
+\end
+
+<$set
+  name="listItemTemplate"
+  filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]"
+  value="list-item-content"
+  emptyValue="droppable-list-item"
+>
+  <$list filter=<<filter>>>
+    <$set
+      name="class"
+      filter="[[$:/HistoryList]field:current-tiddler<currentTiddler>]"
+      value="current-story"
+      emptyValue=""
+    >
+      <li class={{{ [[toc-item ]addsuffix<class>] }}}>
+        <$macrocall $name=<<listItemTemplate>>/>
+      </li>
+    </$set>
+  </$list>
+</$set>
