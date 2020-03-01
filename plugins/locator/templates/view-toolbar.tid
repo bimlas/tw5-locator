@@ -4,23 +4,25 @@ type: text/vnd.tiddlywiki
 
 \define config-title() $:/config/bimlas/locator/toolbars/$(listItem)$
 
-<$list filter="[all[shadows+tiddlers]tag[$:/tags/bimlas/locator/view-toolbar]!has[draft.of]]" variable="listItem">
-  <$reveal type="nomatch" state=<<config-title>> text="hide">
-    <$transclude tiddler=<<listItem>> mode="inline"/>
+<span class="bimlas-locator right">
+  <$list filter="[all[shadows+tiddlers]tag[$:/tags/bimlas/locator/view-toolbar]!has[draft.of]]" variable="listItem">
+    <$reveal type="nomatch" state=<<config-title>> text="hide">
+      <$transclude tiddler=<<listItem>> mode="inline"/>
+    </$reveal>
+  </$list>
+  <$reveal state={{{ [[$:/state/popup/bimlas/locator/view-toolbar-dropdown/]addsuffix<storyTiddler>] }}} type="popup" position="belowleft" animate="yes" tag="div">
+    <div class="tc-drop-down">
+      <$vars
+        tv-config-toolbar-icons="yes"
+        tv-config-toolbar-text="yes"
+        tv-config-toolbar-class="tc-btn-invisible"
+      >
+        <$list filter="[all[shadows+tiddlers]tag[$:/tags/bimlas/locator/view-toolbar]!title<currentTiddler>!has[draft.of]]" variable="listItem">
+          <$reveal type="match" state=<<config-title>> text="hide" tag="div">
+            <$transclude tiddler=<<listItem>> mode="inline"/>
+          </$reveal>
+        </$list>
+      </$vars>
+    </div>
   </$reveal>
-</$list>
-<$reveal state={{{ [[$:/state/popup/bimlas/locator/view-toolbar-dropdown/]addsuffix<storyTiddler>] }}} type="popup" position="belowleft" animate="yes" tag="div">
-  <div class="tc-drop-down">
-    <$vars
-      tv-config-toolbar-icons="yes"
-      tv-config-toolbar-text="yes"
-      tv-config-toolbar-class="tc-btn-invisible"
-    >
-      <$list filter="[all[shadows+tiddlers]tag[$:/tags/bimlas/locator/view-toolbar]!title<currentTiddler>!has[draft.of]]" variable="listItem">
-        <$reveal type="match" state=<<config-title>> text="hide" tag="div">
-          <$transclude tiddler=<<listItem>> mode="inline"/>
-        </$reveal>
-      </$list>
-    </$vars>
-  </div>
-</$reveal>
+</span>

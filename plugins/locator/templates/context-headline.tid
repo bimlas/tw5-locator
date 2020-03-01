@@ -1,0 +1,20 @@
+tags:
+title: $:/plugins/bimlas/locator/templates/context-headline
+type: text/vnd.tiddlywiki
+
+\define list-item-content()
+  <div class="bimlas-locator view-context-headline $(class)$">
+    <$tiddler tiddler=<<originalTiddler>>>
+      {{||$:/plugins/bimlas/locator/templates/view-toolbar}}
+    </$tiddler>
+    {{$:/plugins/bimlas/locator/buttons/blank}}
+    {{||$:/plugins/bimlas/locator/field-templates/link}}
+  </div>
+\end
+
+<$vars
+  filter="[subfilter<filter-history>last[]]"
+  originalTiddler={{{ [title<currentTiddler>] }}}
+>
+  {{$:/plugins/bimlas/locator/templates/list-items-and-highlight-current-story}}
+</$vars>

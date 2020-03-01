@@ -7,6 +7,6 @@ type: text/vnd.tiddlywiki
   {{||$:/plugins/bimlas/locator/field-templates/link}}
 \end
 
-<$vars filter=<<filter-history>>>
+<$vars filter="[subfilter<filter-history>butlast[]]">
   {{$:/plugins/bimlas/locator/templates/list-items-and-highlight-current-story}}
 </$vars>

@@ -33,8 +33,9 @@ li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
 }
 .bimlas-locator.view-history li:last-of-type a {
   font-weight: bold;
+  white-space: normal;
 }
-.bimlas-locator.view-toolbar {
+.bimlas-locator.view-context-headline {
   border-top: 1px solid;
   border-bottom: 1px solid;
 }
@@ -53,15 +54,15 @@ li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
 .tc-block-dropdown.tc-search-drop-down .bimlas-locator a:hover {
   background-color: initial;
 }
+.bimlas-locator.right {
+  float: right;
+  margin-right: 1em;
+}
 button.bimlas-locator svg {
   margin: 0 0.25em;
 }
 button.bimlas-locator.active svg {
   fill: <<colour dirty-indicator>>;
-}
-.bimlas-locator.right {
-  float: right;
-  margin-right: 1em;
 }
 .bimlas-locator.context-settings {
   border-width: 1px;

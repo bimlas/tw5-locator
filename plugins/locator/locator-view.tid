@@ -18,13 +18,11 @@ type: text/vnd.tiddlywiki
             <div class="tc-table-of-contents">
               <ol class="bimlas-locator view-history">
                 {{$:/plugins/bimlas/locator/templates/history}}
+                {{||$:/plugins/bimlas/locator/templates/context-headline}}
               </ol>
             </div>
             <div class="bimlas-locator view-toolbar">
               {{$:/plugins/bimlas/locator/templates/context-settings}}
-              <div class="bimlas-locator right">
-                {{||$:/plugins/bimlas/locator/templates/view-toolbar}}
-              </div>
               <div class="bimlas-locator fields-filter">
                 {{$:/plugins/bimlas/locator/templates/fields-filter}}
               </div>
