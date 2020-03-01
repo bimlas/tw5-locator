@@ -11,6 +11,7 @@ type: text/vnd.tiddlywiki
 * Add "Open in story river" button to `locator-view`
 * History was different in function from context items (drag-and-drop behavior, highlighting of current title)
 * The `locator-view` toolbar buttons can also be accessed from a drop-down menu
+* Imporve design of `locator-view`
 
 !! 2.0.0
 

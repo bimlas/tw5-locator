@@ -34,6 +34,13 @@ li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
 .bimlas-locator.view-history li:last-of-type a {
   font-weight: bold;
 }
+.bimlas-locator.view-toolbar {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+.bimlas-locator.fields-filter, .bimlas-locator.view-context-items {
+  margin-left: 0.7em;
+}
 .bimlas-locator .current-story > a {
   color: <<colour dirty-indicator>>;
 }

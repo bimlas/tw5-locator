@@ -20,14 +20,15 @@ type: text/vnd.tiddlywiki
                 {{$:/plugins/bimlas/locator/templates/history}}
               </ol>
             </div>
-
-            ---
-
-            {{$:/plugins/bimlas/locator/templates/context-settings}}
-            <div class="bimlas-locator right">
-              {{||$:/plugins/bimlas/locator/templates/view-toolbar}}
+            <div class="bimlas-locator view-toolbar">
+              {{$:/plugins/bimlas/locator/templates/context-settings}}
+              <div class="bimlas-locator right">
+                {{||$:/plugins/bimlas/locator/templates/view-toolbar}}
+              </div>
+              <div class="bimlas-locator fields-filter">
+                {{$:/plugins/bimlas/locator/templates/fields-filter}}
+              </div>
             </div>
-            {{$:/plugins/bimlas/locator/templates/fields-filter}}
             <div class="tc-table-of-contents">
               <ol class="bimlas-locator view-context-items">
                 {{$:/plugins/bimlas/locator/templates/list-of-context-items}}
