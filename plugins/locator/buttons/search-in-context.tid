@@ -5,7 +5,7 @@ title: $:/plugins/bimlas/locator/buttons/search-in-context
 type: text/vnd.tiddlywiki
 
 \define actions()
-  <$list filter="[[context]] [[intersection]] [[difference]]" variable="state">
+  <$list filter="[[intersection]] [[difference]]" variable="state">
     <$macrocall
       $name="copy-state"
       sourceMacro="view"
