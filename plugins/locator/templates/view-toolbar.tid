@@ -2,7 +2,7 @@ tags:
 title: $:/plugins/bimlas/locator/templates/view-toolbar
 type: text/vnd.tiddlywiki
 
-\define config-title() $:/config/bimlas/locator/toolbars/$(listItem)$
+\define config-title() $:/config/bimlas/locator/toolbars/view/$(listItem)$
 
 <span class="bimlas-locator right">
   <$list filter="[all[shadows+tiddlers]tag[$:/tags/bimlas/locator/view-toolbar]!has[draft.of]]" variable="listItem">

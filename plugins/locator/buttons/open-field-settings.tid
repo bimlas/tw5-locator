@@ -1,6 +1,6 @@
 caption: {{$:/core/images/options-button}} {{$:/plugins/bimlas/locator/language/buttons/open-field-settings}}
 description: {{$:/plugins/bimlas/locator/language/buttons/open-field-settings}}
-tags:
+tags: $:/tags/bimlas/locator/search-toolbar
 title: $:/plugins/bimlas/locator/buttons/open-field-settings
 type: text/vnd.tiddlywiki
 

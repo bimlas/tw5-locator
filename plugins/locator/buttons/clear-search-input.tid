@@ -1,6 +1,6 @@
 caption: {{$:/core/images/preview-open}} {{$:/plugins/bimlas/locator/language/buttons/clear-search-input}}
 description: {{$:/plugins/bimlas/locator/language/buttons/clear-search-input}}
-tags:
+tags: $:/tags/bimlas/locator/search-toolbar
 title: $:/plugins/bimlas/locator/buttons/clear-search-input
 type: text/vnd.tiddlywiki
 

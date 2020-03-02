@@ -1,6 +1,6 @@
 caption: {{$:/core/images/new-button}} {{$:/plugins/bimlas/locator/language/buttons/create-new-tiddler}}
 description: {{$:/plugins/bimlas/locator/language/buttons/create-new-tiddler}}
-tags: $:/tags/bimlas/locator/view-toolbar
+tags: $:/tags/bimlas/locator/view-toolbar $:/tags/bimlas/locator/search-toolbar
 title: $:/plugins/bimlas/locator/buttons/create-new-tiddler
 type: text/vnd.tiddlywiki
 

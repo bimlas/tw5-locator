@@ -2,12 +2,14 @@ tags:
 title: $:/plugins/bimlas/locator/templates/search-toolbar
 type: text/vnd.tiddlywiki
 
+\define config-title() $:/config/bimlas/locator/toolbars/search/$(listItem)$
+
 <$vars
   titleOfNewTiddler={{$:/temp/search}}
 >
-  {{$:/plugins/bimlas/locator/buttons/clear-search-input}}
-  {{$:/plugins/bimlas/locator/buttons/copy-filter-to-advanced-search}}
-  {{$:/plugins/bimlas/locator/buttons/create-new-tiddler}}
-  {{$:/plugins/bimlas/locator/buttons/open-field-settings}}
-  {{$:/plugins/bimlas/locator/buttons/toggle-fields-filter}}
+  <$list filter="[all[shadows+tiddlers]tag[$:/tags/bimlas/locator/search-toolbar]!has[draft.of]]" variable="listItem">
+    <$reveal type="nomatch" state=<<config-title>> text="hide">
+      <$transclude tiddler=<<listItem>> mode="inline"/>
+    </$reveal>
+  </$list>
 </$vars>

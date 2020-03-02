@@ -1,6 +1,6 @@
 caption: {{$:/core/images/down-arrow}} {{$:/plugins/bimlas/locator/language/buttons/toggle-fields-filter}}
 description: {{$:/plugins/bimlas/locator/language/buttons/toggle-fields-filter}}
-tags: $:/tags/bimlas/locator/view-toolbar
+tags: $:/tags/bimlas/locator/view-toolbar $:/tags/bimlas/locator/search-toolbar
 title: $:/plugins/bimlas/locator/buttons/toggle-fields-filter
 type: text/vnd.tiddlywiki
 

@@ -1,6 +1,6 @@
 caption: {{$:/core/images/advanced-search-button}} {{$:/plugins/bimlas/locator/language/buttons/copy-filter-to-advanced-search}}
 description: {{$:/plugins/bimlas/locator/language/buttons/copy-filter-to-advanced-search}}
-tags:
+tags: $:/tags/bimlas/locator/search-toolbar
 title: $:/plugins/bimlas/locator/buttons/copy-filter-to-advanced-search
 type: text/vnd.tiddlywiki
 
