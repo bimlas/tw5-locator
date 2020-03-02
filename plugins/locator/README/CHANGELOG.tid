@@ -6,12 +6,11 @@ type: text/vnd.tiddlywiki
 
 [[See GitLab for detailed change history of this release|https://gitlab.com/bimlas/tw5-locator/compare/v2.0.0...dev]]
 
-* Highlight currently opened tiddler in context items
-* Show buttons only if they have an effect (eg arrow next to last element of history makes no sense as we are already in this context)
+* Imporved design: the look is more compact and clear, the toolbar buttons are optional
+* Show buttons only if they have effect (eg arrow next to last element of history makes no sense as we are already in this context)
 * Add "Open in story river" button to `locator-view`
-* History was different in function from context items (drag-and-drop behavior, highlighting of current title)
-* The `locator-view` toolbar buttons can also be accessed from a drop-down menu
-* Imporve design of `locator-view`
+* Highlight currently opened tiddler in `locator-view`
+* History items was different in behaviour from context items (drag-and-drop behavior, highlighting of current title)
 
 !! 2.0.0
 
