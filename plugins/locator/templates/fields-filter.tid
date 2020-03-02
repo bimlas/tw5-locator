@@ -2,33 +2,17 @@ tags:
 title: $:/plugins/bimlas/locator/templates/fields-filter
 type: text/vnd.tiddlywiki
 
-\define open-actions()
-  <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="[[FIELDS-FILTER]]"/>
-\end
-
-\define close-actions()
-  <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="-[[FIELDS-FILTER]]"/>
-\end
-
-\define opened()
-  <$button class=<<fieldsFilterButtonClass>> actions=<<close-actions>>>
-    {{$:/core/images/up-arrow}} Filter by fields
-  </$button>
-  {{$:/plugins/bimlas/locator/buttons/remove-filters}}
-  <ol class="bimlas-locator">
-    {{$:/plugins/bimlas/locator/templates/field-names}}
-  </ol>
-\end
-
-\define closed()
-  <$button class=<<fieldsFilterButtonClass>> actions=<<open-actions>>>
-    {{$:/core/images/down-arrow}} Filter by fields
-  </$button>
-  {{$:/plugins/bimlas/locator/buttons/remove-filters}}
-\end
-
-<$set name="fieldsFilterButtonClass" filter="[subfilter<filter-selected-field-values>first[]]" value=<<link-button-class additionalClasses:"active">> emptyValue=<<link-button-class>>>
-  <$vars typeOfFieldsFilter="nested">
-    <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<closed>>><<opened>></$list>
-  </$vars>
-</$set>
+<$vars typeOfFieldsFilter="nested">
+  <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" variable="null">
+    <$vars
+      tv-config-toolbar-icons="yes"
+      tv-config-toolbar-text="yes"
+      tv-config-toolbar-class="tc-btn-invisible"
+    >
+      {{$:/plugins/bimlas/locator/buttons/remove-filters}}
+    </$vars>
+    <ol class="bimlas-locator">
+      {{$:/plugins/bimlas/locator/templates/field-names}}
+    </ol>
+  </$list>
+</$vars>

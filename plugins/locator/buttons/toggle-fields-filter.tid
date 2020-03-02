@@ -1,0 +1,44 @@
+caption: {{$:/core/images/down-arrow}} {{$:/plugins/bimlas/locator/language/buttons/toggle-fields-filter}}
+description: {{$:/plugins/bimlas/locator/language/buttons/toggle-fields-filter}}
+tags: $:/tags/bimlas/locator/view-toolbar
+title: $:/plugins/bimlas/locator/buttons/toggle-fields-filter
+type: text/vnd.tiddlywiki
+
+\define open-actions()
+  <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="[[FIELDS-FILTER]]"/>
+\end
+
+\define close-actions()
+  <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="-[[FIELDS-FILTER]]"/>
+\end
+
+\define opened()
+  <$macrocall
+    $name="toolbar-button"
+    icon={{$:/core/images/up-arrow}}
+    tooltip={{$:/plugins/bimlas/locator/language/buttons/toggle-fields-filter}}
+    actions=<<close-actions>>
+    class=<<class>>
+  />
+\end
+
+\define closed()
+  <$macrocall
+    $name="toolbar-button"
+    icon={{$:/core/images/down-arrow}}
+    tooltip={{$:/plugins/bimlas/locator/language/buttons/toggle-fields-filter}}
+    actions=<<open-actions>>
+    class=<<class>>
+  />
+\end
+
+<$vars currentField="">
+  <$set
+    name="class"
+    filter="[subfilter<filter-selected-field-values>first[]]"
+    value="active"
+    emptyValue=""
+  >
+    <$list filter="[title<contextState>contains:opened-fields-filters[FIELDS-FILTER]]" emptyMessage=<<closed>>><<opened>></$list>
+  </$set>
+</$vars>

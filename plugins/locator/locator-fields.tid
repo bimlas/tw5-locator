@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
       recursiveFilteringAvailable="yes"
     >
 
-      {{$:/plugins/bimlas/locator/templates/search-toolbar}} {{$:/plugins/bimlas/locator/buttons/remove-filters}}
+      {{$:/plugins/bimlas/locator/templates/search-toolbar}}
 
       <p><$checkbox tiddler=<<contextState>> field="limit-to-fields-of-filtered-tiddlers" checked="yes" unchecked="no" default="yes"> Limit to fields of filtered tiddlers</$checkbox></p>
 
@@ -20,6 +20,13 @@ type: text/vnd.tiddlywiki
         <$list filter="[subfilter<filter-search-context>count[]]" variable="resultCount" template="$:/language/Search/Matches"/>
       </$list>
 
+      <$vars
+        tv-config-toolbar-icons="yes"
+        tv-config-toolbar-text="yes"
+        tv-config-toolbar-class="tc-btn-invisible"
+      >
+        {{$:/plugins/bimlas/locator/buttons/remove-filters}}
+      </$vars>
       <!-- searchTiddler variable does not available in transcluded tiddlers by default -->
       <$set name="filterContextItems" filter="[<contextState>field:limit-to-fields-of-filtered-tiddlers[no]]" value="[!is[system]]" emptyValue=<<filter-search-context>>>
         <$vars searchedFieldValue={{$(searchTiddler)$}}>
