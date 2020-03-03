@@ -4,7 +4,7 @@ type: text/vnd.tiddlywiki
 
 \define list-item-content()
   {{||$:/plugins/bimlas/locator/buttons/go-down-to-context}}
-  <$transclude tiddler={{{ [title<contextState>get[template-of-context-items]] [title<__templateOfContextItems__>] -[[]] +[first[]] }}}/>
+  <$transclude tiddler=<<template>>/>
 \end
 
 <$set
@@ -13,5 +13,7 @@ type: text/vnd.tiddlywiki
   value="[subfilter<filterContextItems>sort[]]"
   emptyValue=<<filterContextItems>>
 >
-  {{$:/plugins/bimlas/locator/templates/list-items-and-highlight-current-story}}
+  <$vars template={{{ [title<contextState>get[template-of-context-items]] [title<__templateOfContextItems__>] -[[]] +[first[]] }}}>
+    {{$:/plugins/bimlas/locator/templates/list-items-and-highlight-current-story}}
+  </$vars>
 </$set>

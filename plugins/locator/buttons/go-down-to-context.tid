@@ -4,13 +4,12 @@ type: text/vnd.tiddlywiki
 
 \define node()
   <$button tooltip="Go to context, show children of this tiddler" class=<<link-button-class>> actions={{$:/plugins/bimlas/locator/actions/add-to-history}}>
-    {{$:/plugins/bimlas/locator/buttons/context-arrow}}
+    {{$:/plugins/bimlas/locator/templates/context-arrow}}
   </$button>
 \end
 
-\define go-down-to-context()
-  <!-- I have to use macro to use $(...)$ in filter expression -->
+\define main()
   <$list filter="[all[current]locator-enlist-children:$(currentField)$<contextState>] [title<contextState>field:allow-to-open-leaves[yes]] +[first[]]" emptyMessage={{$:/plugins/bimlas/locator/buttons/blank}} variable="null"><<node>></$list>
 \end
 
-<<go-down-to-context>>
+<<main>>

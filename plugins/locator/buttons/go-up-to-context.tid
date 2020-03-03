@@ -7,8 +7,6 @@ type: text/vnd.tiddlywiki
   {{$:/plugins/bimlas/locator/actions/remove-filters}}
 \end
 
-<$list filter="[subfilter<filter-history>last[]!is[current]]" emptyMessage={{$:/plugins/bimlas/locator/buttons/blank}} variable="null">
-  <$button tooltip="Go to context, show children of this tiddler" class=<<link-button-class>> actions=<<actions>>>
-    {{$:/plugins/bimlas/locator/buttons/context-arrow}}
-  </$button>
-</$list>
+<$button tooltip="Go to context, show children of this tiddler" class=<<link-button-class>> actions=<<actions>>>
+  {{$:/plugins/bimlas/locator/templates/context-arrow}}
+</$button>

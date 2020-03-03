@@ -11,22 +11,26 @@ type: text/vnd.tiddlywiki
   />
 \end
 
-<$set
-  name="listItemTemplate"
-  filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]"
-  value="list-item-content"
-  emptyValue="droppable-list-item"
->
-  <$list filter=<<filter>>>
-    <$set
-      name="class"
-      filter="[[$:/HistoryList]field:current-tiddler<currentTiddler>]"
-      value="current-story"
-      emptyValue=""
-    >
-      <li class={{{ [[toc-item ]addsuffix<class>] }}}>
-        <$macrocall $name=<<listItemTemplate>>/>
-      </li>
-    </$set>
-  </$list>
-</$set>
+\define main()
+  <$set
+    name="listItemTemplate"
+    filter="[subfilter<filter-field-of-relationship>regexp[^LINKS-IN-TEXT$]]"
+    value="list-item-content"
+    emptyValue="droppable-list-item"
+  >
+    <$list filter=<<filter>>>
+      <$set
+        name="class"
+        filter="[[$:/HistoryList]field:current-tiddler<currentTiddler>]"
+        value="current-story"
+        emptyValue=""
+      >
+        <li class="toc-item $(class)$">
+          <$macrocall $name=<<listItemTemplate>>/>
+        </li>
+      </$set>
+    </$list>
+  </$set>
+\end
+
+<<main>>
