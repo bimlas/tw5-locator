@@ -6,7 +6,7 @@ type: text/vnd.tiddlywiki
   <$action-setfield $tiddler=<<intersectionState>> $index=<<currentField>> $value=""/>
   <$action-setfield $tiddler=<<differenceState>> $index=<<currentField>> $value=""/>
   <$action-listops $tiddler=<<contextState>> $field="opened-fields-filters" $subfilter="-[<currentField>]"/>
-  <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" variable="null">
+  <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>prefix[yes]]" variable="null">
     <$action-setfield $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index=<<currentField>> $value=""/>
   </$list>
 \end

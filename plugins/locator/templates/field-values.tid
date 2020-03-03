@@ -5,7 +5,7 @@ type: text/vnd.tiddlywiki
 \define remove-filtering-of-current-field()
   <$action-setfield $tiddler=<<intersectionState>> $index=<<currentField>> $value=""/>
   <$action-setfield $tiddler=<<differenceState>> $index=<<currentField>> $value=""/>
-  <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" variable="null">
+  <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>prefix[yes]]" variable="null">
     <$action-setfield $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index=<<currentField>> $value=""/>
   </$list>
 \end
@@ -25,7 +25,7 @@ type: text/vnd.tiddlywiki
 
 \define inactivate-actions()
   <$action-listops $tiddler=<<__filterState__>> $index=<<currentField>> $subfilter="-[all[current]]"/>
-  <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" variable="null">
+  <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>prefix[yes]]" variable="null">
     <$action-listops $tiddler="$:/state/bimlas/locator/search/recursive-filters/" $index=<<currentField>> $subfilter="-[all[current]]"/>
   </$list>
 \end
@@ -87,7 +87,7 @@ type: text/vnd.tiddlywiki
           beforeActivateActions=<<remove-from-intersection-state>>
           tooltip="Toggle filtering to this value"
         />
-        <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>regexp[yes]]" variable="null">
+        <$list filter="[<recursiveFilteringOfCurrentFieldAvailable>prefix[yes]]" variable="null">
           <$macrocall
             $name="toggle-button"
             filterState="$:/state/bimlas/locator/search/recursive-filters/"

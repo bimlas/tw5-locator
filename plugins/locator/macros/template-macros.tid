@@ -12,10 +12,10 @@ type: text/vnd.tiddlywiki
 
 \define toolbar-button(tooltip icon actions class)
   <$button tooltip=<<__tooltip__>> class="bimlas-locator $(tv-config-toolbar-class)$ $class$" actions=<<__actions__>>>
-    <$list filter="[<tv-config-toolbar-icons>regexp[yes]]">
+    <$list filter="[<tv-config-toolbar-icons>prefix[yes]]">
       <<__icon__>>
     </$list>
-    <$list filter="[<tv-config-toolbar-text>regexp[yes]]">
+    <$list filter="[<tv-config-toolbar-text>prefix[yes]]">
       <span class="tc-btn-text"><$text text=<<__tooltip__>>/></span>
     </$list>
   </$button>

@@ -4,7 +4,7 @@ type: text/vnd.tiddlywiki
 
 <$macrocall $name="clear-data-tiddler" tiddler=<<intersectionState>>/>
 <$macrocall $name="clear-data-tiddler" tiddler=<<differenceState>>/>
-<$list filter="[<recursiveFilteringAvailable>regexp[yes]]" variable="null">
+<$list filter="[<recursiveFilteringAvailable>prefix[yes]]" variable="null">
   <$macrocall $name="clear-data-tiddler" tiddler="$:/state/bimlas/locator/search/recursive-filters/"/>
 </$list>
 <$action-setfield $tiddler=<<contextState>> opened-fields-filters=""/>

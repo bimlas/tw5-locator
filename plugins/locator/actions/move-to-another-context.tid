@@ -22,6 +22,6 @@ type: text/vnd.tiddlywiki
   </$vars>
 \end
 
-<$list filter="[title<contextState>locator-direction-of-traverse<currentField>regexp[to]]" emptyMessage=<<add-current-tiddler-to-action-tiddler>> variable="null">
+<$list filter="[title<contextState>locator-direction-of-traverse<currentField>prefix[to]]" emptyMessage=<<add-current-tiddler-to-action-tiddler>> variable="null">
   <<add-action-tiddler-to-current-tiddler>>
 </$list>
