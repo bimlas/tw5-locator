@@ -42,7 +42,7 @@ li.toc-item.bimlas-locator, .tc-menu-list-item.bimlas-locator {
 .bimlas-locator.fields-filter, .bimlas-locator.view-context-items {
   margin-left: 0.7em;
 }
-.bimlas-locator .current-story > a {
+.bimlas-locator [data-bimlas-locator-title="{{{ [{$:/HistoryList!!current-tiddler}stringify[]] }}}"] a {
   color: <<colour dirty-indicator>>;
 }
 .tc-menu-list-item.bimlas-locator > .tc-droppable {

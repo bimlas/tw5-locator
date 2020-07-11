@@ -19,16 +19,9 @@ type: text/vnd.tiddlywiki
     emptyValue="droppable-list-item"
   >
     <$list filter=<<filter>>>
-      <$set
-        name="class"
-        filter="[[$:/HistoryList]field:current-tiddler<currentTiddler>]"
-        value="current-story"
-        emptyValue=""
-      >
-        <li class="toc-item $(class)$">
-          <$macrocall $name=<<listItemTemplate>>/>
-        </li>
-      </$set>
+      <li class="toc-item" data-bimlas-locator-title=<<currentTiddler>>>
+        <$macrocall $name=<<listItemTemplate>>/>
+      </li>
     </$list>
   </$set>
 \end
