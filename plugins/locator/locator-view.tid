@@ -2,13 +2,14 @@ tags: $:/tags/Macro
 title: $:/plugins/bimlas/locator/macros/locator-view
 type: text/vnd.tiddlywiki
 
-\define locator-view(baseTitle fieldOfRelationship:"tags" templateOfContextItems:"$:/plugins/bimlas/locator/field-templates/link")
+\define locator-view(baseTitle fieldOfRelationship:"tags" templateOfContextItems:"$:/plugins/bimlas/locator/field-templates/link" extraFilter:"")
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
     <$vars
       contextState="$:/state/bimlas/locator/view/context/$(currentTiddler)$"
       intersectionState="$:/state/bimlas/locator/view/intersection/$(currentTiddler)$"
       differenceState="$:/state/bimlas/locator/view/difference/$(currentTiddler)$"
+      extraFilter=<<__extraFilter__>>
       defaultFieldOfRelationship=<<__fieldOfRelationship__>>
     >
       <!-- I have to create them nested because internal variables use external ones -->

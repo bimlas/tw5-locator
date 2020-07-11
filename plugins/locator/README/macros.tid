@@ -25,6 +25,9 @@ Optional parameters:
 ; `templateOfContextItems` (`$:/plugins/bimlas/locator/field-templates/link` by default)
 : The default template to display the context items with.
 
+; `extraFilter`
+: An optional extra filter step, e.g. `!tag[Exclude from ToC]` to always hide tiddlers with <<tag-pill "Exclude from ToC">> tag
+
 !! `locator-search` and `locator-fields`
 
 The `locator-search` macro can be used in the same way as standard search, but ''you can narrow the scope of the search to the context by the fields filter'', in `locator-fields` you can `search for field values`.
@@ -39,6 +42,11 @@ The `locator-search` macro can be used in the same way as standard search, but '
 ```
 
 Do the same with `<<locator-fields>>` macro.
+
+Optional parameters:
+
+; `extraFilter`
+: An optional extra filter step, e.g. `!tag[Exclude from ToC]` to always hide tiddlers with <<tag-pill "Exclude from ToC">> tag
 
 If you want to use `locator-fields` in the sidebar (like the sidebar -> More -> Tags tab) insted of standard search, you should also define the `searchTiddler` variable before the macro call:
 

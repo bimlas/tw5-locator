@@ -2,7 +2,7 @@ tags: $:/tags/Macro
 title: $:/plugins/bimlas/locator/macros/locator-search
 type: text/vnd.tiddlywiki
 
-\define locator-search()
+\define locator-search(extraFilter:"")
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
     <$vars
@@ -10,6 +10,7 @@ type: text/vnd.tiddlywiki
       intersectionState="$:/state/bimlas/locator/search/intersection/"
       differenceState="$:/state/bimlas/locator/search/difference/"
       filterContextItems="[subfilter<filter-search-context>search{$(searchTiddler)$}]"
+      extraFilter=<<__extraFilter__>>
       recursiveFilteringAvailable="yes"
     >
 

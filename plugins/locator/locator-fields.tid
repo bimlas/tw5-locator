@@ -2,13 +2,14 @@ tags: $:/tags/Macro
 title: $:/plugins/bimlas/locator/macros/locator-fields
 type: text/vnd.tiddlywiki
 
-\define locator-fields()
+\define locator-fields(extraFilter:"")
   <!-- Hide internal macros, do not make them globally available -->
   <$importvariables filter="[all[tiddlers+shadows]prefix[$:/plugins/bimlas/locator/macros/]]">
     <$vars
       contextState="$:/state/bimlas/locator/search/context/"
       intersectionState="$:/state/bimlas/locator/search/intersection/"
       differenceState="$:/state/bimlas/locator/search/difference/"
+      extraFilter=<<__extraFilter__>>
       recursiveFilteringAvailable="yes"
     >
 
