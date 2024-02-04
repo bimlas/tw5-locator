@@ -1,1 +1,3 @@
-**/$__StoryList.tid
+node_modules/
+tiddlers/$__StoryList.tid
+output/

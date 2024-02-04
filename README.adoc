@@ -1,12 +1,11 @@
-:demo-page: https://bimlas.gitlab.io/tw5-locator
-:json: https://bimlas.gitlab.io/tw5-locator/tw5-locator.json
+:demo-page: https://bimlas.github.io/tw5-locator
+:json: https://bimlas.github.io/tw5-locator/tw5-locator.json
 
 = Locator plugin for TiddlyWiki 5
 
 For details, see the link:{demo-page}[demo page].
 
-* https://gitlab.com/bimlas/tw5-locator (official repository)
-* https://github.com/bimlas/tw5-locator (mirror, please star if you like it)
+* https://github.com/bimlas/tw5-locator (please star if you like it)
 
 == What others say about it?
 
